@@ -57,7 +57,7 @@ Colonnes actuelles : `plan_code` (texte libre), `status` ∈ {`trialing`, `activ
 
 Écriture refusée au client (`REVOKE INSERT, UPDATE, DELETE`). Lecture réservée à owner / admin ; l'administrateur de plateforme n'a **pas** de politique de lecture.
 
-| Limite | Conséquence | Correction proposée (migration 0017, sans réécrire 0001) |
+| Limite | Conséquence | Correction proposée (migration 0018, sans réécrire 0001) |
 |---|---|---|
 | `plan_code` sans lien avec un catalogue | Prix et droits non traçables | `product_version_id` (FK vers la version d'offre souscrite, figée) ; `plan_code` conservé, renseigné pour lecture |
 | Pas d'état `suspended` ni d'état « en attente du premier paiement » | Impossible de distinguer l'impayé, la suspension et une souscription non payée | Statuts ajoutés : `incomplete`, `suspended`. L'index « vivant » est recréé pour inclure `incomplete` et `suspended` |
@@ -65,7 +65,7 @@ Colonnes actuelles : `plan_code` (texte libre), `status` ∈ {`trialing`, `activ
 | `seats`, `max_companies` codés en colonnes | Les quotas ne couvrent ni missions, stockage, imports, rapports ou IA | Conservés (aucune suppression) mais **dérivés** des droits (§ 8). La source unique devient la version d'offre et les options |
 | `provider_*` : un abonnement lié à **un** prestataire | Incompatible avec plusieurs passerelles et avec le mobile money (sans prélèvement récurrent documenté, § 6) | Le moteur d'abonnement est **interne à KOFINEX**. Les passerelles n'encaissent que des paiements de commandes. Les colonnes restent, nullables, et ne sont plus utilisées comme source d'état |
 
-Les tables sont vides aujourd'hui (aucun code ne les alimente). La migration 0017 vérifiera cette hypothèse et s'arrêtera avec un message explicite si des lignes existent.
+Les tables sont vides aujourd'hui (aucun code ne les alimente). La migration 0018 vérifiera cette hypothèse et s'arrêtera avec un message explicite si des lignes existent.
 
 ### 2.4 `payments` — à compléter (ALTER)
 - **Utile** : `numeric(14,2)`, `currency char(3)`, unicité `(provider, provider_payment_id)`, `raw_event`, lecture **owner seulement**.
@@ -515,7 +515,7 @@ Toutes les nouvelles tables auront : RLS activé ; déclencheur `0_not_ai` sur l
 ## 14. Plan détaillé des étapes
 
 ### 12A — Catalogue commercial et abonnements
-- **Migration 0017** :
+- **Migration 0018** :
   - `billing_accounts`, `billing_products`, `billing_product_versions`, `billing_prices`, `billing_modules`, `billing_entitlements`, `billing_promotions`, `billing_promotion_redemptions`, `subscription_items`, `billing_settings` ;
   - ALTER `subscriptions` ;
   - RLS, audit, `0_not_ai` ;
@@ -528,7 +528,7 @@ Toutes les nouvelles tables auront : RLS activé ; déclencheur `0_not_ai` sur l
 - **Tests** : moteurs, SQL (RLS, publication figée, un seul abonnement vivant), intégration API.
 
 ### 12B — Paiements, facturation et quotas
-- **Migration 0018** :
+- **Migration 0019** :
   - `billing_orders`, `billing_documents`, `billing_document_lines`, `billing_document_sequences`, `tax_rules`, `payment_providers`, `payment_webhook_events`, `refunds` ;
   - ALTER `payments` et audit ;
   - `authz.entitlement_limit` et gardes de quota.

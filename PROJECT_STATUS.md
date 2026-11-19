@@ -364,4 +364,7 @@
   2. `financial_statements.statement_type` : la contrainte de la migration 0001 ignorait les types de la structure des états (0005), et aucune analyse ne pouvait aboutir. **Migration 0017** : contrainte élargie (`balance_sheet_assets`, `balance_sheet_liabilities`, `off_balance`), valeurs d'origine conservées ; test SQL `test_statement_types.sql` (4 contrôles, dont un refus) ;
   3. pilotage : les huit réponses de `app/api/v1/steering.py` (tableaux de bord, détail, seuils) passent par `management.jsonable` : montants en texte exact, plus de nombres flottants. Le frontend accepte déjà les chaînes.
 - **Exécuté ici, après les trois corrections** : `npm run typecheck` sans erreur ; `npm run build` réussi (16 pages) ; `make test-unit` 296 réussis ; `make test-sql` 16 séries, 593 contrôles, base en révision 0017 par Alembic ; `make test-integration` **32 réussis sur 32** ; ruff sans erreur. Seul avertissement : dépréciation de `httpx` par Starlette (bibliothèque tierce).
+- **Restant à vérifier en conditions réelles** (non couvert par les tests automatisés) :
+  - affichage des tableaux de bord du pilotage dans un navigateur, avec les montants désormais transmis en texte (« 1000 » et non « 1000.00 » pour un montant rond) ;
+  - lien de téléchargement signé des rapports générés : les tests utilisent le stockage local, qui le refuse (503) ; à vérifier avec le stockage Supabase.
 
