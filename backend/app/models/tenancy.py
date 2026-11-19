@@ -161,6 +161,9 @@ class FiscalYear(Base):
 
 class AuditLog(Base):
     __tablename__ = "audit_logs"
+    # pas de RETURNING à l'insertion : avec RETURNING, PostgreSQL applique aussi la politique de lecture du journal,
+    # réservée à certains rôles ; tout utilisateur doit pouvoir journaliser ses actions sans lire le journal
+    __mapper_args__ = {"eager_defaults": False}
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), **_uuid_pk)
     organization_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True))

@@ -21,7 +21,7 @@
 | 12 SaaS et mise en production | non commencé |
 
 ## Ce qui existe
-- **Base** : 100 tables (migrations 0001 à 0015), RLS partout, 5 buckets privés ; acteur IA bloqué sur toutes les tables métier.
+- **Base** : 100 tables (migrations 0001 à 0017), RLS partout, 5 buckets privés ; acteur IA bloqué sur toutes les tables métier.
 - **API** : `me`, `organizations`, `companies`, `fiscal_years`, `frameworks`, `imports`, `analysis`, `management`, `engagements` (méthodologies, missions, dossier), `financial_audit`, `internal_audit`, `ledger`, `internal_control`, `ai`, `reporting`, `dashboard`, `accounting` (comptabilité native), `fec` (FEC DGI Bénin), `steering` (pilotage).
 - **Moteurs** :
   - `engines/importing` : lecture, OCR, détection, balance, contrôles ;
@@ -36,8 +36,8 @@
   - SYSCEBNL (associations) : couverture du plan vérifiée, pas de cas chiffré.
 - **Tests** :
   - 296 tests unitaires (`make test-unit`, 19 novembre 2026) ;
-  - tests SQL (15 séries, 589 contrôles, `make test-sql` avec les migrations appliquées par Alembic depuis le 19 novembre 2026) : RLS 39, Storage 12, référentiels et imports 20, moteur financier 16, contrôle de gestion 17, socle d'audit 46, audit financier 57, audit interne 59, grand livre 19, contrôle interne 94, IA 60, reporting 41, comptabilité native 68, seuils du pilotage 8, FEC Bénin 33 ;
-  - tests d'intégration API : 19 réussis sur 32 ; les 13 échecs relèvent de trois défauts de l'application en attente de décision (voir « Tests d'intégration » ci-dessous).
+  - tests SQL (16 séries, 593 contrôles, `make test-sql` avec les migrations appliquées par Alembic depuis le 19 novembre 2026) : RLS 39, Storage 12, référentiels et imports 20, moteur financier 16, contrôle de gestion 17, socle d'audit 46, audit financier 57, audit interne 59, grand livre 19, contrôle interne 94, IA 60, reporting 41, comptabilité native 68, seuils du pilotage 8, FEC Bénin 33, types d'états 4 ;
+  - tests d'intégration API : 32 réussis sur 32 (voir « Tests d'intégration » ci-dessous).
 
 ## Décisions en attente (utilisateur ou expert)
 1. **Référentiels** : relire les points marqués « [À VALIDER] » (`referentiels/*/RAPPORT.md`). Pour le SYSCEBNL, rattacher les comptes 702, 7054 et 7055.
@@ -359,10 +359,9 @@
 - **Défauts de l'application, corrigés (techniques, sans règle métier ni politique RLS)** :
   - FEC : `app/services/fec.py` lisait `Posted.date` au lieu de `Posted.entry_date` (tableau de bord et export du FEC en erreur) ;
   - grand livre : valeur sentinelle `"\x00"` refusée par PostgreSQL quand aucun journal d'à-nouveaux n'est défini (erreur 500 sur les totaux par compte et les mensualités) ; remplacée par une liste vide.
-- **Défauts de l'application, en attente de décision (non corrigés)** :
-  1. `audit_logs` : l'insertion utilise `RETURNING created_at` ; PostgreSQL applique alors la politique de lecture, réservée aux propriétaires, administrateurs, comptables et auditeurs ; toute action journalisée par un autre profil (contrôleur, membre d'une mission) est refusée. Correction proposée : `eager_defaults=False` sur le modèle `AuditLog`, sans changer la politique (9 échecs) ;
-  2. `financial_statements.statement_type` : la contrainte de la migration 0001 ignore les types de la structure des états (0005 : `balance_sheet_assets`, `balance_sheet_liabilities`, `off_balance`) ; aucune analyse ne peut aboutir. Correction proposée : migration 0017 qui élargit la contrainte (4 échecs) ;
-  3. pilotage : `app/services/steering.py` renvoie les montants en `Decimal` brut, sérialisés en nombres flottants par FastAPI, contrairement à la règle « jamais de flottant ». Correction proposée : sérialisation par `management.jsonable` (texte exact) ; le frontend accepte déjà les chaînes (1 échec).
-- **Exécuté ici** : `npm run typecheck` sans erreur ; `npm run build` réussi (16 pages) ; `make test-unit` 296 réussis ; `make test-sql` 15 séries, 589 contrôles ; `make test-integration` **19 réussis, 13 échecs** ; ruff sans erreur.
-- **Mesure de contrôle, non livrée** : avec les corrections 1 et 2 appliquées temporairement, 31 réussis sur 32 (reste la correction 3).
+- **Défauts de l'application, corrigés après accord** :
+  1. `audit_logs` : l'insertion utilisait `RETURNING created_at`, et PostgreSQL appliquait alors la politique de lecture du journal (réservée à certains rôles) : toute action d'un contrôleur ou d'un membre de mission était refusée. `eager_defaults=False` sur le modèle `AuditLog` ; la politique RLS est inchangée ;
+  2. `financial_statements.statement_type` : la contrainte de la migration 0001 ignorait les types de la structure des états (0005), et aucune analyse ne pouvait aboutir. **Migration 0017** : contrainte élargie (`balance_sheet_assets`, `balance_sheet_liabilities`, `off_balance`), valeurs d'origine conservées ; test SQL `test_statement_types.sql` (4 contrôles, dont un refus) ;
+  3. pilotage : les huit réponses de `app/api/v1/steering.py` (tableaux de bord, détail, seuils) passent par `management.jsonable` : montants en texte exact, plus de nombres flottants. Le frontend accepte déjà les chaînes.
+- **Exécuté ici, après les trois corrections** : `npm run typecheck` sans erreur ; `npm run build` réussi (16 pages) ; `make test-unit` 296 réussis ; `make test-sql` 16 séries, 593 contrôles, base en révision 0017 par Alembic ; `make test-integration` **32 réussis sur 32** ; ruff sans erreur. Seul avertissement : dépréciation de `httpx` par Starlette (bibliothèque tierce).
 

@@ -20,6 +20,7 @@ from app.core.errors import NotFound
 from app.core.permissions import Permission
 from app.models import Company, FiscalYear, ManagementAlertSettings
 from app.services import steering as svc
+from app.services.management import jsonable  # Decimal → texte exact, jamais de flottant
 from app.services.audit import record_event
 
 router = APIRouter(prefix="/companies/{company_id}", tags=["Contrôle de gestion — pilotage"])
@@ -55,7 +56,7 @@ P = Annotated[Period, Depends(Period)]
 @router.get(F + "/watermark", summary="Filigrane des sources : dernière écriture validée, imports actifs, écritures en attente")
 def watermark(fiscal_year_id: uuid.UUID, ctx: Comp, db: Db):
     _, fy = _fy(db, ctx, fiscal_year_id)
-    return svc.watermark(db, fy)
+    return jsonable(svc.watermark(db, fy))
 
 
 @router.get(F + "/financial", summary="Tableau de bord financier : soldes AO / HAO, indicateurs, Top 10, évolutions, N / N-1")
@@ -64,7 +65,7 @@ def financial(fiscal_year_id: uuid.UUID, ctx: Comp, db: Db, p: P, compare: bool 
     """`partner_basis` : clients / fournisseurs par chiffre d'affaires et charges HT des écritures (par défaut), ou par
     montants facturés sur les comptes de tiers (présentation du modèle Excel de référence)."""
     company, fy = _fy(db, ctx, fiscal_year_id)
-    return svc.financial(db, company, fy, compare=compare, partner_basis=partner_basis, **p.kw)
+    return jsonable(svc.financial(db, company, fy, compare=compare, partner_basis=partner_basis, **p.kw))
 
 
 @router.get(F + "/drilldown", summary="Détail d'un indicateur, d'un compte, d'un tiers ou de la trésorerie jusqu'aux écritures")
@@ -81,9 +82,9 @@ def drilldown(
     company, fy = _fy(db, ctx, fiscal_year_id)
     if kind == "personnel":
         ctx.require(Permission.PAYROLL_DETAIL)
-    return svc.drilldown(
+    return jsonable(svc.drilldown(
         db, company, fy, kind=kind, key=key, limit=limit, offset=offset, payroll_detail=ctx.can(Permission.PAYROLL_DETAIL), **p.kw
-    )
+    ))
 
 
 @router.get(
@@ -98,27 +99,27 @@ def budget(
     as_of: date | None = None,
 ):
     company, fy = _fy(db, ctx, fiscal_year_id)
-    return svc.budget_dashboard(
+    return jsonable(svc.budget_dashboard(
         db, company, fy, budget_id=budget_id, source=source, as_of=as_of, thresholds=svc.thresholds_for(db, company.id)
-    )
+    ))
 
 
 @router.get(F + "/treasury", summary="Tableau de bord de trésorerie (flux réels, transferts internes exclus)")
 def treasury(fiscal_year_id: uuid.UUID, ctx: Comp, db: Db, p: P):
     company, fy = _fy(db, ctx, fiscal_year_id)
-    return svc.treasury(db, company, fy, **p.kw)
+    return jsonable(svc.treasury(db, company, fy, **p.kw))
 
 
 @router.get(F + "/payroll", summary="Tableau de bord de la masse salariale (montants agrégés par compte)")
 def payroll(fiscal_year_id: uuid.UUID, ctx: Comp, db: Db, p: P):
     company, fy = _fy(db, ctx, fiscal_year_id)
-    return svc.payroll(db, company, fy, **p.kw)
+    return jsonable(svc.payroll(db, company, fy, **p.kw))
 
 
 @router.get(F + "/analysis", summary="Analyse et aide à la décision : points d'attention factuels")
 def analysis(fiscal_year_id: uuid.UUID, ctx: Comp, db: Db, p: P):
     company, fy = _fy(db, ctx, fiscal_year_id)
-    return svc.analysis(db, company, fy, **p.kw)
+    return jsonable(svc.analysis(db, company, fy, **p.kw))
 
 
 # ------------------------------------------------------------------ seuils d'alerte
@@ -154,11 +155,11 @@ class ThresholdsIn(BaseModel):
 @router.get("/management-alert-settings", summary="Seuils d'alerte du contrôle de gestion (valeurs par défaut si non paramétrés)")
 def get_thresholds(ctx: Comp, db: Db):
     th = svc.thresholds_for(db, ctx.company_id)
-    return {
+    return jsonable({
         **{k: getattr(th, k) for k in FIELDS},
         "customized": db.get(ManagementAlertSettings, ctx.company_id) is not None,
         "can_edit": ctx.can(Permission.BUDGET_APPROVE),
-    }
+    })
 
 
 @router.put("/management-alert-settings", summary="Paramétrer les seuils d'alerte (contrôleurs et administrateurs)")
