@@ -73,7 +73,7 @@ def test_ledger_flow(client, make_user, test_framework):  # noqa: F811
     assert js["VT"]["months"][0]["entries"] == 1 and js["BQ"]["debit"] == "1200"
     an = client.get(f"{gl}/analytics", headers=viewer.headers, params={"round_multiple": "100"}).json()
     assert an["round_amounts"]["count"] == 4 and an["benford"]["count"] == 4 and an["numbering_gaps"]
-    assert "Journal" in client.get(f"{gl}.csv", headers=viewer.headers).text.split("\n")[0].replace("﻿", "")
+    assert client.get(f"{gl}.csv", headers=viewer.headers).text.split("\n")[0].replace("﻿", "").startswith("Code journal;")
 
     # population d'audit tirée des écritures
     org_id = client.get(f"{base}", headers=owner.headers).json()["organization_id"]

@@ -460,7 +460,7 @@ def accounts(db: Session, fy: FiscalYear, prefix: str | None) -> dict:
     job = require_ledger(fy)
     jobrow = db.get(ImportJob, job)
     oj = list(lg.LedgerOptions.from_dict(jobrow.options).opening_journals)
-    p = {"job": job, "oj": oj or ["\x00"], "prefix": (prefix or "") + "%"}
+    p = {"job": job, "oj": oj, "prefix": (prefix or "") + "%"}
     rows = (
         db.execute(
             text("""
@@ -562,7 +562,7 @@ def monthly_net(db: Session, fy: FiscalYear, prefixes: list[str] | None = None) 
           FROM ledger_lines WHERE import_job_id = :job AND status = 'valid'
            AND (journal_code IS NULL OR NOT journal_code = ANY(:oj))
          GROUP BY 1, 2"""),
-        {"job": job, "oj": oj or ["\x00"]},
+        {"job": job, "oj": oj},
     ).all()
     out: dict[str, dict[int, Decimal]] = defaultdict(dict)
     for acc, month, net in rows:

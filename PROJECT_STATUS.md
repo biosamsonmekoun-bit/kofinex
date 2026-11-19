@@ -1,6 +1,6 @@
 # KOFINEX — État du projet
 
-*Mis à jour le 19 novembre 2026 (correctifs d'outillage, branche `fix/outillage`).*
+*Mis à jour le 19 novembre 2026 (analyse des tests d'intégration, branche `fix/tests-integration`).*
 
 ## Synthèse
 | Lot | État |
@@ -37,7 +37,7 @@
 - **Tests** :
   - 296 tests unitaires (`make test-unit`, 19 novembre 2026) ;
   - tests SQL (15 séries, 589 contrôles, `make test-sql` avec les migrations appliquées par Alembic depuis le 19 novembre 2026) : RLS 39, Storage 12, référentiels et imports 20, moteur financier 16, contrôle de gestion 17, socle d'audit 46, audit financier 57, audit interne 59, grand livre 19, contrôle interne 94, IA 60, reporting 41, comptabilité native 68, seuils du pilotage 8, FEC Bénin 33 ;
-  - tests d'intégration API : 16 réussis sur 32 (voir « Outillage » ci-dessous).
+  - tests d'intégration API : 19 réussis sur 32 ; les 13 échecs relèvent de trois défauts de l'application en attente de décision (voir « Tests d'intégration » ci-dessous).
 
 ## Décisions en attente (utilisateur ou expert)
 1. **Référentiels** : relire les points marqués « [À VALIDER] » (`referentiels/*/RAPPORT.md`). Pour le SYSCEBNL, rattacher les comptes 702, 7054 et 7055.
@@ -346,3 +346,23 @@
   - 6 erreurs de fixture (`test_financial_audit_api`, `test_imports_api`, `test_ledger_api`, `test_ledger_complement_api`, `test_management_api` × 2) : la publication de la version de référentiel de test est refusée (409, `STRUCTURE_MISSING`) ;
   - 10 échecs : `test_ai_api`, `test_analysis_api`, `test_dashboard_api`, `test_engagements_api`, `test_fec_api`, `test_internal_audit_api`, `test_internal_control_api`, `test_reporting_api`, `test_steering_api` (`test_steering_cycle`, `test_budget_import_and_thresholds`) ;
   - observé dans ces échecs : insertion dans `audit_logs` refusée par la RLS (3 fois, suivie de « response already started »), `KeyError: 'id'` (3), une violation de contrainte, un 422 inattendu.
+
+## Tests d'intégration (19 novembre 2026, branche `fix/tests-integration`) — analyse des 16 échecs
+- **Défauts des tests, corrigés** :
+  - référentiel de test des imports publié sans structure des états (`STRUCTURE_MISSING`, règle voulue depuis le lot 4) : structure fictive ajoutée (6 erreurs de fixture) ;
+  - années de test tirées au hasard dans une fenêtre étroite : collisions de libellés (unique par référentiel) et de périodes ; `tests/integration/years.py` choisit une année libre en base ;
+  - méthodologies fictives sans grille de cotation (exigée pour publier) : tests IA et audit financier ;
+  - audit interne : projet de rapport invisible de l'audité (RLS) donc 404, et non 403 ; émission par un associé (`partner`), conformément à `docs/AUDIT_INTERNE.md` ;
+  - contrôle interne : code de référentiel erroné (`SYSCOHADA`) ; indépendance du manager confirmée avant de composer l'équipe ;
+  - grand livre : en-tête du CSV (« Code journal ») ;
+  - reporting : pas de lien signé avec le stockage local (503, pas de faux succès) ; empreinte vérifiée sur le fichier stocké.
+- **Défauts de l'application, corrigés (techniques, sans règle métier ni politique RLS)** :
+  - FEC : `app/services/fec.py` lisait `Posted.date` au lieu de `Posted.entry_date` (tableau de bord et export du FEC en erreur) ;
+  - grand livre : valeur sentinelle `"\x00"` refusée par PostgreSQL quand aucun journal d'à-nouveaux n'est défini (erreur 500 sur les totaux par compte et les mensualités) ; remplacée par une liste vide.
+- **Défauts de l'application, en attente de décision (non corrigés)** :
+  1. `audit_logs` : l'insertion utilise `RETURNING created_at` ; PostgreSQL applique alors la politique de lecture, réservée aux propriétaires, administrateurs, comptables et auditeurs ; toute action journalisée par un autre profil (contrôleur, membre d'une mission) est refusée. Correction proposée : `eager_defaults=False` sur le modèle `AuditLog`, sans changer la politique (9 échecs) ;
+  2. `financial_statements.statement_type` : la contrainte de la migration 0001 ignore les types de la structure des états (0005 : `balance_sheet_assets`, `balance_sheet_liabilities`, `off_balance`) ; aucune analyse ne peut aboutir. Correction proposée : migration 0017 qui élargit la contrainte (4 échecs) ;
+  3. pilotage : `app/services/steering.py` renvoie les montants en `Decimal` brut, sérialisés en nombres flottants par FastAPI, contrairement à la règle « jamais de flottant ». Correction proposée : sérialisation par `management.jsonable` (texte exact) ; le frontend accepte déjà les chaînes (1 échec).
+- **Exécuté ici** : `npm run typecheck` sans erreur ; `npm run build` réussi (16 pages) ; `make test-unit` 296 réussis ; `make test-sql` 15 séries, 589 contrôles ; `make test-integration` **19 réussis, 13 échecs** ; ruff sans erreur.
+- **Mesure de contrôle, non livrée** : avec les corrections 1 et 2 appliquées temporairement, 31 réussis sur 32 (reste la correction 3).
+

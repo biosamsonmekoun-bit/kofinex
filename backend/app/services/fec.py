@@ -75,7 +75,7 @@ def collect(db: Session, company: Company, fy: FiscalYear, start: date, end: dat
         j = journals.get(m["journal_id"])
         eid = str(m["entry_id"])
         fy_entries.setdefault(eid, fec.FyEntry(eid, m["journal"], p.sequence or None, m["origin"], m["validated_at"]))
-        if not (start <= p.date <= end):
+        if not (start <= p.entry_date <= end):
             continue
         acc = accounts.get(p.account)
         tp = tps.get(m["third_party_id"]) if m["third_party_id"] else None
@@ -88,7 +88,7 @@ def collect(db: Session, company: Company, fy: FiscalYear, start: date, end: dat
                 journal_label=j.label if j else "",
                 number=m["number"],
                 sequence_no=p.sequence or None,
-                entry_date=p.date,
+                entry_date=p.entry_date,
                 line_no=m["line_no"],
                 account=p.account,
                 account_label=acc.label if acc else None,

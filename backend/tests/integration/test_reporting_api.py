@@ -4,8 +4,14 @@ d'exporter un rapport d'audit non émis. Données FICTIVES."""
 
 from __future__ import annotations
 
+import hashlib
 import uuid
 
+from sqlalchemy import text
+
+from app.db.session import engine
+from app.services import reporting as report_svc
+from app.services.storage import get_storage
 from tests.integration.test_ai_api import _analysis
 
 API = "/api/v1"
@@ -29,8 +35,13 @@ def test_reporting_flow(client, make_user):
     assert len({o["sha256"] for o in out.values()}) == 3
     doc = client.get(f"{API}/documents/{out['pdf']['id']}", headers=owner.headers).json()
     assert doc["content_snapshot"]["title"].startswith("Rapport financier") and doc["source_refs"][0]["type"] == "analysis"
-    dl = client.get(f"{API}/documents/{out['pdf']['id']}/download", headers=owner.headers).json()
-    assert dl["url"] and dl["sha256"] == out["pdf"]["sha256"]
+    # stockage local des tests : pas de lien signé simulé (503) ; l'empreinte est vérifiée sur le fichier stocké
+    r = client.get(f"{API}/documents/{out['pdf']['id']}/download", headers=owner.headers)
+    assert r.status_code == 503, r.text
+    with engine.connect() as conn:
+        path = conn.execute(text("SELECT storage_path FROM public.generated_reports WHERE id = :i"),
+                            {"i": out["pdf"]["id"]}).scalar_one()
+    assert hashlib.sha256(get_storage().download(report_svc.BUCKET, path)).hexdigest() == out["pdf"]["sha256"]
     assert len(client.get(D, headers=owner.headers).json()) == 3
     assert client.get(f"{API}/documents/{out['pdf']['id']}", headers=outsider.headers).status_code == 404
 

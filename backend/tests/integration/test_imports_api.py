@@ -5,11 +5,11 @@ Référentiel et balances FICTIFS : aucune règle comptable officielle n'est uti
 
 from __future__ import annotations
 
-import uuid
 
 import pytest
 
 from tests.engines import sample_files as sf
+from tests.integration.years import free_year
 
 API = "/api/v1"
 
@@ -34,6 +34,21 @@ MAPPINGS_CSV = "\n".join([
 ]).encode()
 
 
+# structure FICTIVE : une ligne de détail par rubrique de MAPPINGS_CSV, un total par état
+STRUCTURE_CSV = "\n".join([
+    "etat;code;libelle;ordre;type;formule;role;niveau",
+    "bilan_actif;TA1;Rubrique test actif 1;10;detail;;;1",
+    "bilan_actif;TA2;Rubrique test actif 2;20;detail;;;1",
+    "bilan_actif;TA_TOT;Total actif (test);90;total;TA1 + TA2;total_actif;0",
+    "bilan_passif;TP1;Rubrique test passif 1;10;detail;;;1",
+    "bilan_passif;TP2;Rubrique test passif 2;20;detail;;;1",
+    "bilan_passif;TP_TOT;Total passif (test);90;total;TP1 + TP2;total_passif;0",
+    "compte_resultat;TR1;Rubrique test charges;10;detail;;;1",
+    "compte_resultat;TR2;Rubrique test produits;20;detail;;;1",
+    "compte_resultat;TR_NET;Résultat (test);90;total;TR2 - TR1;resultat_compte_resultat;0",
+]).encode()
+
+
 @pytest.fixture
 def test_framework(client, make_user):
     """Référentiel de test publié (le code doit correspondre à un profil : on utilise SYSCEBNL sur une
@@ -41,7 +56,7 @@ def test_framework(client, make_user):
     admin = make_user("pfadmin")
     client.get(f"{API}/me", headers=admin.headers)
     admin.make_platform_admin()
-    year = 2100 + int(uuid.uuid4().int % 800)
+    year = free_year("SYSCEBNL", 2100, 2900)
     r = client.post(f"{API}/frameworks/SYSCEBNL/versions", headers=admin.headers, json={
         "version_label": f"TEST-{year}", "effective_from": f"{year}-01-01", "effective_to": f"{year + 1}-01-01",
         "source_reference": "Référentiel FICTIF pour tests automatisés"})
@@ -51,6 +66,9 @@ def test_framework(client, make_user):
     r = client.post(f"{API}/framework-versions/{vid}/chart", headers=admin.headers,
                     files={"file": ("plan.csv", CHART_CSV, "text/csv")})
     assert r.status_code == 200 and r.json()["loaded"] == 15, r.text
+    r = client.post(f"{API}/framework-versions/{vid}/structure", headers=admin.headers,
+                    files={"file": ("structure.csv", STRUCTURE_CSV, "text/csv")})
+    assert r.status_code == 200 and r.json()["loaded"] == 9, r.text
     r = client.post(f"{API}/framework-versions/{vid}/mappings", headers=admin.headers,
                     files={"file": ("corr.csv", MAPPINGS_CSV, "text/csv")})
     assert r.status_code == 200, r.text

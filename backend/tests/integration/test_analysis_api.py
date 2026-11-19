@@ -5,11 +5,11 @@ from __future__ import annotations
 
 import csv
 import io
-import uuid
 
 from tests.engines import fictitious_framework as ff
 from tests.engines import sample_files as sf
 from tests.integration.test_imports_api import CHART_CSV
+from tests.integration.years import free_year
 
 API = "/api/v1"
 
@@ -30,7 +30,7 @@ def _upload(client, admin, vid, kind, content):
 def test_analysis_flow(client, make_user):
     admin = make_user("fe-admin")
     admin.make_platform_admin()
-    year = 2950 + int(uuid.uuid4().int % 40)
+    year = free_year("SYSCOHADA_REV", 2950, 3450)
     vid = client.post(f"{API}/frameworks/SYSCOHADA_REV/versions", headers=admin.headers, json={
         "version_label": f"TEST-FE-{year}", "effective_from": f"{year}-01-01", "effective_to": f"{year + 1}-01-01",
         "source_reference": "Référentiel FICTIF pour tests automatisés"}).json()["id"]

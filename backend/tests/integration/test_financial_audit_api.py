@@ -12,7 +12,10 @@ from tests.integration.test_management_api import _setup
 API = "/api/v1"
 METHOD_CSV = "\n".join(["type;code;libelle;parent;contenu;ordre", "assertion;EX;Existence (test);;;1",
                         'cycle;VENTES;Ventes-clients (test);;{"account_prefixes": ["41", "70"]};1',
-                        "cycle;ACHATS;Achats-fournisseurs (test);;;2"]).encode()
+                        "cycle;ACHATS;Achats-fournisseurs (test);;;2",
+                        # grille FICTIVE, exigée pour publier une méthodologie (engines/audit/methodology.py)
+                        'risk_scale;GRILLE;Grille (test);;{"likelihood":[{"score":1,"label":"Faible"},{"score":2,"label":"Forte"}],'
+                        '"impact":[{"score":1,"label":"Faible"},{"score":2,"label":"Fort"}],"significant_from":4};3']).encode()
 
 
 def test_financial_audit_flow(client, make_user, test_framework):  # noqa: F811
@@ -25,7 +28,7 @@ def test_financial_audit_flow(client, make_user, test_framework):  # noqa: F811
         "organization_id": org_id, "kind": "audit", "name": "Méthode FA test", "version_label": "v1",
         "source_reference": "Méthodologie FICTIVE pour tests"}).json()
     assert client.post(f"{API}/methodologies/{m['id']}/items", headers=owner.headers,
-                       files={"file": ("m.csv", METHOD_CSV, "text/csv")}).json()["loaded"] == 3
+                       files={"file": ("m.csv", METHOD_CSV, "text/csv")}).json()["loaded"] == 4
     assert client.post(f"{API}/methodologies/{m['id']}/publish", headers=owner.headers).status_code == 200
     e = client.post(f"{API}/organizations/{org_id}/engagements", headers=owner.headers, json={
         "company_id": cid, "fiscal_year_id": fy["id"], "engagement_type": "statutory_audit",

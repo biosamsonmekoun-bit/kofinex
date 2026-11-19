@@ -16,6 +16,7 @@ from tests.engines import fictitious_framework as ff
 from tests.engines import sample_files as sf
 from tests.integration.test_analysis_api import _csv, _upload
 from tests.integration.test_imports_api import CHART_CSV
+from tests.integration.years import free_year
 
 API = "/api/v1"
 METHOD_CSV = "\n".join(
@@ -25,6 +26,9 @@ METHOD_CSV = "\n".join(
         "assertion;EXH;Exhaustivité (test);;;2",
         'procedure_template;PT1;Revue des factures (test);;{"nature":"detail_test","objective":"Tester l\'exhaustivité","steps":["a"]};3',
         'finding_scale;CST;Constats (test);;{"levels":[{"code":"N1","label":"Majeur (test)","rank":1}]};4',
+        # grille FICTIVE, exigée pour publier une méthodologie (engines/audit/methodology.py)
+        'risk_scale;GRILLE;Grille (test);;{"likelihood":[{"score":1,"label":"Faible"},{"score":2,"label":"Forte"}],'
+        '"impact":[{"score":1,"label":"Faible"},{"score":2,"label":"Fort"}],"significant_from":4};5',
     ]
 ).encode()
 
@@ -73,7 +77,7 @@ def configured(monkeypatch):
 def _analysis(client, make_user):
     admin = make_user("ai-admin")
     admin.make_platform_admin()
-    year = 2850 + int(uuid.uuid4().int % 40)
+    year = free_year("SYSCOHADA_REV", 2400, 2900)
     vid = client.post(
         f"{API}/frameworks/SYSCOHADA_REV/versions",
         headers=admin.headers,
@@ -183,9 +187,11 @@ def test_ai_flow(client, make_user, configured):
             "source_reference": "Méthodologie FICTIVE pour tests",
         },
     ).json()
-    client.post(f"{API}/methodologies/{m['id']}/items", headers=owner.headers, files={"file": ("m.csv", METHOD_CSV, "text/csv")})
-    client.post(f"{API}/methodologies/{m['id']}/publish", headers=owner.headers)
-    e = client.post(
+    r = client.post(f"{API}/methodologies/{m['id']}/items", headers=owner.headers, files={"file": ("m.csv", METHOD_CSV, "text/csv")})
+    assert r.status_code == 200, r.text
+    r = client.post(f"{API}/methodologies/{m['id']}/publish", headers=owner.headers)
+    assert r.status_code == 200, r.text
+    r = client.post(
         f"{API}/organizations/{org['id']}/engagements",
         headers=owner.headers,
         json={
@@ -196,7 +202,9 @@ def test_ai_flow(client, make_user, configured):
             "methodology_version_id": m["id"],
             "fiscal_year_id": fy["id"],
         },
-    ).json()
+    )
+    assert r.status_code == 201, r.text
+    e = r.json()
     base = f"{API}/engagements/{e['id']}"
     for u, role in ((manager, "manager"), (staff, "staff"), (auditee, "auditee")):
         client.post(f"{base}/members", headers=owner.headers, json={"user_id": str(u.id), "role": role})

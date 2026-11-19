@@ -27,7 +27,7 @@ def test_internal_control_flow(client, make_user):
     for u in (icm, dom, perf, sup, manager, staff, auditee):
         client.post(f"{API}/organizations/{org['id']}/members", json={"email": u.email, "role": "member"}, headers=owner.headers)
     cid = client.post(f"{API}/organizations/{org['id']}/companies", headers=owner.headers,
-                      json={"name": "Filiale CI (test)", "framework_code": "SYSCOHADA"}).json()["id"]
+                      json={"name": "Filiale CI (test)", "framework_code": "SYSCOHADA_REV"}).json()["id"]
     C = f"{API}/companies/{cid}/ic"
     m = client.post(f"{API}/methodologies", headers=owner.headers, json={
         "organization_id": org["id"], "kind": "internal_control", "name": "Cadre CI test", "version_label": "v1",
@@ -87,10 +87,15 @@ def test_internal_control_flow(client, make_user):
         "name": "Évaluation 2026 (test)", "methodology_version_id": m["id"], "period_start": "2026-01-01",
         "period_end": "2026-06-30"}).json()
     base = f"{API}/engagements/{e['id']}"
+    # le créateur (manager de la mission) confirme son indépendance avant de composer l'équipe
+    r = client.post(f"{base}/independence", headers=icm.headers, json={"statement": "Je suis indépendant (test)."})
+    assert r.status_code == 200, r.text
     for u, role in ((manager, "manager"), (staff, "staff"), (auditee, "auditee")):
-        client.post(f"{base}/members", headers=icm.headers, json={"user_id": str(u.id), "role": role})
-    for u in (icm, manager, staff):
-        client.post(f"{base}/independence", headers=u.headers, json={"statement": "Je suis indépendant (test)."})
+        r = client.post(f"{base}/members", headers=icm.headers, json={"user_id": str(u.id), "role": role})
+        assert r.status_code == 201, r.text
+    for u in (manager, staff):
+        r = client.post(f"{base}/independence", headers=u.headers, json={"statement": "Je suis indépendant (test)."})
+        assert r.status_code == 200, r.text
     r = client.post(f"{base}/ic/program", headers=manager.headers, json={
         "code": "PRG", "title": "Achats (test)", "control_ids": [ctl["id"]], "test_types": ["operating"],
         "period_start": "2026-01-01", "period_end": "2026-06-30"})

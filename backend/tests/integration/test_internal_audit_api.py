@@ -20,8 +20,9 @@ METHOD_CSV = "\n".join([
 
 def test_internal_audit_flow(client, make_user):
     owner, manager, staff, auditee, outsider = (make_user(n) for n in ("ia-own", "ia-man", "ia-sta", "ia-aud", "ia-out"))
+    partner = make_user("ia-par")   # l'émission du rapport revient à l'associé (docs/AUDIT_INTERNE.md)
     org = client.post(f"{API}/organizations", json={"name": "Direction de l'audit (test)"}, headers=owner.headers).json()
-    for u in (manager, staff, auditee):
+    for u in (manager, staff, auditee, partner):
         client.post(f"{API}/organizations/{org['id']}/members", json={"email": u.email, "role": "member"}, headers=owner.headers)
     cid = client.post(f"{API}/organizations/{org['id']}/companies", headers=owner.headers,
                       json={"name": "Filiale (test)", "framework_code": "SYSCEBNL"}).json()["id"]
@@ -63,9 +64,10 @@ def test_internal_audit_flow(client, make_user):
         "name": "Audit des achats (test)", "methodology_version_id": m["id"]}).json()
     base = f"{API}/engagements/{e['id']}"
     client.post(f"{base}/independence", headers=owner.headers, json={"statement": "Je suis indépendant (test)."})
-    for u, role in ((manager, "manager"), (staff, "staff"), (auditee, "auditee")):
-        client.post(f"{base}/members", headers=owner.headers, json={"user_id": str(u.id), "role": role})
-    for u in (manager, staff):
+    for u, role in ((manager, "manager"), (staff, "staff"), (auditee, "auditee"), (partner, "partner")):
+        r = client.post(f"{base}/members", headers=owner.headers, json={"user_id": str(u.id), "role": role})
+        assert r.status_code == 201, r.text
+    for u in (manager, staff, partner):
         client.post(f"{base}/independence", headers=u.headers, json={"statement": "Je suis indépendant (test)."})
     r = client.patch(f"{API}/audit-plan-items/{item['id']}", headers=owner.headers,
                      json={"engagement_id": e["id"], "status": "in_progress"})
@@ -110,11 +112,12 @@ def test_internal_audit_flow(client, make_user):
         "overall_conclusion": "Dispositif à renforcer (jugement de l'auditeur, test)"}).json()["reports"][0]
     content = client.get(f"{base}/reports/{rep['id']}/content", headers=manager.headers).json()
     assert content["draft"] and content["findings"][0]["reference"] == "C1"
-    assert client.get(f"{base}/reports/{rep['id']}/content", headers=auditee.headers).status_code == 403
+    # projet invisible de l'audité (RLS audit_reports_select : rapports émis seulement) : 404, comme tout objet invisible
+    assert client.get(f"{base}/reports/{rep['id']}/content", headers=auditee.headers).status_code == 404
     d = client.get(f"{base}/reports/{rep['id']}/docx", headers=manager.headers)
     assert d.status_code == 200 and "PROJET" in "\n".join(p.text for p in Document(io.BytesIO(d.content)).paragraphs)
     assert client.post(f"{base}/reports/{rep['id']}/issue", headers=manager.headers).status_code == 403
-    r = client.post(f"{base}/reports/{rep['id']}/issue", headers=owner.headers)
+    r = client.post(f"{base}/reports/{rep['id']}/issue", headers=partner.headers)
     assert r.status_code == 200, r.text
     issued = r.json()["reports"][0]
     assert issued["status"] == "issued" and len(issued["content_sha256"]) == 64
