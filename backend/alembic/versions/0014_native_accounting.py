@@ -7,7 +7,7 @@ Create Date: 2026-11-18
 
 from pathlib import Path
 
-from alembic import op
+from app.db.sql_files import run_sql_file
 
 revision = "0014"
 down_revision = "0013"
@@ -18,7 +18,7 @@ SQL_DIR = Path(__file__).resolve().parents[2] / "sql"
 
 
 def upgrade() -> None:
-    op.get_bind().exec_driver_sql((SQL_DIR / "0014_native_accounting.sql").read_text(encoding="utf-8"))
+    run_sql_file(SQL_DIR / "0014_native_accounting.sql")
 
 
 def downgrade() -> None:

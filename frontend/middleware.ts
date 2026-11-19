@@ -1,4 +1,4 @@
-import { createServerClient } from "@supabase/ssr";
+import { createServerClient, type SetAllCookies } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
 const PUBLIC_PATHS = ["/login", "/signup", "/forgot-password", "/auth/callback", "/demonstration"];
@@ -19,7 +19,7 @@ export async function middleware(request: NextRequest) {
     {
       cookies: {
         getAll: () => request.cookies.getAll(),
-        setAll: (toSet) => {
+        setAll: (toSet: Parameters<SetAllCookies>[0]) => {
           toSet.forEach(({ name, value }) => request.cookies.set(name, value));
           response = NextResponse.next({ request });
           toSet.forEach(({ name, value, options }) => response.cookies.set(name, value, options));

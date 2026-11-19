@@ -7,7 +7,7 @@ dependencies = [
   "fastapi>=0.115",
   "uvicorn[standard]>=0.32",
   "pydantic>=2.9",
-  "pydantic-settings>=2.6",
+  "pydantic-settings>=2.7",
   "email-validator>=2.2",
   "sqlalchemy>=2.0.36",
   "psycopg[binary]>=3.2",
@@ -33,6 +33,10 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=8.3", "pytest-cov>=6.0", "ruff>=0.8", "mypy>=1.13", "pypdf>=5.0"]
+
+# seul le paquet `app` est installé ; `alembic/` et `sql/` restent des dossiers du dépôt
+[tool.setuptools.packages.find]
+include = ["app*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

@@ -20,7 +20,12 @@ if not DB_URL:
 
 pytest.importorskip("fastapi")
 pytest.importorskip("sqlalchemy")
+import email_validator  # noqa: E402
 import jwt  # noqa: E402
+
+# les comptes de test utilisent le domaine réservé « .test » (RFC 2606), refusé par défaut par email-validator
+if "test" in email_validator.SPECIAL_USE_DOMAIN_NAMES:
+    email_validator.SPECIAL_USE_DOMAIN_NAMES.remove("test")
 
 JWT_SECRET = "integration-test-secret-0123456789abcdef"
 SUPABASE_URL = "http://supabase.test"
@@ -55,7 +60,7 @@ class User:
         self.email = email
         with engine.begin() as conn:
             conn.execute(text("INSERT INTO auth.users (id, email, raw_user_meta_data) "
-                              "VALUES (:id, :email, jsonb_build_object('full_name', :email))"),
+                              "VALUES (:id, :email, jsonb_build_object('full_name', CAST(:email AS text)))"),
                          {"id": self.id, "email": email})
 
     def token(self, **overrides) -> str:

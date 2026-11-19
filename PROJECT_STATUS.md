@@ -1,6 +1,6 @@
 # KOFINEX — État du projet
 
-*Mis à jour le 18 novembre 2026 (évolution du contrôle de gestion : pilotage).*
+*Mis à jour le 19 novembre 2026 (correctifs d'outillage, branche `fix/outillage`).*
 
 ## Synthèse
 | Lot | État |
@@ -35,9 +35,9 @@
   - SYSCOHADA révisé : validé sur le cas pratique du manuel et sur les balances de l'utilisateur ;
   - SYSCEBNL (associations) : couverture du plan vérifiée, pas de cas chiffré.
 - **Tests** :
-  - 227 tests unitaires des moteurs (plus 1 test d'appel HTTP exécuté en CI) ;
-  - tests SQL : RLS 39, Storage 12, référentiels et imports 20, moteur financier 16, contrôle de gestion 17, socle d'audit 46, audit financier 57, audit interne 59, grand livre 19, contrôle interne 94, IA 60, reporting 41, comptabilité native 68, seuils du pilotage 8, FEC Bénin 33 ;
-  - tests d'intégration API (parcours complet) : à exécuter sur une base de test.
+  - 296 tests unitaires (`make test-unit`, 19 novembre 2026) ;
+  - tests SQL (15 séries, 589 contrôles, `make test-sql` avec les migrations appliquées par Alembic depuis le 19 novembre 2026) : RLS 39, Storage 12, référentiels et imports 20, moteur financier 16, contrôle de gestion 17, socle d'audit 46, audit financier 57, audit interne 59, grand livre 19, contrôle interne 94, IA 60, reporting 41, comptabilité native 68, seuils du pilotage 8, FEC Bénin 33 ;
+  - tests d'intégration API : 16 réussis sur 32 (voir « Outillage » ci-dessous).
 
 ## Décisions en attente (utilisateur ou expert)
 1. **Référentiels** : relire les points marqués « [À VALIDER] » (`referentiels/*/RAPPORT.md`). Pour le SYSCEBNL, rattacher les comptes 702, 7054 et 7055.
@@ -324,6 +324,25 @@
   - nom FEC_IFU_AAAAMMJJ et fractionnement FEC_IFU_AAAAMMJJ_X.
 - **Migration 0016** (`fec_exports`, `fec_export_lines`, bucket `fec`) : historique figé, traçabilité ligne → écriture, RLS comptables et administrateurs. Aucune migration antérieure modifiée.
 - **Réutilisé** : lecteur des écritures validées `native_ledger.posted` (complété de champs, rien retiré), stockage, journal d'audit, garde anti-IA, rôles existants.
-- **Exécuté ici** : 20 tests unitaires du moteur FEC (258 au total, 1 ignoré, sur trois passages) ; 15 suites SQL sur 15, dont celle du FEC (33 contrôles) ; ruff sans erreur ; compilation ; 386 routes sans doublon, appels du frontend rapprochés ; TypeScript sans erreur (déclarations de substitution).
+- **Exécuté ici** : 20 tests unitaires du moteur FEC (258 au total, 1 ignoré, sur trois passages) ; 15 suites SQL sur 15, dont celle du FEC (33 contrôles), sur un schéma appliqué par `psql` et non par Alembic (voir « Outillage ») ; ruff sans erreur ; compilation ; 386 routes sans doublon, appels du frontend rapprochés ; TypeScript sans erreur (déclarations de substitution).
 - **Non exécuté ici** : `tests/integration/test_fec_api.py` (FastAPI et SQLAlchemy absents), `npm run typecheck` et `npm run build` (pas de `node_modules`, installations bloquées).
 - **Restant à confirmer** (`docs/FEC_BENIN.md` § 6) : second caractère séparateur (absent du texte signé), page de code EBCDIC, portée de la continuité de NumEcriture, reconnaissance des écritures de centralisation et de solde des comptes de gestion, durée de conservation (art. 1096 nouveau-1 du CGI), correspondance avec l'article 541. Tant qu'ils restent ouverts, aucun fichier n'est déclaré « conforme ».
+
+## Outillage (19 novembre 2026, branche `fix/outillage`) — ce qui a été fait
+- **Correction de l'historique** : jusqu'ici, les séries SQL ont été exécutées sur un schéma appliqué par `psql`, **et non par Alembic**. `alembic upgrade head` (donc `make db-docker`, `make migrate` et `make test-sql`) échouait dès la révision 0001 : `exec_driver_sql` transmet un jeu de paramètres vide et psycopg lit les `%` de `format('%I', …)` comme des paramètres. La série du FEC n'était pas non plus appelée par `make test-sql`.
+- **Corrigé** :
+  - migrations : les révisions 0001 et 0003 à 0016 exécutent leur fichier SQL par `app/db/sql_files.py` (curseur psycopg, sans paramètres, même transaction) ; **le contenu des fichiers `backend/sql/*.sql` est inchangé** ; `prepend_sys_path = .` dans `alembic.ini` ;
+  - `pyproject.toml` : seul le paquet `app` est installé (`make setup` échouait : « Multiple top-level packages ») ; `pydantic-settings>=2.7` ;
+  - configuration : `CORS_ORIGINS` et `ALLOWED_UPLOAD_EXTENSIONS` au format « a,b » de `.env.example` (`NoDecode`) ; l'API ne démarrait pas avec ce format ; test `tests/test_config.py` ;
+  - frontend : typage de `setAll` (`@supabase/ssr` 0.5.2) dans `middleware.ts` et `lib/supabase/server.ts` ; `package-lock.json` ajouté ;
+  - `make test-sql` appelle `test_fec_benin.sql` ;
+  - tests d'intégration : type du paramètre `email` dans la création des utilisateurs de test ; domaine réservé `.test` accepté par `email-validator` dans le seul conftest.
+- **Exécuté ici** (Python 3.13, Node 22, PostgreSQL 16 local, Tesseract 5.3 avec `fra`) :
+  - `npm run typecheck` : sans erreur ; `npm run build` : réussi (16 pages) ;
+  - `make test-unit` : 296 réussis ;
+  - `make test-sql` : 15 séries sur 15, 589 contrôles, base en révision 0016 par Alembic ;
+  - `make test-integration` : **16 réussis, 10 échecs, 6 erreurs** ; ruff sans erreur.
+- **Échecs d'intégration restants, non corrigés (comportement applicatif, à analyser)** :
+  - 6 erreurs de fixture (`test_financial_audit_api`, `test_imports_api`, `test_ledger_api`, `test_ledger_complement_api`, `test_management_api` × 2) : la publication de la version de référentiel de test est refusée (409, `STRUCTURE_MISSING`) ;
+  - 10 échecs : `test_ai_api`, `test_analysis_api`, `test_dashboard_api`, `test_engagements_api`, `test_fec_api`, `test_internal_audit_api`, `test_internal_control_api`, `test_reporting_api`, `test_steering_api` (`test_steering_cycle`, `test_budget_import_and_thresholds`) ;
+  - observé dans ces échecs : insertion dans `audit_logs` refusée par la RLS (3 fois, suivie de « response already started »), `KeyError: 'id'` (3), une violation de contrainte, un 422 inattendu.

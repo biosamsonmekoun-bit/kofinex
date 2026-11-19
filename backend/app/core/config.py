@@ -1,8 +1,8 @@
 from functools import lru_cache
-from typing import Literal
+from typing import Annotated, Literal
 
 from pydantic import Field, field_validator, model_validator
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic_settings import BaseSettings, NoDecode, SettingsConfigDict
 
 
 class Settings(BaseSettings):
@@ -12,7 +12,8 @@ class Settings(BaseSettings):
     app_name: str = "KOFINEX"
     api_v1_prefix: str = "/api/v1"
     log_level: str = "INFO"
-    cors_origins: list[str] = Field(default_factory=lambda: ["http://localhost:3000"])
+    # NoDecode : valeur « a,b » découpée par _split_csv, sans décodage JSON préalable
+    cors_origins: Annotated[list[str], NoDecode] = Field(default_factory=lambda: ["http://localhost:3000"])
 
     database_url: str
     db_pool_size: int = 10
@@ -32,7 +33,7 @@ class Settings(BaseSettings):
     celery_result_backend: str = "redis://localhost:6379/2"
 
     max_upload_size_mb: int = 50
-    allowed_upload_extensions: list[str] = Field(default_factory=lambda: ["xlsx", "xls", "csv", "pdf"])
+    allowed_upload_extensions: Annotated[list[str], NoDecode] = Field(default_factory=lambda: ["xlsx", "xls", "csv", "pdf"])
 
     integrations_encryption_key: str = ""
 

@@ -7,7 +7,7 @@ Create Date: 2026-11-17
 
 from pathlib import Path
 
-from alembic import op
+from app.db.sql_files import run_sql_file
 
 revision = "0001"
 down_revision = None
@@ -18,8 +18,8 @@ SQL_DIR = Path(__file__).resolve().parents[2] / "sql"
 
 
 def _run(filename: str) -> None:
-    # exec_driver_sql : le fichier contient des blocs DO $$ … $$ et des ':' littéraux
-    op.get_bind().exec_driver_sql((SQL_DIR / filename).read_text(encoding="utf-8"))
+    # run_sql_file : fichier transmis sans paramètres (blocs DO $$ … $$, '%' et ':' littéraux)
+    run_sql_file(SQL_DIR / filename)
 
 
 def upgrade() -> None:
