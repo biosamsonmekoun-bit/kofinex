@@ -1,0 +1,9 @@
+- Compte 6811 du modèle Excel écarté : libellé « Voyages et déplacements » : compte 6181 au JO (6811 relèverait des dotations).
+- Compte 8321 du modèle Excel écarté : dons en nature HAO non affectés : numérotés 8311 au JO.
+- Compte 8325 du modèle Excel écarté : dons en nature HAO affectés : numérotés 8315 au JO.
+- Compte 8421 du modèle Excel écarté : dons en nature HAO vendus : numérotés 8411 au JO.
+- Compte 8422 du modèle Excel écarté : prestations de services en nature HAO : numérotées 8412 au JO.
+- Plan : 1025 comptes JO confirmés par le modèle Excel, 90 comptes JO absents du modèle Excel, 34 comptes du modèle Excel non retrouvés dans l'OCR.
+- Compte de gestion 702 rattaché à aucun poste du compte de résultat par la grille du JO.
+- Compte de gestion 7054 rattaché à aucun poste du compte de résultat par la grille du JO.
+- Compte de gestion 7055 rattaché à aucun poste du compte de résultat par la grille du JO.

@@ -1,0 +1,58 @@
+_ | Journal officiel OHADA 2023 AE 15/03/2023 v21.qxp_OHADA 16/03/2023 17:06 (age 80 | L
+ACTE UNIFORME RELATIF AU SYSTEME COMPTABLE DES ENTITES À BUT NON LUCRATIF
+2228 Autres terrains nus
+223 Terrains bâtis
+2231 pour bâtiments industriels et agricoles
+2232 pour bâtiments administratifs et commerciaux
+2234 pour bâtiments affectés aux autres opérations professionnelles
+2235 pour bâtiments affectés aux autres opérations non professionnelles
+2238 Autres terrains bâtis
+224 Travaux de mise en valeur des terrains
+2241 Plantation d’arbres et d’arbustes
+2245 Améliorations du fonds
+2248 Autres travaux
+226 Terrains aménagés
+2261 Parkings
+228 Autres terrains
+2281 Terrains - immeubles de placement
+2285 Terrains des logements affectés au personnel
+2286 Terrains de location - acquisition
+2288 Divers terrains
+229 Aménagements de terrains en cours
+2291 Terrains agricoles et forestiers
+2292 Terrains nus
+2298 Autres terrains
+23 BÂTIMENTS, INSTALLATIONS TECHNIQUES ET AGENCEMENTS
+231 Bâtiments industriels, agricoles, administratifs, commerciaux, religieux et autres
+sur sol propre
+2311 Bâtiments industriels
+° 2312 Bâtiments agricoles e
+2313 Bâtiments administratifs et commerciaux
+2314 Bâtiments affectés au logement du personnel
+2315 Bâtiments - immeubles de placement
+2316 Bâtiments de location - acquisition
+2317  Edifices religieux et assimilés
+2318 Autres bâtiments sur sol propre
+232 Bâtiments industriels, agricoles, administratifs, commerciaux, religieux et autres
+sur sol d'autrui
+2321 Bâtiments industriels
+2322 Bâtiments agricoles
+2323 Bâtiments administratifs et commerciaux
+2324 Bâtiments affectés au logement du personnel
+2325 Bâtiments - immeubles de placement
+2326 Bâtiments de location - acquisition
+2327  Edifices religieux et assimilés
+2328 Autres bâtiments sur sol d'autrui
+233 Ouvrages d’infrastructure
+2331 Voies de terre
+2332 Voies de fer
+2333 Voies d’eau
+2334  Barrages, digues
+2335 Pistes d’aérodrome
+2337 Stades et autres infrastructures sportives
+2338 Autres ouvrages d’infrastructures
+234 Aménagements, agencements et installations techniques
+2341 Installations complexes spécialisées sur sol propre
+!
+© \
+cl] —®— RE

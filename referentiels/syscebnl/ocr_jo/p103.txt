@@ -1,0 +1,31 @@
+| Journal officiel OHADA 2023 AE 15/03/2023 V2020.qxp_OHADA 28/03/2023 2 Page 103 |
+PARTIE 2 : STRUCTURE, CONTENU ET FONCTIONNEMENT DES COMPTES
+81 VALEURS COMPTABLES DES CESSIONS D’IMMOBILISATIONS
+82 PRODUITS DES CESSIONS D’IMMOBILISATIONS
+83 CHARGES HORS ACTIVITÉS ORDINAIRES
+84 REVENUS HORS ACTIVITÉS ORDINAIRES
+85 DOTATIONS HORS ACTIVITÉS ORDINAIRES
+86 REPRISES D'AMORTISSEMENTS, PROVISIONS ET DEPRECIATIONS HAO.
+87 VARIATIONS DE STOCKS DE DONS EN NATURE HAO
+88 SUBVENTIONS D’ÉQUILIBRE
+81 VALEURS COMPTABLES DES CESSIONS D'IMMOBILISATIONS
+811 Valeurs comptables des cessions d’immobilisations incorporelles
+812 Valeurs comptables des cessions d’immobilisations corporelles
+816 Valeurs comptables des cessions d’immobilisations financières
+818 Valeurs comptables des cessions d’immobilisations reçues destinées à la vente
+provenant de dons et legs
+82 PRODUITS DES CESSIONS D’IMMOBILISATIONS
+821 Produits des cessions d’immobilisations incorporelles
+822 Produits des cessions d’immobilisations corporelles
+826 Produits des cessions d’immobilisations financières
+828 Produits des cessions d’immobilisations reçues destinées à la vente provenant de
+dons et legs
+: 83 CHARGES HORS ACTIVITÉS ORDINAIRES :
+831 Charges H.A.O. constatées
+832 Dons en nature H.A.0. à distribuer
+8311 Dons en nature H.A.0. non affectés
+8315 Dons en nature H.A.O. affectés
+834 Pertes sur créances H.A.O.
+836 Abandons de créances consentis
+838 Transferts de charges H.A.0.
+839 Charges pour dépréciations et provisions pour risques à court terme H.A.0O.

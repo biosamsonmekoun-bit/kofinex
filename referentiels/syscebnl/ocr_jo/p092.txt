@@ -1,0 +1,49 @@
+_ | Journal officiel OHADA 2023 AE 15/03/2023 v21.qxp_OHADA 16/03/2023 17:08(@age 92 | L
+ACTE UNIFORME RELATIF AU SYSTEME COMPTABLE DES ENTITES À BUT NON LUCRATIF
+CLASSE 5 - COMPTES DE TRESORERIE
+50 TITRES DE PLACEMENT
+51 VALEURS À ENCAISSER
+52 BANQUES
+53 ÉTABLISSEMENTS FINANCIERS ET ASSIMILES
+55 INSTRUMENTS DE MONNAIE ELECTRONIQUE
+56 BANQUES, CRÉDITS DE TRÉSORERIE
+57 CAISSE
+58 VIREMENTS INTERNES
+59 DÉPRÉCIATIONS ET PROVISIONS POUR RISQUES ET CHARGES A
+COURT TERME
+50 TITRES DE PLACEMENT
+501 Titres du trésor et bons de caisse à court terme
+5011 Titres du Trésor à court terme
+5012 Titres d'organismes financiers
+5013 Bons de caisse à court terme
+5016 Frais d'acquisition des titres de trésor et bons de caisse
+502 Actions
+5022 Actions cotées
+5023 Actions non cotées
+° 5025 Autres actions e
+5026 Frais d'acquisition des actions
+503 Obligations
+5032 Obligations cotées
+5033 Obligations non cotées
+5035 Autres obligations
+5036 Frais d'acquisition des obligations
+504 Bons de souscription
+5042 Bons de souscription d’actions
+5043 Bons de souscription d’obligations
+505 Titres négociables hors Région
+506 Intérêts courus
+5061 Titres du Trésor et bons de caisse à court terme
+5062 Actions
+5063 Obligations
+508 Autres titres de placement et créances assimilées
+51 VALEURS À ENCAISSER
+513 Chèques à encaisser
+514 Chèques à l’encaissement
+515 Cartes de crédit à encaisser
+518 Autres valeurs à l’encaissement
+5185 Chèques de voyage
+5186 Coupons échus
+5187 Intérêts échus des obligations
+52 BANQUES
+521 Banques locales
+5211 Banques en monnaie nationale

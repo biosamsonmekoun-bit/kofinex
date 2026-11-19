@@ -1,0 +1,46 @@
+_ | Journal officiel OHADA 2023 AE 15/03/2023 v21.qxp_OHADA 16/03/2023 17:08(@age 94 | L
+ACTE UNIFORME RELATIF AU SYSTEME COMPTABLE DES ENTITES À BUT NON LUCRATIF
+CLASSE 6 - COMPTES DE CHARGES DES ACTIVITES ORDINAIRES
+60 ACHATS ET VARIATIONS DE STOCKS
+61 TRANSPORTS
+62 SERVICES EXTÉRIEURS
+63 AUTRES SERVICES EXTÉRIEURS
+64 IMPÔTS ET TAXES
+65 AUTRES CHARGES
+66 CHARGES DE PERSONNEL
+67 FRAIS FINANCIERS ET CHARGES ASSIMILEES
+68 DOTATIONS AUX AMORTISSEMENTS
+69 DOTATIONS AUX PROVISIONS ET AUX DÉPRÉCIATIONS
+60 ACHATS ET VARIATIONS DE STOCKS
+601 Achats de biens et services liés à l’activité
+6011 Achats de biens et services liés à l’activité dans l'Etat partie
+6012 Achats de biens et services liés à l’activité dans la Région
+6013 Achats de biens et services liés à l’activité hors Région
+6015 frais sur achats ©? de biens et services liés à l’activité
+6019  Rabais, Remises et Ristournes obtenus (non ventilés)
+602 Achats de marchandises, de matières premières et fournitures liées
+° 6021 Achats de marchandises et matières premières dans l'Etat partie e
+6022 Achats de marchandises et matières premières dans la Région
+6023 Achats de marchandises et matières premières hors Région
+6025 frais sur achats de marchandises et matières (?)
+6029  Rabais, Remises et Ristournes obtenus (non ventilés)
+603 Variations des stocks de biens achetés et reçus en dons en nature à distribuer
+6031 Variations des stocks de biens et services liés à l’activité
+6032 Variations des stocks de marchandises
+6033 Variations des stocks de matières premières et fournitures liées
+6034 Variations des stocks d’autres approvisionnements
+6035 Variations de stocks de dons en nature à distribuer
+604 Achats stockés de matières et fournitures consommables
+6041 Matières consommables
+6042 Matières combustibles
+6043 Produits d'entretien
+6045 Frais sur achats ©) matières et fournitures consommables
+6046 Fournitures de magasin
+6047 Fournitures de bureau
+6049  Rabais, Remises et Ristournes obtenus (non ventilés)
+605 Autres achats
+6051 Fournitures non stockables -Eau
+6052 Fournitures non stockables - Electricité
+6053 Fournitures non stockables — Autres énergies
+1?) L'entité peut créer des sous comptes pour les frais accessoires: douanes, fret, assurances sur achats, commissions.
+courtages sur achats, frais de transit, et autres frais accessoires.

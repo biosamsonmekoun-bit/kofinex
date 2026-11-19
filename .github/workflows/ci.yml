@@ -1,0 +1,80 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: kofinex_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U postgres" --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      PGURL: postgresql://postgres:postgres@localhost:5432/kofinex_test
+      DATABASE_URL: postgresql+psycopg://postgres:postgres@localhost:5432/kofinex_test
+      TEST_DATABASE_URL: postgresql+psycopg://postgres:postgres@localhost:5432/kofinex_test
+      SUPABASE_URL: http://supabase.test
+      SUPABASE_JWT_SECRET: ci-secret-not-used-by-tests-0123456789
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Tesseract (OCR français)
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends tesseract-ocr tesseract-ocr-fra
+      - run: pip install -e ".[dev]"
+      - name: Lint
+        run: ruff check app tests
+      - name: Shim Supabase + migrations
+        run: |
+          psql "$PGURL" -v ON_ERROR_STOP=1 -f sql/local/00_supabase_shim.sql
+          alembic upgrade head
+      - name: Tests SQL (RLS, Storage)
+        run: |
+          psql "$PGURL" -v ON_ERROR_STOP=1 -f tests/sql/test_rls.sql
+          psql "$PGURL" -v ON_ERROR_STOP=1 -f tests/sql/test_storage.sql
+          psql "$PGURL" -v ON_ERROR_STOP=1 -f tests/sql/test_frameworks_imports.sql
+          psql "$PGURL" -v ON_ERROR_STOP=1 -f tests/sql/test_financial_engine.sql
+          psql "$PGURL" -v ON_ERROR_STOP=1 -f tests/sql/test_management_control.sql
+          psql "$PGURL" -v ON_ERROR_STOP=1 -f tests/sql/test_audit_foundation.sql
+          psql "$PGURL" -v ON_ERROR_STOP=1 -f tests/sql/test_financial_audit.sql
+          psql "$PGURL" -v ON_ERROR_STOP=1 -f tests/sql/test_internal_audit.sql
+          psql "$PGURL" -v ON_ERROR_STOP=1 -f tests/sql/test_general_ledger.sql
+          psql "$PGURL" -v ON_ERROR_STOP=1 -f tests/sql/test_internal_control.sql
+          psql "$PGURL" -v ON_ERROR_STOP=1 -f tests/sql/test_ai.sql
+          psql "$PGURL" -v ON_ERROR_STOP=1 -f tests/sql/test_reporting.sql
+          psql "$PGURL" -v ON_ERROR_STOP=1 -f tests/sql/test_native_accounting.sql
+          psql "$PGURL" -v ON_ERROR_STOP=1 -f tests/sql/test_management_steering.sql
+      - name: Tests unitaires et d'intégration
+        run: pytest --cov=app --cov-report=term-missing
+
+  frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    env:
+      NEXT_PUBLIC_SUPABASE_URL: http://localhost:54321
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: ci-placeholder
+      NEXT_PUBLIC_API_URL: http://localhost:8000/api/v1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install
+      - run: npm run typecheck
+      - run: npm run build

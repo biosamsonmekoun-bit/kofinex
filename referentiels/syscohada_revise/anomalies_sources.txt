@@ -1,0 +1,10 @@
+- Compte 219 présent plusieurs fois : conservé « AUTRES DROITS ET VALEURS INCORPORELS » (ligne 171) ; ignoré(s) : ligne 177 « IMMOBILISATIONS INCORPORELLES EN COURS »
+- Compte 416 présent plusieurs fois : conservé « CREANCES CLIENTS LITIGIEUSES OU DOUTEUSES » (ligne 593) ; ignoré(s) : ligne 699 « APPORTEURS, OPERATIONS SUR LE CAPITAL »
+- Compte 4781 présent plusieurs fois : conservé « Diminution des créances d’exploitation et HAO » (ligne 747) ; ignoré(s) : ligne 748 « Diminution des créances d’exploitation » ; ligne 749 « Diminution des créances HAO »
+- Compte 4783 présent plusieurs fois : conservé « Augmentation des dettes d’exploitation et HAO » (ligne 751) ; ignoré(s) : ligne 752 « Augmentation des dettes d’exploitation » ; ligne 753 « Augmentation des dettes HAO »
+- Compte 4791 présent plusieurs fois : conservé « Augmentation des créances d’exploitation et HAO » (ligne 758) ; ignoré(s) : ligne 759 « Augmentation des créances d’exploitation »
+- Compte 4793 présent plusieurs fois : conservé « Augmentation des créances financières » (ligne 762) ; ignoré(s) : ligne 763 « Diminution des dettes d’exploitation et HAO »
+- Compte 4998 présent plusieurs fois : conservé « Sur opérations H.A.O. » (ligne 815) ; ignoré(s) : ligne 816 « Sur opérations H.A.O. »
+- Compte 91 présent plusieurs fois : conservé « CONTREPARTIES DES ENGAGEMENTS » (ligne 1367) ; ignoré(s) : ligne 1408 « CONTREPARTIES DES ENGAGEMENTS »
+- Racine 214 (poste AF) absente du plan de comptes source.
+- Racine 484 (poste DH) absente du plan de comptes source.

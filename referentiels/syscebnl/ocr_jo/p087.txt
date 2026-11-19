@@ -1,0 +1,47 @@
+_ | Journal officiel OHADA 2023 AE 15/03/2023 v21.qxp_OHADA 16/03/2023 17:07 @age 87 | L
+PARTIE 2 : STRUCTURE, CONTENU ET FONCTIONNEMENT DES COMPTES
+| CLASSE 4 - COMPTES DE TIERS
+40 FOURNISSEURS ET COMPTES RATTACHÉS
+41 ADHERENTS, CLIENTS-USAGERS ET COMPTES RATTACHÉS
+42 PERSONNEL
+43 ORGANISMES SOCIAUX
+44 ÉTAT ET COLLECTIVITÉS PUBLIQUES
+45 FONDATEURS, APPORTEURS ET COMPTES COURANTS
+46 BAILLEURS, ETAT ET AUTRES ORGANISMES, FONDS
+D’ADMINISTRATION
+47 DÉBITEURS ET CRÉDITEURS DIVERS
+48 CRÉANCES ET DETTES DONS HORS ACTIVITÉS ORDINAIRES (H.A.0.)
+49 DÉPRÉCIATIONS ET PROVISIONS POUR RISQUES ET CHARGES À
+COURT TERME (TIERS)
+40 FOURNISSEURS ET COMPTES RATTACHÉS
+401 Fournisseurs, dettes en compte
+4011 Fournisseurs
+4013 Fournisseurs sous-traitants
+4016 Fournisseurs, réserve de propriété
+4017 Fournisseurs, retenues de garantie
+402 Fournisseurs, effets à payer
+4021 Fournisseurs, effets à payer
+4023 Fournisseurs sous-traitants. effets à payer
+408 Fournisseurs, factures non parvenues
+4081 Fournisseurs
+4083 Fournisseurs sous-traitants
+4086 Fournisseurs, intérêts courus
+409 Fournisseurs débiteurs
+4091 Fournisseurs avances et acomptes versés
+4093 Fournisseurs sous-traitants avances et acomptes versés
+4094 Fournisseurs créances pour emballages et matériels à rendre
+4098 Fournisseurs, rabais, remises, ristournes et autres avoirs à obtenir
+41 ADHERENTS, CLIENTS-USAGERS ET COMPTES RATTACHÉS
+411 Adhérents
+412 Clients-usagers
+413 Adhérents, Clients-usagers, chèques, effets et autres valeurs impayés
+4131 Adhérents, chèques impayés
+4132 Clients-usagers, chèques impayés
+4133 Adhérents, Autres valeurs impayées
+4138 Clients-usagers, autres valeurs impayées
+416 Créances, adhérents, clients-usagers litigieuses ou douteuses
+4161 Adhérents cotisations litigieuses ou douteuses
+4162 Créances litigieuses ou douteuses
+418 Adhérents, clients-usagers produits à recevoir
+4181 Adhérents, appels de fonds à établir
+4182 Clients- usagers, factures à établir

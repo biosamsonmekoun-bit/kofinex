@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * KOFINEX — design tokens (seule source des couleurs de l'interface).
+ * Valeurs HSL « H S% L% », consommées par tailwind.config.ts : hsl(var(--token)).
+ * Exception : les tokens semi-transparents (selection, sidebar-active/hover/border) contiennent
+ * une couleur complète, consommée telle quelle : var(--token).
+ * Palette officielle : bleu nuit #172554, bleu royal #2563EB, or #D6A84F, gris clair #F8FAFC,
+ * ardoise #64748B ; fonctionnelles : succès #16A34A, avertissement #F59E0B, erreur #DC2626,
+ * information #0EA5E9.
+ * Les variantes « -strong » sont les teintes à utiliser pour du TEXTE coloré sur fond clair ou
+ * sombre (contraste WCAG AA) ; la couleur de base sert aux icônes, bordures, fonds et graphiques.
+ * L'or (accent) reste réservé aux touches de prestige : jamais pour un bouton ni une grande surface.
+ */
+@layer base {
+  :root {
+    --background: 210 40% 98%;            /* #F8FAFC */
+    --foreground: 226 57% 21%;            /* #172554 */
+    --card: 0 0% 100%;
+    --card-foreground: 226 57% 21%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 226 57% 21%;
+    --primary: 221 83% 53%;               /* #2563EB */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96%;             /* #F1F5F9 */
+    --secondary-foreground: 226 57% 21%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;      /* #64748B */
+    --accent: 40 62% 57%;                 /* #D6A84F */
+    --accent-foreground: 226 57% 21%;
+    --border: 214 32% 91%;                /* #E2E8F0 */
+    --input: 214 32% 91%;
+    --ring: 221 83% 53%;
+    --link: 224 76% 48%;                  /* #1D4ED8 */
+    --selection: hsl(221 83% 53% / 0.08);      /* ligne ou élément sélectionné */
+
+    --success: 142 76% 36%;               /* #16A34A */
+    --success-strong: 142 72% 29%;        /* #15803D */
+    --warning: 38 92% 50%;                /* #F59E0B */
+    --warning-strong: 26 90% 37%;         /* #B45309 */
+    --destructive: 0 72% 51%;             /* #DC2626 */
+    --destructive-strong: 0 74% 42%;      /* #B91C1C */
+    --destructive-foreground: 0 0% 100%;
+    --info: 199 89% 48%;                  /* #0EA5E9 */
+    --info-strong: 201 96% 32%;           /* #0369A1 */
+
+    --sidebar: 226 57% 21%;               /* #172554 */
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-muted: 215 20% 72%;
+    --sidebar-active: hsl(221 83% 53% / 0.22);
+    --sidebar-hover: hsl(0 0% 100% / 0.06);
+    --sidebar-border: hsl(0 0% 100% / 0.1);
+
+    --chart-1: 221 83% 53%;               /* bleu royal */
+    --chart-2: 226 57% 21%;               /* bleu nuit */
+    --chart-3: 40 62% 47%;                /* or (assombri pour les tracés fins) */
+    --chart-4: 199 89% 40%;
+    --chart-5: 215 16% 47%;
+    /* tableau de bord (maquette de référence) : séries catégorielles et icônes d'indicateurs */
+    --violet: 262 83% 58%;                /* #7C3AED */
+    --chart-blue: 221 83% 53%;            /* #2563EB */
+    --chart-orange: 25 95% 53%;           /* #F97316 */
+    --chart-green: 142 71% 45%;           /* #22C55E */
+    --chart-violet: 262 83% 58%;          /* #7C3AED */
+
+    --radius: 0.625rem;
+    --shadow-card: 0 1px 2px 0 rgb(15 23 42 / 0.04), 0 1px 3px 0 rgb(15 23 42 / 0.06);
+  }
+
+  .dark {
+    --background: 220 49% 8%;             /* #0B1220 */
+    --foreground: 210 40% 98%;            /* #F8FAFC */
+    --card: 226 57% 21%;                  /* #172554 */
+    --card-foreground: 210 40% 98%;
+    --popover: 217 33% 17%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 217 33% 17%;             /* #1E293B */
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 213 27% 84%;      /* #CBD5E1 */
+    --accent: 40 62% 57%;
+    --accent-foreground: 226 57% 21%;
+    --border: 215 25% 27%;                /* #334155 */
+    --input: 215 25% 27%;
+    --ring: 213 94% 68%;
+    --link: 213 94% 78%;
+    --selection: hsl(221 83% 60% / 0.18);
+
+    --success: 142 69% 45%;
+    --success-strong: 142 69% 58%;
+    --warning: 38 92% 50%;
+    --warning-strong: 43 96% 60%;
+    --destructive: 0 72% 51%;
+    --destructive-strong: 0 91% 75%;
+    --destructive-foreground: 0 0% 100%;
+    --info: 199 89% 48%;
+    --info-strong: 199 92% 70%;
+
+    --sidebar: 221 58% 7%;                /* #080F1E */
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-muted: 215 20% 68%;
+    --sidebar-active: hsl(221 83% 53% / 0.25);
+    --sidebar-hover: hsl(0 0% 100% / 0.05);
+    --sidebar-border: hsl(0 0% 100% / 0.08);
+
+    --chart-1: 217 91% 65%;
+    --chart-2: 213 27% 84%;
+    --chart-3: 40 62% 57%;
+    --chart-4: 199 89% 55%;
+    --chart-5: 215 20% 65%;
+    --violet: 263 70% 70%;
+    --chart-blue: 217 91% 60%;
+    --chart-orange: 27 96% 61%;
+    --chart-green: 142 69% 50%;
+    --chart-violet: 263 70% 70%;
+
+    --shadow-card: 0 1px 2px 0 rgb(0 0 0 / 0.3), 0 1px 3px 0 rgb(0 0 0 / 0.2);
+  }
+
+  * { @apply border-border; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv11", "ss01";
+  }
+  h1, h2, h3, h4 { @apply tracking-tight; }
+  /* chiffres tabulaires pour tous les montants, ratios et tableaux */
+  table, .tabular, input[type="number"] { font-variant-numeric: tabular-nums; }
+  ::selection { background: hsl(var(--primary) / 0.2); }
+  :focus-visible { outline-color: hsl(var(--ring)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

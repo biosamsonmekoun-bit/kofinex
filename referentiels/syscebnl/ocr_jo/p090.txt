@@ -1,0 +1,55 @@
+_ | Journal officiel OHADA 2023 AE 15/03/2023 v21.qxp_OHADA 16/03/2023 17:08(@age 90 | L
+ACTE UNIFORME RELATIF AU SYSTEME COMPTABLE DES ENTITES À BUT NON LUCRATIF
+47 DÉBITEURS ET CRÉDITEURS DIVERS
+471 Débiteurs et créditeurs divers
+4711 Débiteurs divers
+4712 Créditeurs divers
+4713 Créditeurs, dons en nature courants non consommés
+4717 Débiteurs divers - retenues de garantie
+4719 Bons de souscription d'actions et d'obligations
+472 Créances et dettes sur titres de placement
+4721 Créances sur cessions de titres de placement
+4726 Versements restant à effectuer sur titres de placement non libérés
+473 Organismes nationaux et internationaux — subventions à recevoir
+4731 Subventions d'investissement à recevoir
+4732 Subventions d'exploitation à recevoir
+4733 Subventions d'équilibre à recevoir
+4738 Autres subventions à recevoir
+4739 Subventions à reverser
+474 Compte de répartition périodique des charges et des produits
+4746 Compte de répartition périodique des charges
+4747 Compte de répartition périodique des produits
+475 Générosités financières à recevoir
+476 Charges constatées d’avance
+477 Produits constatés d'avance
+478 Écarts de conversion - actif
+478] Diminution des créances d'exploitation et HAO
+47811  Diminution des créances d'exploitation
+47818  Diminution des créances HAO
+° 4782 Diminution des créances financières e
+4783 Augmentation des dettes d'exploitation et HAO
+47831 Augmentation des dettes d'exploitation
+47838 Augmentation des dettes HAO
+4784 Augmentation des dettes financières
+4786 Différences d'évaluation sur instruments de trésorerie
+4788 Différences compensées par couverture de change
+479 Écarts de conversion — passif
+4791 Augmentation des créances d'exploitation et HAO
+47911 Augmentation des créances d'exploitation
+47918 Augmentation des créances HAO
+4792 Augmentation des créances financières
+4793 Diminution des dettes d'exploitation et HAO
+47931  Diminution des dettes d'exploitation
+47938  Diminution des dettes HAO
+4794 Diminution des dettes financières
+4797 Différences d'évaluation sur instruments de trésorerie
+4798 Différences compensées par couverture de change
+48 CRÉANCES ET DETTES DONS HORS ACTIVITÉS ORDINAIRES (H.A.0.)
+481 Fournisseurs d’investissements
+4811 Fournisseurs, immobilisations incorporelles
+4812 Fournisseurs, immobilisations corporelles
+4813 Versements restant à effectuer sur titres de participation et titres immobilisés non libérés
+4816 Fournisseurs, réserve de propriété - immobilisations
+48161 Fournisseurs, réserve de propriété — immobilisations incorporelles
+48162 Fournisseurs, réserve de propriété — immobilisations corporelles
+cl] —®— RE

@@ -1,0 +1,195 @@
+etat;code_rubrique;libelle_rubrique;prefixe;exclusions;regle;colonne;signe;priorite;source
+bilan_actif;AB;Immobilisations incorporelles;201;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan AB brut : « 201 »
+bilan_actif;AB;Immobilisations incorporelles;280;;solde_net_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan AB amort./dépréc. : « 280, 2901 »
+bilan_actif;AB;Immobilisations incorporelles;2901;;solde_net_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan AB amort./dépréc. : « 280, 2901 »
+bilan_actif;AC;Immobilisations corporelles et financières;202;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan AC brut : « 202, 203, 204, 205 »
+bilan_actif;AC;Immobilisations corporelles et financières;203;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan AC brut : « 202, 203, 204, 205 »
+bilan_actif;AC;Immobilisations corporelles et financières;204;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan AC brut : « 202, 203, 204, 205 »
+bilan_actif;AC;Immobilisations corporelles et financières;205;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan AC brut : « 202, 203, 204, 205 »
+bilan_actif;AC;Immobilisations corporelles et financières;2902;;solde_net_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan AC amort./dépréc. : « 2 902 »
+bilan_actif;AE;Brevets, licences, logiciels et droits similaires;212;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan AE brut : « 212, 213, 214, 2193 »
+bilan_actif;AE;Brevets, licences, logiciels et droits similaires;213;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan AE brut : « 212, 213, 214, 2193 »
+bilan_actif;AE;Brevets, licences, logiciels et droits similaires;214;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan AE brut : « 212, 213, 214, 2193 »
+bilan_actif;AE;Brevets, licences, logiciels et droits similaires;2193;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan AE brut : « 212, 213, 214, 2193 »
+bilan_actif;AE;Brevets, licences, logiciels et droits similaires;2812;;solde_net_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan AE amort./dépréc. : « 2812, 2813, 2814, 2912, 2913, 2914, 2919p » (2919p affecté au poste AF)
+bilan_actif;AE;Brevets, licences, logiciels et droits similaires;2813;;solde_net_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan AE amort./dépréc. : « 2812, 2813, 2814, 2912, 2913, 2914, 2919p » (2919p affecté au poste AF)
+bilan_actif;AE;Brevets, licences, logiciels et droits similaires;2814;;solde_net_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan AE amort./dépréc. : « 2812, 2813, 2814, 2912, 2913, 2914, 2919p » (2919p affecté au poste AF)
+bilan_actif;AE;Brevets, licences, logiciels et droits similaires;2912;;solde_net_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan AE amort./dépréc. : « 2812, 2813, 2814, 2912, 2913, 2914, 2919p » (2919p affecté au poste AF)
+bilan_actif;AE;Brevets, licences, logiciels et droits similaires;2913;;solde_net_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan AE amort./dépréc. : « 2812, 2813, 2814, 2912, 2913, 2914, 2919p » (2919p affecté au poste AF)
+bilan_actif;AE;Brevets, licences, logiciels et droits similaires;2914;;solde_net_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan AE amort./dépréc. : « 2812, 2813, 2814, 2912, 2913, 2914, 2919p » (2919p affecté au poste AF)
+bilan_actif;AF;Autres immobilisations incorporelles;218;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan AF brut : « 218, 2198 »
+bilan_actif;AF;Autres immobilisations incorporelles;2198;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan AF brut : « 218, 2198 »
+bilan_actif;AF;Autres immobilisations incorporelles;2818;;solde_net_crediteur;amortissement;1;100;"[JO] p. 395 tableau de correspondance - bilan AF amort./dépréc. : « 2818, 2918, 2919p » [À VALIDER] compte « p » réparti dans la grille ; affecté en totalité à ce poste"
+bilan_actif;AF;Autres immobilisations incorporelles;2918;;solde_net_crediteur;amortissement;1;100;"[JO] p. 395 tableau de correspondance - bilan AF amort./dépréc. : « 2818, 2918, 2919p » [À VALIDER] compte « p » réparti dans la grille ; affecté en totalité à ce poste"
+bilan_actif;AF;Autres immobilisations incorporelles;2919;;solde_net_crediteur;amortissement;1;100;"[JO] p. 395 tableau de correspondance - bilan AF amort./dépréc. : « 2818, 2918, 2919p » [À VALIDER] compte « p » réparti dans la grille ; affecté en totalité à ce poste"
+bilan_actif;AF;Autres immobilisations incorporelles;2817;;solde_net_crediteur;amortissement;1;100;"[À VALIDER] compte 2817 « Amortissements des indemnités de transfert aux joueurs » (plan [JO]) non cité par la grille ; rattaché aux autres immobilisations incorporelles"
+bilan_actif;AG;Avances et acomptes versés sur immobilisations incorporelles;251;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan AG brut : « 251 »
+bilan_actif;AG;Avances et acomptes versés sur immobilisations incorporelles;2951;;solde_net_crediteur;amortissement;1;100;"[JO] p. 395 tableau de correspondance - bilan AG amort./dépréc. : « illisible dans le JO » [À VALIDER] 2951 retenu : cellule illisible au JO ; 2951 dans le modèle Excel et symétrique de AN (2952)"
+bilan_actif;AI;Terrains;22;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan AI brut : « 22 »
+bilan_actif;AI;Terrains;282;;solde_net_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan AI amort./dépréc. : « 282, 292 »
+bilan_actif;AI;Terrains;292;;solde_net_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan AI amort./dépréc. : « 282, 292 »
+bilan_actif;AJ;Bâtiments;231;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan AJ brut : « 231, 232, 233, 2391, 2392, 2393, 2396 »
+bilan_actif;AJ;Bâtiments;232;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan AJ brut : « 231, 232, 233, 2391, 2392, 2393, 2396 »
+bilan_actif;AJ;Bâtiments;233;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan AJ brut : « 231, 232, 233, 2391, 2392, 2393, 2396 »
+bilan_actif;AJ;Bâtiments;2391;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan AJ brut : « 231, 232, 233, 2391, 2392, 2393, 2396 »
+bilan_actif;AJ;Bâtiments;2392;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan AJ brut : « 231, 232, 233, 2391, 2392, 2393, 2396 »
+bilan_actif;AJ;Bâtiments;2393;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan AJ brut : « 231, 232, 233, 2391, 2392, 2393, 2396 »
+bilan_actif;AJ;Bâtiments;2396;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan AJ brut : « 231, 232, 233, 2391, 2392, 2393, 2396 »
+bilan_actif;AJ;Bâtiments;2831;;solde_net_crediteur;amortissement;1;100;"[JO] p. 395 tableau de correspondance - bilan AJ amort./dépréc. : « 2831, 2832, 2833, 2931, 2932, 2933, 2939p » [À VALIDER] compte « p » réparti dans la grille ; affecté en totalité à ce poste"
+bilan_actif;AJ;Bâtiments;2832;;solde_net_crediteur;amortissement;1;100;"[JO] p. 395 tableau de correspondance - bilan AJ amort./dépréc. : « 2831, 2832, 2833, 2931, 2932, 2933, 2939p » [À VALIDER] compte « p » réparti dans la grille ; affecté en totalité à ce poste"
+bilan_actif;AJ;Bâtiments;2833;;solde_net_crediteur;amortissement;1;100;"[JO] p. 395 tableau de correspondance - bilan AJ amort./dépréc. : « 2831, 2832, 2833, 2931, 2932, 2933, 2939p » [À VALIDER] compte « p » réparti dans la grille ; affecté en totalité à ce poste"
+bilan_actif;AJ;Bâtiments;2931;;solde_net_crediteur;amortissement;1;100;"[JO] p. 395 tableau de correspondance - bilan AJ amort./dépréc. : « 2831, 2832, 2833, 2931, 2932, 2933, 2939p » [À VALIDER] compte « p » réparti dans la grille ; affecté en totalité à ce poste"
+bilan_actif;AJ;Bâtiments;2932;;solde_net_crediteur;amortissement;1;100;"[JO] p. 395 tableau de correspondance - bilan AJ amort./dépréc. : « 2831, 2832, 2833, 2931, 2932, 2933, 2939p » [À VALIDER] compte « p » réparti dans la grille ; affecté en totalité à ce poste"
+bilan_actif;AJ;Bâtiments;2933;;solde_net_crediteur;amortissement;1;100;"[JO] p. 395 tableau de correspondance - bilan AJ amort./dépréc. : « 2831, 2832, 2833, 2931, 2932, 2933, 2939p » [À VALIDER] compte « p » réparti dans la grille ; affecté en totalité à ce poste"
+bilan_actif;AJ;Bâtiments;2939;;solde_net_crediteur;amortissement;1;100;"[JO] p. 395 tableau de correspondance - bilan AJ amort./dépréc. : « 2831, 2832, 2833, 2931, 2932, 2933, 2939p » [À VALIDER] compte « p » réparti dans la grille ; affecté en totalité à ce poste"
+bilan_actif;AK;Aménagements, agencements et installations;234;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan AK brut : « 234, 235, 238, 2394, 2395, 2398 »
+bilan_actif;AK;Aménagements, agencements et installations;235;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan AK brut : « 234, 235, 238, 2394, 2395, 2398 »
+bilan_actif;AK;Aménagements, agencements et installations;238;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan AK brut : « 234, 235, 238, 2394, 2395, 2398 »
+bilan_actif;AK;Aménagements, agencements et installations;2394;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan AK brut : « 234, 235, 238, 2394, 2395, 2398 »
+bilan_actif;AK;Aménagements, agencements et installations;2395;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan AK brut : « 234, 235, 238, 2394, 2395, 2398 »
+bilan_actif;AK;Aménagements, agencements et installations;2398;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan AK brut : « 234, 235, 238, 2394, 2395, 2398 »
+bilan_actif;AK;Aménagements, agencements et installations;2834;;solde_net_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan AK amort./dépréc. : « 2834, 2835, 2838, 2934, 2935, 2938, 2939p » (2939p affecté au poste AJ)
+bilan_actif;AK;Aménagements, agencements et installations;2835;;solde_net_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan AK amort./dépréc. : « 2834, 2835, 2838, 2934, 2935, 2938, 2939p » (2939p affecté au poste AJ)
+bilan_actif;AK;Aménagements, agencements et installations;2838;;solde_net_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan AK amort./dépréc. : « 2834, 2835, 2838, 2934, 2935, 2938, 2939p » (2939p affecté au poste AJ)
+bilan_actif;AK;Aménagements, agencements et installations;2934;;solde_net_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan AK amort./dépréc. : « 2834, 2835, 2838, 2934, 2935, 2938, 2939p » (2939p affecté au poste AJ)
+bilan_actif;AK;Aménagements, agencements et installations;2935;;solde_net_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan AK amort./dépréc. : « 2834, 2835, 2838, 2934, 2935, 2938, 2939p » (2939p affecté au poste AJ)
+bilan_actif;AK;Aménagements, agencements et installations;2938;;solde_net_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan AK amort./dépréc. : « 2834, 2835, 2838, 2934, 2935, 2938, 2939p » (2939p affecté au poste AJ)
+bilan_actif;AL;Matériel, mobilier et actifs biologiques;24;245 2495;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan AL brut : « 24 (sauf 245 et 2495) »
+bilan_actif;AL;Matériel, mobilier et actifs biologiques;284;2845;solde_net_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan AL amort./dépréc. : « 284 (sauf 2845), 294 (sauf 2945, 2949), 2949p » [À VALIDER] 2949p (aussi cité en AM) affecté en totalité à AL
+bilan_actif;AL;Matériel, mobilier et actifs biologiques;294;2945;solde_net_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan AL amort./dépréc. : « 284 (sauf 2845), 294 (sauf 2945, 2949), 2949p » [À VALIDER] 2949p (aussi cité en AM) affecté en totalité à AL
+bilan_actif;AM;Matériel de transport;245;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan AM brut : « 245, 2495 »
+bilan_actif;AM;Matériel de transport;2495;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan AM brut : « 245, 2495 »
+bilan_actif;AM;Matériel de transport;2845;;solde_net_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan AM amort./dépréc. : « 2845, 2945, 2949p » (2949p affecté au poste AL)
+bilan_actif;AM;Matériel de transport;2945;;solde_net_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan AM amort./dépréc. : « 2845, 2945, 2949p » (2949p affecté au poste AL)
+bilan_actif;AN;Avances et acomptes versés sur immobilisations corporelles;252;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan AN brut : « 252 »
+bilan_actif;AN;Avances et acomptes versés sur immobilisations corporelles;2952;;solde_net_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan AN amort./dépréc. : « 2 952 »
+bilan_actif;AX;Titres de participation;26;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan AX brut : « 26 »
+bilan_actif;AX;Titres de participation;296;;solde_net_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan AX amort./dépréc. : « 296 »
+bilan_actif;AY;Autres immobilisations financières;27;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan AY brut : « 27 »
+bilan_actif;AY;Autres immobilisations financières;297;;solde_net_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan AY amort./dépréc. : « 297 »
+bilan_actif;BA;Actif circulant HAO;485;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan BA brut : « 485, 4865 »
+bilan_actif;BA;Actif circulant HAO;4865;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan BA brut : « 485, 4865 »
+bilan_actif;BA;Actif circulant HAO;498;;solde_net_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan BA amort./dépréc. : « 498 »
+bilan_actif;BB;Stocks et encours;31;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan BB brut : « 31, 32, 33, 34, 36, 37, 38 »
+bilan_actif;BB;Stocks et encours;32;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan BB brut : « 31, 32, 33, 34, 36, 37, 38 »
+bilan_actif;BB;Stocks et encours;33;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan BB brut : « 31, 32, 33, 34, 36, 37, 38 »
+bilan_actif;BB;Stocks et encours;34;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan BB brut : « 31, 32, 33, 34, 36, 37, 38 »
+bilan_actif;BB;Stocks et encours;36;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan BB brut : « 31, 32, 33, 34, 36, 37, 38 »
+bilan_actif;BB;Stocks et encours;37;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan BB brut : « 31, 32, 33, 34, 36, 37, 38 »
+bilan_actif;BB;Stocks et encours;38;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan BB brut : « 31, 32, 33, 34, 36, 37, 38 »
+bilan_actif;BB;Stocks et encours;39;;solde_net_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan BB amort./dépréc. : « 39 »
+bilan_actif;BB;Stocks et encours;35;;solde_debiteur;brut;1;100;"[À VALIDER] compte 35 « Produits et services en cours » (plan [JO]) non cité par la grille du poste BB ; rattaché aux stocks et encours"
+bilan_actif;BC;Fournisseurs débiteurs;409;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan BC brut : « 409 »
+bilan_actif;BC;Fournisseurs débiteurs;40;409;solde_debiteur;brut;1;100;"[À VALIDER] soldes débiteurs des comptes 40 (sauf 409) : non cités par la grille ; classés en fournisseurs débiteurs (non-compensation), comme pour la version SYSCOHADA"
+bilan_actif;BC;Fournisseurs débiteurs;490;;solde_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan BC dépréc. : « 490 »
+bilan_actif;BD;Adhérents, clients-usagers;41;419;solde_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan BD brut : « 41 (sauf 419) » — soldes débiteurs
+bilan_actif;BD;Adhérents, clients-usagers;491;;solde_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan BD dépréc. : « 491 »
+bilan_actif;BE;Autres créances;42;;solde_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan BE brut : « Soldes débiteurs : 42, 43, 44, 45, 47 (sauf 478) »
+bilan_actif;BE;Autres créances;43;;solde_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan BE brut : « Soldes débiteurs : 42, 43, 44, 45, 47 (sauf 478) »
+bilan_actif;BE;Autres créances;44;;solde_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan BE brut : « Soldes débiteurs : 42, 43, 44, 45, 47 (sauf 478) »
+bilan_actif;BE;Autres créances;45;;solde_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan BE brut : « Soldes débiteurs : 42, 43, 44, 45, 47 (sauf 478) »
+bilan_actif;BE;Autres créances;47;478 479;solde_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan BE brut : « Soldes débiteurs : 42, 43, 44, 45, 47 (sauf 478) »
+bilan_actif;BE;Autres créances;46;;solde_debiteur;brut;1;100;"[À VALIDER] soldes débiteurs du compte 46 « Bailleurs, État et autres organismes, fonds d'administration » (plan [JO]) : non cités par la grille ; classés en autres créances"
+bilan_actif;BE;Autres créances;492;;solde_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan BE dépréc. : « 492, 493, 494, 497 »
+bilan_actif;BE;Autres créances;493;;solde_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan BE dépréc. : « 492, 493, 494, 497 »
+bilan_actif;BE;Autres créances;494;;solde_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan BE dépréc. : « 492, 493, 494, 497 »
+bilan_actif;BE;Autres créances;497;;solde_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan BE dépréc. : « 492, 493, 494, 497 »
+bilan_actif;BU;Titres de placement;50;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan BU brut : « 50 »
+bilan_actif;BU;Titres de placement;590;;solde_net_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan BU amort./dépréc. : « 590 »
+bilan_actif;BV;Valeurs à encaisser;51;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan BV brut : « 51 »
+bilan_actif;BV;Valeurs à encaisser;591;;solde_net_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan BV amort./dépréc. : « 591 »
+bilan_actif;BW;Banques, établissements financiers, caisses et assimilés;52;;solde_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan BW brut : « Soldes débiteurs : 52, 53, 55, 57 » (52, 53 : soldes créditeurs au poste DW)
+bilan_actif;BW;Banques, établissements financiers, caisses et assimilés;53;;solde_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan BW brut : « Soldes débiteurs : 52, 53, 55, 57 » (52, 53 : soldes créditeurs au poste DW)
+bilan_actif;BW;Banques, établissements financiers, caisses et assimilés;55;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan BW brut : « Soldes débiteurs : 52, 53, 55, 57 » (55, 57 : non cités au passif, solde net)
+bilan_actif;BW;Banques, établissements financiers, caisses et assimilés;57;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan BW brut : « Soldes débiteurs : 52, 53, 55, 57 » (55, 57 : non cités au passif, solde net)
+bilan_actif;BW;Banques, établissements financiers, caisses et assimilés;592;;solde_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan BW dépréc. : « 592, 593, 595 »
+bilan_actif;BW;Banques, établissements financiers, caisses et assimilés;593;;solde_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan BW dépréc. : « 592, 593, 595 »
+bilan_actif;BW;Banques, établissements financiers, caisses et assimilés;595;;solde_crediteur;amortissement;1;100;[JO] p. 395 tableau de correspondance - bilan BW dépréc. : « 592, 593, 595 »
+bilan_actif;BY;Écart de conversion-Actif;478;;solde_net_debiteur;brut;1;100;[JO] p. 395 tableau de correspondance - bilan BY : « 478 »
+bilan_passif;CA;Dotation non consomptible sans droit de reprise;101;;solde_net_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan CA : « 101 »
+bilan_passif;CB;Dotation non consomptible avec droit de reprise;102;;solde_net_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan CB : « 102 »
+bilan_passif;CC;Droit d'entrée;103;;solde_net_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan CC : « 103 »
+bilan_passif;CD;Dotation consomptible;104;;solde_net_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan CD : « 104 »
+bilan_passif;CE;Écarts de réévaluation;106;;solde_net_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan CE : « 106 »
+bilan_passif;CF;Réserves;11;;solde_net_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan CF : « 11 »
+bilan_passif;CG;Report à nouveau (+ ou -);12;;solde_net_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan CG : « 12 »
+bilan_passif;CI;Subventions d'investissement;14;;solde_net_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan CI : « 14 »
+bilan_passif;CJ;Provisions réglementées;15;;solde_net_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan CJ : « 15 »
+bilan_passif;CW;Fonds affectés et provenant de dons et legs d'immobilisations;16;;solde_net_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan CW : « 16 »
+bilan_passif;CX;Fonds reportés;17;;solde_net_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan CX : « 17 »
+bilan_passif;DA;Emprunts et dettes financières;181;;solde_net_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan DA : « 181, 182, 183, 185, 186, 188 »
+bilan_passif;DA;Emprunts et dettes financières;182;;solde_net_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan DA : « 181, 182, 183, 185, 186, 188 »
+bilan_passif;DA;Emprunts et dettes financières;183;;solde_net_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan DA : « 181, 182, 183, 185, 186, 188 »
+bilan_passif;DA;Emprunts et dettes financières;185;;solde_net_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan DA : « 181, 182, 183, 185, 186, 188 »
+bilan_passif;DA;Emprunts et dettes financières;186;;solde_net_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan DA : « 181, 182, 183, 185, 186, 188 »
+bilan_passif;DA;Emprunts et dettes financières;188;;solde_net_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan DA : « 181, 182, 183, 185, 186, 188 »
+bilan_passif;DB;Dettes de location-acquisition;187;;solde_net_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan DB : « 187 »
+bilan_passif;DC;Provisions pour risques et charges;19;;solde_net_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan DC : « 19 »
+bilan_passif;DF;Dettes circulantes HAO;481;;solde_net_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan DF : « 481, 484, 4861, 488, 4998 »
+bilan_passif;DF;Dettes circulantes HAO;484;;solde_net_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan DF : « 481, 484, 4861, 488, 4998 »
+bilan_passif;DF;Dettes circulantes HAO;4861;;solde_net_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan DF : « 481, 484, 4861, 488, 4998 »
+bilan_passif;DF;Dettes circulantes HAO;488;;solde_net_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan DF : « 481, 484, 4861, 488, 4998 »
+bilan_passif;DF;Dettes circulantes HAO;4998;;solde_net_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan DF : « 481, 484, 4861, 488, 4998 »
+bilan_passif;DG;Adhérents, clients-usagers créditeurs;419;;solde_net_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan DG : « 419 »
+bilan_passif;DI;Autres dettes;499;4998;solde_net_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan DI : « 499 (sauf 4998), 599 »
+bilan_passif;DI;Autres dettes;599;;solde_net_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan DI : « 499 (sauf 4998), 599 »
+bilan_passif;DW;Banques, établissements financiers et crédits de trésorerie;56;;solde_net_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan DW : « 56 »
+bilan_passif;DY;Écart de conversion-Passif;479;;solde_net_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan DY : « 479 »
+bilan_passif;CH;Résultat net de l'exercice (excédent + ou déficit -);13;;solde_net_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan CH : « 13 (131 ou 139) »
+bilan_passif;CH;Résultat net de l'exercice (excédent + ou déficit -);6;;solde_net_crediteur;net;1;100;"[À VALIDER] balance avant affectation du résultat : revenus − charges des classes 6 à 8 (résultat de l'exercice, égal au poste XE) ; le contrôle « résultat bilan = compte de résultat » signale tout écart"
+bilan_passif;CH;Résultat net de l'exercice (excédent + ou déficit -);7;;solde_net_crediteur;net;1;100;"[À VALIDER] balance avant affectation du résultat : revenus − charges des classes 6 à 8 (résultat de l'exercice, égal au poste XE) ; le contrôle « résultat bilan = compte de résultat » signale tout écart"
+bilan_passif;CH;Résultat net de l'exercice (excédent + ou déficit -);8;;solde_net_crediteur;net;1;100;"[À VALIDER] balance avant affectation du résultat : revenus − charges des classes 6 à 8 (résultat de l'exercice, égal au poste XE) ; le contrôle « résultat bilan = compte de résultat » signale tout écart"
+bilan_passif;DG;Adhérents, clients-usagers créditeurs;41;419;solde_crediteur;net;1;100;"[À VALIDER] soldes créditeurs des comptes 41 (sauf 419) : non cités par la grille ; classés en adhérents, clients-usagers créditeurs (non-compensation)"
+bilan_passif;DH;Fournisseurs;40;409;solde_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan DH : « 40 (sauf 409) » — soldes créditeurs (soldes débiteurs : BC)
+bilan_passif;DI;Autres dettes;42;;solde_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan DI : « Soldes créditeurs : 42, 43, 44, 45, 47 (sauf 479) »
+bilan_passif;DI;Autres dettes;43;;solde_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan DI : « Soldes créditeurs : 42, 43, 44, 45, 47 (sauf 479) »
+bilan_passif;DI;Autres dettes;44;;solde_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan DI : « Soldes créditeurs : 42, 43, 44, 45, 47 (sauf 479) »
+bilan_passif;DI;Autres dettes;45;;solde_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan DI : « Soldes créditeurs : 42, 43, 44, 45, 47 (sauf 479) »
+bilan_passif;DI;Autres dettes;47;478 479;solde_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan DI : « Soldes créditeurs : 42, 43, 44, 45, 47 (sauf 479) »
+bilan_passif;DI;Autres dettes;46;;solde_crediteur;net;1;100;"[À VALIDER] soldes créditeurs du compte 46 : non cités par la grille ; classés en autres dettes"
+bilan_passif;DW;Banques, établissements financiers et crédits de trésorerie;52;;solde_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan DW : « Solde créditeurs : 52, 53 »
+bilan_passif;DW;Banques, établissements financiers et crédits de trésorerie;53;;solde_crediteur;net;1;100;[JO] p. 395 tableau de correspondance - bilan DW : « Solde créditeurs : 52, 53 »
+compte_resultat;RA;Cotisations;701;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat RA : « 701 » (montant signé : revenu +, charge −)
+compte_resultat;RB;Dotations consomptibles transférées au compte de résultat;703;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat RB : « 703 » (montant signé : revenu +, charge −)
+compte_resultat;RC;Revenus liés à la générosité;704;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat RC : « 704 » (montant signé : revenu +, charge −)
+compte_resultat;RD;Ventes de marchandises;7051;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat RD : « 7051 » (montant signé : revenu +, charge −)
+compte_resultat;RE;Ventes de services et produits finis;7052;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat RE : « 7052, 7053 » (montant signé : revenu +, charge −)
+compte_resultat;RE;Ventes de services et produits finis;7053;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat RE : « 7052, 7053 » (montant signé : revenu +, charge −)
+compte_resultat;RF;Subventions d'exploitation;71;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat RF : « 71 » (montant signé : revenu +, charge −)
+compte_resultat;RG;Autres produits et transferts de charges;706;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat RG : « 706, 707, 708, 72, 73 (+/-), 75, 77, 78 » (montant signé : revenu +, charge −)
+compte_resultat;RG;Autres produits et transferts de charges;707;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat RG : « 706, 707, 708, 72, 73 (+/-), 75, 77, 78 » (montant signé : revenu +, charge −)
+compte_resultat;RG;Autres produits et transferts de charges;708;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat RG : « 706, 707, 708, 72, 73 (+/-), 75, 77, 78 » (montant signé : revenu +, charge −)
+compte_resultat;RG;Autres produits et transferts de charges;72;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat RG : « 706, 707, 708, 72, 73 (+/-), 75, 77, 78 » (montant signé : revenu +, charge −)
+compte_resultat;RG;Autres produits et transferts de charges;73;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat RG : « 706, 707, 708, 72, 73 (+/-), 75, 77, 78 » (montant signé : revenu +, charge −)
+compte_resultat;RG;Autres produits et transferts de charges;75;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat RG : « 706, 707, 708, 72, 73 (+/-), 75, 77, 78 » (montant signé : revenu +, charge −)
+compte_resultat;RG;Autres produits et transferts de charges;77;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat RG : « 706, 707, 708, 72, 73 (+/-), 75, 77, 78 » (montant signé : revenu +, charge −)
+compte_resultat;RG;Autres produits et transferts de charges;78;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat RG : « 706, 707, 708, 72, 73 (+/-), 75, 77, 78 » (montant signé : revenu +, charge −)
+compte_resultat;RH;Reprises de provisions, dépréciations, subventions et autres reprises;79;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat RH : « 79 » (montant signé : revenu +, charge −)
+compte_resultat;TA;Achats de biens et services liés à l'activité;601;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat TA : « 601 » (montant signé : revenu +, charge −)
+compte_resultat;TB;Variation de stocks des achats de biens et services liés à l'activité;6031;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat TB : « 6031 » (montant signé : revenu +, charge −)
+compte_resultat;TC;Achats de marchandises et matières premières;602;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat TC : « 602 » (montant signé : revenu +, charge −)
+compte_resultat;TD;Autres achats;604;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat TD : « 604, 605, 606, 608 » (montant signé : revenu +, charge −)
+compte_resultat;TD;Autres achats;605;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat TD : « 604, 605, 606, 608 » (montant signé : revenu +, charge −)
+compte_resultat;TD;Autres achats;606;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat TD : « 604, 605, 606, 608 » (montant signé : revenu +, charge −)
+compte_resultat;TD;Autres achats;608;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat TD : « 604, 605, 606, 608 » (montant signé : revenu +, charge −)
+compte_resultat;TE;Variation de stocks de marchandises, de matières premières et autres;6032;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat TE : « 6032 à 6035 » (montant signé : revenu +, charge −)
+compte_resultat;TE;Variation de stocks de marchandises, de matières premières et autres;6033;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat TE : « 6032 à 6035 » (montant signé : revenu +, charge −)
+compte_resultat;TE;Variation de stocks de marchandises, de matières premières et autres;6034;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat TE : « 6032 à 6035 » (montant signé : revenu +, charge −)
+compte_resultat;TE;Variation de stocks de marchandises, de matières premières et autres;6035;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat TE : « 6032 à 6035 » (montant signé : revenu +, charge −)
+compte_resultat;TF;Transports;61;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat TF : « 61 » (montant signé : revenu +, charge −)
+compte_resultat;TG;Services extérieurs;62;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat TG : « 62, 63 » (montant signé : revenu +, charge −)
+compte_resultat;TG;Services extérieurs;63;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat TG : « 62, 63 » (montant signé : revenu +, charge −)
+compte_resultat;TH;Impôts et taxes;64;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat TH : « 64 » (montant signé : revenu +, charge −)
+compte_resultat;TI;Autres charges;65;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat TI : « 65 » (montant signé : revenu +, charge −)
+compte_resultat;TJ;Charges de personnel;66;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat TJ : « 66 » (montant signé : revenu +, charge −)
+compte_resultat;TK;Frais financiers et charges assimilées;67;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat TK : « 67 » (montant signé : revenu +, charge −)
+compte_resultat;TL;Dotations aux amortissements, aux provisions, aux dépréciations et autres;68;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat TL : « 68, 69 » (montant signé : revenu +, charge −)
+compte_resultat;TL;Dotations aux amortissements, aux provisions, aux dépréciations et autres;69;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat TL : « 68, 69 » (montant signé : revenu +, charge −)
+compte_resultat;TM;Produits H.A.O.;82;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat TM : « 82, 84, 86, 88 » (montant signé : revenu +, charge −)
+compte_resultat;TM;Produits H.A.O.;84;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat TM : « 82, 84, 86, 88 » (montant signé : revenu +, charge −)
+compte_resultat;TM;Produits H.A.O.;86;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat TM : « 82, 84, 86, 88 » (montant signé : revenu +, charge −)
+compte_resultat;TM;Produits H.A.O.;88;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat TM : « 82, 84, 86, 88 » (montant signé : revenu +, charge −)
+compte_resultat;TN;Charges H.A.O.;81;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat TN : « 81, 83, 85, 87 (+/-) » (montant signé : revenu +, charge −)
+compte_resultat;TN;Charges H.A.O.;83;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat TN : « 81, 83, 85, 87 (+/-) » (montant signé : revenu +, charge −)
+compte_resultat;TN;Charges H.A.O.;85;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat TN : « 81, 83, 85, 87 (+/-) » (montant signé : revenu +, charge −)
+compte_resultat;TN;Charges H.A.O.;87;;solde_net_crediteur;net;1;100;[JO] p. 396 tableau de correspondance - compte de résultat TN : « 81, 83, 85, 87 (+/-) » (montant signé : revenu +, charge −)

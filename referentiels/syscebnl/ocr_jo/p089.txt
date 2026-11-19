@@ -1,0 +1,58 @@
+_ | Journal officiel OHADA 2023 AE 15/03/2023 v21.qxp_OHADA 16/03/2023 17:07 @age 89 | L
+PARTIE 2 : STRUCTURE, CONTENU ET FONCTIONNEMENT DES COMPTES
+4424 Impôts et taxes recouvrables sur des adhérents et autres
+4426 Droits de douane
+4428 Autres impôts et taxes
+443 État, T.V.A. Facturée
+444 État, T.V.A. due ou crédit de T.V.A.
+445 État, T.V.A. Récupérable
+446 État, autres taxes sur le chiffre d’affaires
+447 État, impôts retenus à la source
+4471 Impôt général sur le revenu
+4472 Impôts sur salaires
+4473 Contribution nationale
+4474 Contribution nationale de solidarité
+4478 Autres impôts et contributions
+448 État, charges à payer et produits à recevoir
+4486 Charges à payer
+4487 Produits à recevoir
+449 État, créances et dettes diverses
+4491 Etat, Subvention à recevoir
+45 FONDATEURS, APPORTEURS ET COMPTES COURANTS
+451 Associations et assimilées
+4511 Apporteurs en nature
+4512 Apporteurs en numéraire
+4515 Adhérents, dirigeants, comptes courants
+452 Fondations et assimilées
+4521 Apporteurs en nature
+4522 Apporteurs en numéraire
+4555 Fondateurs, dirigeants, comptes courants
+° 453 Ordres professionnels e
+4531 Apporteurs en nature
+4532 Apporteurs en numéraire
+4535 Membres, dirigeants, comptes courants
+454 Organisations politiques
+4541 Apporteurs en nature
+4542 Apporteurs en numéraire
+4545 Adhérents, dirigeants, comptes courants
+455 Organisations syndicales
+4551 Apporteurs en nature
+4552 Apporteurs en numéraire
+4555 Adhérents, dirigeants, comptes courants
+456 Organisations religieuses, apporteurs
+4561 Congrégations religieuses et assimilées
+4562 Wagf et assimilés
+457 Mécènes, bénévoles et assimilés
+4571 Mécènes et assimilés
+4572 Bénévoles et assimilés
+458 Autres fondateurs et apporteurs
+46 BAILLEURS, FONDS D'ADMINISTRATION
+462 Bailleurs - projet de développement, Fonds d'administration
+463 Etat - projet de développement, Fonds d'administration
+464 Autres tiers ou organismes de financement assimilés - projet de développement, Fonds
+d’administration
+469 Fonds d’administration à recevoir
+4692 Bailleurs -Fonds d'administration à recevoir
+4693 Etat -Fonds d’administration à recevoir
+4694 Autres tiers ou organismes de financement assimilés-Fonds d'administration à recevoir
+cl] —®— RE

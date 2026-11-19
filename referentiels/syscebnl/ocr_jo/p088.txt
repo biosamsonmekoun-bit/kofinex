@@ -1,0 +1,56 @@
+_ | Journal officiel OHADA 2023 AE 15/03/2023 v21.qxp_OHADA 16/03/2023 17:07 @age 88 | L
+ACTE UNIFORME RELATIF AU SYSTEME COMPTABLE DES ENTITES À BUT NON LUCRATIF
+4186 Adhérents, Clients-usagers, intérêts courus
+419 Adhérents, Clients-usagers créditeurs
+4191 Adhérents, avances reçues
+4192 Clients-usagers, avances et acomptes reçus
+4194 Clients-usagers, dettes pour emballages et matériels consignés
+4198 Clients-usagers, rabais, remises, ristournes et autres avoirs à accorder
+42 PERSONNEL
+421 Personnel, avances et acomptes
+4211 Personnel, avances
+4212 Personnel, acomptes
+4213 Frais avancés et fournitures au personnel
+422 Personnel, rémunérations dues
+423 Personnel, oppositions, saisies arrêts
+4231 Personnel, oppositions
+4232 Personnel, saisies arrêts
+4233 Personnel, avis à tiers détenteur
+424 Personnel, œuvres sociales internes
+4241 Assistance médicale
+4242 Allocations familiales
+4245 Organismes sociaux rattachés à l'entité
+4248 Autres œuvres sociales internes
+425 Représentants du personnel
+4251 Délégués du personnel
+4252 Syndicats et assimilés
+4258 Autres représentants du personnel
+427 Personnel — dépôts
+° 428 Personnel, charges à payer et produits à recevoir e
+4281 Personnel congés à payer
+4286 Autres Charges à payer
+4287 Produits à recevoir
+43 ORGANISMES SOCIAUX
+431 Sécurité sociale
+4311 Prestations familiales
+4312 Accidents de travail
+4318 Autres cotisations sociales
+432 Caisses de retraite
+4321 Caisse de retraite obligatoire
+4322 Caisse de retraite complémentaire
+4328 Autres caisses de retraites
+433 Autres organismes sociaux
+433] Mutuelle de santé
+4332 Assurances retraite
+4333 Assurances et organismes de santé
+438 Organismes sociaux, charges à payer et produits à recevoir
+4381 Charges sociales sur gratifications à payer
+4382 Charges sociales sur congés à payer
+4386 Autres charges à payer
+4387 Produits à recevoir
+44 ÉTAT ET COLLECTIVITÉS PUBLIQUES
+442 État, autres impôts et taxes
+442] Impôts et taxes d’Etat
+4422 Impôts et taxes pour les collectivités publiques
+4423 Impôts et taxes recouvrables sur des obligataires
+cl] —®— RE

@@ -1,0 +1,42 @@
+_ | Journal officiel OHADA 2023 AE 15/03/2023 v21.qxp_OHADA 16/03/2023 17:08(@age 93 | L
+PARTIE 2 : STRUCTURE, CONTENU ET FONCTIONNEMENT DES COMPTES
+5215 Banques en devises
+522 Banques autres États Région
+523 Banques autres États zone monétaire
+524 Banques hors zone monétaire
+525 Banques dépôt à terme et opérations assimilées
+526 Banques, intérêts courus
+5261 Banque, intérêts courus charges à payer
+5267 Banque, intérêts courus produits à recevoir
+53 ÉTABLISSEMENTS FINANCIERS ET ASSIMILES
+531 Banques postales
+532 Trésor
+533 Sociétés de gestion et d’intermédiation (S.G.L.)
+536 Établissements financiers, intérêts courus
+5361 Établissements financiers, intérêts courus charges à payer
+5367 Établissements financiers, intérêts courus produits à recevoir
+538 Autres organismes financiers
+55 INSTRUMENTS DE MONNAIE ELECTRONIQUE
+551 Monnaie électronique - carte carburant
+552 Monnaie électronique - téléphone portable
+553 Monnaie électronique - carte péage
+554 Porte-monnaie électronique
+558 Autres instruments de monnaie électronique
+56 BANQUES, CRÉDITS DE TRÉSORERIE ET D'ESCOMPTE
+561 Crédits de trésorerie
+565 Escompte de crédits ordinaires
+° 566 Banques, crédits de trésorerie, intérêts courus e
+57 CAISSE
+571 Caisse en monnaie nationale
+572 Caisse en devises
+58 VIREMENTS INTERNES
+585 Virements de fonds
+588 Autres virements internes
+59 DÉPRÉCIATIONS ET PROVISIONS POUR RISQUES À COURT TERME
+590 Dépréciations des titres de placement
+591 Dépréciations des titres et valeurs à encaisser
+592 Dépréciations des comptes banques
+593 Dépréciations des comptes établissements financiers et assimilés
+595 Dépréciations des comptes d'instruments de monnaie électronique
+599 Provisions pour risque et charges à court terme à caractère financier
+cl] —®— RE

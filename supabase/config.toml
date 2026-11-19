@@ -1,0 +1,79 @@
+# Configuration de la pile Supabase locale (`supabase start`) :
+# PostgreSQL + Auth + Storage + Studio + boîte mail de test (Inbucket).
+#
+# Le schéma n'est PAS géré par `supabase/migrations` : la source de vérité est
+# Alembic (backend/alembic, backend/sql). Après `supabase start` :
+#   cd backend && DATABASE_URL=postgresql+psycopg://postgres:postgres@127.0.0.1:54322/postgres alembic upgrade head
+#
+# Pour le projet hébergé, reporter les mêmes réglages Auth dans le tableau de bord
+# (Authentication > Providers / URL Configuration / Policies).
+
+project_id = "kofinex"
+
+[api]
+enabled = true
+port = 54321
+# Le frontend n'interroge pas les tables directement (toutes les écritures passent
+# par l'API FastAPI). Le schéma public reste exposé en lecture, protégé par RLS.
+schemas = ["public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+shadow_port = 54320
+major_version = 15
+
+[db.seed]
+enabled = false
+
+[studio]
+enabled = true
+port = 54323
+
+[inbucket]
+enabled = true
+port = 54324
+
+[storage]
+enabled = true
+file_size_limit = "100MiB"
+
+[auth]
+enabled = true
+site_url = "http://localhost:3000"
+additional_redirect_urls = ["http://localhost:3000/auth/callback"]
+jwt_expiry = 3600
+enable_refresh_token_rotation = true
+refresh_token_reuse_interval = 10
+enable_signup = true
+enable_anonymous_sign_ins = false
+minimum_password_length = 10
+password_requirements = "lower_upper_letters_digits"
+
+[auth.rate_limit]
+email_sent = 4
+sign_in_sign_ups = 30
+token_verifications = 30
+
+[auth.email]
+enable_signup = true
+enable_confirmations = true
+double_confirm_changes = true
+secure_password_change = true
+max_frequency = "60s"
+otp_length = 6
+otp_expiry = 3600
+
+[auth.mfa]
+max_enrolled_factors = 10
+
+[auth.mfa.totp]
+enroll_enabled = true
+verify_enabled = true
+
+[auth.sms]
+enable_signup = false
+
+[analytics]
+enabled = false

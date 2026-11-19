@@ -1,0 +1,31 @@
+concept;expression;source
+total_actif;"line(""BZ"")";[TP] poste BZ
+actif_immobilise;"line(""AZ"")";[TP] poste AZ (net)
+stocks;"line(""BB"")";[TP] poste BB (net)
+creances_clients;"line(""BI"")";[TP] poste BI (net)
+actif_circulant;"line(""BK"") + line(""BU"")";[TP] BK + BU [À VALIDER] écart de conversion-actif rattaché au circulant
+tresorerie_actif;"line(""BT"")";[TP] poste BT
+capitaux_propres;"line(""CP"")";[TP] poste CP
+dettes_financieres;"line(""DD"")";[TP] poste DD
+ressources_stables;"line(""DF"")";[TP] poste DF
+passif_circulant;"line(""DP"") + line(""DV"")";[TP] DP + DV [À VALIDER] écart de conversion-passif rattaché au circulant
+dettes_fournisseurs;"line(""DJ"")";[TP] poste DJ
+tresorerie_passif;"line(""DT"")";[TP] poste DT
+chiffre_affaires;"line(""XB"")";[TP] poste XB
+marge_commerciale;"line(""XA"")";[TP] poste XA
+valeur_ajoutee;"line(""XC"")";[TP] poste XC
+excedent_brut_exploitation;"line(""XD"")";[TP] poste XD
+resultat_exploitation;"line(""XE"")";[TP] poste XE
+resultat_financier;"line(""XF"")";[TP] poste XF
+resultat_activites_ordinaires;"line(""XG"")";[TP] poste XG
+resultat_hao;"line(""XH"")";[TP] poste XH
+resultat_net;"line(""XI"")";[TP] poste XI
+achats_consommes;"-(line(""RA"") + line(""RB"") + line(""RC"") + line(""RD""))";[TP] RA à RD (charges présentées en négatif) [À VALIDER] base : marchandises et matières, hors autres achats
+achats_fournisseurs;"-(line(""RA"") + line(""RC"") + line(""RE"") + line(""RG"") + line(""RH""))";[TP] RA, RC, RE, RG, RH [À VALIDER] base du délai fournisseurs (achats et services extérieurs, HT)
+charges_personnel;"-line(""RK"")";[TP] poste RK
+charges_calculees;"acct(""681"", ""net_debit"") + acct(""691"", ""net_debit"") + acct(""697"", ""net_debit"") + acct(""85"", ""net_debit"")";"[TP] RL (681, 691), RN (697), dotations HAO (85) ; cohérent avec [CAF]"
+produits_calcules;"acct(""791"", ""net_credit"") + acct(""798"", ""net_credit"") + acct(""799"", ""net_credit"") + acct(""797"", ""net_credit"") + acct(""86"", ""net_credit"")";"[TP] TJ (791, 798, 799), TL (797), reprises HAO (86) ; cohérent avec [CAF]"
+produits_cessions;"acct(""82"", ""net_credit"") + acct(""754"", ""net_credit"")";[TP] TN (82) et [CAF] produits des cessions courantes (754)
+vnc_cessions;"acct(""81"", ""net_debit"") + acct(""654"", ""net_debit"")";[TP] RO (81) et [CAF] valeurs comptables des cessions courantes (654)
+produits_encaissables_hors_ebe;"acct(""77"", ""net_credit"") + acct(""787"", ""net_credit"") + acct(""84"", ""net_credit"") + acct(""88"", ""net_credit"") + acct(""654"", ""net_debit"") - acct(""754"", ""net_credit"")";"[CAF] revenus financiers (77), transferts de charges financières (787), produits HAO (84, 88) ; retraitement des cessions courantes (+654, −754)"
+charges_decaissables_hors_ebe;"acct(""67"", ""net_debit"") + acct(""83"", ""net_debit"") + acct(""87"", ""net_debit"") + acct(""89"", ""net_debit"")";[CAF] frais financiers (67), charges HAO (83), participation (87), impôts sur le résultat (89)

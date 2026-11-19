@@ -1,0 +1,1405 @@
+numero;libelle;nature;sens;imputable;source
+10;CAPITAL;capitaux_propres;;;[PC] ligne 2
+101;CAPITAL SOCIAL;capitaux_propres;;;[PC] ligne 3
+1011;Capital souscrit, non appelé;capitaux_propres;;;[PC] ligne 4
+1012;Capital souscrit, appelé, non versé;capitaux_propres;;;[PC] ligne 5
+1013;Capital souscrit, appelé, versé, non amorti;capitaux_propres;;;[PC] ligne 6
+1014;Capital souscrit, appelé, versé, amorti;capitaux_propres;;;[PC] ligne 7
+1018;Capital souscrit soumis à des conditions particulières;capitaux_propres;;;[PC] ligne 8
+102;CAPITAL PAR DOTATION;capitaux_propres;;;[PC] ligne 9
+1021;Dotation initiale;capitaux_propres;;;[PC] ligne 10
+1022;Dotations complémentaires;capitaux_propres;;;[PC] ligne 11
+1028;Autres dotations;capitaux_propres;;;[PC] ligne 12
+103;CAPITAL PERSONNEL;capitaux_propres;;;[PC] ligne 13
+104;COMPTE DE L'EXPLOITANT;capitaux_propres;;;[PC] ligne 14
+1041;Apports temporaires;capitaux_propres;;;[PC] ligne 15
+1042;Opérations courantes;capitaux_propres;;;[PC] ligne 16
+1043;Rémunérations, impôts et autres charges personnelles;capitaux_propres;;;[PC] ligne 17
+1047;Prélèvements d’autoconsommation;capitaux_propres;;;[PC] ligne 18
+1048;Autres prélèvements;capitaux_propres;;;[PC] ligne 19
+105;PRIMES LIEES AU CAPITAL SOCIAL;capitaux_propres;;;[PC] ligne 20
+1051;Primes d'émission;capitaux_propres;;;[PC] ligne 21
+1052;Primes d'apport;capitaux_propres;;;[PC] ligne 22
+1053;Primes de fusion;capitaux_propres;;;[PC] ligne 23
+1054;Primes de conversion;capitaux_propres;;;[PC] ligne 24
+1058;Autres primes;capitaux_propres;;;[PC] ligne 25
+106;ECARTS DE REEVALUATION;capitaux_propres;;;[PC] ligne 26
+1061;Ecarts de réévaluation légale;capitaux_propres;;;[PC] ligne 27
+1062;Ecarts de réévaluation libre;capitaux_propres;;;[PC] ligne 28
+109;APPORTEURS, CAPITAL SOUSCRIT, NON APPELE;capitaux_propres;;;[PC] ligne 29
+11;RESERVES;capitaux_propres;;;[PC] ligne 30
+111;RESERVE LEGALE;capitaux_propres;;;[PC] ligne 31
+112;RESERVES STATUTAIRES OU CONTRACTUELLES;capitaux_propres;;;[PC] ligne 32
+113;RESERVES REGLEMENTEES;capitaux_propres;;;[PC] ligne 33
+1131;Réserves de plus-values nettes à long terme;capitaux_propres;;;[PC] ligne 34
+1132;Réserves d’attribution gratuite d’actions au personnel salarié et aux dirigeants;capitaux_propres;;;[PC] ligne 35
+1133;Réserves consécutives à l'octroi de subventions d'investissement;capitaux_propres;;;[PC] ligne 36
+1134;Réserves des valeurs mobilières donnant accès au capital;capitaux_propres;;;[PC] ligne 37
+1138;Autres réserves réglementées;capitaux_propres;;;[PC] ligne 38
+118;AUTRES RESERVES;capitaux_propres;;;[PC] ligne 39
+1181;Réserves facultatives;capitaux_propres;;;[PC] ligne 40
+1188;Réserves diverses;capitaux_propres;;;[PC] ligne 41
+12;REPORT A NOUVEAU;capitaux_propres;;;[PC] ligne 42
+121;REPORT A NOUVEAU CREDITEUR;capitaux_propres;;;[PC] ligne 43
+129;REPORT A NOUVEAU DEBITEUR;capitaux_propres;;;[PC] ligne 44
+1291;Perte nette à reporter;capitaux_propres;;;[PC] ligne 45
+1292;Perte - Amortissements réputés différés;capitaux_propres;;;[PC] ligne 46
+13;RESULTAT NET DE L'EXERCICE;capitaux_propres;;;[PC] ligne 47
+130;RESULTAT EN INSTANCE D’AFFECTATION;capitaux_propres;;;[PC] ligne 48
+1301;Résultat en instance d'affectation : Bénéfice;capitaux_propres;;;[PC] ligne 49
+1309;Résultat en instance d'affectation : Perte;capitaux_propres;;;[PC] ligne 50
+131;RESULTAT NET : BENEFICE;capitaux_propres;;;[PC] ligne 51
+132;MARGE COMMERCIALE (MC);capitaux_propres;;;[PC] ligne 52
+133;VALEUR AJOUTEE (V.A.);capitaux_propres;;;[PC] ligne 53
+134;EXCEDENT BRUT D'EXPLOITATION (E.B.E.);capitaux_propres;;;[PC] ligne 54
+135;RESULTAT D'EXPLOITATION (R.E.);capitaux_propres;;;[PC] ligne 55
+136;RESULTAT FINANCIER (R.F.);capitaux_propres;;;[PC] ligne 56
+137;RESULTAT DES ACTIVITES ORDINAIRES (R.A.O.);capitaux_propres;;;[PC] ligne 57
+138;RESULTAT HORS ACTIVITES ORDINAIRES (R.H.A.O.);capitaux_propres;;;[PC] ligne 58
+1381;Résultat de fusion;capitaux_propres;;;[PC] ligne 59
+1382;Résultat d'apport partiel d'actif;capitaux_propres;;;[PC] ligne 60
+1383;Résultat de scission;capitaux_propres;;;[PC] ligne 61
+1384;Résultat de liquidation;capitaux_propres;;;[PC] ligne 62
+139;RESULTAT NET : PERTE;capitaux_propres;;;[PC] ligne 63
+14;SUBVENTIONS D'INVESTISSEMENT;capitaux_propres;;;[PC] ligne 64
+141;SUBVENTIONS D'EQUIPEMENT;capitaux_propres;;;[PC] ligne 65
+1411;Etat;capitaux_propres;;;[PC] ligne 66
+1412;Régions;capitaux_propres;;;[PC] ligne 67
+1413;Départements;capitaux_propres;;;[PC] ligne 68
+1414;Communes et collectivités publiques décentralisées;capitaux_propres;;;[PC] ligne 69
+1415;Entités publiques ou mixtes;capitaux_propres;;;[PC] ligne 70
+1416;Entités et organismes privés;capitaux_propres;;;[PC] ligne 71
+1417;Organismes internationaux;capitaux_propres;;;[PC] ligne 72
+1418;Autres;capitaux_propres;;;[PC] ligne 73
+148;AUTRES SUBVENTIONS D'INVESTISSEMENT;capitaux_propres;;;[PC] ligne 74
+15;PROVISIONS REGLEMENTEES ET FONDS ASSIMILES;capitaux_propres;;;[PC] ligne 75
+151;AMORTISSEMENTS DEROGATOIRES;capitaux_propres;;;[PC] ligne 76
+152;PLUS-VALUES DE CESSION A REINVESTIR;capitaux_propres;;;[PC] ligne 77
+153;FONDS REGLEMENTES;capitaux_propres;;;[PC] ligne 78
+1531;Fonds National;capitaux_propres;;;[PC] ligne 79
+1532;Prélèvement pour le Budget;capitaux_propres;;;[PC] ligne 80
+154;PROVISIONS SPECIALES DE REEVALUATION;capitaux_propres;;;[PC] ligne 81
+155;PROVISIONS REGLEMENTEES RELATIVES AUX IMMOBILISATIONS;capitaux_propres;;;[PC] ligne 82
+1551;Reconstitution des gisements miniers et pétroliers;capitaux_propres;;;[PC] ligne 83
+156;PROVISIONS REGLEMENTEES RELATIVES AUX STOCKS;capitaux_propres;;;[PC] ligne 84
+1561;Hausse de prix;capitaux_propres;;;[PC] ligne 85
+1562;Fluctuation des cours;capitaux_propres;;;[PC] ligne 86
+157;PROVISIONS POUR INVESTISSEMENT;capitaux_propres;;;[PC] ligne 87
+158;AUTRES PROVISIONS ET FONDS REGLEMENTES;capitaux_propres;;;[PC] ligne 88
+16;EMPRUNTS ET DETTES ASSIMILEES;passif;;;[PC] ligne 89
+161;EMPRUNTS OBLIGATAIRES;passif;;;[PC] ligne 90
+1611;Emprunts obligataires ordinaires;passif;;;[PC] ligne 91
+1612;Emprunts obligataires convertibles en actions;passif;;;[PC] ligne 92
+1613;Emprunts obligataires remboursables en actions;passif;;;[PC] ligne 93
+1618;Autres emprunts obligataires;passif;;;[PC] ligne 94
+162;EMPRUNTS ET DETTES AUPRES DES ETABLISSEMENTS DE CREDIT;passif;;;[PC] ligne 95
+163;AVANCES RECUES DE L'ETAT;passif;;;[PC] ligne 96
+164;AVANCES RECUES ET COMPTES COURANTS BLOQUES;passif;;;[PC] ligne 97
+165;DEPOTS ET CAUTIONNEMENTS RECUES;passif;;;[PC] ligne 98
+1651;Dépôts;passif;;;[PC] ligne 99
+1652;Cautionnements 166 INTERETS COURUS;passif;;;[PC] ligne 100
+1661;sur emprunts obligataires;passif;;;[PC] ligne 101
+1662;sur emprunts et dettes auprès des établissements de crédit;passif;;;[PC] ligne 102
+1663;sur avances reçues de l'Etat;passif;;;[PC] ligne 103
+1664;sur avances reçues et comptes courants bloqués;passif;;;[PC] ligne 104
+1665;sur dépôts et cautionnements reçus;passif;;;[PC] ligne 105
+1667;sur avances assorties de conditions particulières;passif;;;[PC] ligne 106
+1668;sur autres emprunts et dettes;passif;;;[PC] ligne 107
+167;AVANCES ASSORTIES DE CONDITIONS PARTICULIERES;passif;;;[PC] ligne 108
+1671;Avances bloquées pour augmentation du capital;passif;;;[PC] ligne 109
+1672;Avances conditionnées par l'Etat;passif;;;[PC] ligne 110
+1673;Avances conditionnées par les autres organismes africains;passif;;;[PC] ligne 111
+1674;Avances conditionnées par les organismes internationaux;passif;;;[PC] ligne 112
+168;AUTRES EMPRUNTS ET DETTES;passif;;;[PC] ligne 113
+1681;Rentes viagères capitalisées;passif;;;[PC] ligne 114
+1682;Billets de fonds;passif;;;[PC] ligne 115
+1683;Dettes consécutives à des titres empruntés;passif;;;[PC] ligne 116
+1684;Emprunts participatifs;passif;;;[PC] ligne 117
+1685;Participation des travailleurs aux bénéfices;passif;;;[PC] ligne 118
+1686;Emprunts et dettes contractés auprès des autres tiers;passif;;;[PC] ligne 119
+17;DETTES DE LOCATION-ACQUISITION;passif;;;[PC] ligne 120
+172;DETTES DE LOCATION-ACQUISITION / CREDIT-BAIL IMMOBILIER;passif;;;[PC] ligne 121
+173;DETTES DE LOCATION-ACQUISITION / CREDIT-BAIL MOBILIER;passif;;;[PC] ligne 122
+174;DETTES DE LOCATION-ACQUISITION / LOCATIONVENTE;passif;;;[PC] ligne 123
+176;INTERETS COURUS;passif;;;[PC] ligne 124
+1762;sur dettes de location-acquisition / crédit-bail immobilier;passif;;;[PC] ligne 125
+1763;sur dettes de location-acquisition / crédit-bail mobilier;passif;;;[PC] ligne 126
+1764;sur dettes de location-acquisition / location-vente;passif;;;[PC] ligne 127
+1768;sur autres dettes de location-acquisition;passif;;;[PC] ligne 128
+178;AUTRES DETTES DE LOCATION-ACQUISITION;passif;;;[PC] ligne 129
+18;DETTES LIEES A DES PARTICIPATIONS ET COMPTES DE LIAISON DES ETABLISSEMENTS ET S;passif;;;[PC] ligne 130
+181;DETTES LIEES A DES PARTICIPATIONS;passif;;;[PC] ligne 131
+1811;Dettes liées à des participations (groupe);passif;;;[PC] ligne 132
+1812;Dettes liées à des participations (hors groupe);passif;;;[PC] ligne 133
+182;DETTES LIEES A DES SOCIETES EN PARTICIPATION;passif;;;[PC] ligne 134
+183;INTERETS COURUS SUR DETTES LIEES A DES PARTICIPATIONS;passif;;;[PC] ligne 135
+184;COMPTES PERMANENTS BLOQUES DES ETABLISSEMENTS ET SUCCURSALES;passif;;;[PC] ligne 136
+185;COMPTES PERMANENTS NON BLOQUES DES ETABLISSEMENTS ET SUCCURSALES;passif;;;[PC] ligne 137
+186;COMPTES DE LIAISON CHARGES;passif;;;[PC] ligne 138
+187;COMPTES DE LIAISON PRODUITS;passif;;;[PC] ligne 139
+188;COMPTES DE LIAISON DES SOCIETES EN PARTICIPATION;passif;;;[PC] ligne 140
+19;PROVISIONS POUR RISQUES ET CHARGES;passif;;;[PC] ligne 141
+191;PROVISIONS POUR LITIGES;passif;;;[PC] ligne 142
+192;PROVISIONS POUR GARANTIES DONNEES AUX CLIENTS;passif;;;[PC] ligne 143
+193;PROVISIONS POUR PERTES SUR MARCHES A ACHEVEMENT FUTUR;passif;;;[PC] ligne 144
+194;PROVISIONS POUR PERTES DE CHANGE;passif;;;[PC] ligne 145
+195;PROVISIONS POUR IMPOTS;passif;;;[PC] ligne 146
+196;PROVISIONS POUR PENSIONS ET OBLIGATIONS SIMILAIRES;passif;;;[PC] ligne 147
+1961;Provisions pour pensions et obligations similaires – engagement de retraite;passif;;;[PC] ligne 148
+1962;Actif du régime de retraite;passif;;;[PC] ligne 149
+197;PROVISIONS POUR RESTRUCTURATION;passif;;;[PC] ligne 150
+198;AUTRES PROVISIONS POUR RISQUES ET CHARGES;passif;;;[PC] ligne 151
+1981;Provisions pour amendes et pénalités;passif;;;[PC] ligne 152
+1983;Provisions de propre assureur;passif;;;[PC] ligne 153
+1984;Provisions pour démantèlement et remise en état;passif;;;[PC] ligne 154
+1985;Provisions pour droits à réduction ou avantage en nature (Chèques cadeaux, carte;passif;;;[PC] ligne 155
+1988;Provisions pour divers risques et charges;passif;;;[PC] ligne 156
+21;IMMOBILISATIONS INCORPORELLES;actif;;;[PC] ligne 157
+211;FRAIS DE DEVELOPPEMENT;actif;;;[PC] ligne 158
+212;BREVETS, LICENCES, CONCESSIONS ET DROITS SIMILAIRES;actif;;;[PC] ligne 159
+2121;Brevets;actif;;;[PC] ligne 160
+2122;Licences;actif;;;[PC] ligne 161
+2123;Concessions de service public;actif;;;[PC] ligne 162
+2128;Autres concessions et droits similaires 213;actif;;;[PC] ligne 163
+213;LOGICIELS ET SITES INTERNET;actif;;;[PC] ligne 164
+2131;Logiciels;actif;;;[PC] ligne 165
+2132;Sites internet;actif;;;[PC] ligne 166
+215;MARQUES;actif;;;[PC] ligne 167
+216;FONDS COMMERCIAL;actif;;;[PC] ligne 168
+217;DROIT AU BAIL;actif;;;[PC] ligne 169
+218;INVESTISSEMENTS DE CREATION;actif;;;[PC] ligne 170
+219;AUTRES DROITS ET VALEURS INCORPORELS;actif;;;[PC] ligne 171
+2181;Frais de prospection et d’évaluation de ressources minérales;actif;;;[PC] ligne 172
+2182;Coûts d’obtention du contrat;actif;;;[PC] ligne 173
+2183;Fichiers clients, notices, titres de journaux et magazines;actif;;;[PC] ligne 174
+2184;Coûts des franchises;actif;;;[PC] ligne 175
+2188;Divers droits et valeurs incorporels;actif;;;[PC] ligne 176
+2191;Frais de développement;actif;;;[PC] ligne 178
+2193;Logiciels et sites internet;actif;;;[PC] ligne 179
+2198;Autres droits et valeurs incorporels;actif;;;[PC] ligne 180
+22;TERRAINS;actif;;;[PC] ligne 181
+221;TERRAINS AGRICOLES ET FORESTIERS;actif;;;[PC] ligne 182
+2211;Terrains d'exploitation agricole;actif;;;[PC] ligne 183
+2212;Terrains d'exploitation forestière;actif;;;[PC] ligne 184
+2218;Autres terrains;actif;;;[PC] ligne 185
+222;TERRAINS NUS;actif;;;[PC] ligne 186
+2221;Terrains à bâtir;actif;;;[PC] ligne 187
+2228;Autres terrains nus;actif;;;[PC] ligne 188
+223;TERRAINS BATIS;actif;;;[PC] ligne 189
+2231;pour bâtiments industriels et agricoles;actif;;;[PC] ligne 190
+2232;pour bâtiments administratifs et commerciaux;actif;;;[PC] ligne 191
+2234;pour bâtiments affectés aux autres opérations professionnelles;actif;;;[PC] ligne 192
+2235;pour bâtiments affectés aux autres opérations non professionnelles;actif;;;[PC] ligne 193
+2238;Autres terrains bâtis;actif;;;[PC] ligne 194
+224;TRAVAUX DE MISE EN VALEUR DES TERRAINS;actif;;;[PC] ligne 195
+2241;Plantation d'arbres et d'arbustes;actif;;;[PC] ligne 196
+2245;Améliorations du fonds;actif;;;[PC] ligne 197
+2248;Autres travaux;actif;;;[PC] ligne 198
+225;TERRAINS DE CARRIERES – TREFONDS;actif;;;[PC] ligne 199
+2251;Carrières;actif;;;[PC] ligne 200
+226;TERRAINS AMENAGES;actif;;;[PC] ligne 201
+2261;Parkings;actif;;;[PC] ligne 202
+227;TERRAINS MIS EN CONCESSION;actif;;;[PC] ligne 203
+228;AUTRES TERRAINS;actif;;;[PC] ligne 204
+2281;Terrains - immeubles de placement;actif;;;[PC] ligne 205
+2285;Terrains des logements affectés au personnel;actif;;;[PC] ligne 206
+2286;Terrains de location - acquisition;actif;;;[PC] ligne 207
+2288;Divers terrains;actif;;;[PC] ligne 208
+229;AMENAGEMENTS DE TERRAINS EN COURS;actif;;;[PC] ligne 209
+2291;Terrains agricoles et forestiers;actif;;;[PC] ligne 210
+2292;Terrains nus;actif;;;[PC] ligne 211
+2295;Terrains de carrières - tréfonds;actif;;;[PC] ligne 212
+2298;Autres terrains;actif;;;[PC] ligne 213
+23;BATIMENTS, INSTALLATIONS TECHNIQUES ET AGENCEMENTS;actif;;;[PC] ligne 214
+231;BATIMENTS INDUSTRIELS, AGRICOLES, ADMINISTRATIFS ET COMMERCIAUX SUR SOL PROPRE;actif;;;[PC] ligne 215
+2311;Bâtiments industriels;actif;;;[PC] ligne 216
+2312;Bâtiments agricoles;actif;;;[PC] ligne 217
+2313;Bâtiments administratifs et commerciaux;actif;;;[PC] ligne 218
+2314;Bâtiments affectés au logement du personnel;actif;;;[PC] ligne 219
+2315;Bâtiments - immeubles de placement;actif;;;[PC] ligne 220
+2316;Bâtiments de location - acquisition;actif;;;[PC] ligne 221
+232;BATIMENTS INDUSTRIELS, AGRICOLES, ADMINISTRATIFS ET COMMERCIAUX SUR SOL D’AUTRUI;actif;;;[PC] ligne 222
+2321;Bâtiments industriels;actif;;;[PC] ligne 223
+2322;Bâtiments agricoles;actif;;;[PC] ligne 224
+2323;Bâtiments administratifs et commerciaux;actif;;;[PC] ligne 225
+2324;Bâtiments affectés au logement du personnel;actif;;;[PC] ligne 226
+2325;Bâtiments - immeubles de placement;actif;;;[PC] ligne 227
+2326;Bâtiments de location - acquisition;actif;;;[PC] ligne 228
+233;OUVRAGES D’INFRASTRUCTURE;actif;;;[PC] ligne 229
+2331;Voies de terre;actif;;;[PC] ligne 230
+2332;Voies de fer;actif;;;[PC] ligne 231
+2333;Voies d’eau;actif;;;[PC] ligne 232
+2334;Barrages, Digues;actif;;;[PC] ligne 233
+2335;Pistes d’aérodrome;actif;;;[PC] ligne 234
+2338;Autres ouvrages d’infrastructures;actif;;;[PC] ligne 235
+234;AMENAGEMENTS, AGENCEMENTS ET INSTALLATIONS TECHNIQUES;actif;;;[PC] ligne 236
+2341;Installations complexes spécialisées sur sol propre;actif;;;[PC] ligne 237
+2342;Installations complexes spécialisées sur sol d’autrui;actif;;;[PC] ligne 238
+2343;Installations à caractère spécifique sur sol propre;actif;;;[PC] ligne 239
+2344;Installations à caractère spécifique sur sol d’autrui;actif;;;[PC] ligne 240
+2345;Aménagements et agencements des bâtiments;actif;;;[PC] ligne 241
+235;AMENAGEMENTS DE BUREAUX;actif;;;[PC] ligne 242
+2351;Installations générales;actif;;;[PC] ligne 243
+2358;Autres aménagements de bureaux;actif;;;[PC] ligne 244
+237;BATIMENTS INDUSTRIELS, AGRICOLES ET COMMERCIAUX MIS EN CONCESSION COMMERCIAUX MIS EN CONCESSION;actif;;;[PC] ligne 245
+238;AUTRES INSTALLATIONS ET AGENCEMENTS;actif;;;[PC] ligne 246
+239;BÂTIMENTS ET INSTALLATIONS EN COURS;actif;;;[PC] ligne 247
+2391;Bâtiments en cours;actif;;;[PC] ligne 248
+2392;Installations en cours;actif;;;[PC] ligne 249
+2393;Ouvrages d’infrastructure en cours;actif;;;[PC] ligne 250
+2394;Aménagements, agencements et installations techniques en cours;actif;;;[PC] ligne 251
+2395;Aménagements de bureaux en cours;actif;;;[PC] ligne 252
+2398;Autres installations et agencements en cours;actif;;;[PC] ligne 253
+24;MATERIEL, MOBILIER ET ACTIFS BIOLOGIQUES;actif;;;[PC] ligne 254
+241;MATERIEL ET OUTILLAGE INDUSTRIEL ET COMMERCIAL;actif;;;[PC] ligne 255
+2411;Matériel industriel;actif;;;[PC] ligne 256
+2412;Outillage industriel;actif;;;[PC] ligne 257
+2413;Matériel commercial;actif;;;[PC] ligne 258
+2414;Outillage commercial;actif;;;[PC] ligne 259
+2416;Matériel et outillage industriel et commercial de location – acquisition;actif;;;[PC] ligne 260
+242;MATERIEL ET OUTILLAGE AGRICOLE;actif;;;[PC] ligne 261
+2421;Matériel agricole;actif;;;[PC] ligne 262
+2422;Outillage agricole;actif;;;[PC] ligne 263
+2426;Matériel et outillage agricole de location – acquisition;actif;;;[PC] ligne 264
+243;MATERIEL D’EMBALLAGE RECUPERABLE ET;actif;;;[PC] ligne 265
+244;MATERIEL ET MOBILIER;actif;;;[PC] ligne 267
+2441;Matériel de bureau;actif;;;[PC] ligne 268
+2442;Matériel informatique;actif;;;[PC] ligne 269
+2443;Matériel bureautique;actif;;;[PC] ligne 270
+2444;Mobilier de bureau;actif;;;[PC] ligne 271
+2445;Matériel et mobilier - immeubles de placement;actif;;;[PC] ligne 272
+2446;Matériel et mobilier de location - acquisition;actif;;;[PC] ligne 273
+2447;Matériel et mobilier des logements du personnel;actif;;;[PC] ligne 274
+245;MATERIEL DE TRANSPORT;actif;;;[PC] ligne 275
+2451;Matériel automobile;actif;;;[PC] ligne 276
+2452;Matériel ferroviaire;actif;;;[PC] ligne 277
+2453;Matériel fluvial, lagunaire;actif;;;[PC] ligne 278
+2454;Matériel naval;actif;;;[PC] ligne 279
+2455;Matériel aérien;actif;;;[PC] ligne 280
+2456;Matériel de transport de location - acquisition;actif;;;[PC] ligne 281
+2457;Matériel hippomobile;actif;;;[PC] ligne 282
+2458;Autres matériels de transport;actif;;;[PC] ligne 283
+246;ACTIFS BIOLOGIQUES;actif;;;[PC] ligne 284
+2461;Cheptel, animaux de trait;actif;;;[PC] ligne 285
+2462;Cheptel, animaux reproducteurs;actif;;;[PC] ligne 286
+2463;Animaux de garde;actif;;;[PC] ligne 287
+2465;Plantations agricoles;actif;;;[PC] ligne 288
+2468;Autres actifs biologiques;actif;;;[PC] ligne 289
+247;AGENCEMENTS, AMENAGEMENTS DU MATERIEL ET DES ACTIFS BIOLOGIQUES;actif;;;[PC] ligne 290
+2471;Agencements et aménagements du matériel;actif;;;[PC] ligne 291
+2472;Agencements et aménagements des actifs biologiques;actif;;;[PC] ligne 292
+2478;Autres agencements, aménagements du matériel et actifs biologiques;actif;;;[PC] ligne 293
+248;AUTRES MATERIELS ET MOBILIERS;actif;;;[PC] ligne 294
+2481;Collections et œuvres d’art;actif;;;[PC] ligne 295
+2488;Divers matériels et mobiliers;actif;;;[PC] ligne 296
+249;MATERIELS ET ACTIFS BIOLOGIQUES EN COURS;actif;;;[PC] ligne 297
+2491;Matériel et outillage industriel et commercial;actif;;;[PC] ligne 298
+2492;Matériel et outillage agricole;actif;;;[PC] ligne 299
+2493;Matériel d’emballage récupérable et identifiable;actif;;;[PC] ligne 300
+2494;Matériel et mobilier de bureau;actif;;;[PC] ligne 301
+2495;Matériel de transport;actif;;;[PC] ligne 302
+2496;Actifs biologiques;actif;;;[PC] ligne 303
+2497;Agencements et aménagements du matériel et des actifs biologiques;actif;;;[PC] ligne 304
+2498;Autres matériels et actifs biologiques;actif;;;[PC] ligne 305
+25;AVANCES ET ACOMPTES VERSES SUR IMMOBILISATIONS;actif;;;[PC] ligne 306
+251;AVANCES ET ACOMPTES VERSES SUR IMMOBILISATIONS INCORPORELLES;actif;;;[PC] ligne 307
+252;AVANCES ET ACOMPTES VERSES SUR IMMOBILISATIONS CORPORELLES;actif;;;[PC] ligne 308
+26;TITRES DE PARTICIPATION;actif;;;[PC] ligne 309
+261;TITRES DE PARTICIPATION DANS DES ENTITES SOUS CONTROLE EXCLUSIF;actif;;;[PC] ligne 310
+262;TITRES DE PARTICIPATION DANS DES ENTITES SOUS CONTROLE CONJOINT;actif;;;[PC] ligne 311
+263;TITRES DE PARTICIPATION DANS DES ENTITESCONFERANT UNE INFLUENCE NOTABLE;actif;;;[PC] ligne 312
+265;PARTICIPATIONS DANS DES ORGANISMES PROFESSIONNELS;actif;;;[PC] ligne 313
+266;PARTS DANS DES GROUPEMENTS D’INTERET ECONOMIQUE (G.I.E.);actif;;;[PC] ligne 314
+268;AUTRES TITRES DE PARTICIPATION;actif;;;[PC] ligne 315
+27;AUTRES IMMOBLISATIONS FINANCIERES;actif;;;[PC] ligne 316
+271;PRETS ET CREANCES;actif;;;[PC] ligne 317
+2711;Prêts participatifs;actif;;;[PC] ligne 318
+2712;Prêts aux associés;actif;;;[PC] ligne 319
+2713;Billets de fonds;actif;;;[PC] ligne 320
+2714;Créances de location-financement;actif;;;[PC] ligne 321
+2715;Titres prêtés;actif;;;[PC] ligne 322
+2718;Autres prêts et créances;actif;;;[PC] ligne 323
+272;PRETS AU PERSONNEL;actif;;;[PC] ligne 324
+2721;Prêts immobiliers;actif;;;[PC] ligne 325
+2722;Prêts mobiliers et d’installation;actif;;;[PC] ligne 326
+2728;Autres prêts au personnel;actif;;;[PC] ligne 327
+273;CREANCES SUR L’ETAT;actif;;;[PC] ligne 328
+2731;Retenues de garantie;actif;;;[PC] ligne 329
+2733;Fonds réglementé;actif;;;[PC] ligne 330
+2734;Créances sur le concédant;actif;;;[PC] ligne 331
+2738;Autres créances sur l’Etat;actif;;;[PC] ligne 332
+274;TITRES IMMOBILISES;actif;;;[PC] ligne 333
+2741;Titres immobilisés de l’activité de portefeuille (T.I.A.P);actif;;;[PC] ligne 334
+2742;Titres participatifs;actif;;;[PC] ligne 335
+2743;Certificats d’investissement;actif;;;[PC] ligne 336
+2744;Parts de fonds commun de placement (F.C.P.);actif;;;[PC] ligne 337
+2745;Obligations;actif;;;[PC] ligne 338
+2746;Actions ou parts propres;actif;;;[PC] ligne 339
+2748;Autres titres immobilisés;actif;;;[PC] ligne 340
+275;DEPOTS ET CAUTIONNEMENTS VERSES;actif;;;[PC] ligne 341
+2751;Dépôts pour loyers d’avance;actif;;;[PC] ligne 342
+2752;Dépôts pour l’électricité;actif;;;[PC] ligne 343
+2753;Dépôts pour l’eau;actif;;;[PC] ligne 344
+2754;Dépôts pour le gaz;actif;;;[PC] ligne 345
+2755;Dépôts pour le téléphone, le télex, la télécopie;actif;;;[PC] ligne 346
+2756;Cautionnements sur marchés publics;actif;;;[PC] ligne 347
+2757;Cautionnements sur autres opérations;actif;;;[PC] ligne 348
+2758;Autres dépôts et cautionnements;actif;;;[PC] ligne 349
+276;INTERETS COURUS;actif;;;[PC] ligne 350
+2761;Prêts et créances non commerciales;actif;;;[PC] ligne 351
+2762;Prêts au personnel;actif;;;[PC] ligne 352
+2763;Créances sur l'Etat;actif;;;[PC] ligne 353
+2764;Titres immobilisés;actif;;;[PC] ligne 354
+2765;Dépôts et cautionnements versés;actif;;;[PC] ligne 355
+2766;Créances de location-financement;actif;;;[PC] ligne 356
+2767;Créances rattachées à des participations;actif;;;[PC] ligne 357
+2768;Immobilisations financières diverses;actif;;;[PC] ligne 358
+277;CREANCES RATTACHEES A DES PARTICIPATIONS ET AVANCES A DES G.I.E.;actif;;;[PC] ligne 359
+2771;Créances rattachées à des participations (groupe);actif;;;[PC] ligne 360
+2772;Créances rattachées à des participations (hors groupe);actif;;;[PC] ligne 361
+2773;Créances rattachées à des sociétés en participation;actif;;;[PC] ligne 362
+2774;Avances à des Groupements d'intérêt économique (G.I.E.);actif;;;[PC] ligne 363
+278;IMMOBILISATIONS FINANCIERES DIVERSES;actif;;;[PC] ligne 364
+2781;Créances diverses groupe;actif;;;[PC] ligne 365
+2782;Créances diverses hors groupe;actif;;;[PC] ligne 366
+2784;Banques dépôts à terme;actif;;;[PC] ligne 367
+2785;Or et métaux précieux (1);actif;;;[PC] ligne 368
+2788;Autres immobilisations financières;actif;;;[PC] ligne 369
+28;AMORTISSEMENTS;actif;;;[PC] ligne 370
+281;AMORTISSEMENTS DES IMMOBILISATIONS INCORPORELLES;actif;;;[PC] ligne 371
+2811;Amortissements des frais de développement;actif;;;[PC] ligne 372
+2812;Amortissements des brevets, licences, concessions et droits similaires;actif;;;[PC] ligne 373
+2813;Amortissements des logiciels et sites internet;actif;;;[PC] ligne 374
+2814;Amortissements des marques;actif;;;[PC] ligne 375
+2815;Amortissements du fonds commercial;actif;;;[PC] ligne 376
+2816;Amortissements du droit au bail;actif;;;[PC] ligne 377
+2817;Amortissements des investissements de création;actif;;;[PC] ligne 378
+2818;Amortissements des autres droits et valeurs incorporels;actif;;;[PC] ligne 379
+282;AMORTISSEMENTS DES TERRAINS;actif;;;[PC] ligne 380
+2824;Amortissements des travaux de mise en valeur des terrains;actif;;;[PC] ligne 381
+283;AMORTISSEMENTS DES BATIMENTS, INSTALLATIONS TECHNIQUES ET AGENCEMENTS;actif;;;[PC] ligne 382
+2831;Amortissements des bâtiments industriels, agricoles, administratifs et commerciaux;actif;;;[PC] ligne 383
+2832;Amortissements des bâtiments industriels, agricoles, administratifs et commerciaux;actif;;;[PC] ligne 384
+2833;Amortissements des ouvrages d'infrastructure;actif;;;[PC] ligne 385
+2834;Amortissements des aménagements, agencements et installations techniques;actif;;;[PC] ligne 386
+2835;Amortissements des aménagements de bureaux;actif;;;[PC] ligne 387
+2837;Amortissements des bâtiments industriels, agricoles et commerciaux mis en concessi;actif;;;[PC] ligne 388
+2838;Amortissements des autres installations et agencements;actif;;;[PC] ligne 389
+284;AMORTISSEMENTS DU MATERIEL;actif;;;[PC] ligne 390
+2841;Amortissements du matériel et outillage industriel et commercial;actif;;;[PC] ligne 391
+2842;Amortissements du matériel et outillage agricole;actif;;;[PC] ligne 392
+2843;Amortissements du matériel d'emballage récupérable et identifiable;actif;;;[PC] ligne 393
+2844;Amortissements du matériel et mobilier;actif;;;[PC] ligne 394
+2845;Amortissements du matériel de transport;actif;;;[PC] ligne 395
+2846;Amortissements des actifs biologiques;actif;;;[PC] ligne 396
+2847;Amortissements des agencements, aménagements du matériel et des actifs biologiques;actif;;;[PC] ligne 397
+2848;Amortissements des autres matériels;actif;;;[PC] ligne 398
+29;DEPRECIATIONS DES IMMOBILISATIONS;actif;;;[PC] ligne 399
+291;DEPRECIATIONS DES IMMOBILISATIONS INCORPORELLES;actif;;;[PC] ligne 400
+2911;Dépréciations des frais de développement;actif;;;[PC] ligne 401
+2912;Dépréciations des brevets, licences, concessions et droits similaires;actif;;;[PC] ligne 402
+2913;Dépréciations des logiciels et sites internet;actif;;;[PC] ligne 403
+2914;Dépréciations des marques;actif;;;[PC] ligne 404
+2915;Dépréciations du fonds commercial;actif;;;[PC] ligne 405
+2916;Dépréciations du droit au bail;actif;;;[PC] ligne 406
+2917;Dépréciations des investissements de création;actif;;;[PC] ligne 407
+2918;Dépréciations des autres droits et valeurs incorporels;actif;;;[PC] ligne 408
+2919;Dépréciations des immobilisations incorporelles en cours;actif;;;[PC] ligne 409
+292;DEPRECIATIONS DES TERRAINS;actif;;;[PC] ligne 410
+2921;Dépréciations des terrains agricoles et forestiers;actif;;;[PC] ligne 411
+2922;Dépréciations des terrains nus;actif;;;[PC] ligne 412
+2923;Dépréciations des terrains bâtis;actif;;;[PC] ligne 413
+2924;Dépréciations des travaux de mise en valeur des terrains;actif;;;[PC] ligne 414
+2925;Dépréciations des terrains de carrières-tréfonds;actif;;;[PC] ligne 415
+2926;Dépréciations des terrains aménagés;actif;;;[PC] ligne 416
+2927;Dépréciations des terrains mis en concession;actif;;;[PC] ligne 417
+2928;Dépréciations des autres terrains;actif;;;[PC] ligne 418
+2929;Dépréciations des aménagements de terrains en cours;actif;;;[PC] ligne 419
+293;DEPRECIATIONS DES BATIMENTS, INSTALLATIONS TECHNIQUES ET AGENCEMENTS;actif;;;[PC] ligne 420
+2931;Dépréciations des bâtiments industriels, agricoles, administratifs et commerciaux;actif;;;[PC] ligne 421
+2932;Dépréciations des bâtiments industriels, agricoles, administratifs et commerciaux;actif;;;[PC] ligne 422
+2933;Dépréciations des ouvrages d'infrastructures;actif;;;[PC] ligne 423
+2934;Dépréciations des aménagements, agencements et installations techniques;actif;;;[PC] ligne 424
+2935;Dépréciations des aménagements de bureaux;actif;;;[PC] ligne 425
+2937;Dépréciations des bâtiments industriels, agricoles et commerciaux mis en concessio;actif;;;[PC] ligne 426
+2938;Dépréciations des autres installations et agencements;actif;;;[PC] ligne 427
+2939;Dépréciations des bâtiments et installations en cours;actif;;;[PC] ligne 428
+294;DEPRECIATIONS DE MATERIEL, DU MOBILIER ET DE L’ACTIF BIOLOGIQUE;actif;;;[PC] ligne 429
+2941;Dépréciations du matériel et outillage industriel et commercial;actif;;;[PC] ligne 430
+2942;Dépréciations du matériel et outillage agricole;actif;;;[PC] ligne 431
+2943;Dépréciations du matériel d'emballage récupérable et identifiable;actif;;;[PC] ligne 432
+2944;Dépréciations du matériel et mobilier;actif;;;[PC] ligne 433
+2945;Dépréciations du matériel de transport;actif;;;[PC] ligne 434
+2946;Dépréciations des actifs biologiques;actif;;;[PC] ligne 435
+2947;Dépréciations des agencements, aménagements du matériel et des actifs biologiques;actif;;;[PC] ligne 436
+2948;Dépréciations des autres matériels;actif;;;[PC] ligne 437
+2949;Dépréciations de matériel en cours;actif;;;[PC] ligne 438
+295;DEPRECIATIONS DES AVANCES ET ACOMPTES VERSES SUR IMMOBILISATIONS;actif;;;[PC] ligne 439
+2951;Dépréciations des avances et acomptes versés sur immobilisations incorporelles;actif;;;[PC] ligne 440
+2952;Dépréciations des avances et acomptes versés sur immobilisations corporelles;actif;;;[PC] ligne 441
+296;DEPRECIATIONS DES TITRES DE PARTICIPATION;actif;;;[PC] ligne 442
+2961;Dépréciations des titres de participation dans des entités sous contrôle exclusif;actif;;;[PC] ligne 443
+2962;Dépréciations des titres de participation dans des entités sous contrôle conjoint;actif;;;[PC] ligne 444
+2963;Dépréciations des titres de participation dans des entités conférant une influence;actif;;;[PC] ligne 445
+2965;Dépréciations des participations dans des organismes professionnels;actif;;;[PC] ligne 446
+2966;Dépréciations des parts dans des GIE;actif;;;[PC] ligne 447
+2968;Dépréciations des autres titres de participation;actif;;;[PC] ligne 448
+297;DEPRECIATIONS DES AUTRES IMMOBILISATIONS FINANCIERES;actif;;;[PC] ligne 449
+2971;Dépréciations des prêts et créances;actif;;;[PC] ligne 450
+2972;Dépréciations des prêts au personnel;actif;;;[PC] ligne 451
+2973;Dépréciations des créances sur l'Etat;actif;;;[PC] ligne 452
+2974;Dépréciations des titres immobilisés;actif;;;[PC] ligne 453
+2975;Dépréciations des dépôts et cautionnements versés;actif;;;[PC] ligne 454
+2977;Dépréciations des créances rattachées à des participations et avances à des GIE;actif;;;[PC] ligne 455
+2978;Dépréciations des créances financières diverses;actif;;;[PC] ligne 456
+31;MARCHANDISES;actif;;;[PC] ligne 457
+311;MARCHANDISES A;actif;;;[PC] ligne 458
+3111;Marchandises A1;actif;;;[PC] ligne 459
+3112;Marchandises A2;actif;;;[PC] ligne 460
+312;MARCHANDISES B;actif;;;[PC] ligne 461
+3121;Marchandises B1;actif;;;[PC] ligne 462
+3122;Marchandises B2 313 ACTIFS BIOLOGIQUES;actif;;;[PC] ligne 463
+3131;Animaux;actif;;;[PC] ligne 464
+3132;Végétaux;actif;;;[PC] ligne 465
+318;MARCHANDISES HORS ACTIVITES ORDINAIRES (H.A.O.);actif;;;[PC] ligne 466
+32;MATIERES PREMIERES ET FOURNITURES LIEES;actif;;;[PC] ligne 467
+321;MATIERES A;actif;;;[PC] ligne 468
+322;MATIERES B;actif;;;[PC] ligne 469
+323;FOURNITURES (A,B);actif;;;[PC] ligne 470
+33;AUTRES APPROVISIONNEMENTS;actif;;;[PC] ligne 471
+331;MATIERES CONSOMMABLES;actif;;;[PC] ligne 472
+332;FOURNITURES D'ATELIER ET D'USINE;actif;;;[PC] ligne 473
+333;FOURNITURES DE MAGASIN;actif;;;[PC] ligne 474
+334;FOURNITURES DE BUREAU;actif;;;[PC] ligne 475
+335;EMBALLAGES;actif;;;[PC] ligne 476
+3351;Emballages perdus;actif;;;[PC] ligne 477
+3352;Emballages récupérables non identifiables;actif;;;[PC] ligne 478
+3353;Emballages à usage mixte;actif;;;[PC] ligne 479
+3358;Autres emballages;actif;;;[PC] ligne 480
+338;AUTRES MATIERES;actif;;;[PC] ligne 481
+34;PRODUITS EN COURS;actif;;;[PC] ligne 482
+341;PRODUITS EN COURS;actif;;;[PC] ligne 483
+3411;Produits en cours P1;actif;;;[PC] ligne 484
+3412;Produits en cours P2;actif;;;[PC] ligne 485
+342;TRAVAUX EN COURS;actif;;;[PC] ligne 486
+3421;Travaux en cours T1;actif;;;[PC] ligne 487
+3422;Travaux en cours T2;actif;;;[PC] ligne 488
+343;PRODUITS INTERMEDIAIRES EN COURS;actif;;;[PC] ligne 489
+3431;Produits intermédiaires A;actif;;;[PC] ligne 490
+3432;Produits intermédiaires B;actif;;;[PC] ligne 491
+344;PRODUITS RESIDUELS EN COURS;actif;;;[PC] ligne 492
+3441;Produits résiduels A;actif;;;[PC] ligne 493
+3442;Produits résiduels B 345;actif;;;[PC] ligne 494
+3451;Animaux;actif;;;[PC] ligne 495
+3452;Végétaux;actif;;;[PC] ligne 496
+35;SERVICES EN COURS;actif;;;[PC] ligne 497
+351;ETUDES EN COURS;actif;;;[PC] ligne 498
+3511;Etudes en cours E1;actif;;;[PC] ligne 499
+3512;Etudes en cours E2;actif;;;[PC] ligne 500
+352;PRESTATIONS DE SERVICES EN COURS;actif;;;[PC] ligne 501
+3521;Prestations de services S1;actif;;;[PC] ligne 502
+3522;Prestations de services S2;actif;;;[PC] ligne 503
+36;PRODUITS FINIS;actif;;;[PC] ligne 504
+361;PRODUITS FINIS A;actif;;;[PC] ligne 505
+362;PRODUITS FINIS B;actif;;;[PC] ligne 506
+363;ACTIFS BIOLOGIQUES;actif;;;[PC] ligne 507
+3631;Animaux;actif;;;[PC] ligne 508
+3632;Végétaux;actif;;;[PC] ligne 509
+3638;Autres stocks (activités annexes);actif;;;[PC] ligne 510
+37;PRODUITS INTERMEDIAIRES ET RESIDUELS;actif;;;[PC] ligne 511
+371;PRODUITS INTERMEDIAIRES;actif;;;[PC] ligne 512
+3711;Produits intermédiaires A;actif;;;[PC] ligne 513
+3712;Produits intermédiaires B;actif;;;[PC] ligne 514
+372;PRODUITS RESIDUELS;actif;;;[PC] ligne 515
+3721;Déchets;actif;;;[PC] ligne 516
+3722;Rebuts;actif;;;[PC] ligne 517
+3723;Matières de récupération;actif;;;[PC] ligne 518
+373;ACTIFS BIOLOGIQUES;actif;;;[PC] ligne 519
+3731;Animaux;actif;;;[PC] ligne 520
+3732;Végétaux;actif;;;[PC] ligne 521
+3738;Autres stocks (activités annexes);actif;;;[PC] ligne 522
+38;STOCKS EN COURS DE ROUTE, EN CONSIGNATION OU EN DEPOT;actif;;;[PC] ligne 523
+381;MARCHANDISES EN COURS DE ROUTE;actif;;;[PC] ligne 524
+382;MATIERES PREMIERES ET FOURNITURES LIEES EN COURS DE ROUTE;actif;;;[PC] ligne 525
+383;AUTRES APPROVISIONNEMENTS EN COURS DE ROUTE;actif;;;[PC] ligne 526
+386;PRODUITS FINIS EN COURS DE ROUTE;actif;;;[PC] ligne 527
+387;STOCK EN CONSIGNATION OU EN DEPOT;actif;;;[PC] ligne 528
+3871;Stock en consignation;actif;;;[PC] ligne 529
+3872;Stock en dépôt;actif;;;[PC] ligne 530
+388;STOCK PROVENANT D'IMMOBILISATIONS MISES HORS SERVICE OU AU REBUT;actif;;;[PC] ligne 531
+39;DEPRECIATIONS DES STOCKS ET ENCOURS DE PRODUCTION;actif;;;[PC] ligne 532
+391;DEPRECIATIONS DES STOCKS DE MARCHANDISES;actif;;;[PC] ligne 533
+392;DEPRECIATIONS DES STOCKS DE MATIERES PREMIERES ET FOURNITURES LIEES;actif;;;[PC] ligne 534
+393;DEPRECIATIONS DES STOCKS D'AUTRES APPROVISIONNEMENTS;actif;;;[PC] ligne 535
+394;DEPRECIATIONS DES PRODUCTIONS EN COURS;actif;;;[PC] ligne 536
+395;DEPRECIATIONS DES SERVICES EN COURS;actif;;;[PC] ligne 537
+396;DEPRECIATIONS DES STOCKS DE PRODUITS FINIS;actif;;;[PC] ligne 538
+397;DEPRECIATIONS DES STOCKS DE PRODUITS INTERMEDIAIRES ET RESIDUELS;actif;;;[PC] ligne 539
+398;DEPRECIATIONS DES STOCKS EN COURS DE ROUTE, EN CONSIGNATION OU EN DEPOT;actif;;;[PC] ligne 540
+40;FOURNISSEURS ET COMPTES RATTACHES;mixte;;;[PC] ligne 541
+401;FOURNISSEURS, DETTES EN COMPTE;mixte;;;[PC] ligne 542
+4011;Fournisseurs;mixte;;;[PC] ligne 543
+4012;Fournisseurs Groupe;mixte;;;[PC] ligne 544
+4013;Fournisseurs sous-traitants;mixte;;;[PC] ligne 545
+4016;Fournisseurs, réserve de propriété;mixte;;;[PC] ligne 546
+4017;Fournisseurs, retenues de garantie;mixte;;;[PC] ligne 547
+402;FOURNISSEURS, EFFETS A PAYER;mixte;;;[PC] ligne 548
+4021;Fournisseurs, Effets à payer;mixte;;;[PC] ligne 549
+4022;Fournisseurs - Groupe, Effets à payer;mixte;;;[PC] ligne 550
+4023;Fournisseurs sous-traitants, Effets à payer;mixte;;;[PC] ligne 551
+404;FOURNISSEURS, ACQUISITIONS COURANTES D’IMMOBILISATIONS;mixte;;;[PC] ligne 552
+4041;Fournisseurs dettes en compte, immobilisations incorporelles;mixte;;;[PC] ligne 553
+4042;Fournisseurs dettes en compte, immobilisations corporelles;mixte;;;[PC] ligne 554
+4046;Fournisseurs effets à payer, immobilisations incorporelles;mixte;;;[PC] ligne 555
+4047;Fournisseurs effets à payer, immobilisations corporelles;mixte;;;[PC] ligne 556
+408;FOURNISSEURS, FACTURES NON PARVENUES;mixte;;;[PC] ligne 557
+4081;Fournisseurs;mixte;;;[PC] ligne 558
+4082;Fournisseurs - Groupe;mixte;;;[PC] ligne 559
+4083;Fournisseurs sous-traitants;mixte;;;[PC] ligne 560
+4086;Fournisseurs, intérêts courus;mixte;;;[PC] ligne 561
+409;FOURNISSEURS DEBITEURS;mixte;;;[PC] ligne 562
+4091;Fournisseurs avances et acomptes versés;mixte;;;[PC] ligne 563
+4092;Fournisseurs - Groupe avances et acomptes versés;mixte;;;[PC] ligne 564
+4093;Fournisseurs sous-traitants avances et acomptes versés;mixte;;;[PC] ligne 565
+4094;Fournisseurs créances pour emballages et matériels à rendre;mixte;;;[PC] ligne 566
+4098;Fournisseurs, rabais, remises, ristournes et autres avoirs à obtenir;mixte;;;[PC] ligne 567
+41;CLIENTS ET COMPTES RATTACHES;mixte;;;[PC] ligne 568
+411;CLIENTS;mixte;;;[PC] ligne 569
+4111;Clients;mixte;;;[PC] ligne 570
+4112;Clients – Groupe;mixte;;;[PC] ligne 571
+4114;Clients, Etat et Collectivités publiques;mixte;;;[PC] ligne 572
+4115;Clients, organismes internationaux;mixte;;;[PC] ligne 573
+4116;Clients, réserve de propriété;mixte;;;[PC] ligne 574
+4117;Clients, retenues de garantie;mixte;;;[PC] ligne 575
+4118;Clients, dégrèvement de Taxes sur la Valeur Ajoutée (T.V.A.);mixte;;;[PC] ligne 576
+412;CLIENTS, EFFETS A RECEVOIR EN PORTEFEUILLE;mixte;;;[PC] ligne 577
+4121;Clients, Effets à recevoir;mixte;;;[PC] ligne 578
+4122;Clients - Groupe, Effets à recevoir;mixte;;;[PC] ligne 579
+4124;Etat et Collectivités publiques, Effets à recevoir;mixte;;;[PC] ligne 580
+4125;Organismes Internationaux, Effets à recevoir;mixte;;;[PC] ligne 581
+413;CLIENTS, CHEQUES, EFFETS ET AUTRES VALEURS IMPAYES;mixte;;;[PC] ligne 582
+4131;Clients, chèques impayés;mixte;;;[PC] ligne 583
+4132;Clients, Effets impayés;mixte;;;[PC] ligne 584
+4133;Clients, cartes de crédit impayées;mixte;;;[PC] ligne 585
+4138;Clients, autres valeurs impayées;mixte;;;[PC] ligne 586
+414;CREANCES SUR CESSIONS COURANTES D'IMMOBILISATIONS;mixte;;;[PC] ligne 587
+4141;Créances en compte, immobilisations incorporelles;mixte;;;[PC] ligne 588
+4142;Créances en compte, immobilisations corporelles;mixte;;;[PC] ligne 589
+4146;Effets à recevoir, immobilisations incorporelles;mixte;;;[PC] ligne 590
+4147;Effets à recevoir, immobilisations corporelles;mixte;;;[PC] ligne 591
+415;CLIENTS, EFFETS ESCOMPTES NON ECHUS;mixte;;;[PC] ligne 592
+416;CREANCES CLIENTS LITIGIEUSES OU DOUTEUSES;mixte;;;[PC] ligne 593
+4161;Créances litigieuses;mixte;;;[PC] ligne 594
+4162;Créances douteuses;mixte;;;[PC] ligne 595
+418;CLIENTS, PRODUITS A RECEVOIR;mixte;;;[PC] ligne 596
+4181;Clients, factures à établir;mixte;;;[PC] ligne 597
+4186;Clients, intérêts courus;mixte;;;[PC] ligne 598
+419;CLIENTS CREDITEURS;mixte;;;[PC] ligne 599
+4191;Clients, avances et acomptes reçus;mixte;;;[PC] ligne 600
+4192;Clients - Groupe, avances et acomptes reçus;mixte;;;[PC] ligne 601
+4194;Clients, dettes pour emballages et matériels consignés;mixte;;;[PC] ligne 602
+4198;Clients, rabais, remises, ristournes et autres avoirs à accorder;mixte;;;[PC] ligne 603
+42;PERSONNEL;mixte;;;[PC] ligne 604
+421;PERSONNEL, AVANCES ET ACOMPTES;mixte;;;[PC] ligne 605
+4211;Personnel, avances;mixte;;;[PC] ligne 606
+4212;Personnel, acomptes;mixte;;;[PC] ligne 607
+4213;Frais avancés et fournitures au personnel;mixte;;;[PC] ligne 608
+422;PERSONNEL, REMUNERATIONS DUES;mixte;;;[PC] ligne 609
+423;PERSONNEL, OPPOSITIONS, SAISIES-ARRETS;mixte;;;[PC] ligne 610
+4231;Personnel, oppositions;mixte;;;[PC] ligne 611
+4232;Personnel, saisies-arrêts;mixte;;;[PC] ligne 612
+4233;Personnel, avis à tiers détenteur;mixte;;;[PC] ligne 613
+424;PERSONNEL, OEUVRES SOCIALES INTERNES;mixte;;;[PC] ligne 614
+4241;Assistance médicale;mixte;;;[PC] ligne 615
+4242;Allocations familiales;mixte;;;[PC] ligne 616
+4245;Organismes sociaux rattachés à l'entité;mixte;;;[PC] ligne 617
+4248;Autres oeuvres sociales internes;mixte;;;[PC] ligne 618
+425;REPRESENTANTS DU PERSONNEL;mixte;;;[PC] ligne 619
+4251;Délégués du personnel;mixte;;;[PC] ligne 620
+4252;Syndicats et Comités d'entreprises, d'Etablissement;mixte;;;[PC] ligne 621
+4258;Autres représentants du personnel;mixte;;;[PC] ligne 622
+426;PERSONNEL, PARTICIPATION AUX BENEFICES ET AU CAPITAL;mixte;;;[PC] ligne 623
+4261;Participation aux bénéfices;mixte;;;[PC] ligne 624
+4264;Participation au capital;mixte;;;[PC] ligne 625
+427;PERSONNEL – DEPOTS;mixte;;;[PC] ligne 626
+428;PERSONNEL, CHARGES A PAYER ET PRODUITS A RECEVOIR;mixte;;;[PC] ligne 627
+4281;Dettes provisionnées pour congés à payer;mixte;;;[PC] ligne 628
+4286;Autres charges à payer;mixte;;;[PC] ligne 629
+4287;Produits à recevoir;mixte;;;[PC] ligne 630
+43;ORGANISMES SOCIAUX;mixte;;;[PC] ligne 631
+431;SECURITE SOCIALE;mixte;;;[PC] ligne 632
+4311;Prestations familiales;mixte;;;[PC] ligne 633
+4312;Accidents de travail;mixte;;;[PC] ligne 634
+4313;Caisse de retraite obligatoire;mixte;;;[PC] ligne 635
+4314;Caisse de retraite facultative;mixte;;;[PC] ligne 636
+4318;Autres cotisations sociales;mixte;;;[PC] ligne 637
+432;CAISSES DE RETRAITE COMPLEMENTAIRE 433;mixte;;;[PC] ligne 638
+433;AUTRES ORGANISMES SOCIAUX;mixte;;;[PC] ligne 639
+4331;Mutuelle;mixte;;;[PC] ligne 640
+4332;Assurances Retraite;mixte;;;[PC] ligne 641
+4333;Assurances et organismes de santé;mixte;;;[PC] ligne 642
+438;ORGANISMES SOCIAUX, CHARGES À PAYER ET PRODUITS À RECEVOIR;mixte;;;[PC] ligne 643
+4381;Charges sociales sur gratifications à payer;mixte;;;[PC] ligne 644
+4382;Charges sociales sur congés à payer;mixte;;;[PC] ligne 645
+4386;Autres charges à payer;mixte;;;[PC] ligne 646
+4387;Produits à recevoir;mixte;;;[PC] ligne 647
+44;ETAT ET COLLECTIVITES PUBLIQUES;mixte;;;[PC] ligne 648
+441;ETAT, IMPOT SUR LES BENEFICES 442 ETAT, AUTRES IMPOTS ET TAXES;mixte;;;[PC] ligne 649
+4421;Impôts et taxes d'Etat;mixte;;;[PC] ligne 650
+4422;Impôts et taxes pour les collectivités publiques;mixte;;;[PC] ligne 651
+4423;Impôts et taxes recouvrables sur des obligataires;mixte;;;[PC] ligne 652
+4424;Impôts et taxes recouvrables sur des associés;mixte;;;[PC] ligne 653
+4426;Droits de douane;mixte;;;[PC] ligne 654
+4428;Autres impôts et taxes;mixte;;;[PC] ligne 655
+443;ETAT, T.V.A. FACTUREE;mixte;;;[PC] ligne 656
+4431;T.V.A. facturée sur ventes;mixte;;;[PC] ligne 657
+4432;T.V.A. facturée sur prestations de services;mixte;;;[PC] ligne 658
+4433;T.V.A. facturée sur travaux;mixte;;;[PC] ligne 659
+4334;T.V.A. facturée sur production livrée à soi-même;mixte;;;[PC] ligne 660
+4335;T.V.A. sur factures à établir;mixte;;;[PC] ligne 661
+444;ETAT, T.V.A. DUE OU CREDIT DE T.V.A.;mixte;;;[PC] ligne 662
+4441;Etat, T.V.A. due;mixte;;;[PC] ligne 663
+4445;Etat, dégrèvement T.V.A.;mixte;;;[PC] ligne 664
+4449;Etat, crédit de T.V.A. à reporter;mixte;;;[PC] ligne 665
+445;ETAT, T.V.A. RECUPERABLE;mixte;;;[PC] ligne 666
+4451;T.V.A. récupérable sur immobilisations;mixte;;;[PC] ligne 667
+4452;T.V.A. récupérable sur achats;mixte;;;[PC] ligne 668
+4453;T.V.A. récupérable sur transport;mixte;;;[PC] ligne 669
+4454;T.V.A. récupérable sur services extérieurs et autres charges;mixte;;;[PC] ligne 670
+4455;T.V.A. récupérable sur factures non parvenues;mixte;;;[PC] ligne 671
+4456;T.V.A. transférée par d'autres entités;mixte;;;[PC] ligne 672
+446;ETAT, AUTRES TAXES SUR LE CHIFFRE D'AFFAIRES;mixte;;;[PC] ligne 673
+447;ETAT, IMPOTS RETENUS A LA SOURCE;mixte;;;[PC] ligne 674
+4471;Impôt Général sur le revenu;mixte;;;[PC] ligne 675
+4472;Impôts sur salaires;mixte;;;[PC] ligne 676
+4473;Contribution nationale;mixte;;;[PC] ligne 677
+4474;Contribution nationale de solidarité;mixte;;;[PC] ligne 678
+4478;Autres impôts et contributions;mixte;;;[PC] ligne 679
+448;ETAT, CHARGES A PAYER ET PRODUITS A RECEVOIR;mixte;;;[PC] ligne 680
+4486;Charges à payer;mixte;;;[PC] ligne 681
+4487;Produits à recevoir;mixte;;;[PC] ligne 682
+449;ETAT, CREANCES ET DETTES DIVERSES;mixte;;;[PC] ligne 683
+4491;Etat, obligations cautionnées;mixte;;;[PC] ligne 684
+4492;Etat, avances et acomptes versés sur impôts;mixte;;;[PC] ligne 685
+4493;Etat, fonds de dotation à recevoir;mixte;;;[PC] ligne 686
+4494;Etat, subventions d'investissement à recevoir;mixte;;;[PC] ligne 687
+4495;Etat, subventions d'exploitation à recevoir;mixte;;;[PC] ligne 688
+4496;Etat, subventions d'équilibre à recevoir;mixte;;;[PC] ligne 689
+4497;Etat, avances sur subventions;mixte;;;[PC] ligne 690
+4499;Etat, fonds réglementé provisionné;mixte;;;[PC] ligne 691
+45;ORGANISMES INTERNATIONAUX;mixte;;;[PC] ligne 692
+451;OPERATIONS AVEC LES ORGANISMES AFRICAINS;mixte;;;[PC] ligne 693
+452;OPERATIONS AVEC LES AUTRES ORGANISMES INTERNATIONAUX;mixte;;;[PC] ligne 694
+458;ORGANISMES INTERNATIONAUX, FONDS DE DOTATION ET SUBVENTIONS A RECEVOIR;mixte;;;[PC] ligne 695
+4581;Organismes internationaux, fonds de dotation à recevoir;mixte;;;[PC] ligne 696
+4582;Organismes internationaux, subventions à recevoir;mixte;;;[PC] ligne 697
+46;APPORTEURS, ASSOCIES ET GROUPE;mixte;;;[PC] ligne 698
+4611;Apporteurs, apports en nature;mixte;;;[PC] ligne 700
+4612;Apporteurs, apports en numéraire;mixte;;;[PC] ligne 701
+4613;Apporteurs, capital appelé, non versé;mixte;;;[PC] ligne 702
+4614;Apporteurs, compte d’apport, opérations de restructuration (fusion…);mixte;;;[PC] ligne 703
+4615;Apporteurs, versements reçus sur augmentation de capital;mixte;;;[PC] ligne 704
+4616;Apporteurs, versements anticipés;mixte;;;[PC] ligne 705
+4617;Apporteurs défaillants;mixte;;;[PC] ligne 706
+4618;Apporteurs, titres à échanger;mixte;;;[PC] ligne 707
+4619;Apporteurs, capital à rembourser;mixte;;;[PC] ligne 708
+462;ASSOCIES (2), COMPTES COURANTS;mixte;;;[PC] ligne 709
+4621;Principal;mixte;;;[PC] ligne 710
+4626;Intérêts courus;mixte;;;[PC] ligne 711
+463;ASSOCIES (2), OPERATIONS FAITES EN COMMUN ET GIE;mixte;;;[PC] ligne 712
+4631;Opérations courantes;mixte;;;[PC] ligne 713
+4636;Intérêts courus;mixte;;;[PC] ligne 714
+465;ASSOCIES (2), DIVIDENDES A PAYER;mixte;;;[PC] ligne 715
+466;GROUPE, COMPTES COURANTS;mixte;;;[PC] ligne 716
+467;APPORTEURS RESTANT DÛ SUR CAPITAL APPELE;mixte;;;[PC] ligne 717
+469;ENTITE, DIVIDENDES A RECEVOIR;mixte;;;[PC] ligne 718
+47;DEBITEURS ET CREDITEURS DIVERS;mixte;;;[PC] ligne 719
+471;DEBITEURS ET CREDITEURS DIVERS;mixte;;;[PC] ligne 720
+4711;Débiteurs divers;mixte;;;[PC] ligne 721
+4712;Créditeurs divers;mixte;;;[PC] ligne 722
+4713;Obligataires;mixte;;;[PC] ligne 723
+4715;Rémunérations d’administrateurs non associés;mixte;;;[PC] ligne 724
+4716;Compte d’affacturage et de titrisation;mixte;;;[PC] ligne 725
+4717;Débiteurs divers - retenues de garantie;mixte;;;[PC] ligne 726
+4718;Apport, compte de fusion et opérations assimilées;mixte;;;[PC] ligne 727
+4719;Bons de souscription d’actions et d’obligations;mixte;;;[PC] ligne 728
+472;CREANCES ET DETTES SUR TITRES DE PLACEMENT;mixte;;;[PC] ligne 729
+4721;Créances sur cessions de titres de placement;mixte;;;[PC] ligne 730
+4726;Versements restant à effectuer sur titres de placement non libérés;mixte;;;[PC] ligne 731
+473;INTERMEDIAIRES - OPERATIONS FAITES POUR COMPTE DE TIERS;mixte;;;[PC] ligne 732
+4731;Mandants;mixte;;;[PC] ligne 733
+4732;Mandataires;mixte;;;[PC] ligne 734
+4733;Commettants;mixte;;;[PC] ligne 735
+4734;Commissionnaires;mixte;;;[PC] ligne 736
+4739;Etat, Collectivités publiques, fonds global d’allocation;mixte;;;[PC] ligne 737
+474;COMPTE DE REPARTITION PERIODIQUE DES CHARGES ET DES PRODUITS;mixte;;;[PC] ligne 738
+4746;Compte de répartition périodique des charges;mixte;;;[PC] ligne 739
+4747;Compte de répartition périodique des produits;mixte;;;[PC] ligne 740
+475;COMPTE TRANSITOIRE, AJUSTEMENT SPECIAL LIE A LA REVISION DU SYSCOHADA;mixte;;;[PC] ligne 741
+4751;Compte-actif;mixte;;;[PC] ligne 742
+4752;Compte-passif;mixte;;;[PC] ligne 743
+476;CHARGES CONSTATEES D'AVANCE;mixte;;;[PC] ligne 744
+477;PRODUITS CONSTATES D'AVANCE;mixte;;;[PC] ligne 745
+478;ECARTS DE CONVERSION - ACTIF;mixte;;;[PC] ligne 746
+4781;Diminution des créances d’exploitation et HAO;mixte;;;[PC] ligne 747
+4782;Diminution des créances financières;mixte;;;[PC] ligne 750
+4783;Augmentation des dettes d’exploitation et HAO;mixte;;;[PC] ligne 751
+4784;Augmentation des dettes financières;mixte;;;[PC] ligne 754
+4786;Différences d’évaluation sur instruments de trésorerie;mixte;;;[PC] ligne 755
+4788;Différences compensées par couverture de change;mixte;;;[PC] ligne 756
+479;ECARTS DE CONVERSION - PASSIF;mixte;;;[PC] ligne 757
+4791;Augmentation des créances d’exploitation et HAO;mixte;;;[PC] ligne 758
+47911;Augmentation des créances d’exploitation;mixte;;;[PC] ligne 760
+47928;Augmentation des créances HAO;mixte;;;[PC] ligne 761
+4793;Augmentation des créances financières;mixte;;;[PC] ligne 762
+47931;Diminution des dettes d’exploitation;mixte;;;[PC] ligne 764
+47948;Diminution des dettes HAO;mixte;;;[PC] ligne 765
+4797;Diminution des dettes financières;mixte;;;[PC] ligne 766
+4798;Différences compensées par couverture de change;mixte;;;[PC] ligne 767
+48;REANCES ET DETTES HORS ACTIVITES ORDINAIRES (HAO);mixte;;;[PC] ligne 768
+481;FOURNISSEURS D'INVESTISSEMENTS;mixte;;;[PC] ligne 769
+4811;Immobilisations incorporelles;mixte;;;[PC] ligne 770
+4812;Immobilisations corporelles;mixte;;;[PC] ligne 771
+4813;Versements restant à effectuer sur titres de participation et titres immobilisés n;mixte;;;[PC] ligne 772
+4816;Réserve de propriété (3);mixte;;;[PC] ligne 773
+48161;Réserve de propriété - immobilisations incorporelles;mixte;;;[PC] ligne 774
+48162;Réserve de propriété - immobilisations corporelles;mixte;;;[PC] ligne 775
+4817;Retenues de garantie (3);mixte;;;[PC] ligne 776
+48171;Retenues de garantie - immobilisations incorporelles;mixte;;;[PC] ligne 777
+48172;Retenues de garantie - immobilisations incorporelles;mixte;;;[PC] ligne 778
+4818;Factures non parvenues (3);mixte;;;[PC] ligne 779
+48181;Factures non parvenues - immobilisations incorporelles;mixte;;;[PC] ligne 780
+48182;Factures non parvenues - immobilisations corporelles;mixte;;;[PC] ligne 781
+482;FOURNISSEURS D'INVESTISSEMENTS, EFFETS A PAYER;mixte;;;[PC] ligne 782
+4821;Immobilisations incorporelles;mixte;;;[PC] ligne 783
+4822;Immobilisations corporelles (H.A.O.);mixte;;;[PC] ligne 784
+485;CREANCES SUR CESSIONS D'IMMOBILISATIONS;mixte;;;[PC] ligne 785
+4851;En compte, immobilisations incorporelles;mixte;;;[PC] ligne 786
+4852;En compte, immobilisations corporelles;mixte;;;[PC] ligne 787
+4853;Effets à recevoir, immobilisations incorporelles;mixte;;;[PC] ligne 788
+4854;Effets à recevoir, immobilisations corporelles;mixte;;;[PC] ligne 789
+4855;Effets escomptés non échus;mixte;;;[PC] ligne 790
+4856;Immobilisations financières;mixte;;;[PC] ligne 791
+4857;Retenues de garantie;mixte;;;[PC] ligne 792
+4858;Factures à établir;mixte;;;[PC] ligne 793
+488;AUTRES CREANCES HORS ACTIVITES ORDINAIRES (H.A.O.);mixte;;;[PC] ligne 794
+49;DEPRECIATIONS ET PROVISIONS POUR RISQUES A COURT TERME (TIERS);mixte;;;[PC] ligne 795
+490;DEPRECIATIONS DES COMPTES FOURNISSEURS;mixte;;;[PC] ligne 796
+491;DEPRECIATIONS DES COMPTES CLIENTS;mixte;;;[PC] ligne 797
+4911;Créances litigieuses;mixte;;;[PC] ligne 798
+4912;Créances douteuses;mixte;;;[PC] ligne 799
+492;DEPRECIATIONS DES COMPTES PERSONNEL;mixte;;;[PC] ligne 800
+493;DEPRECIATIONS DES COMPTES ORGANISMES SOCIAUX;mixte;;;[PC] ligne 801
+494;DEPRECIATIONS DES COMPTES ETAT ET COLLECTIVITES PUBLIQUES;mixte;;;[PC] ligne 802
+495;DEPRECIATIONS DES COMPTES ORGANISMES INTERNATIONAUX;mixte;;;[PC] ligne 803
+496;DEPRECIATIONS DES COMPTES ASSOCIES ET GROUPE;mixte;;;[PC] ligne 804
+4962;Associés, comptes courants;mixte;;;[PC] ligne 805
+4963;Associés, opérations faites en commun et GIE;mixte;;;[PC] ligne 806
+4966;Groupe, comptes courants;mixte;;;[PC] ligne 807
+497;DEPRECIATIONS DES COMPTES DEBITEURS DIVERS;mixte;;;[PC] ligne 808
+498;DEPRECIATIONS DES COMPTES DE CREANCES H.A.O.;mixte;;;[PC] ligne 809
+4985;Créances sur cessions d'immobilisations;mixte;;;[PC] ligne 810
+4986;Créances sur cessions de titres de placement;mixte;;;[PC] ligne 811
+4988;Autres créances H.A.O.;mixte;;;[PC] ligne 812
+499;PROVISIONS POUR RISQUES A COURT TERME;mixte;;;[PC] ligne 813
+4991;Sur opérations d'exploitation;mixte;;;[PC] ligne 814
+4998;Sur opérations H.A.O.;mixte;;;[PC] ligne 815
+50;TITRES DE PLACEMENT;mixte;;;[PC] ligne 817
+501;TITRES DU TRESOR ET BONS DE CAISSE A COURT TERME;mixte;;;[PC] ligne 818
+5011;Titres du Trésor à court terme;mixte;;;[PC] ligne 819
+5012;Titres d'organismes financiers;mixte;;;[PC] ligne 820
+5013;Bons de caisse à court terme;mixte;;;[PC] ligne 821
+5016;Frais d’acquisition des titres de Trésor et bons de caisse;mixte;;;[PC] ligne 822
+502;ACTIONS;mixte;;;[PC] ligne 823
+5021;Actions ou parts propres;mixte;;;[PC] ligne 824
+5022;Actions cotées;mixte;;;[PC] ligne 825
+5023;Actions non cotées;mixte;;;[PC] ligne 826
+5024;"Actions démembrées (certificats d'investissement ; droits de vote)";mixte;;;[PC] ligne 827
+5025;Autres actions;mixte;;;[PC] ligne 828
+5026;Frais d’acquisition des actions;mixte;;;[PC] ligne 829
+503;OBLIGATIONS;mixte;;;[PC] ligne 830
+5031;Obligations émises par l'entité et rachetées par elle;mixte;;;[PC] ligne 831
+5032;Obligations cotées;mixte;;;[PC] ligne 832
+5033;Obligations non cotées;mixte;;;[PC] ligne 833
+5035;Autres obligations;mixte;;;[PC] ligne 834
+5036;Frais d’acquisition des obligations;mixte;;;[PC] ligne 835
+504;BONS DE SOUSCRIPTION;mixte;;;[PC] ligne 836
+5042;Bons de souscription d'actions;mixte;;;[PC] ligne 837
+5043;Bons de souscription d'obligations;mixte;;;[PC] ligne 838
+505;TITRES NEGOCIABLES HORS REGION;mixte;;;[PC] ligne 839
+506;INTERETS COURUS;mixte;;;[PC] ligne 840
+5061;Titres du Trésor et bons de caisse à court terme;mixte;;;[PC] ligne 841
+5062;Actions;mixte;;;[PC] ligne 842
+5063;Obligations;mixte;;;[PC] ligne 843
+508;AUTRES TITRES DE PLACEMENT ET CREANCES ASSIMILEES;mixte;;;[PC] ligne 844
+51;VALEURS A ENCAISSER;mixte;;;[PC] ligne 845
+511;EFFETS A ENCAISSER;mixte;;;[PC] ligne 846
+512;EFFETS A L'ENCAISSEMENT;mixte;;;[PC] ligne 847
+513;CHEQUES A ENCAISSER;mixte;;;[PC] ligne 848
+514;CHEQUES A L'ENCAISSEMENT;mixte;;;[PC] ligne 849
+515;CARTES DE CREDIT A ENCAISSER;mixte;;;[PC] ligne 850
+518;AUTRES VALEURS A L'ENCAISSEMENT;mixte;;;[PC] ligne 851
+5181;Warrants;mixte;;;[PC] ligne 852
+5182;Billets de fonds;mixte;;;[PC] ligne 853
+5185;Chèques de voyage;mixte;;;[PC] ligne 854
+5186;Coupons échus;mixte;;;[PC] ligne 855
+5187;Intérêts échus des obligations;mixte;;;[PC] ligne 856
+52;BANQUES;mixte;;;[PC] ligne 857
+521;BANQUES LOCALES;mixte;;;[PC] ligne 858
+5211;Banques en monnaie nationale;mixte;;;[PC] ligne 859
+5215;Banques en devises;mixte;;;[PC] ligne 860
+522;BANQUES AUTRES ETATS REGION;mixte;;;[PC] ligne 861
+523;BANQUES AUTRES ETATS ZONE MONETAIRE;mixte;;;[PC] ligne 862
+524;BANQUES HORS ZONE MONETAIRE;mixte;;;[PC] ligne 863
+525;BANQUES DEPOT A TERME;mixte;;;[PC] ligne 864
+526;BANQUES, INTERETS COURUS;mixte;;;[PC] ligne 865
+5261;Banque, intérêts courus charges à payer;mixte;;;[PC] ligne 866
+5267;Banque, intérêts courus produits à recevoir;mixte;;;[PC] ligne 867
+53;ETABLISSEMENTS FINANCIERS ET ASSIMILES;mixte;;;[PC] ligne 868
+531;CHEQUES POSTAUX;mixte;;;[PC] ligne 869
+532;TRESOR;mixte;;;[PC] ligne 870
+533;SOCIETES DE GESTION ET D'INTERMEDIATION (S.G.I.);mixte;;;[PC] ligne 871
+536;ETABLISSEMENTS FINANCIERS, INTERETS COURUS;mixte;;;[PC] ligne 872
+538;AUTRES ORGANISMES FINANCIERS;mixte;;;[PC] ligne 873
+54;INSTRUMENTS DE TRESORERIE;mixte;;;[PC] ligne 874
+541;OPTIONS DE TAUX D'INTERET;mixte;;;[PC] ligne 875
+542;OPTIONS DE TAUX DE CHANGE;mixte;;;[PC] ligne 876
+543;OPTIONS DE TAUX BOURSIERS;mixte;;;[PC] ligne 877
+544;INSTRUMENTS DE MARCHES A TERME;mixte;;;[PC] ligne 878
+545;AVOIRS D'OR ET AUTRES METAUX PRECIEUX (4);mixte;;;[PC] ligne 879
+55;INSTRUMENTS DE MONNAIE ELECTRONIQUE;mixte;;;[PC] ligne 880
+551;MONNAIE ELECTRONIQUE - CARTE CARBURANT;mixte;;;[PC] ligne 881
+552;MONNAIE ELECTRONIQUE - TELEPHONE PORTABLE;mixte;;;[PC] ligne 882
+553;MONNAIE ELECTRONIQUE- CARTE PEAGE;mixte;;;[PC] ligne 883
+554;PORTE -MONNAIE ELECTRONIQUE;mixte;;;[PC] ligne 884
+558;AUTRES INSTRUMENTS DE MONNAIES ELECTRONIQUES;mixte;;;[PC] ligne 885
+56;BANQUES, CREDITS DE TRESORERIE ET D'ESCOMPTE;mixte;;;[PC] ligne 886
+561;CREDITS DE TRESORERIE;mixte;;;[PC] ligne 887
+564;ESCOMPTE DE CREDITS DE CAMPAGNE;mixte;;;[PC] ligne 888
+565;ESCOMPTE DE CREDITS ORDINAIRES;mixte;;;[PC] ligne 889
+566;BANQUES, CREDITS DE TRESORERIE, INTERETS COURUS;mixte;;;[PC] ligne 890
+57;CAISSE;mixte;;;[PC] ligne 891
+571;CAISSE SIEGE SOCIAL;mixte;;;[PC] ligne 892
+5711;Caisse en monnaie nationale;mixte;;;[PC] ligne 893
+5712;Caisse en devises;mixte;;;[PC] ligne 894
+572;CAISSE SUCCURSALE A;mixte;;;[PC] ligne 895
+5721;en monnaie nationale;mixte;;;[PC] ligne 896
+5722;en devises;mixte;;;[PC] ligne 897
+573;CAISSE SUCCURSALE B;mixte;;;[PC] ligne 898
+5731;en monnaie nationale;mixte;;;[PC] ligne 899
+5732;en devises;mixte;;;[PC] ligne 900
+58;REGIES D'AVANCES, ACCREDITIFS ET VIREMENTS;mixte;;;[PC] ligne 901
+581;REGIES D'AVANCE;mixte;;;[PC] ligne 902
+582;ACCREDITIFS;mixte;;;[PC] ligne 903
+585;VIREMENTS DE FONDS;mixte;;;[PC] ligne 904
+588;AUTRES VIREMENTS INTERNES;mixte;;;[PC] ligne 905
+59;DEPRECIATIONS ET PROVISIONS POUR RISQUE A COURT TERME;mixte;;;[PC] ligne 906
+590;DEPRECIATIONS DES TITRES DE PLACEMENT;mixte;;;[PC] ligne 907
+591;DEPRECIATIONS DES TITRES ET VALEURS A ENCAISSER;mixte;;;[PC] ligne 908
+592;DEPRECIATIONS DES COMPTES BANQUES;mixte;;;[PC] ligne 909
+593;DEPRECIATIONS DES COMPTES ETABLISSEMENTS FINANCIERS ET ASSIMILES;mixte;;;[PC] ligne 910
+594;DEPRECIATIONS DES COMPTES D’INSTRUMENTS DE TRESORERIE;mixte;;;[PC] ligne 911
+599;PROVISIONS POUR RISQUE A COURT TERME A CARACTERE FINANCIER;mixte;;;[PC] ligne 912
+60;ACHATS ET VARIATIONS DE STOCKS;charge;;;[PC] ligne 913
+601;ACHATS DE MARCHANDISES;charge;;;[PC] ligne 914
+6011;dans la Région (5);charge;;;[PC] ligne 915
+6012;hors Région (5);charge;;;[PC] ligne 916
+6013;aux entités du groupe dans la Région;charge;;;[PC] ligne 917
+6014;aux entités du groupe hors Région;charge;;;[PC] ligne 918
+6015;frais sur achats (6);charge;;;[PC] ligne 919
+6019;Rabais, Remises et Ristournes obtenus (non ventilés);charge;;;[PC] ligne 920
+602;ACHATS DE MATIERES PREMIERES ET FOURNITURES LIEES;charge;;;[PC] ligne 921
+6021;dans la Région (5);charge;;;[PC] ligne 922
+6022;hors Région (5);charge;;;[PC] ligne 923
+6023;aux entités du groupe dans la Région;charge;;;[PC] ligne 924
+6024;aux entités du groupe hors Région;charge;;;[PC] ligne 925
+6025;frais sur achats (6);charge;;;[PC] ligne 926
+6029;Rabais, Remises et Ristournes obtenus (non ventilés);charge;;;[PC] ligne 927
+603;VARIATIONS DES STOCKS DE BIENS ACHETES;charge;;;[PC] ligne 928
+6031;Variations des stocks de marchandises;charge;;;[PC] ligne 929
+6032;Variations des stocks de matières premières et fournitures liées;charge;;;[PC] ligne 930
+6033;Variations des stocks d'autres approvisionnements;charge;;;[PC] ligne 931
+604;ACHATS STOCKES DE MATIERES ET FOURNITURES CONSOMMABLES;charge;;;[PC] ligne 932
+6041;Matières consommables;charge;;;[PC] ligne 933
+6042;Matières combustibles;charge;;;[PC] ligne 934
+6043;Produits d'entretien;charge;;;[PC] ligne 935
+6044;Fournitures d'atelier et d'usine;charge;;;[PC] ligne 936
+6045;Frais sur achats (6);charge;;;[PC] ligne 937
+6046;Fournitures de magasin;charge;;;[PC] ligne 938
+6047;Fournitures de bureau;charge;;;[PC] ligne 939
+6049;Rabais, Remises et Ristournes obtenus (non ventilés);charge;;;[PC] ligne 940
+605;AUTRES ACHATS;charge;;;[PC] ligne 941
+6051;Fournitures non stockables –Eau;charge;;;[PC] ligne 942
+6052;Fournitures non stockables - Electricité;charge;;;[PC] ligne 943
+6053;Fournitures non stockables – Autres énergies;charge;;;[PC] ligne 944
+6054;Fournitures d'entretien non stockables;charge;;;[PC] ligne 945
+6055;Fournitures de bureau non stockables;charge;;;[PC] ligne 946
+6056;Achats de petit matériel et outillage;charge;;;[PC] ligne 947
+6057;Achats d'études et prestations de services;charge;;;[PC] ligne 948
+6058;Achats de travaux, matériels et équipements;charge;;;[PC] ligne 949
+6059;Rabais, Remises et Ristournes obtenus (non ventilés);charge;;;[PC] ligne 950
+608;ACHATS D'EMBALLAGES;charge;;;[PC] ligne 951
+6081;Emballages perdus;charge;;;[PC] ligne 952
+6082;Emballages récupérables non identifiables;charge;;;[PC] ligne 953
+6083;Emballages à usage mixte;charge;;;[PC] ligne 954
+6085;frais sur achats (6);charge;;;[PC] ligne 955
+6089;Rabais, Remises et Ristournes obtenus (non ventilés);charge;;;[PC] ligne 956
+61;TRANSPORTS;charge;;;[PC] ligne 957
+612;TRANSPORTS SUR VENTES;charge;;;[PC] ligne 958
+613;TRANSPORTS POUR LE COMPTE DE TIERS;charge;;;[PC] ligne 959
+614;TRANSPORTS DU PERSONNEL;charge;;;[PC] ligne 960
+616;TRANSPORTS DE PLIS;charge;;;[PC] ligne 961
+618;AUTRES FRAIS DE TRANSPORT;charge;;;[PC] ligne 962
+6181;Voyages et déplacements;charge;;;[PC] ligne 963
+6182;Transports entre établissements ou chantiers;charge;;;[PC] ligne 964
+6183;Transports administratifs;charge;;;[PC] ligne 965
+62;SERVICES EXTERIEURS;charge;;;[PC] ligne 966
+621;SOUS-TRAITANCE GENERALE;charge;;;[PC] ligne 967
+622;LOCATIONS, CHARGES LOCATIVES;charge;;;[PC] ligne 968
+6221;Locations de terrains;charge;;;[PC] ligne 969
+6222;Locations de bâtiments;charge;;;[PC] ligne 970
+6223;Locations de matériels et outillages;charge;;;[PC] ligne 971
+6224;Malis sur emballages;charge;;;[PC] ligne 972
+6225;Locations d'emballages;charge;;;[PC] ligne 973
+6226;Fermages et loyers du foncier;charge;;;[PC] ligne 974
+6228;Locations et charges locatives diverses;charge;;;[PC] ligne 975
+623;REDEVANCES DE LOCATION-ACQUISITION;charge;;;[PC] ligne 976
+6232;Crédit-bail immobilier;charge;;;[PC] ligne 977
+6233;Crédit-bail mobilier;charge;;;[PC] ligne 978
+6234;Location-vente;charge;;;[PC] ligne 979
+6238;Autres contrats de location-acquisition;charge;;;[PC] ligne 980
+624;ENTRETIEN, REPARATIONS, REMISE EN ETAT ET MAINTENANCE;charge;;;[PC] ligne 981
+6241;Entretien et réparations des biens immobiliers;charge;;;[PC] ligne 982
+6242;Entretien et réparations des biens mobiliers;charge;;;[PC] ligne 983
+6243;Maintenance;charge;;;[PC] ligne 984
+6244;Charges de démantèlement et remise en état;charge;;;[PC] ligne 985
+6248;Autres entretiens et réparations;charge;;;[PC] ligne 986
+625;PRIMES D'ASSURANCE;charge;;;[PC] ligne 987
+6251;Assurances multirisques;charge;;;[PC] ligne 988
+6252;Assurances matériel de transport;charge;;;[PC] ligne 989
+6253;Assurances risques d'exploitation;charge;;;[PC] ligne 990
+6254;Assurances responsabilité du producteur;charge;;;[PC] ligne 991
+6255;Assurances insolvabilité clients;charge;;;[PC] ligne 992
+6257;Assurances transport sur ventes;charge;;;[PC] ligne 993
+6258;Autres primes d'assurances;charge;;;[PC] ligne 994
+626;ETUDES, RECHERCHES ET DOCUMENTATION;charge;;;[PC] ligne 995
+6261;Etudes et recherches;charge;;;[PC] ligne 996
+6265;Documentation générale;charge;;;[PC] ligne 997
+6266;Documentation technique;charge;;;[PC] ligne 998
+627;PUBLICITE, PUBLICATIONS, RELATIONS PUBLIQUES;charge;;;[PC] ligne 999
+6271;Annonces, insertions;charge;;;[PC] ligne 1000
+6272;Catalogues, imprimés publicitaires;charge;;;[PC] ligne 1001
+6273;Echantillons;charge;;;[PC] ligne 1002
+6274;Foires et expositions;charge;;;[PC] ligne 1003
+6275;Publications;charge;;;[PC] ligne 1004
+6276;Cadeaux à la clientèle;charge;;;[PC] ligne 1005
+6277;Frais de colloques, séminaires, conférences;charge;;;[PC] ligne 1006
+6278;Autres charges de publicité et relations publiques;charge;;;[PC] ligne 1007
+628;FRAIS DE TELECOMMUNICATIONS;charge;;;[PC] ligne 1008
+6281;Frais de téléphone;charge;;;[PC] ligne 1009
+6282;Frais de télex;charge;;;[PC] ligne 1010
+6283;Frais de télécopie;charge;;;[PC] ligne 1011
+6288;Autres frais de télécommunications;charge;;;[PC] ligne 1012
+63;AUTRES SERVICES EXTERIEURS;charge;;;[PC] ligne 1013
+631;FRAIS BANCAIRES;charge;;;[PC] ligne 1014
+6311;Frais sur titres (vente, garde);charge;;;[PC] ligne 1015
+6312;Frais sur effets;charge;;;[PC] ligne 1016
+6313;Location de coffres;charge;;;[PC] ligne 1017
+6314;Commissions d'affacturage et de titrisation;charge;;;[PC] ligne 1018
+6315;Commissions sur cartes de crédit;charge;;;[PC] ligne 1019
+6316;Frais d'émission d'emprunts;charge;;;[PC] ligne 1020
+6317;Frais sur instruments monnaie électronique;charge;;;[PC] ligne 1021
+6318;Autres frais bancaires;charge;;;[PC] ligne 1022
+632;REMUNERATIONS D'INTERMEDIAIRES ET DE CONSEILS;charge;;;[PC] ligne 1023
+6322;Commissions et courtages sur ventes;charge;;;[PC] ligne 1024
+6324;Honoraires des professions règlementées;charge;;;[PC] ligne 1025
+6325;Frais d'actes et de contentieux;charge;;;[PC] ligne 1026
+6326;Rémunérations d’affacturage et de titrisation;charge;;;[PC] ligne 1027
+6327;Rémunérations des autres prestataires de services;charge;;;[PC] ligne 1028
+6328;Divers frais;charge;;;[PC] ligne 1029
+633;FRAIS DE FORMATION DU PERSONNEL;charge;;;[PC] ligne 1030
+634;REDEVANCES POUR BREVETS, LICENCES, LOGICIELS, CONCESSIONS, DROITS ET VALEURS SIMILA;charge;;;[PC] ligne 1031
+6342;Redevances pour brevets, licences;charge;;;[PC] ligne 1032
+6343;Redevances pour logiciels;charge;;;[PC] ligne 1033
+6344;Redevances pour marques;charge;;;[PC] ligne 1034
+6345;Redevances pour sites internet;charge;;;[PC] ligne 1035
+6346;Redevances pour concessions, droits et valeurs similaires;charge;;;[PC] ligne 1036
+635;COTISATIONS;charge;;;[PC] ligne 1037
+6351;Cotisations;charge;;;[PC] ligne 1038
+6358;Concours divers;charge;;;[PC] ligne 1039
+637;REMUNERATIONS DE PERSONNEL EXTERIEUR A L’ENTITE;charge;;;[PC] ligne 1040
+6371;Personnel intérimaire;charge;;;[PC] ligne 1041
+6372;Personnel détaché ou prêté à l'entité;charge;;;[PC] ligne 1042
+638;AUTRES CHARGES EXTERNES;charge;;;[PC] ligne 1043
+6381;Frais de recrutement du personnel;charge;;;[PC] ligne 1044
+6382;Frais de déménagement;charge;;;[PC] ligne 1045
+6383;Réceptions;charge;;;[PC] ligne 1046
+6384;Missions;charge;;;[PC] ligne 1047
+6385;Charges de copropriété;charge;;;[PC] ligne 1048
+6388;Charges externes diverses;charge;;;[PC] ligne 1049
+64;IMPOTS ET TAXES;charge;;;[PC] ligne 1050
+641;IMPOTS ET TAXES DIRECTS;charge;;;[PC] ligne 1051
+6411;Impôts fonciers et taxes annexes;charge;;;[PC] ligne 1052
+6412;Patentes, licences et taxes annexes;charge;;;[PC] ligne 1053
+6413;Taxes sur appointements et salaires;charge;;;[PC] ligne 1054
+6414;Taxes d'apprentissage;charge;;;[PC] ligne 1055
+6415;Formation professionnelle continue;charge;;;[PC] ligne 1056
+6418;Autres impôts et taxes directs;charge;;;[PC] ligne 1057
+645;IMPOTS ET TAXES INDIRECTS;charge;;;[PC] ligne 1058
+646;DROITS D'ENREGISTREMENT;charge;;;[PC] ligne 1059
+6461;Droits de mutation;charge;;;[PC] ligne 1060
+6462;Droits de timbre;charge;;;[PC] ligne 1061
+6463;Taxes sur les véhicules de société;charge;;;[PC] ligne 1062
+6464;Vignettes;charge;;;[PC] ligne 1063
+6468;Autres droits d'enregistrement;charge;;;[PC] ligne 1064
+647;PENALITES, AMENDES FISCALES;charge;;;[PC] ligne 1065
+6471;Pénalités d'assiette, impôts directs;charge;;;[PC] ligne 1066
+6472;Pénalités d'assiette, impôts indirects;charge;;;[PC] ligne 1067
+6473;Pénalités de recouvrement, impôts directs;charge;;;[PC] ligne 1068
+6474;Pénalités de recouvrement, impôts indirects;charge;;;[PC] ligne 1069
+6478;Autres pénalités et amendes fiscales;charge;;;[PC] ligne 1070
+648;AUTRES IMPOTS ET TAXES;charge;;;[PC] ligne 1071
+65;AUTRES CHARGES;charge;;;[PC] ligne 1072
+651;PERTES SUR CREANCES CLIENTS ET AUTRES DEBITEURS;charge;;;[PC] ligne 1073
+6511;Clients;charge;;;[PC] ligne 1074
+6515;Autres débiteurs;charge;;;[PC] ligne 1075
+652;QUOTE-PART DE RESULTAT SUR OPERATIONS;charge;;;[PC] ligne 1076
+6521;Quote-part transférée de bénéfices (comptabilité du gérant);charge;;;[PC] ligne 1077
+6525;Pertes imputées par transfert (comptabilité des associés non gérants);charge;;;[PC] ligne 1078
+654;VALEURS COMPTABLES DES CESSIONS COURANTES D'IMMOBILISATIONS;charge;;;[PC] ligne 1079
+6541;Immobilisations incorporelles;charge;;;[PC] ligne 1080
+6542;Immobilisations corporelles;charge;;;[PC] ligne 1081
+656;PERTE DE CHANGE SUR CREANCES ET DETTES COMMERCIALE;charge;;;[PC] ligne 1082
+657;PENALITES ET AMENDES PENALES;charge;;;[PC] ligne 1083
+658;CHARGES DIVERSES;charge;;;[PC] ligne 1084
+6581;Indemnités de fonction et autres rémunérations d'administrateurs;charge;;;[PC] ligne 1085
+6582;Dons;charge;;;[PC] ligne 1086
+6583;Mécénat;charge;;;[PC] ligne 1087
+6588;Autres charges diverses;charge;;;[PC] ligne 1088
+659;CHARGES POUR DEPRECIATIONS ET PROVISIONS POUR RISQUES A COURT TERME D'EXPLOITATION;charge;;;[PC] ligne 1089
+6591;sur risques à court terme;charge;;;[PC] ligne 1090
+6593;sur stocks;charge;;;[PC] ligne 1091
+6594;sur créances;charge;;;[PC] ligne 1092
+6598;Autres charges pour dépréciations et provisions pour risques à court terme;charge;;;[PC] ligne 1093
+66;CHARGES DE PERSONNEL;charge;;;[PC] ligne 1094
+661;REMUNERATIONS DIRECTES VERSEES AU PERSONNEL NATIONAL;charge;;;[PC] ligne 1095
+6611;Appointements salaires et commissions;charge;;;[PC] ligne 1096
+6612;Primes et gratifications;charge;;;[PC] ligne 1097
+6613;Congés payés;charge;;;[PC] ligne 1098
+6614;Indemnités de préavis, de licenciement et de recherche d'embauche;charge;;;[PC] ligne 1099
+6615;Indemnités de maladie versées aux travailleurs;charge;;;[PC] ligne 1100
+6616;Supplément familial;charge;;;[PC] ligne 1101
+6617;Avantages en nature;charge;;;[PC] ligne 1102
+6618;Autres rémunérations directes;charge;;;[PC] ligne 1103
+662;REMUNERATIONS DIRECTES VERSEES AU PERSONNEL NON NATIONAL;charge;;;[PC] ligne 1104
+6621;Appointements salaires et commissions;charge;;;[PC] ligne 1105
+6622;Primes et gratifications;charge;;;[PC] ligne 1106
+6623;Congés payés;charge;;;[PC] ligne 1107
+6624;Indemnités de préavis, de licenciement et de recherche d'embauche;charge;;;[PC] ligne 1108
+6625;Indemnités de maladie versées aux travailleurs;charge;;;[PC] ligne 1109
+6626;Supplément familial;charge;;;[PC] ligne 1110
+6627;Avantages en nature;charge;;;[PC] ligne 1111
+6628;Autres rémunérations directes;charge;;;[PC] ligne 1112
+663;INDEMNITES FORFAITAIRES VERSEES AU PERSONNEL;charge;;;[PC] ligne 1113
+6631;Indemnités de logement;charge;;;[PC] ligne 1114
+6632;Indemnités de représentation;charge;;;[PC] ligne 1115
+6633;Indemnités d'expatriation;charge;;;[PC] ligne 1116
+6634;Indemnités de transport;charge;;;[PC] ligne 1117
+6638;Autres indemnités et avantages divers;charge;;;[PC] ligne 1118
+664;CHARGES SOCIALES;charge;;;[PC] ligne 1119
+6641;Charges sociales sur rémunération du personnel national;charge;;;[PC] ligne 1120
+6642;Charges sociales sur rémunération du personnel non national;charge;;;[PC] ligne 1121
+666;REMUNERATIONS ET CHARGES SOCIALES DE L'EXPLOITANT INDIVIDUEL;charge;;;[PC] ligne 1122
+6661;Rémunération du travail de l'exploitant;charge;;;[PC] ligne 1123
+6662;Charges sociales;charge;;;[PC] ligne 1124
+667;REMUNERATION TRANSFEREE DE PERSONNEL EXTERIEUR;charge;;;[PC] ligne 1125
+6671;Personnel intérimaire;charge;;;[PC] ligne 1126
+6672;Personnel détaché ou prêté à l’entité;charge;;;[PC] ligne 1127
+668;AUTRES CHARGES SOCIALES;charge;;;[PC] ligne 1128
+6681;Versements aux Syndicats et Comités d'entreprise, d'établissement;charge;;;[PC] ligne 1129
+6682;Versements aux Comités d'hygiène et de sécurité;charge;;;[PC] ligne 1130
+6683;Versements et contributions aux autres œuvres sociales;charge;;;[PC] ligne 1131
+6684;Médecine du travail et pharmacie;charge;;;[PC] ligne 1132
+6685;Assurances et organismes de santé;charge;;;[PC] ligne 1133
+6686;Assurances retraite et fonds de pensions;charge;;;[PC] ligne 1134
+6687;Majorations et pénalités sociales;charge;;;[PC] ligne 1135
+6688;Charges sociales diverses;charge;;;[PC] ligne 1136
+67;FRAIS FINANCIERS ET CHARGES ASSIMILEES;charge;;;[PC] ligne 1137
+671;INTERETS DES EMPRUNTS;charge;;;[PC] ligne 1138
+6711;Emprunts obligataires;charge;;;[PC] ligne 1139
+6712;Emprunts auprès des établissements de crédit;charge;;;[PC] ligne 1140
+6713;Dettes liées à des participations;charge;;;[PC] ligne 1141
+6714;Primes de remboursement des obligations;charge;;;[PC] ligne 1142
+672;INTERETS DANS LOYERS DE LOCATION ACQUISITION;charge;;;[PC] ligne 1143
+6722;Intérêts dans loyers de location-acquisition/créditbail immobilier;charge;;;[PC] ligne 1144
+6723;Intérêts dans loyers de location-acquisition/créditbail mobilier;charge;;;[PC] ligne 1145
+6724;Intérêts dans loyers de location-acquisition/locationvente;charge;;;[PC] ligne 1146
+6728;Intérêts dans loyers des autres locations-acquisition;charge;;;[PC] ligne 1147
+673;ESCOMPTES ACCORDES;charge;;;[PC] ligne 1148
+674;AUTRES INTERETS;charge;;;[PC] ligne 1149
+6741;Avances reçues et dépôts créditeurs;charge;;;[PC] ligne 1150
+6742;Comptes courants bloqués;charge;;;[PC] ligne 1151
+6743;Intérêts sur obligations cautionnées;charge;;;[PC] ligne 1152
+6744;Intérêts sur dettes commerciales;charge;;;[PC] ligne 1153
+6745;Intérêts bancaires et sur opérations de financement (escompte…);charge;;;[PC] ligne 1154
+6748;Intérêts sur dettes diverses;charge;;;[PC] ligne 1155
+675;ESCOMPTES DES EFFETS DE COMMERCE;charge;;;[PC] ligne 1156
+676;PERTES DE CHANGE FINANCIERES;charge;;;[PC] ligne 1157
+677;PERTES SUR TITRES DE PLACEMENT;charge;;;[PC] ligne 1158
+6771;Pertes sur cessions de titres de placement;charge;;;[PC] ligne 1159
+6772;Malis provenant d’attribution gratuite d’actions au personnel salarié et aux dirig;charge;;;[PC] ligne 1160
+678;PERTES ET CHARGES SUR RISQUES FINANCIERS;charge;;;[PC] ligne 1161
+6781;sur rentes viagères;charge;;;[PC] ligne 1162
+6782;sur opérations financières;charge;;;[PC] ligne 1163
+6784;sur instruments de trésorerie;charge;;;[PC] ligne 1164
+679;CHARGES POUR DEPRECIATIONS ET PROVISIONS POUR RISQUES A COURT TERME FINANCIERES;charge;;;[PC] ligne 1165
+6791;sur risques financiers;charge;;;[PC] ligne 1166
+6795;sur titres de placement;charge;;;[PC] ligne 1167
+6798;Autres charges pour dépréciations et provisions pour risques à court terme financières;charge;;;[PC] ligne 1168
+68;DOTATIONS AUX AMORTISSEMENTS;charge;;;[PC] ligne 1169
+681;DOTATIONS AUX AMORTISSEMENTS D'EXPLOITATION;charge;;;[PC] ligne 1170
+6812;Dotations aux amortissements des immobilisations incorporelles;charge;;;[PC] ligne 1171
+6813;Dotations aux amortissements des immobilisations corporelles;charge;;;[PC] ligne 1172
+69;DOTATIONS UX PROVISIONS ET AUX DEPRECIATIONS;charge;;;[PC] ligne 1173
+691;DOTATIONS AUX PROVISIONS ET AUX DEPRECIATIONS D'EXPLOITATION;charge;;;[PC] ligne 1174
+6911;Dotations aux provisions pour risques et charges;charge;;;[PC] ligne 1175
+6913;Dotations aux dépréciations des immobilisations incorporelles;charge;;;[PC] ligne 1176
+6914;Dotations aux dépréciations des immobilisations corporelles;charge;;;[PC] ligne 1177
+697;DOTATIONS AUX PROVISIONS ET AUX DEPRECIATIONS FINANCIERES;charge;;;[PC] ligne 1178
+6971;Dotations aux provisions pour risques et charges;charge;;;[PC] ligne 1179
+6972;Dotations aux dépréciations des immobilisations financières;charge;;;[PC] ligne 1180
+701;VENTES DE MARCHANDISES;produit;;;[PC] ligne 1181
+7011;dans la Région (7);produit;;;[PC] ligne 1182
+7012;hors Région (7);produit;;;[PC] ligne 1183
+7013;aux entités du groupe dans la Région;produit;;;[PC] ligne 1184
+7014;aux entités du groupe hors Région;produit;;;[PC] ligne 1185
+7015;sur internet;produit;;;[PC] ligne 1186
+7019;Rabais, remises, ristournes accordés (non ventilés);produit;;;[PC] ligne 1187
+702;VENTES DE PRODUITS FINIS;produit;;;[PC] ligne 1188
+7021;dans la Région (7);produit;;;[PC] ligne 1189
+7022;hors Région (7);produit;;;[PC] ligne 1190
+7023;aux entités du groupe dans la Région;produit;;;[PC] ligne 1191
+7024;aux entités du groupe hors Région;produit;;;[PC] ligne 1192
+7025;sur internet;produit;;;[PC] ligne 1193
+7029;Rabais, remises, ristournes accordés (non ventilés);produit;;;[PC] ligne 1194
+703;VENTES DE PRODUITS INTERMEDIAIRES;produit;;;[PC] ligne 1195
+7031;dans la Région (7);produit;;;[PC] ligne 1196
+7032;hors Région (7);produit;;;[PC] ligne 1197
+7033;aux entités du groupe dans la Région;produit;;;[PC] ligne 1198
+7034;aux entités du groupe hors Région;produit;;;[PC] ligne 1199
+7035;sur internet;produit;;;[PC] ligne 1200
+7039;Rabais, remises, ristournes accordés (non ventilés);produit;;;[PC] ligne 1201
+704;VENTES DE PRODUITS RESIDUELS;produit;;;[PC] ligne 1202
+7041;dans la Région (7);produit;;;[PC] ligne 1203
+7042;hors Région (7);produit;;;[PC] ligne 1204
+7043;aux entités du groupe dans la Région;produit;;;[PC] ligne 1205
+7044;aux entités du groupe hors Région;produit;;;[PC] ligne 1206
+7045;sur internet;produit;;;[PC] ligne 1207
+7049;Rabais, remises, ristournes accordés (non ventilés);produit;;;[PC] ligne 1208
+705;TRAVAUX FACTURES;produit;;;[PC] ligne 1209
+7051;dans la Région (7);produit;;;[PC] ligne 1210
+7052;hors Région (7);produit;;;[PC] ligne 1211
+7053;aux entités du groupe dans la Région;produit;;;[PC] ligne 1212
+7054;aux entités du groupe hors Région;produit;;;[PC] ligne 1213
+7055;sur internet;produit;;;[PC] ligne 1214
+7059;Rabais, remises, ristournes accordés (non ventilés);produit;;;[PC] ligne 1215
+706;SERVICES VENDUS;produit;;;[PC] ligne 1216
+7061;dans la Région (7);produit;;;[PC] ligne 1217
+7062;hors Région (7);produit;;;[PC] ligne 1218
+7063;aux entités du groupe dans la Région;produit;;;[PC] ligne 1219
+7064;aux entités du groupe hors Région;produit;;;[PC] ligne 1220
+7065;sur internet;produit;;;[PC] ligne 1221
+7069;Rabais, remises, ristournes accordés (non ventilés);produit;;;[PC] ligne 1222
+707;PRODUITS ACCESSOIRES;produit;;;[PC] ligne 1223
+7071;Ports, emballages perdus et autres frais facturés;produit;;;[PC] ligne 1224
+7072;Commissions et courtages(8);produit;;;[PC] ligne 1225
+7073;Locations et redevances de location - financement (8);produit;;;[PC] ligne 1226
+7074;Bonis sur reprises et cessions d'emballages;produit;;;[PC] ligne 1227
+7075;Mise à disposition de personnel (8);produit;;;[PC] ligne 1228
+7076;Redevances pour brevets, logiciels, marques et droits similaires (8);produit;;;[PC] ligne 1229
+7077;Services exploités dans l'intérêt du personnel;produit;;;[PC] ligne 1230
+7078;Autres produits accessoires;produit;;;[PC] ligne 1231
+71;SUBVENTIONS D'EXPLOITATION;produit;;;[PC] ligne 1232
+711;SUR PRODUITS A L'EXPORTATION;produit;;;[PC] ligne 1233
+712;SUR PRODUITS A L'IMPORTATION;produit;;;[PC] ligne 1234
+713;SUR PRODUITS DE PEREQUATION;produit;;;[PC] ligne 1235
+714;INDEMNITES ET SUBVENTIONS D’EXPLOITATION (entité agricole);produit;;;[PC] ligne 1236
+718;AUTRES SUBVENTIONS D'EXPLOITATION;produit;;;[PC] ligne 1237
+7181;Versées par l'Etat et les collectivités publiques;produit;;;[PC] ligne 1238
+7182;Versées par les organismes internationaux;produit;;;[PC] ligne 1239
+7183;Versées par des tiers;produit;;;[PC] ligne 1240
+72;PRODUCTION IMMOBILISEE;produit;;;[PC] ligne 1241
+721;IMMOBILISATIONS INCORPORELLES;produit;;;[PC] ligne 1242
+722;IMMOBILISATIONS CORPORELLES;produit;;;[PC] ligne 1243
+7221;Immobilisations corporelles (hors actifs biologiques);produit;;;[PC] ligne 1244
+7222;Immobilisations corporelles (actifs biologiques);produit;;;[PC] ligne 1245
+724;PRODUCTION AUTO-CONSOMMEE;produit;;;[PC] ligne 1246
+726;IMMOBILISATIONS FINANCIERES (9);produit;;;[PC] ligne 1247
+73;VARIATIONS DES STOCKS DE BIENS ET DE SERVICES PRODUITS;produit;;;[PC] ligne 1248
+734;VARIATIONS DES STOCKS DE PRODUITS EN COURS;produit;;;[PC] ligne 1249
+7341;Produits en cours;produit;;;[PC] ligne 1250
+7342;Travaux en cours;produit;;;[PC] ligne 1251
+735;VARIATIONS DES SERVICES EN COURS;produit;;;[PC] ligne 1252
+7351;Etudes en cours;produit;;;[PC] ligne 1253
+7352;Prestations de services en cours;produit;;;[PC] ligne 1254
+736;VARIATIONS DES STOCKS DE PRODUITS FINIS;produit;;;[PC] ligne 1255
+737;VARIATIONS DES STOCKS DE PRODUITS INTERMEDIAIRES ET RESIDUELS;produit;;;[PC] ligne 1256
+7371;Produits intermédiaires;produit;;;[PC] ligne 1257
+7372;Produits résiduels;produit;;;[PC] ligne 1258
+75;AUTRES PRODUITS;produit;;;[PC] ligne 1259
+751;PROFITS SUR CREANCES CLIENTS ET AUTRES DEBITEURS;produit;;;[PC] ligne 1260
+752;QUOTE-PART DE RESULTAT SUR OPERATIONS FAITES EN COMMUN;produit;;;[PC] ligne 1261
+7521;Quote-part transférée de pertes (comptabilité du gérant);produit;;;[PC] ligne 1262
+7525;Bénéfices attribués par transfert (comptabilité des associés non gérants);produit;;;[PC] ligne 1263
+754;PRODUITS DES CESSIONS COURANTES D'IMMOBILISATIONS;produit;;;[PC] ligne 1264
+7541;Immobilisations incorporelles;produit;;;[PC] ligne 1265
+7542;Immobilisations corporelles;produit;;;[PC] ligne 1266
+756;GAINS DE CHANGE SUR CREANCES ET DETTES COMMERCIALES;produit;;;[PC] ligne 1267
+758;PRODUITS DIVERS;produit;;;[PC] ligne 1268
+7581;Indemnités de fonction et autres rémunérations d'administrateurs;produit;;;[PC] ligne 1269
+7582;Indemnités d’assurances reçues;produit;;;[PC] ligne 1270
+7588;Autres produits divers;produit;;;[PC] ligne 1271
+759;REPRISES DE CHARGES POUR DEPRECIATIONS ET PROVISIONS POUR RISQUES A COURT TERME D'EX;produit;;;[PC] ligne 1272
+7591;sur risques à court terme;produit;;;[PC] ligne 1273
+7593;sur stocks;produit;;;[PC] ligne 1274
+7594;sur créances;produit;;;[PC] ligne 1275
+7598;sur autres charges pour dépréciations et provisions pour risques à court terme d’exploitation;produit;;;[PC] ligne 1276
+77;REVENUS FINANCIERS ET PRODUITS ASSIMILES;produit;;;[PC] ligne 1277
+771;INTERETS DE PRETS ET CREANCES DIVERSES;produit;;;[PC] ligne 1278
+7712;Intérêts de prêts;produit;;;[PC] ligne 1279
+7713;Intérêts sur créances diverses;produit;;;[PC] ligne 1280
+772;REVENUS DE PARTICIPATIONS ET AUTRES TITRES IMMOBILISES;produit;;;[PC] ligne 1281
+7721;Revenus des titres de participation;produit;;;[PC] ligne 1282
+7722;Revenus autres titres immobilisés;produit;;;[PC] ligne 1283
+773;ESCOMPTES OBTENUS;produit;;;[PC] ligne 1284
+774;REVENUS DE PLACEMENT;produit;;;[PC] ligne 1285
+7745;Revenus des obligations;produit;;;[PC] ligne 1286
+7746;Revenus des titres de placement;produit;;;[PC] ligne 1287
+775;INTERETS DANS LOYERS DE LOCATION-FINANCEMENT;produit;;;[PC] ligne 1288
+776;GAINS DE CHANGE FINANCIERS;produit;;;[PC] ligne 1289
+777;GAINS SUR CESSIONS DE TITRES DE PLACEMENT;produit;;;[PC] ligne 1290
+778;GAINS SUR RISQUES FINANCIERS;produit;;;[PC] ligne 1291
+7781;sur rentes viagères;produit;;;[PC] ligne 1292
+7782;sur opérations financières;produit;;;[PC] ligne 1293
+7784;sur instruments de trésorerie;produit;;;[PC] ligne 1294
+779;REPRISES DE CHARGES POUR DEPRECIATIONS ET PROVISIONS POUR RISQUES A COURT TERME FINANCIERES;produit;;;[PC] ligne 1295
+7791;sur risques financiers;produit;;;[PC] ligne 1296
+7795;sur titres de placement;produit;;;[PC] ligne 1297
+7798;sur autres charges pour dépréciations et provisions pour risques à court terme financières;produit;;;[PC] ligne 1298
+78;TRANSFERTS DE CHARGES;produit;;;[PC] ligne 1299
+781;TRANSFERTS DE CHARGES D'EXPLOITATION;produit;;;[PC] ligne 1300
+787;TRANSFERTS DE CHARGES FINANCIERES;produit;;;[PC] ligne 1301
+79;REPRISES DE PROVISIONS, DE DEPRECIATIONS ET AUTRES;produit;;;[PC] ligne 1302
+791;REPRISES DE PROVISIONS ET DEPRECIATIONS D'EXPLOITATION;produit;;;[PC] ligne 1303
+7911;pour risques et charges;produit;;;[PC] ligne 1304
+7913;des immobilisations incorporelles;produit;;;[PC] ligne 1305
+7914;des immobilisations corporelles;produit;;;[PC] ligne 1306
+797;REPRISES DE PROVISIONS ET DEPRECIATIONS FINANCIERES;produit;;;[PC] ligne 1307
+7971;pour risques et charges;produit;;;[PC] ligne 1308
+7972;des immobilisations financières;produit;;;[PC] ligne 1309
+798;REPRISES D'AMORTISSEMENTS (10);produit;;;[PC] ligne 1310
+799;REPRISES DE SUBVENTIONS D’INVESTISSEMENT;produit;;;[PC] ligne 1311
+81;VALEURS COMPTABLES DES CESSIONS D'IMMOBILISATIONS;charge;;;[PC] ligne 1312
+811;IMMOBILISATIONS INCORPORELLES;charge;;;[PC] ligne 1313
+812;IMMOBILISATIONS CORPORELLES;charge;;;[PC] ligne 1314
+816;IMMOBILISATIONS FINANCIERES;charge;;;[PC] ligne 1315
+82;PRODUITS DES CESSIONS D'IMMOBILISATIONS;produit;;;[PC] ligne 1316
+821;IMMOBILISATIONS INCORPORELLES;produit;;;[PC] ligne 1317
+822;IMMOBILISATIONS CORPORELLES;produit;;;[PC] ligne 1318
+826;IMMOBILISATIONS FINANCIERES;produit;;;[PC] ligne 1319
+83;CHARGES HORS ACTIVITES ORDINAIRES;charge;;;[PC] ligne 1320
+831;CHARGES H.A.O. CONSTATEES;charge;;;[PC] ligne 1321
+833;CHARGES LIEES AUX OPERATIONS DE RESTRUCTURATION;charge;;;[PC] ligne 1322
+834;PERTES SUR CREANCES H.A.O.;charge;;;[PC] ligne 1323
+835;DONS ET LIBERALITES ACCORDES;charge;;;[PC] ligne 1324
+836;ABANDONS DE CREANCES CONSENTIS;charge;;;[PC] ligne 1325
+837;CHARGES LIEES AUX OPERATIONS DE LIQUIDATION;charge;;;[PC] ligne 1326
+84;PRODUITS HORS ACTIVITES ORDINAIRES;produit;;;[PC] ligne 1327
+841;PRODUITS H.A.O CONSTATES;produit;;;[PC] ligne 1328
+843;PRODUITS LIES AUX OPERATIONS DE RESTRUCTURATION;produit;;;[PC] ligne 1329
+844;INDEMNITES ET SUBVENTIONS H.A.O. (entité agricole);produit;;;[PC] ligne 1330
+845;DONS ET LIBERALITES OBTENUS;produit;;;[PC] ligne 1331
+846;ABANDONS DE CREANCES OBTENUS;produit;;;[PC] ligne 1332
+847;PRODUITS LIES AUX OPERATIONS DE LIQUIDATION;produit;;;[PC] ligne 1333
+848;TRANSFERTS DE CHARGES H.A.O;produit;;;[PC] ligne 1334
+849;REPRISES DE CHARGES POUR DEPRECIATIONS ET PROVISIONS POUR RISQUES A COURT TERME H.A.;produit;;;[PC] ligne 1335
+85;DOTATIONS HORS ACTIVITES ORDINAIRES;charge;;;[PC] ligne 1336
+851;DOTATIONS AUX PROVISIONS REGLEMENTEES;charge;;;[PC] ligne 1337
+852;DOTATIONS AUX AMORTISSEMENTS H.A.O.;charge;;;[PC] ligne 1338
+853;DOTATIONS AUX DEPRECIATIONS H.A.O.;charge;;;[PC] ligne 1339
+854;DOTATIONS AUX PROVISIONS POUR RISQUES ET CHARGES H.A.O.;charge;;;[PC] ligne 1340
+858;AUTRES DOTATIONS H.A.O.;charge;;;[PC] ligne 1341
+86;REPRISES DE CHARGES, PROVISIONS ET DEPRECIATIONS HAO.;produit;;;[PC] ligne 1342
+861;REPRISES DE PROVISIONS REGLEMENTEES;produit;;;[PC] ligne 1343
+862;REPRISES D’AMORTISSEMENTS H.A.O;produit;;;[PC] ligne 1344
+863;REPRISES DE DEPRECIATIONS H.A.O.;produit;;;[PC] ligne 1345
+864;REPRISES DE PROVISIONS POUR RISQUES ET CHARGES H.A.O.;produit;;;[PC] ligne 1346
+868;AUTRES REPRISES H.A.O.;produit;;;[PC] ligne 1347
+87;PARTICIPATION DES TRAVAILLEURS;charge;;;[PC] ligne 1348
+871;PARTICIPATION LEGALE AUX BENEFICES;charge;;;[PC] ligne 1349
+874;PARTICIPATION CONTRACTUELLE AUX BENEFICES;charge;;;[PC] ligne 1350
+878;AUTRES PARTICIPATIONS;charge;;;[PC] ligne 1351
+881;ETAT;produit;;;[PC] ligne 1352
+884;COLLECTIVITES PUBLIQUES;produit;;;[PC] ligne 1353
+886;GROUPE;produit;;;[PC] ligne 1354
+888;AUTRES;produit;;;[PC] ligne 1355
+89;IMPOTS SUR LE RESULTAT;charge;;;[PC] ligne 1356
+891;IMPOTS SUR LES BENEFICES DE L'EXERCICE;charge;;;[PC] ligne 1357
+8911;Activités exercées dans l'Etat;charge;;;[PC] ligne 1358
+8912;Activités exercées dans les autres Etats de la Région;charge;;;[PC] ligne 1359
+8913;Activités exercées hors Région;charge;;;[PC] ligne 1360
+892;RAPPEL D'IMPOTS SUR RESULTATS ANTERIEURS;charge;;;[PC] ligne 1361
+895;IMPOT MINIMUM FORFAITAIRE (I.M.F.);charge;;;[PC] ligne 1362
+899;DEGREVEMENTS ET ANNULATIONS D’IMPOTS SUR RESULTATS ANTERIEURS;charge;;;[PC] ligne 1363
+8991;Dégrèvements;charge;;;[PC] ligne 1364
+8994;Annulations pour pertes rétroactives;charge;;;[PC] ligne 1365
+90;ENGAGEMENTS OBTENUS ET ENGAGEMENTS ACCORDES;hors_bilan;;;[PC] ligne 1366
+91;CONTREPARTIES DES ENGAGEMENTS;hors_bilan;;;[PC] ligne 1367
+901;ENGAGEMENTS DE FINANCEMENT OBTENUS;hors_bilan;;;[PC] ligne 1368
+9011;Crédits confirmés obtenus;hors_bilan;;;[PC] ligne 1369
+9012;Emprunts restant à encaisser;hors_bilan;;;[PC] ligne 1370
+9013;Facilités de financement renouvelables;hors_bilan;;;[PC] ligne 1371
+9014;Facilités d'émission;hors_bilan;;;[PC] ligne 1372
+9018;Autres engagements de financement obtenus;hors_bilan;;;[PC] ligne 1373
+902;ENGAGEMENTS DE GARANTIE OBTENUS;hors_bilan;;;[PC] ligne 1374
+9021;Avals obtenus;hors_bilan;;;[PC] ligne 1375
+9022;Cautions, garanties obtenues;hors_bilan;;;[PC] ligne 1376
+9023;Hypothèques obtenues;hors_bilan;;;[PC] ligne 1377
+9024;Effets endossés par des tiers;hors_bilan;;;[PC] ligne 1378
+9028;Autres garanties obtenues;hors_bilan;;;[PC] ligne 1379
+903;ENGAGEMENTS RECIPROQUES;hors_bilan;;;[PC] ligne 1380
+9031;Achats de marchandises à terme;hors_bilan;;;[PC] ligne 1381
+9032;Achats à terme de devises;hors_bilan;;;[PC] ligne 1382
+9033;Commandes fermes des clients;hors_bilan;;;[PC] ligne 1383
+9038;Autres engagements réciproques;hors_bilan;;;[PC] ligne 1384
+904;AUTRES ENGAGEMENTS OBTENUS;hors_bilan;;;[PC] ligne 1385
+9041;Abandons de créances conditionnels;hors_bilan;;;[PC] ligne 1386
+9043;Ventes avec clause de réserve de propriété;hors_bilan;;;[PC] ligne 1387
+9048;Divers engagements obtenus;hors_bilan;;;[PC] ligne 1388
+905;ENGAGEMENTS DE FINANCEMENT ACCORDES;hors_bilan;;;[PC] ligne 1389
+9051;Crédits accordés non décaissés;hors_bilan;;;[PC] ligne 1390
+9058;Autres engagements de financement accordés;hors_bilan;;;[PC] ligne 1391
+906;ENGAGEMENTS DE GARANTIE ACCORDES;hors_bilan;;;[PC] ligne 1392
+9061;Avals accordés;hors_bilan;;;[PC] ligne 1393
+9062;Cautions, garanties accordées;hors_bilan;;;[PC] ligne 1394
+9063;Hypothèques accordées;hors_bilan;;;[PC] ligne 1395
+9064;Effets endossés par l'entité;hors_bilan;;;[PC] ligne 1396
+9068;Autres garanties accordées;hors_bilan;;;[PC] ligne 1397
+907;ENGAGEMENTS RECIPROQUES;hors_bilan;;;[PC] ligne 1398
+9071;Ventes de marchandises à terme;hors_bilan;;;[PC] ligne 1399
+9072;Ventes à terme de devises;hors_bilan;;;[PC] ligne 1400
+9073;Commandes fermes aux fournisseurs;hors_bilan;;;[PC] ligne 1401
+9078;Autres engagements réciproques;hors_bilan;;;[PC] ligne 1402
+908;AUTRES ENGAGEMENTS ACCORDES;hors_bilan;;;[PC] ligne 1403
+9081;Annulations conditionnelles de dettes;hors_bilan;;;[PC] ligne 1404
+9082;Engagements de retraite;hors_bilan;;;[PC] ligne 1405
+9083;Achats avec clause de réserve de propriété;hors_bilan;;;[PC] ligne 1406
+9088;Divers engagements accordés;hors_bilan;;;[PC] ligne 1407
+92;COMPTES REFLECHIS;hors_bilan;;;[PC] ligne 1409
+93;COMPTES DE RECLASSEMENTS;hors_bilan;;;[PC] ligne 1410
+94;COMPTES DES COÛTS;hors_bilan;;;[PC] ligne 1411
+95;COMPTES DE STOCKS;hors_bilan;;;[PC] ligne 1412
+96;COMPTES D'ECARTS SUR COUTS PREETABLIS;hors_bilan;;;[PC] ligne 1413
+97;COMPTES DE DIFFERENCES DE TRAITEMENT COMPTABLE;hors_bilan;;;[PC] ligne 1414
+98;COMPTABLE COMPTES DE RESULTATS;hors_bilan;;;[PC] ligne 1415
+99;COMPTES DE LIAISONS INTERNES;hors_bilan;;;[PC] ligne 1416

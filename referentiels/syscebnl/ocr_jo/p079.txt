@@ -1,0 +1,48 @@
+_ | Journal officiel OHADA 2023 AE 15/03/2023 v21.qxp_OHADA 16/03/2023 17:06 (age 79 | L
+PARTIE 2 : STRUCTURE, CONTENU ET FONCTIONNEMENT DES COMPTES
+CLASSE 2 - COMPTES D’ACTIF IMMOBILISE
+20 IMMOBILISATIONS DESTINÉES A LA VENTE PROVENANT DE DONS ET
+LEGS NON ENCORE RECUS ET USUFRUIT TEMPORAIRE
+21 IMMOBILISATIONS INCORPORELLES
+22 TERRAINS
+23 BÂTIMENTS, INSTALLATIONS TECHNIQUES ET AGENCEMENTS
+24 MATERIEL, MOBILIER ET ACTIFS BIOLOGIQUES
+25 AVANCES ET ACOMPTES VERSÉS SUR IMMOBILISATIONS
+26 TITRES DE PARTICIPATION
+27 AUTRES IMMOBLISATIONS FINANCIÈRES
+28 AMORTISSEMENTS
+29 DEPRECIATIONS DES IMMOBILISATIONS
+20 IMMOBILISATIONS DESTINÉES A LA VENTE PROVENANT DE DONS ET
+LEGS NON ENCORE RECUS ET USUFRUIT TEMPORAIRE
+201 Immobilisations incorporelles
+2011  Usufruit temporaire
+2012 Brevets, licences, concessions et droits similaires
+2013 Logiciels et sites internet
+2014 Marques
+° 2017 Autres e
+202 Terrains
+203 Bâtiments
+204 Matériels
+205 Titres de participations
+21 IMMOBILISATIONS INCORPORELLES
+212 Brevets, licences, concessions et droits similaires
+2121 Brevets
+2122 Licences
+2123  Concessions de service public
+2128 Autres concessions et droits similaires
+213 Logiciels et sites internet
+2131 Logiciels
+2132 Sites internet
+214 Marques
+218 Autres droits et valeurs incorporels
+2181 Indemnités de transfert aux joueurs
+219 Immobilisations incorporelles en cours
+2193 Logiciels et sites internet
+2198 Autres droits et valeurs incorporels
+22 TERRAINS
+221 Terrains agricoles et forestiers
+2211 Terrains d'exploitation agricole
+2212 Terrains d'exploitation forestière
+2218 Autres terrains
+222 Terrains nus
+2221 Terrains à bâtir

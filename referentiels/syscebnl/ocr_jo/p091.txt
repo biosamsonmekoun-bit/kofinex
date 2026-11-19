@@ -1,0 +1,38 @@
+_ | Journal officiel OHADA 2023 AE 15/03/2023 v21.qxp_OHADA 16/03/2023 17:08(@age 91 | L
+PARTIE 2 : STRUCTURE, CONTENU ET FONCTIONNEMENT DES COMPTES
+4817 Fournisseurs, retenues de garantie- immobilisations
+48171 Fournisseurs, retenues de garantie — immobilisations incorporelles
+48172 Fournisseurs, retenues de garantie — immobilisations corporelles
+4818 Fournisseurs, factures non parvenues - immobilisations
+48181 Fournisseurs, factures non parvenues — immobilisations incorporelles
+48182 Fournisseurs, factures non parvenues — immobilisations corporelles
+484 Autres dettes hors activités ordinaires (H.A.0.)
+485 Créances sur cessions d’immobilisations
+4851 Créances, en compte, immobilisations incorporelles
+4852 Créances, en compte, immobilisations corporelles
+4856 Créances, immobilisations financières
+4857 Créances, Retenues de garantie sur cession immobilisations
+4858 Créances sur cession d’immobilisations, factures à établir
+486 Dettes et créances des legs et dons d’immobilisations
+4861 Dettes des dons et legs d’immobilisations
+4865 Créances reçues sur dons et legs d’immobilisations
+488 Autres créances hors activités ordinaires (H.A.0.)
+4881 Créditeurs, dons en nature HAO non consommés
+49 DÉPRÉCIATIONS ET PROVISIONS POUR RISQUES A COURT TERME
+(TIERS)
+490 Dépréciations des comptes fournisseurs
+491 Dépréciations des comptes adhérents et clients-usagers
+4911 Dépréciations des créances litigieuses
+4912 Dépréciations des créances douteuses
+492 Dépréciations des comptes personnel
+493 Dépréciations des comptes organismes sociaux
+494 Dépréciations des comptes État et Collectivités publiques
+497 Dépréciations des comptes débiteurs divers
+498 Dépréciations des comptes de créances H.A.0.
+4985 Dépréciations des créances sur cessions d’immobilisations
+4988 Dépréciations des autres créances H.A.O.
+499 Provisions pour risques et charges à court terme
+4991 Provisions pour risques sur opérations d'exploitation
+4998 Provisions pour risques sur opérations H.A.O.
+/ ©
+cl] —®— RE

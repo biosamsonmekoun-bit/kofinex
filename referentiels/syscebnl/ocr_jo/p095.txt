@@ -1,0 +1,57 @@
+_ | Journal officiel OHADA 2023 AË 15/03/2023 v21.qxp_OHADA 16/03/2023 17:08(@age 95 | L
+PARTIE 2 : STRUCTURE, CONTENU ET FONCTIONNEMENT DES COMPTES
+6054 Fournitures d'entretien non stockables
+6055 Fournitures de bureau non stockables
+6056 Achats de petit matériel et outillage
+6057 Achats d’études et prestations de services
+6058 Achats de travaux, matériels et équipements
+6059 Rabais, Remises et Ristournes obtenus (non ventilés)
+606 Achats autres activités
+6061 Billetteries
+6062  Tombola et autres jeux
+6063 Bons d'achats
+6064 Voyages et sorties
+6068 Autres activités
+608 Achats d'emballages
+6081 Emballages perdus
+6082 Emballages récupérables non ide 1 fiables
+6083 Emballages à usage mixte
+6085 Frais sur achats Cd’emballages
+6089 Rabais, Remises et Ristournes obtenus (non ventilés)
+61 TRANSPORTS
+612 Transports sur ventes
+613 Transports pour le compte de tiers
+614 Transports du personnel
+616 Transports de plis
+618 Autres frais de transport
+6181 Voyages et déplacements
+6183 Transports administratifs
+619 Rabais, Remises et Ristournes Obtenus (non ventilés)
+° 62 SERVICES EXTÉRIEURS e
+621 Sous-traitance générale
+622 Locations, charges locatives
+6221 Locations de terrains
+6222 Locations de bâtiments
+6223 Locations de matériels et outillages
+6224  Malis sur emballages
+6225 Locations d'emballages
+6226  Fermages et loyers du foncier
+6228 Locations et charges locatives diverses
+623 Redevances de location-acquisition
+6232  Crédit-bail immobilier
+6233  Crédit-bail mobilier
+6234  Location-vente
+6238 Autres contrats de location-acquisition
+624 Entretien, réparation, remise en état et maintenance
+6241 Entretien et réparation des biens immobiliers
+6242 Entretien et réparation des biens mobiliers
+6243 Maintenance
+6244 Charges de démantèlement et remise en état
+6248 Autres entretiens et réparation
+625 Primes d’assurance
+6251 Assurances multirisques
+6252 Assurances matériel de transport
+6253 Assurances risques d'exploitation
+@] L'entité peut créer des sous comptes pour les frais accessoires: douanes, fret. assurances sur achats. commissions,
+courtages sur achats, frais de transit, et autres frais accessoires.
+cl] —&— RE

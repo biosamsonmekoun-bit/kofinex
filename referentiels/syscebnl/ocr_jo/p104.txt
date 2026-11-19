@@ -1,0 +1,31 @@
+| Journal officiel OHADA 2023 AE 15/03/2023 V2020.qxp_OHADA 28/03/2023 M Page 104 |
+ACTE UNIFORME RELATIF AU SYSTEME COMPTABLE DES ENTITES À BUT NON LUCRATIF
+84 REVENUS HORS ACTIVITÉS ORDINAIRES
+841 Produits H.A.0. constatés
+842 Contributions volontaires en nature
+8411 Dons en nature HAO vendus
+8412 Prestations de services en nature HAO
+8415 Dons en nature HAO à distribuer
+843 Contributions volontaires en numéraire
+846 Abandons de créances obtenus
+848 Transferts de produits H.A.O
+849 Reprises de charges pour dépréciations et provisions pour risques à court terme
+H.A.0.
+85 DOTATIONS HORS ACTIVITÉS ORDINAIRES
+851 Dotations aux provisions réglementées
+852 Dotations aux amortissements H.A.O.
+853 Dotations aux dépréciations H.A.O.
+854 Dotations aux provisions pour risques et charges H.A.O.
+858 Autres dotations H,A.O
+86 REPRISES D'AMORTISSEMENTS, PROVISIONS ET DEPRECIATIONS HAO.
+861 Reprises de provisions réglementées
+862 Reprises d’amortissements H.A.0O.
+863 Reprises de dépréciations H.A.O.
+864 Reprises de provisions pour risques et charges H.A.O.
+868 Autres reprises H.A.0.
+87 VARIATIONS DE STOCKS DE DONS EN NATURE HAO
+: 88 SUBVENTIONS D’ÉQUILIBRE :
+881 Subventions d'équilibre, État
+884 Subventions d’équilibre, Collectivités publiques
+888 Autres subventions d’équilibre
+| L |

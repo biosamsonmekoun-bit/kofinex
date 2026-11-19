@@ -1,0 +1,50 @@
+_ | Journal officiel OHADA 2023 AE 15/03/2023 v21.qxp_OHADA 16/03/2023 17:06 (age 77 | L
+PARTIE 2 : STRUCTURE, CONTENU ET FONCTIONNEMENT DES COMPTES
+Plan des comptes détaillé
+CLASSE 1 - COMPTES DE RESSOURCES DURABLES
+10 DOTATION
+11 RESERVES
+12 REPORT A NOUVEAU
+13 RESULTAT NET DE L'EXERCICE
+14 SUBVENTIONS D’INVESTISSEMENT
+15 PROVISIONS REGLEMENT , S ET FONDS ASSIMILES
+16 FONDS AFFECTES ET PROVENANT DE DONS OU LEGS D’IMMOBILISATIONS
+17 FONDS REPORTES
+18 EMPRUNTS ET DETTES ASSIMILEES
+19 PROVISIONS POUR RISQUES ET CHARGES
+10 | DOTATION
+101 | Dotation non consomptible sans droit de reprise
+1011 en numéraire
+1015 en nature
+102 Dotation non consomptible avec droit de reprise
+1021 en numéraire
+1025 en nature
+103 ! Droit d’entrée
+104 Dotation consomptible
+° 1041! Dotation consomptible e
+1049 Dotation consomptible inscrite au compte de résultat
+106 Écarts de réévaluation
+1061 Ecarts de réévaluation sur des biens sans droit de reprise
+10611 | Ecarts de réévaluation sur des biens sans droit de reprise-immobilisations corporelles
+10612 | Ecarts de réévaluation sur des biens sans droit de reprise-immobilisations financières
+1062 Ecarts de réévaluation sur des biens avec droit de reprise
+10621 Ecarts de réévaluation sur des biens avec droit de reprise-immobilisations corporelles
+10622 Écarts de réévaluation sur des biens avec droit de reprise-immobilisations financières
+11  RÉSERVES E
+112 Réserves statutaires ou contractuelles
+118 Autres réserves
+12 ! REPORT A NOUVEAU
+121 Report à nouveau des excédents
+128 | Résultat net en instance d’affectation
+129 | Report à nouveau des déficits |
+13 RÉSULTAT NET DE L’EXERCICE (1
+131 Excédent de l’exercice
+139 _| Déficit de l’exercice
+14 | SUBVENTIONS D’INVESTISSEMENT
+141 Subventions d'équipement
+1411 Etat
+1412 | Régions
+1413 Départements
+1414 Communes et collectivités publiques décentralisées
+1415 Entités publiques ou mixtes
+(1) ou solde des opérations de l’exercice pour les projets de développement

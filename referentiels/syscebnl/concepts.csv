@@ -1,0 +1,24 @@
+concept;expression;source
+total_actif;"line(""BZ"")";[JO] poste BZ
+actif_immobilise;"line(""AZ"")";[JO] poste AZ (net)
+stocks;"line(""BB"")";[JO] poste BB (net)
+creances_clients;"line(""BD"")";[JO] poste BD (net) — adhérents, clients-usagers
+actif_circulant;"line(""BT"") + line(""BY"")";[JO] BT + BY [À VALIDER] écart de conversion-actif rattaché au circulant
+tresorerie_actif;"line(""BX"")";[JO] poste BX
+capitaux_propres;"line(""CK"")";[JO] poste CK [À VALIDER] fonds propres hors fonds affectés et reportés (CY)
+dettes_financieres;"line(""DD"")";[JO] poste DD
+ressources_stables;"line(""DE"")";[JO] poste DE
+passif_circulant;"line(""DV"") + line(""DY"")";[JO] DV + DY [À VALIDER] écart de conversion-passif rattaché au circulant
+dettes_fournisseurs;"line(""DH"")";[JO] poste DH
+tresorerie_passif;"line(""DX"")";[JO] poste DX
+chiffre_affaires;"line(""RD"") + line(""RE"")";[JO] RD + RE [À VALIDER] ventes uniquement (cotisations, générosité et subventions exclues)
+resultat_activites_ordinaires;"line(""XC"")";[JO] poste XC
+resultat_hao;"line(""XD"")";[JO] poste XD
+resultat_net;"line(""XE"")";[JO] poste XE
+achats_consommes;"-(line(""TA"") + line(""TB"") + line(""TC"") + line(""TE""))";[JO] TA, TB, TC, TE (charges présentées en négatif) [À VALIDER] hors autres achats (TD)
+achats_fournisseurs;"-(line(""TA"") + line(""TC"") + line(""TD"") + line(""TF"") + line(""TG""))";[JO] TA, TC, TD, TF, TG [À VALIDER] base du délai fournisseurs
+charges_personnel;"-line(""TJ"")";[JO] poste TJ
+charges_calculees;"acct(""68"", ""net_debit"") + acct(""69"", ""net_debit"") + acct(""85"", ""net_debit"")";[JO] TL (68, 69) et dotations HAO (85) [À VALIDER] même périmètre que la version SYSCOHADA
+produits_calcules;"acct(""79"", ""net_credit"") + acct(""86"", ""net_credit"")";[JO] RH (79) et reprises HAO (86) [À VALIDER] RH inclut les reprises de subventions
+produits_cessions;"acct(""82"", ""net_credit"")";[JO] plan : 82 produits des cessions d'immobilisations
+vnc_cessions;"acct(""81"", ""net_debit"")";[JO] plan : 81 valeurs comptables des cessions d'immobilisations

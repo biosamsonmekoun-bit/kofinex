@@ -1,0 +1,100 @@
+etat;code;libelle;ordre;type;formule;role;niveau
+bilan_actif;AD;IMMOBILISATIONS INCORPORELLES;10;total;AE + AF + AG + AH;;0
+bilan_actif;AE;Frais de développement et de prospection;20;detail;;;1
+bilan_actif;AF;Brevets, licences, logiciels et droits similaires;30;detail;;;1
+bilan_actif;AG;Fonds commercial et droit au bail;40;detail;;;1
+bilan_actif;AH;Autres immobilisations incorporelles;50;detail;;;1
+bilan_actif;AI;IMMOBILISATIONS CORPORELLES;60;total;AJ + AK + AL + AM + AN;;0
+bilan_actif;AJ;Terrains;70;detail;;;1
+bilan_actif;AK;Bâtiments;80;detail;;;1
+bilan_actif;AL;Aménagements, agencements et installations;90;detail;;;1
+bilan_actif;AM;Matériel, mobilier et actifs biologiques;100;detail;;;1
+bilan_actif;AN;Matériel de transport;110;detail;;;1
+bilan_actif;AP;AVANCES ET ACOMPTES VERSÉS SUR IMMOBILISATIONS;120;detail;;;0
+bilan_actif;AQ;IMMOBILISATIONS FINANCIÈRES;130;total;AR + AS;;0
+bilan_actif;AR;Titres de participation;140;detail;;;1
+bilan_actif;AS;Autres immobilisations financières;150;detail;;;1
+bilan_actif;AZ;TOTAL ACTIF IMMOBILISÉ;160;total;AD + AI + AP + AQ;;0
+bilan_actif;BA;ACTIF CIRCULANT HAO;170;detail;;;0
+bilan_actif;BB;STOCKS ET ENCOURS;180;detail;;;0
+bilan_actif;BG;CRÉANCES ET EMPLOIS ASSIMILÉS;190;total;BH + BI + BJ;;0
+bilan_actif;BH;Fournisseurs, avances versées;200;detail;;;1
+bilan_actif;BI;Clients;210;detail;;;1
+bilan_actif;BJ;Autres créances;220;detail;;;1
+bilan_actif;BK;TOTAL ACTIF CIRCULANT;230;total;BA + BB + BG;;0
+bilan_actif;BQ;Titres de placement;240;detail;;;1
+bilan_actif;BR;Valeurs à encaisser;250;detail;;;1
+bilan_actif;BS;Banques, chèques postaux, caisse et assimilés;260;detail;;;1
+bilan_actif;BT;TOTAL TRÉSORERIE-ACTIF;270;total;BQ + BR + BS;;0
+bilan_actif;BU;Écart de conversion-Actif;280;detail;;;0
+bilan_actif;BZ;TOTAL GÉNÉRAL;290;total;AZ + BK + BT + BU;total_actif;0
+bilan_passif;CA;Capital;10;detail;;;1
+bilan_passif;CB;Apporteurs capital non appelé (-);20;detail;;;1
+bilan_passif;CD;Primes liées au capital social;30;detail;;;1
+bilan_passif;CE;Écarts de réévaluation;40;detail;;;1
+bilan_passif;CF;Réserves indisponibles;50;detail;;;1
+bilan_passif;CG;Réserves libres;60;detail;;;1
+bilan_passif;CH;Report à nouveau (+ ou -);70;detail;;;1
+bilan_passif;CJ;Résultat net de l'exercice (bénéfice + ou perte -);80;detail;;resultat_bilan;1
+bilan_passif;CL;Subventions d'investissement;90;detail;;;1
+bilan_passif;CM;Provisions réglementées;100;detail;;;1
+bilan_passif;CP;TOTAL CAPITAUX PROPRES ET RESSOURCES ASSIMILÉES;110;total;CA + CB + CD + CE + CF + CG + CH + CJ + CL + CM;;0
+bilan_passif;DA;Emprunts et dettes financières diverses;120;detail;;;1
+bilan_passif;DB;Dettes de location-acquisition;130;detail;;;1
+bilan_passif;DC;Provisions pour risques et charges;140;detail;;;1
+bilan_passif;DD;TOTAL DETTES FINANCIÈRES ET RESSOURCES ASSIMILÉES;150;total;DA + DB + DC;;0
+bilan_passif;DF;TOTAL RESSOURCES STABLES;160;total;CP + DD;;0
+bilan_passif;DH;Dettes circulantes HAO;170;detail;;;1
+bilan_passif;DI;Clients, avances reçues;180;detail;;;1
+bilan_passif;DJ;Fournisseurs d'exploitation;190;detail;;;1
+bilan_passif;DK;Dettes fiscales et sociales;200;detail;;;1
+bilan_passif;DM;Autres dettes;210;detail;;;1
+bilan_passif;DN;Provisions pour risques à court terme;220;detail;;;1
+bilan_passif;DP;TOTAL PASSIF CIRCULANT;230;total;DH + DI + DJ + DK + DM + DN;;0
+bilan_passif;DQ;Banques, crédits d'escompte;240;detail;;;1
+bilan_passif;DR;Banques, établissements financiers et crédits de trésorerie;250;detail;;;1
+bilan_passif;DT;TOTAL TRÉSORERIE-PASSIF;260;total;DQ + DR;;0
+bilan_passif;DV;Écart de conversion-Passif;270;detail;;;0
+bilan_passif;DZ;TOTAL GÉNÉRAL;280;total;DF + DP + DT + DV;total_passif;0
+compte_resultat;TA;Ventes de marchandises;10;detail;;;1
+compte_resultat;RA;Achats de marchandises;20;detail;;;1
+compte_resultat;RB;Variation de stocks de marchandises;30;detail;;;1
+compte_resultat;XA;MARGE COMMERCIALE (somme TA à RB);40;total;TA + RA + RB;;0
+compte_resultat;TB;Ventes de produits fabriqués;50;detail;;;1
+compte_resultat;TC;Travaux, services vendus;60;detail;;;1
+compte_resultat;TD;Produits accessoires;70;detail;;;1
+compte_resultat;XB;CHIFFRE D'AFFAIRES (A + B + C + D);80;total;TA + TB + TC + TD;;0
+compte_resultat;TE;Production stockée (ou déstockage);90;detail;;;1
+compte_resultat;TF;Production immobilisée;100;detail;;;1
+compte_resultat;TG;Subventions d'exploitation;110;detail;;;1
+compte_resultat;TH;Autres produits;120;detail;;;1
+compte_resultat;TI;Transferts de charges d'exploitation;130;detail;;;1
+compte_resultat;RC;Achats de matières premières et fournitures liées;140;detail;;;1
+compte_resultat;RD;Variation de stocks de matières premières et fournitures liées;150;detail;;;1
+compte_resultat;RE;Autres achats;160;detail;;;1
+compte_resultat;RF;Variation de stocks d'autres approvisionnements;170;detail;;;1
+compte_resultat;RG;Transports;180;detail;;;1
+compte_resultat;RH;Services extérieurs;190;detail;;;1
+compte_resultat;RI;Impôts et taxes;200;detail;;;1
+compte_resultat;RJ;Autres charges;210;detail;;;1
+compte_resultat;XC;VALEUR AJOUTÉE (XB + RA + RB) + (somme TE à RJ);220;total;XB + RA + RB + TE + TF + TG + TH + TI + RC + RD + RE + RF + RG + RH + RI + RJ;;0
+compte_resultat;RK;Charges de personnel;230;detail;;;1
+compte_resultat;XD;EXCÉDENT BRUT D'EXPLOITATION (XC + RK);240;total;XC + RK;;0
+compte_resultat;TJ;Reprises d'amortissements, provisions et dépréciations;250;detail;;;1
+compte_resultat;RL;Dotations aux amortissements, aux provisions et dépréciations;260;detail;;;1
+compte_resultat;XE;RÉSULTAT D'EXPLOITATION (XD + TJ + RL);270;total;XD + TJ + RL;;0
+compte_resultat;TK;Revenus financiers et assimilés;280;detail;;;1
+compte_resultat;TL;Reprises de provisions et dépréciations financières;290;detail;;;1
+compte_resultat;TM;Transferts de charges financières;300;detail;;;1
+compte_resultat;RM;Frais financiers et charges assimilées;310;detail;;;1
+compte_resultat;RN;Dotations aux provisions et aux dépréciations financières;320;detail;;;1
+compte_resultat;XF;RÉSULTAT FINANCIER (somme TK à RN);330;total;TK + TL + TM + RM + RN;;0
+compte_resultat;XG;RÉSULTAT DES ACTIVITÉS ORDINAIRES (XE + XF);340;total;XE + XF;;0
+compte_resultat;TN;Produits des cessions d'immobilisations;350;detail;;;1
+compte_resultat;TO;Autres produits HAO;360;detail;;;1
+compte_resultat;RO;Valeurs comptables des cessions d'immobilisations;370;detail;;;1
+compte_resultat;RP;Autres charges HAO;380;detail;;;1
+compte_resultat;XH;RÉSULTAT HORS ACTIVITÉS ORDINAIRES (somme TN à RP);390;total;TN + TO + RO + RP;;0
+compte_resultat;RQ;Participation des travailleurs;400;detail;;;1
+compte_resultat;RS;Impôts sur le résultat;410;detail;;;1
+compte_resultat;XI;RÉSULTAT NET (XG + XH + RQ + RS);420;total;XG + XH + RQ + RS;resultat_compte_resultat;0

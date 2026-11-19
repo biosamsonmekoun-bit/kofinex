@@ -1,0 +1,50 @@
+_ | Journal officiel OHADA 2023 AE 15/03/2023 v21.qxp_OHADA 16/03/2023 17:07 @age 85 | L
+PARTIE 2 : STRUCTURE, CONTENU ET FONCTIONNEMENT DES COMPTES
+31 BIENS LIES A L'ACTIVITE
+32 MARCHANDISES, MATIÈRES PREMIÈRES ET FOURNITURES LIEES
+33 AUTRES APPROVISIONNEMENTS
+34 DONS EN NATURE
+36 PRODUITS FINIS
+38 DONS EN NATURE HAO
+39 DÉPRÉCIATIONS DES STOCKS ET DES PRODUCTIONS EN COURS
+31 BIENS LIES A L'ACTIVITÉ
+311 Biens liés à l’activité A
+312 Biens liés à l’activité B
+32 MARCHANDISES, MATIÈRES PREMIÈRES ET FOURNITURES LIEES
+321 Marchandises A
+322 Marchandises B
+323 Matières À
+324 Matières B
+325 Fournitures liées (A, B)
+33 AUTRES APPROVISIONNEMENTS
+331 Matières consommables
+333 Fournitures de magasin
+334 Fournitures de bureau
+° 335 Emballages e
+3351 Emballages perdus
+3352 Emballages récupérables non identifiables
+3353 Emballages à usage mixte
+3358 Autres emballages
+338 Autres matières
+34 DONS EN NATURE
+341 Dons en nature non affectés
+345 Dons en nature affectés
+35 PRODUITS ET SERVICES EN COURS
+36 PRODUITS FINIS, PRODUITS INTERMÉDIAIRE ET RESIDUELS
+361 Produits finis A
+362 Produits finis B
+363 Actifs biologiques
+3631 Animaux
+3632 Végétaux
+3638 Autres stocks (activités annexes)
+367 Produits intermédiaires et résiduels
+37 STOCKS EN COURS DE ROUTE , EN CONSIGNATION, OÙ EN DEPOT
+371 Biens liés à l’activité en cours de route
+372 Marchandises, matières premières et fournitures liés en cours de route
+373 Autres approvisionnements en cours de route
+376 Produits finis en cours de route
+377 Stocks en consignation ou en dépôt
+3771 Stock en consignation
+3772 Stock en dépôt
+378 Stock provenant d’immobilisations mises hors services ou au rebut
+cl] —&— RE

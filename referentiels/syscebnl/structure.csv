@@ -1,0 +1,87 @@
+etat;code;libelle;ordre;type;formule;role;niveau
+bilan_actif;AA;IMMOBILISATIONS DESTINÉES À LA VENTE PROVENANT DE DONS ET LEGS NON ENCORE REÇUES ET USUFRUIT TEMPORAIRE;10;total;AB + AC;;0
+bilan_actif;AB;Immobilisations incorporelles;20;detail;;;1
+bilan_actif;AC;Immobilisations corporelles et financières;30;detail;;;1
+bilan_actif;AD;IMMOBILISATIONS INCORPORELLES;40;total;AE + AF + AG;;0
+bilan_actif;AE;Brevets, licences, logiciels et droits similaires;50;detail;;;1
+bilan_actif;AF;Autres immobilisations incorporelles;60;detail;;;1
+bilan_actif;AG;Avances et acomptes versés sur immobilisations incorporelles;70;detail;;;1
+bilan_actif;AH;IMMOBILISATIONS CORPORELLES;80;total;AI + AJ + AK + AL + AM + AN;;0
+bilan_actif;AI;Terrains;90;detail;;;1
+bilan_actif;AJ;Bâtiments;100;detail;;;1
+bilan_actif;AK;Aménagements, agencements et installations;110;detail;;;1
+bilan_actif;AL;Matériel, mobilier et actifs biologiques;120;detail;;;1
+bilan_actif;AM;Matériel de transport;130;detail;;;1
+bilan_actif;AN;Avances et acomptes versés sur immobilisations corporelles;140;detail;;;1
+bilan_actif;AO;IMMOBILISATIONS FINANCIÈRES;150;total;AX + AY;;0
+bilan_actif;AX;Titres de participation;160;detail;;;1
+bilan_actif;AY;Autres immobilisations financières;170;detail;;;1
+bilan_actif;AZ;TOTAL ACTIF IMMOBILISÉ;180;total;AA + AD + AH + AO;;0
+bilan_actif;BA;Actif circulant HAO;190;detail;;;1
+bilan_actif;BB;Stocks et encours;200;detail;;;1
+bilan_actif;BC;Fournisseurs débiteurs;210;detail;;;1
+bilan_actif;BD;Adhérents, clients-usagers;220;detail;;;1
+bilan_actif;BE;Autres créances;230;detail;;;1
+bilan_actif;BT;TOTAL ACTIF CIRCULANT;240;total;BA + BB + BC + BD + BE;;0
+bilan_actif;BU;Titres de placement;250;detail;;;1
+bilan_actif;BV;Valeurs à encaisser;260;detail;;;1
+bilan_actif;BW;Banques, établissements financiers, caisses et assimilés;270;detail;;;1
+bilan_actif;BX;TOTAL TRÉSORERIE-ACTIF;280;total;BU + BV + BW;;0
+bilan_actif;BY;Écart de conversion-Actif;290;detail;;;0
+bilan_actif;BZ;TOTAL GÉNÉRAL;300;total;AZ + BT + BX + BY;total_actif;0
+bilan_passif;CA;Dotation non consomptible sans droit de reprise;10;detail;;;1
+bilan_passif;CB;Dotation non consomptible avec droit de reprise;20;detail;;;1
+bilan_passif;CC;Droit d'entrée;30;detail;;;1
+bilan_passif;CD;Dotation consomptible;40;detail;;;1
+bilan_passif;CE;Écarts de réévaluation;50;detail;;;1
+bilan_passif;CF;Réserves;60;detail;;;1
+bilan_passif;CG;Report à nouveau (+ ou -);70;detail;;;1
+bilan_passif;CH;Résultat net de l'exercice (excédent + ou déficit -);80;detail;;resultat_bilan;1
+bilan_passif;CI;Subventions d'investissement;90;detail;;;1
+bilan_passif;CJ;Provisions réglementées;100;detail;;;1
+bilan_passif;CK;TOTAL FONDS PROPRES ET ASSIMILÉS;110;total;CA + CB + CC + CD + CE + CF + CG + CH + CI + CJ;;0
+bilan_passif;CW;Fonds affectés et provenant de dons et legs d'immobilisations;120;detail;;;1
+bilan_passif;CX;Fonds reportés;130;detail;;;1
+bilan_passif;CY;TOTAL FONDS AFFECTÉS ET REPORTÉS;140;total;CW + CX;;0
+bilan_passif;CZ;TOTAL RESSOURCES PROPRES ET ASSIMILÉES;150;total;CK + CY;;0
+bilan_passif;DA;Emprunts et dettes financières;160;detail;;;1
+bilan_passif;DB;Dettes de location-acquisition;170;detail;;;1
+bilan_passif;DC;Provisions pour risques et charges;180;detail;;;1
+bilan_passif;DD;TOTAL DETTES FINANCIÈRES ET RESSOURCES ASSIMILÉES;190;total;DA + DB + DC;;0
+bilan_passif;DE;TOTAL RESSOURCES STABLES;200;total;CZ + DD;;0
+bilan_passif;DF;Dettes circulantes HAO;210;detail;;;1
+bilan_passif;DG;Adhérents, clients-usagers créditeurs;220;detail;;;1
+bilan_passif;DH;Fournisseurs;230;detail;;;1
+bilan_passif;DI;Autres dettes;240;detail;;;1
+bilan_passif;DV;TOTAL PASSIF CIRCULANT;250;total;DF + DG + DH + DI;;0
+bilan_passif;DW;Banques, établissements financiers et crédits de trésorerie;260;detail;;;1
+bilan_passif;DX;TOTAL TRÉSORERIE-PASSIF;270;total;DW;;0
+bilan_passif;DY;Écart de conversion-Passif;280;detail;;;0
+bilan_passif;DZ;TOTAL GÉNÉRAL;290;total;DE + DV + DX + DY;total_passif;0
+compte_resultat;RA;Cotisations;10;detail;;;1
+compte_resultat;RB;Dotations consomptibles transférées au compte de résultat;20;detail;;;1
+compte_resultat;RC;Revenus liés à la générosité;30;detail;;;1
+compte_resultat;RD;Ventes de marchandises;40;detail;;;1
+compte_resultat;RE;Ventes de services et produits finis;50;detail;;;1
+compte_resultat;RF;Subventions d'exploitation;60;detail;;;1
+compte_resultat;RG;Autres produits et transferts de charges;70;detail;;;1
+compte_resultat;RH;Reprises de provisions, dépréciations, subventions et autres reprises;80;detail;;;1
+compte_resultat;XA;REVENUS DES ACTIVITÉS ORDINAIRES;90;total;RA + RB + RC + RD + RE + RF + RG + RH;;0
+compte_resultat;TA;Achats de biens et services liés à l'activité;100;detail;;;1
+compte_resultat;TB;Variation de stocks des achats de biens et services liés à l'activité;110;detail;;;1
+compte_resultat;TC;Achats de marchandises et matières premières;120;detail;;;1
+compte_resultat;TD;Autres achats;130;detail;;;1
+compte_resultat;TE;Variation de stocks de marchandises, de matières premières et autres;140;detail;;;1
+compte_resultat;TF;Transports;150;detail;;;1
+compte_resultat;TG;Services extérieurs;160;detail;;;1
+compte_resultat;TH;Impôts et taxes;170;detail;;;1
+compte_resultat;TI;Autres charges;180;detail;;;1
+compte_resultat;TJ;Charges de personnel;190;detail;;;1
+compte_resultat;TK;Frais financiers et charges assimilées;200;detail;;;1
+compte_resultat;TL;Dotations aux amortissements, aux provisions, aux dépréciations et autres;210;detail;;;1
+compte_resultat;XB;CHARGES DES ACTIVITÉS ORDINAIRES (somme TA à TL);220;total;TA + TB + TC + TD + TE + TF + TG + TH + TI + TJ + TK + TL;;0
+compte_resultat;XC;RÉSULTAT DES ACTIVITÉS ORDINAIRES (XA - XB);230;total;XA + XB;;0
+compte_resultat;TM;Produits H.A.O.;240;detail;;;1
+compte_resultat;TN;Charges H.A.O.;250;detail;;;1
+compte_resultat;XD;RÉSULTAT H.A.O. (TM - TN);260;total;TM + TN;;0
+compte_resultat;XE;RÉSULTAT NET DE L'EXERCICE (+ excédent, - déficit) (XC + XD);270;total;XC + XD;resultat_compte_resultat;0

@@ -1,0 +1,212 @@
+etat;code_rubrique;libelle_rubrique;prefixe;exclusions;regle;colonne;signe;priorite;source
+bilan_actif;AE;Frais de développement et de prospection;211;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage AE brut : « 211,2181,2191 »
+bilan_actif;AE;Frais de développement et de prospection;2181;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage AE brut : « 211,2181,2191 »
+bilan_actif;AE;Frais de développement et de prospection;2191;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage AE brut : « 211,2181,2191 »
+bilan_actif;AE;Frais de développement et de prospection;2811;;solde_net_crediteur;amortissement;1;100;[TP] Bilan de passage AE amort./dépréc. : « 2811,2818p,2911,2918p,2919p » (2818p, 2918p, 2919p affectés au poste AH)
+bilan_actif;AE;Frais de développement et de prospection;2911;;solde_net_crediteur;amortissement;1;100;[TP] Bilan de passage AE amort./dépréc. : « 2811,2818p,2911,2918p,2919p » (2818p, 2918p, 2919p affectés au poste AH)
+bilan_actif;AF;Brevets, licences, logiciels et droits similaires;212;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage AF brut : « 212,213,214,2193 »
+bilan_actif;AF;Brevets, licences, logiciels et droits similaires;213;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage AF brut : « 212,213,214,2193 »
+bilan_actif;AF;Brevets, licences, logiciels et droits similaires;214;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage AF brut : « 212,213,214,2193 »
+bilan_actif;AF;Brevets, licences, logiciels et droits similaires;2193;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage AF brut : « 212,213,214,2193 »
+bilan_actif;AF;Brevets, licences, logiciels et droits similaires;2812;;solde_net_crediteur;amortissement;1;100;[TP] Bilan de passage AF amort./dépréc. : « 2812,2813,2814,2912,2913,2914,2919p » (2919p affecté au poste AH)
+bilan_actif;AF;Brevets, licences, logiciels et droits similaires;2813;;solde_net_crediteur;amortissement;1;100;[TP] Bilan de passage AF amort./dépréc. : « 2812,2813,2814,2912,2913,2914,2919p » (2919p affecté au poste AH)
+bilan_actif;AF;Brevets, licences, logiciels et droits similaires;2814;;solde_net_crediteur;amortissement;1;100;[TP] Bilan de passage AF amort./dépréc. : « 2812,2813,2814,2912,2913,2914,2919p » (2919p affecté au poste AH)
+bilan_actif;AF;Brevets, licences, logiciels et droits similaires;2912;;solde_net_crediteur;amortissement;1;100;[TP] Bilan de passage AF amort./dépréc. : « 2812,2813,2814,2912,2913,2914,2919p » (2919p affecté au poste AH)
+bilan_actif;AF;Brevets, licences, logiciels et droits similaires;2913;;solde_net_crediteur;amortissement;1;100;[TP] Bilan de passage AF amort./dépréc. : « 2812,2813,2814,2912,2913,2914,2919p » (2919p affecté au poste AH)
+bilan_actif;AF;Brevets, licences, logiciels et droits similaires;2914;;solde_net_crediteur;amortissement;1;100;[TP] Bilan de passage AF amort./dépréc. : « 2812,2813,2814,2912,2913,2914,2919p » (2919p affecté au poste AH)
+bilan_actif;AG;Fonds commercial et droit au bail;215;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage AG brut : « 215,216 »
+bilan_actif;AG;Fonds commercial et droit au bail;216;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage AG brut : « 215,216 »
+bilan_actif;AG;Fonds commercial et droit au bail;2815;;solde_net_crediteur;amortissement;1;100;[TP] Bilan de passage AG amort./dépréc. : « 2815,2816,2915,2916 »
+bilan_actif;AG;Fonds commercial et droit au bail;2816;;solde_net_crediteur;amortissement;1;100;[TP] Bilan de passage AG amort./dépréc. : « 2815,2816,2915,2916 »
+bilan_actif;AG;Fonds commercial et droit au bail;2915;;solde_net_crediteur;amortissement;1;100;[TP] Bilan de passage AG amort./dépréc. : « 2815,2816,2915,2916 »
+bilan_actif;AG;Fonds commercial et droit au bail;2916;;solde_net_crediteur;amortissement;1;100;[TP] Bilan de passage AG amort./dépréc. : « 2815,2816,2915,2916 »
+bilan_actif;AH;Autres immobilisations incorporelles;217;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage AH brut : « 217,218, (sauf 2181), 2198 »
+bilan_actif;AH;Autres immobilisations incorporelles;218;2181;solde_net_debiteur;brut;1;100;[TP] Bilan de passage AH brut : « 217,218, (sauf 2181), 2198 »
+bilan_actif;AH;Autres immobilisations incorporelles;2198;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage AH brut : « 217,218, (sauf 2181), 2198 »
+bilan_actif;AH;Autres immobilisations incorporelles;2817;;solde_net_crediteur;amortissement;1;100;"[TP] Bilan de passage AH amort./dépréc. : « 2817,2818p,2917,2918p,2919p » [À VALIDER] compte « p » réparti dans la grille ; affecté en totalité à ce poste"
+bilan_actif;AH;Autres immobilisations incorporelles;2818;;solde_net_crediteur;amortissement;1;100;"[TP] Bilan de passage AH amort./dépréc. : « 2817,2818p,2917,2918p,2919p » [À VALIDER] compte « p » réparti dans la grille ; affecté en totalité à ce poste"
+bilan_actif;AH;Autres immobilisations incorporelles;2917;;solde_net_crediteur;amortissement;1;100;"[TP] Bilan de passage AH amort./dépréc. : « 2817,2818p,2917,2918p,2919p » [À VALIDER] compte « p » réparti dans la grille ; affecté en totalité à ce poste"
+bilan_actif;AH;Autres immobilisations incorporelles;2918;;solde_net_crediteur;amortissement;1;100;"[TP] Bilan de passage AH amort./dépréc. : « 2817,2818p,2917,2918p,2919p » [À VALIDER] compte « p » réparti dans la grille ; affecté en totalité à ce poste"
+bilan_actif;AH;Autres immobilisations incorporelles;2919;;solde_net_crediteur;amortissement;1;100;"[TP] Bilan de passage AH amort./dépréc. : « 2817,2818p,2917,2918p,2919p » [À VALIDER] compte « p » réparti dans la grille ; affecté en totalité à ce poste"
+bilan_actif;AJ;Terrains;22;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage AJ brut : « 22 »
+bilan_actif;AJ;Terrains;282;;solde_net_crediteur;amortissement;1;100;[TP] Bilan de passage AJ amort./dépréc. : « 282, 292 »
+bilan_actif;AJ;Terrains;292;;solde_net_crediteur;amortissement;1;100;[TP] Bilan de passage AJ amort./dépréc. : « 282, 292 »
+bilan_actif;AK;Bâtiments;231;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage AK brut : « 231,232,233,237,2391 »
+bilan_actif;AK;Bâtiments;232;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage AK brut : « 231,232,233,237,2391 »
+bilan_actif;AK;Bâtiments;233;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage AK brut : « 231,232,233,237,2391 »
+bilan_actif;AK;Bâtiments;237;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage AK brut : « 231,232,233,237,2391 »
+bilan_actif;AK;Bâtiments;2391;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage AK brut : « 231,232,233,237,2391 »
+bilan_actif;AK;Bâtiments;2831;;solde_net_crediteur;amortissement;1;100;"[TP] Bilan de passage AK amort./dépréc. : « 2831,2832,2833,2837,2931,2932,2933,2937p » [À VALIDER] compte « p » réparti dans la grille ; affecté en totalité à ce poste"
+bilan_actif;AK;Bâtiments;2832;;solde_net_crediteur;amortissement;1;100;"[TP] Bilan de passage AK amort./dépréc. : « 2831,2832,2833,2837,2931,2932,2933,2937p » [À VALIDER] compte « p » réparti dans la grille ; affecté en totalité à ce poste"
+bilan_actif;AK;Bâtiments;2833;;solde_net_crediteur;amortissement;1;100;"[TP] Bilan de passage AK amort./dépréc. : « 2831,2832,2833,2837,2931,2932,2933,2937p » [À VALIDER] compte « p » réparti dans la grille ; affecté en totalité à ce poste"
+bilan_actif;AK;Bâtiments;2837;;solde_net_crediteur;amortissement;1;100;"[TP] Bilan de passage AK amort./dépréc. : « 2831,2832,2833,2837,2931,2932,2933,2937p » [À VALIDER] compte « p » réparti dans la grille ; affecté en totalité à ce poste"
+bilan_actif;AK;Bâtiments;2931;;solde_net_crediteur;amortissement;1;100;"[TP] Bilan de passage AK amort./dépréc. : « 2831,2832,2833,2837,2931,2932,2933,2937p » [À VALIDER] compte « p » réparti dans la grille ; affecté en totalité à ce poste"
+bilan_actif;AK;Bâtiments;2932;;solde_net_crediteur;amortissement;1;100;"[TP] Bilan de passage AK amort./dépréc. : « 2831,2832,2833,2837,2931,2932,2933,2937p » [À VALIDER] compte « p » réparti dans la grille ; affecté en totalité à ce poste"
+bilan_actif;AK;Bâtiments;2933;;solde_net_crediteur;amortissement;1;100;"[TP] Bilan de passage AK amort./dépréc. : « 2831,2832,2833,2837,2931,2932,2933,2937p » [À VALIDER] compte « p » réparti dans la grille ; affecté en totalité à ce poste"
+bilan_actif;AK;Bâtiments;2937;;solde_net_crediteur;amortissement;1;100;"[TP] Bilan de passage AK amort./dépréc. : « 2831,2832,2833,2837,2931,2932,2933,2937p » [À VALIDER] compte « p » réparti dans la grille ; affecté en totalité à ce poste"
+bilan_actif;AL;Aménagements, agencements et installations;234;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage AL brut : « 234,235,238,2392,2393 »
+bilan_actif;AL;Aménagements, agencements et installations;235;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage AL brut : « 234,235,238,2392,2393 »
+bilan_actif;AL;Aménagements, agencements et installations;238;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage AL brut : « 234,235,238,2392,2393 »
+bilan_actif;AL;Aménagements, agencements et installations;2392;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage AL brut : « 234,235,238,2392,2393 »
+bilan_actif;AL;Aménagements, agencements et installations;2393;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage AL brut : « 234,235,238,2392,2393 »
+bilan_actif;AL;Aménagements, agencements et installations;2834;;solde_net_crediteur;amortissement;1;100;"[TP] Bilan de passage AL amort./dépréc. : « 2834,2835,2838,2924,2935,2938,2939p » [À VALIDER] « 2924 » lu comme 2934 (2924 relève des terrains, poste AJ) ; 2939p affecté en totalité"
+bilan_actif;AL;Aménagements, agencements et installations;2835;;solde_net_crediteur;amortissement;1;100;"[TP] Bilan de passage AL amort./dépréc. : « 2834,2835,2838,2924,2935,2938,2939p » [À VALIDER] « 2924 » lu comme 2934 (2924 relève des terrains, poste AJ) ; 2939p affecté en totalité"
+bilan_actif;AL;Aménagements, agencements et installations;2838;;solde_net_crediteur;amortissement;1;100;"[TP] Bilan de passage AL amort./dépréc. : « 2834,2835,2838,2924,2935,2938,2939p » [À VALIDER] « 2924 » lu comme 2934 (2924 relève des terrains, poste AJ) ; 2939p affecté en totalité"
+bilan_actif;AL;Aménagements, agencements et installations;2934;;solde_net_crediteur;amortissement;1;100;"[TP] Bilan de passage AL amort./dépréc. : « 2834,2835,2838,2924,2935,2938,2939p » [À VALIDER] « 2924 » lu comme 2934 (2924 relève des terrains, poste AJ) ; 2939p affecté en totalité"
+bilan_actif;AL;Aménagements, agencements et installations;2935;;solde_net_crediteur;amortissement;1;100;"[TP] Bilan de passage AL amort./dépréc. : « 2834,2835,2838,2924,2935,2938,2939p » [À VALIDER] « 2924 » lu comme 2934 (2924 relève des terrains, poste AJ) ; 2939p affecté en totalité"
+bilan_actif;AL;Aménagements, agencements et installations;2938;;solde_net_crediteur;amortissement;1;100;"[TP] Bilan de passage AL amort./dépréc. : « 2834,2835,2838,2924,2935,2938,2939p » [À VALIDER] « 2924 » lu comme 2934 (2924 relève des terrains, poste AJ) ; 2939p affecté en totalité"
+bilan_actif;AL;Aménagements, agencements et installations;2939;;solde_net_crediteur;amortissement;1;100;"[TP] Bilan de passage AL amort./dépréc. : « 2834,2835,2838,2924,2935,2938,2939p » [À VALIDER] « 2924 » lu comme 2934 (2924 relève des terrains, poste AJ) ; 2939p affecté en totalité"
+bilan_actif;AM;Matériel, mobilier et actifs biologiques;24;245 2495;solde_net_debiteur;brut;1;100;[TP] Bilan de passage AM brut : « 24 (sauf 245 et 2495) »
+bilan_actif;AM;Matériel, mobilier et actifs biologiques;284;2845;solde_net_crediteur;amortissement;1;100;[TP] Bilan de passage AM amort./dépréc. : « 284 (sauf 2845), 294 (sauf 2945,2949), 2949p » [À VALIDER] 2949p (aussi cité en AN) affecté en totalité à AM
+bilan_actif;AM;Matériel, mobilier et actifs biologiques;294;2945;solde_net_crediteur;amortissement;1;100;[TP] Bilan de passage AM amort./dépréc. : « 284 (sauf 2845), 294 (sauf 2945,2949), 2949p » [À VALIDER] 2949p (aussi cité en AN) affecté en totalité à AM
+bilan_actif;AM;Matériel, mobilier et actifs biologiques;2949;;solde_net_crediteur;amortissement;1;100;[TP] Bilan de passage AM amort./dépréc. : « 284 (sauf 2845), 294 (sauf 2945,2949), 2949p » [À VALIDER] 2949p (aussi cité en AN) affecté en totalité à AM
+bilan_actif;AN;Matériel de transport;245;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage AN brut : « 245,2495 »
+bilan_actif;AN;Matériel de transport;2495;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage AN brut : « 245,2495 »
+bilan_actif;AN;Matériel de transport;2845;;solde_net_crediteur;amortissement;1;100;[TP] Bilan de passage AN amort./dépréc. : « 2845,2945,2949p » (2949p affecté au poste AM)
+bilan_actif;AN;Matériel de transport;2945;;solde_net_crediteur;amortissement;1;100;[TP] Bilan de passage AN amort./dépréc. : « 2845,2945,2949p » (2949p affecté au poste AM)
+bilan_actif;AP;AVANCES ET ACOMPTES VERSÉS SUR IMMOBILISATIONS;251;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage AP brut : « 251,252 »
+bilan_actif;AP;AVANCES ET ACOMPTES VERSÉS SUR IMMOBILISATIONS;252;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage AP brut : « 251,252 »
+bilan_actif;AP;AVANCES ET ACOMPTES VERSÉS SUR IMMOBILISATIONS;2951;;solde_net_crediteur;amortissement;1;100;[TP] Bilan de passage AP amort./dépréc. : « 2951,2952 »
+bilan_actif;AP;AVANCES ET ACOMPTES VERSÉS SUR IMMOBILISATIONS;2952;;solde_net_crediteur;amortissement;1;100;[TP] Bilan de passage AP amort./dépréc. : « 2951,2952 »
+bilan_actif;AR;Titres de participation;26;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage AR brut : « 26 »
+bilan_actif;AR;Titres de participation;296;;solde_net_crediteur;amortissement;1;100;[TP] Bilan de passage AR amort./dépréc. : « 296 »
+bilan_actif;AS;Autres immobilisations financières;27;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage AS brut : « 27 »
+bilan_actif;AS;Autres immobilisations financières;297;;solde_net_crediteur;amortissement;1;100;[TP] Bilan de passage AS amort./dépréc. : « 297 »
+bilan_actif;BA;ACTIF CIRCULANT HAO;485;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage BA brut : « 485,488 »
+bilan_actif;BA;ACTIF CIRCULANT HAO;488;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage BA brut : « 485,488 »
+bilan_actif;BA;ACTIF CIRCULANT HAO;498;;solde_net_crediteur;amortissement;1;100;[TP] Bilan de passage BA amort./dépréc. : « 498 »
+bilan_actif;BB;STOCKS ET ENCOURS;31;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage BB brut : « 31,32,33,34,35,36,37,38 »
+bilan_actif;BB;STOCKS ET ENCOURS;32;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage BB brut : « 31,32,33,34,35,36,37,38 »
+bilan_actif;BB;STOCKS ET ENCOURS;33;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage BB brut : « 31,32,33,34,35,36,37,38 »
+bilan_actif;BB;STOCKS ET ENCOURS;34;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage BB brut : « 31,32,33,34,35,36,37,38 »
+bilan_actif;BB;STOCKS ET ENCOURS;35;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage BB brut : « 31,32,33,34,35,36,37,38 »
+bilan_actif;BB;STOCKS ET ENCOURS;36;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage BB brut : « 31,32,33,34,35,36,37,38 »
+bilan_actif;BB;STOCKS ET ENCOURS;37;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage BB brut : « 31,32,33,34,35,36,37,38 »
+bilan_actif;BB;STOCKS ET ENCOURS;38;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage BB brut : « 31,32,33,34,35,36,37,38 »
+bilan_actif;BB;STOCKS ET ENCOURS;39;;solde_net_crediteur;amortissement;1;100;[TP] Bilan de passage BB amort./dépréc. : « 39 »
+bilan_actif;BH;Fournisseurs, avances versées;409;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage BH brut : « 409 »
+bilan_actif;BH;Fournisseurs, avances versées;40;409;solde_debiteur;brut;1;100;"[À VALIDER] soldes débiteurs des comptes 40 (sauf 409) : non cités par la grille ; classés en avances fournisseurs (non-compensation, comme la DSF fournie)"
+bilan_actif;BH;Fournisseurs, avances versées;490;;solde_crediteur;amortissement;1;100;[TP] Bilan de passage BH dépréc. : « 490 »
+bilan_actif;BI;Clients;41;419;solde_debiteur;brut;1;100;[TP] Bilan de passage BI brut : « 41 (sauf 419) » — soldes débiteurs
+bilan_actif;BI;Clients;491;;solde_crediteur;amortissement;1;100;[TP] Bilan de passage BI dépréc. : « 491 »
+bilan_actif;BJ;Autres créances;185;;solde_debiteur;brut;1;100;[TP] Bilan de passage BJ brut : « Soldes débiteurs : 185,42,43,44,45,46,47 (sauf 478) »
+bilan_actif;BJ;Autres créances;42;;solde_debiteur;brut;1;100;[TP] Bilan de passage BJ brut : « Soldes débiteurs : 185,42,43,44,45,46,47 (sauf 478) »
+bilan_actif;BJ;Autres créances;43;;solde_debiteur;brut;1;100;[TP] Bilan de passage BJ brut : « Soldes débiteurs : 185,42,43,44,45,46,47 (sauf 478) »
+bilan_actif;BJ;Autres créances;44;;solde_debiteur;brut;1;100;[TP] Bilan de passage BJ brut : « Soldes débiteurs : 185,42,43,44,45,46,47 (sauf 478) »
+bilan_actif;BJ;Autres créances;45;;solde_debiteur;brut;1;100;[TP] Bilan de passage BJ brut : « Soldes débiteurs : 185,42,43,44,45,46,47 (sauf 478) »
+bilan_actif;BJ;Autres créances;46;;solde_debiteur;brut;1;100;[TP] Bilan de passage BJ brut : « Soldes débiteurs : 185,42,43,44,45,46,47 (sauf 478) »
+bilan_actif;BJ;Autres créances;47;478 479;solde_debiteur;brut;1;100;[TP] Bilan de passage BJ brut : « Soldes débiteurs : 185,42,43,44,45,46,47 (sauf 478) »
+bilan_actif;BJ;Autres créances;492;;solde_crediteur;amortissement;1;100;[TP] Bilan de passage BJ dépréc. : « 492,493,494,495,496,497 »
+bilan_actif;BJ;Autres créances;493;;solde_crediteur;amortissement;1;100;[TP] Bilan de passage BJ dépréc. : « 492,493,494,495,496,497 »
+bilan_actif;BJ;Autres créances;494;;solde_crediteur;amortissement;1;100;[TP] Bilan de passage BJ dépréc. : « 492,493,494,495,496,497 »
+bilan_actif;BJ;Autres créances;495;;solde_crediteur;amortissement;1;100;[TP] Bilan de passage BJ dépréc. : « 492,493,494,495,496,497 »
+bilan_actif;BJ;Autres créances;496;;solde_crediteur;amortissement;1;100;[TP] Bilan de passage BJ dépréc. : « 492,493,494,495,496,497 »
+bilan_actif;BJ;Autres créances;497;;solde_crediteur;amortissement;1;100;[TP] Bilan de passage BJ dépréc. : « 492,493,494,495,496,497 »
+bilan_actif;BQ;Titres de placement;50;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage BQ brut : « 50 »
+bilan_actif;BQ;Titres de placement;590;;solde_net_crediteur;amortissement;1;100;[TP] Bilan de passage BQ amort./dépréc. : « 590 »
+bilan_actif;BR;Valeurs à encaisser;51;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage BR brut : « 51 »
+bilan_actif;BR;Valeurs à encaisser;591;;solde_net_crediteur;amortissement;1;100;[TP] Bilan de passage BR amort./dépréc. : « 591 »
+bilan_actif;BS;Banques, chèques postaux, caisse et assimilés;52;;solde_debiteur;brut;1;100;[TP] Bilan de passage BS brut : « Soldes débiteurs : 52,53,54,55,57,581,582 » (52, 53 : soldes créditeurs au poste DR)
+bilan_actif;BS;Banques, chèques postaux, caisse et assimilés;53;;solde_debiteur;brut;1;100;[TP] Bilan de passage BS brut : « Soldes débiteurs : 52,53,54,55,57,581,582 » (52, 53 : soldes créditeurs au poste DR)
+bilan_actif;BS;Banques, chèques postaux, caisse et assimilés;54;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage BS brut : « Soldes débiteurs : 52,53,54,55,57,581,582 » (54, 55, 57, 581, 582 : non cités au passif, solde net)
+bilan_actif;BS;Banques, chèques postaux, caisse et assimilés;55;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage BS brut : « Soldes débiteurs : 52,53,54,55,57,581,582 » (54, 55, 57, 581, 582 : non cités au passif, solde net)
+bilan_actif;BS;Banques, chèques postaux, caisse et assimilés;57;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage BS brut : « Soldes débiteurs : 52,53,54,55,57,581,582 » (54, 55, 57, 581, 582 : non cités au passif, solde net)
+bilan_actif;BS;Banques, chèques postaux, caisse et assimilés;581;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage BS brut : « Soldes débiteurs : 52,53,54,55,57,581,582 » (54, 55, 57, 581, 582 : non cités au passif, solde net)
+bilan_actif;BS;Banques, chèques postaux, caisse et assimilés;582;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage BS brut : « Soldes débiteurs : 52,53,54,55,57,581,582 » (54, 55, 57, 581, 582 : non cités au passif, solde net)
+bilan_actif;BS;Banques, chèques postaux, caisse et assimilés;592;;solde_crediteur;amortissement;1;100;[TP] Bilan de passage BS dépréc. : « 592,593,594 »
+bilan_actif;BS;Banques, chèques postaux, caisse et assimilés;593;;solde_crediteur;amortissement;1;100;[TP] Bilan de passage BS dépréc. : « 592,593,594 »
+bilan_actif;BS;Banques, chèques postaux, caisse et assimilés;594;;solde_crediteur;amortissement;1;100;[TP] Bilan de passage BS dépréc. : « 592,593,594 »
+bilan_actif;BU;Écart de conversion-Actif;478;;solde_net_debiteur;brut;1;100;[TP] Bilan de passage BU : « 478 »
+bilan_passif;CA;Capital;101;;solde_net_crediteur;net;1;100;[TP] Bilan de passage CA : « 101 à 104 »
+bilan_passif;CA;Capital;102;;solde_net_crediteur;net;1;100;[TP] Bilan de passage CA : « 101 à 104 »
+bilan_passif;CA;Capital;103;;solde_net_crediteur;net;1;100;[TP] Bilan de passage CA : « 101 à 104 »
+bilan_passif;CA;Capital;104;;solde_net_crediteur;net;1;100;[TP] Bilan de passage CA : « 101 à 104 »
+bilan_passif;CB;Apporteurs capital non appelé (-);109;;solde_net_crediteur;net;1;100;[TP] Bilan de passage CB : « 109 »
+bilan_passif;CD;Primes liées au capital social;105;;solde_net_crediteur;net;1;100;[TP] Bilan de passage CD : « 105 »
+bilan_passif;CE;Écarts de réévaluation;106;;solde_net_crediteur;net;1;100;[TP] Bilan de passage CE : « 106 »
+bilan_passif;CF;Réserves indisponibles;111;;solde_net_crediteur;net;1;100;[TP] Bilan de passage CF : « 111,112,113 »
+bilan_passif;CF;Réserves indisponibles;112;;solde_net_crediteur;net;1;100;[TP] Bilan de passage CF : « 111,112,113 »
+bilan_passif;CF;Réserves indisponibles;113;;solde_net_crediteur;net;1;100;[TP] Bilan de passage CF : « 111,112,113 »
+bilan_passif;CG;Réserves libres;118;;solde_net_crediteur;net;1;100;[TP] Bilan de passage CG : « 118 »
+bilan_passif;CH;Report à nouveau (+ ou -);12;;solde_net_crediteur;net;1;100;[TP] Bilan de passage CH : « 12 (121 ou 129) »
+bilan_passif;CL;Subventions d'investissement;14;;solde_net_crediteur;net;1;100;[TP] Bilan de passage CL : « 14 »
+bilan_passif;CM;Provisions réglementées;15;;solde_net_crediteur;net;1;100;[TP] Bilan de passage CM : « 15 »
+bilan_passif;DA;Emprunts et dettes financières diverses;16;;solde_net_crediteur;net;1;100;[TP] Bilan de passage DA : « 16,181,182,183,184 »
+bilan_passif;DA;Emprunts et dettes financières diverses;181;;solde_net_crediteur;net;1;100;[TP] Bilan de passage DA : « 16,181,182,183,184 »
+bilan_passif;DA;Emprunts et dettes financières diverses;182;;solde_net_crediteur;net;1;100;[TP] Bilan de passage DA : « 16,181,182,183,184 »
+bilan_passif;DA;Emprunts et dettes financières diverses;183;;solde_net_crediteur;net;1;100;[TP] Bilan de passage DA : « 16,181,182,183,184 »
+bilan_passif;DA;Emprunts et dettes financières diverses;184;;solde_net_crediteur;net;1;100;[TP] Bilan de passage DA : « 16,181,182,183,184 »
+bilan_passif;DB;Dettes de location-acquisition;17;;solde_net_crediteur;net;1;100;[TP] Bilan de passage DB : « 17 »
+bilan_passif;DC;Provisions pour risques et charges;19;;solde_net_crediteur;net;1;100;[TP] Bilan de passage DC : « 19 »
+bilan_passif;DH;Dettes circulantes HAO;481;;solde_net_crediteur;net;1;100;[TP] Bilan de passage DH : « 481,482,484,4998 »
+bilan_passif;DH;Dettes circulantes HAO;482;;solde_net_crediteur;net;1;100;[TP] Bilan de passage DH : « 481,482,484,4998 »
+bilan_passif;DH;Dettes circulantes HAO;484;;solde_net_crediteur;net;1;100;[TP] Bilan de passage DH : « 481,482,484,4998 »
+bilan_passif;DH;Dettes circulantes HAO;4998;;solde_net_crediteur;net;1;100;[TP] Bilan de passage DH : « 481,482,484,4998 »
+bilan_passif;DI;Clients, avances reçues;419;;solde_net_crediteur;net;1;100;[TP] Bilan de passage DI : « 419 »
+bilan_passif;DN;Provisions pour risques à court terme;499;4998;solde_net_crediteur;net;1;100;[TP] Bilan de passage DN : « 499 (sauf 4998), 599 »
+bilan_passif;DN;Provisions pour risques à court terme;599;;solde_net_crediteur;net;1;100;[TP] Bilan de passage DN : « 499 (sauf 4998), 599 »
+bilan_passif;DQ;Banques, crédits d'escompte;564;;solde_net_crediteur;net;1;100;[TP] Bilan de passage DQ : « 564,565 »
+bilan_passif;DQ;Banques, crédits d'escompte;565;;solde_net_crediteur;net;1;100;[TP] Bilan de passage DQ : « 564,565 »
+bilan_passif;DV;Écart de conversion-Passif;479;;solde_net_crediteur;net;1;100;[TP] Bilan de passage DV : « 479 »
+bilan_passif;CJ;Résultat net de l'exercice (bénéfice + ou perte -);13;;solde_net_crediteur;net;1;100;[TP] Bilan de passage CJ : « 13 (131 ou 139) »
+bilan_passif;CJ;Résultat net de l'exercice (bénéfice + ou perte -);6;;solde_net_crediteur;net;1;100;"[À VALIDER] balance avant affectation du résultat : produits − charges des classes 6 à 8 (résultat de l'exercice, égal au poste XI) ; le contrôle « résultat bilan = compte de résultat » signale tout écart"
+bilan_passif;CJ;Résultat net de l'exercice (bénéfice + ou perte -);7;;solde_net_crediteur;net;1;100;"[À VALIDER] balance avant affectation du résultat : produits − charges des classes 6 à 8 (résultat de l'exercice, égal au poste XI) ; le contrôle « résultat bilan = compte de résultat » signale tout écart"
+bilan_passif;CJ;Résultat net de l'exercice (bénéfice + ou perte -);8;;solde_net_crediteur;net;1;100;"[À VALIDER] balance avant affectation du résultat : produits − charges des classes 6 à 8 (résultat de l'exercice, égal au poste XI) ; le contrôle « résultat bilan = compte de résultat » signale tout écart"
+bilan_passif;DI;Clients, avances reçues;41;419;solde_crediteur;net;1;100;"[À VALIDER] soldes créditeurs des comptes 41 (sauf 419) : non cités par la grille ; classés en avances reçues (non-compensation, comme la DSF fournie)"
+bilan_passif;DJ;Fournisseurs d'exploitation;40;409;solde_crediteur;net;1;100;[TP] Bilan de passage DJ : « 40 (sauf 409) » — soldes créditeurs (soldes débiteurs : poste BH)
+bilan_passif;DK;Dettes fiscales et sociales;42;;solde_crediteur;net;1;100;[TP] Bilan de passage DK : « Solde créditeur : 42,43,44 »
+bilan_passif;DK;Dettes fiscales et sociales;43;;solde_crediteur;net;1;100;[TP] Bilan de passage DK : « Solde créditeur : 42,43,44 »
+bilan_passif;DK;Dettes fiscales et sociales;44;;solde_crediteur;net;1;100;[TP] Bilan de passage DK : « Solde créditeur : 42,43,44 »
+bilan_passif;DM;Autres dettes;185;;solde_crediteur;net;1;100;[TP] Bilan de passage DM : « Solde créditeur : 185,45,46,47 (sauf 479) »
+bilan_passif;DM;Autres dettes;45;;solde_crediteur;net;1;100;[TP] Bilan de passage DM : « Solde créditeur : 185,45,46,47 (sauf 479) »
+bilan_passif;DM;Autres dettes;46;;solde_crediteur;net;1;100;[TP] Bilan de passage DM : « Solde créditeur : 185,45,46,47 (sauf 479) »
+bilan_passif;DM;Autres dettes;47;478 479;solde_crediteur;net;1;100;[TP] Bilan de passage DM : « Solde créditeur : 185,45,46,47 (sauf 479) »
+bilan_passif;DR;Banques, établissements financiers et crédits de trésorerie;52;;solde_crediteur;net;1;100;[TP] Bilan de passage DR : « Solde créditeur : 52,53,561,566 » (soldes débiteurs : poste BS)
+bilan_passif;DR;Banques, établissements financiers et crédits de trésorerie;53;;solde_crediteur;net;1;100;[TP] Bilan de passage DR : « Solde créditeur : 52,53,561,566 » (soldes débiteurs : poste BS)
+bilan_passif;DR;Banques, établissements financiers et crédits de trésorerie;561;;solde_net_crediteur;net;1;100;[TP] Bilan de passage DR : « Solde créditeur : 52,53,561,566 » (561, 566 : non cités à l'actif, solde net)
+bilan_passif;DR;Banques, établissements financiers et crédits de trésorerie;566;;solde_net_crediteur;net;1;100;[TP] Bilan de passage DR : « Solde créditeur : 52,53,561,566 » (561, 566 : non cités à l'actif, solde net)
+compte_resultat;TA;Ventes de marchandises;701;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage TA : « 701 » (montant signé : produit +, charge −)
+compte_resultat;RA;Achats de marchandises;601;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage RA : « 601 » (montant signé : produit +, charge −)
+compte_resultat;RB;Variation de stocks de marchandises;6031;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage RB : « 6031 » (montant signé : produit +, charge −)
+compte_resultat;TB;Ventes de produits fabriqués;702;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage TB : « 702,703,704 » (montant signé : produit +, charge −)
+compte_resultat;TB;Ventes de produits fabriqués;703;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage TB : « 702,703,704 » (montant signé : produit +, charge −)
+compte_resultat;TB;Ventes de produits fabriqués;704;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage TB : « 702,703,704 » (montant signé : produit +, charge −)
+compte_resultat;TC;Travaux, services vendus;705;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage TC : « 705,706 » (montant signé : produit +, charge −)
+compte_resultat;TC;Travaux, services vendus;706;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage TC : « 705,706 » (montant signé : produit +, charge −)
+compte_resultat;TD;Produits accessoires;707;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage TD : « 707 » (montant signé : produit +, charge −)
+compte_resultat;TE;Production stockée (ou déstockage);73;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage TE : « 73 » (montant signé : produit +, charge −)
+compte_resultat;TF;Production immobilisée;72;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage TF : « 72 » (montant signé : produit +, charge −)
+compte_resultat;TG;Subventions d'exploitation;71;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage TG : « 71 » (montant signé : produit +, charge −)
+compte_resultat;TH;Autres produits;75;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage TH : « 75 » (montant signé : produit +, charge −)
+compte_resultat;TI;Transferts de charges d'exploitation;781;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage TI : « 781 » (montant signé : produit +, charge −)
+compte_resultat;RC;Achats de matières premières et fournitures liées;602;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage RC : « 602 » (montant signé : produit +, charge −)
+compte_resultat;RD;Variation de stocks de matières premières et fournitures liées;6032;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage RD : « 6032 » (montant signé : produit +, charge −)
+compte_resultat;RE;Autres achats;604;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage RE : « 604,605,608 » (montant signé : produit +, charge −)
+compte_resultat;RE;Autres achats;605;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage RE : « 604,605,608 » (montant signé : produit +, charge −)
+compte_resultat;RE;Autres achats;608;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage RE : « 604,605,608 » (montant signé : produit +, charge −)
+compte_resultat;RF;Variation de stocks d'autres approvisionnements;6033;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage RF : « 6033 » (montant signé : produit +, charge −)
+compte_resultat;RG;Transports;61;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage RG : « 61 » (montant signé : produit +, charge −)
+compte_resultat;RH;Services extérieurs;62;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage RH : « 62,63 » (montant signé : produit +, charge −)
+compte_resultat;RH;Services extérieurs;63;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage RH : « 62,63 » (montant signé : produit +, charge −)
+compte_resultat;RI;Impôts et taxes;64;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage RI : « 64 » (montant signé : produit +, charge −)
+compte_resultat;RJ;Autres charges;65;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage RJ : « 65 » (montant signé : produit +, charge −)
+compte_resultat;RK;Charges de personnel;66;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage RK : « 66 » (montant signé : produit +, charge −)
+compte_resultat;TJ;Reprises d'amortissements, provisions et dépréciations;791;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage TJ : « 791,798,799 » (montant signé : produit +, charge −)
+compte_resultat;TJ;Reprises d'amortissements, provisions et dépréciations;798;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage TJ : « 791,798,799 » (montant signé : produit +, charge −)
+compte_resultat;TJ;Reprises d'amortissements, provisions et dépréciations;799;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage TJ : « 791,798,799 » (montant signé : produit +, charge −)
+compte_resultat;RL;Dotations aux amortissements, aux provisions et dépréciations;681;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage RL : « 681,691 » (montant signé : produit +, charge −)
+compte_resultat;RL;Dotations aux amortissements, aux provisions et dépréciations;691;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage RL : « 681,691 » (montant signé : produit +, charge −)
+compte_resultat;TK;Revenus financiers et assimilés;77;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage TK : « 77 » (montant signé : produit +, charge −)
+compte_resultat;TL;Reprises de provisions et dépréciations financières;797;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage TL : « 797 » (montant signé : produit +, charge −)
+compte_resultat;TM;Transferts de charges financières;787;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage TM : « 787 » (montant signé : produit +, charge −)
+compte_resultat;RM;Frais financiers et charges assimilées;67;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage RM : « 67 » (montant signé : produit +, charge −)
+compte_resultat;RN;Dotations aux provisions et aux dépréciations financières;697;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage RN : « 697 » (montant signé : produit +, charge −)
+compte_resultat;TN;Produits des cessions d'immobilisations;82;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage TN : « 82 » (montant signé : produit +, charge −)
+compte_resultat;TO;Autres produits HAO;84;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage TO : « 84,86,88 » (montant signé : produit +, charge −)
+compte_resultat;TO;Autres produits HAO;86;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage TO : « 84,86,88 » (montant signé : produit +, charge −)
+compte_resultat;TO;Autres produits HAO;88;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage TO : « 84,86,88 » (montant signé : produit +, charge −)
+compte_resultat;RO;Valeurs comptables des cessions d'immobilisations;81;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage RO : « 81 » (montant signé : produit +, charge −)
+compte_resultat;RP;Autres charges HAO;83;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage RP : « 83,85 » (montant signé : produit +, charge −)
+compte_resultat;RP;Autres charges HAO;85;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage RP : « 83,85 » (montant signé : produit +, charge −)
+compte_resultat;RQ;Participation des travailleurs;87;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage RQ : « 87 » (montant signé : produit +, charge −)
+compte_resultat;RS;Impôts sur le résultat;89;;solde_net_crediteur;net;1;100;[TP] Compte de résultat de passage RS : « 89 » (montant signé : produit +, charge −)

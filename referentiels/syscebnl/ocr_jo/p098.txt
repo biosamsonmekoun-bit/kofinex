@@ -1,0 +1,56 @@
+_ | Journal officiel OHADA 2023 AE 15/03/2023 v21.qxp_OHADA 16/03/2023 17:08(@age 98 | L
+ACTE UNIFORME RELATIF AU SYSTEME COMPTABLE DES ENTITES À BUT NON LUCRATIF
+6622 Primes et gratifications
+6623 Congés payés
+6624 Indemnités de préavis et de licenciement
+6625 Indemnités de maladie versées aux travailleurs
+6626 Supplément familial
+6627 Avantages en nature
+6628 Autres rémunérations directes
+663 Indemnités forfaitaires versées au personnel
+6631 Indemnités de logement
+6632 Indemnités de représentation
+6633 Indemnités d’expatriation
+6634 Indemnités de transport
+6638 Autres indemnités et avantages divers
+664 Charges sociales
+6641 Charges sociales sur rémunération du personnel national
+6642 Charges sociales sur rémunération du personnel non national
+665 Habillement et équipement du personnel
+667 Rémunération transférée de personnel extérieur
+6671 Personnel intérimaire
+6672 Personnel détaché ou prêté à l'entité
+668 Autres charges sociales
+6681  Versements aux syndicats et assimilés
+6682  Versements aux comités d'hygiène et de sécurité
+6683  Versements et contributions aux autres œuvres sociales
+6684 Médecine du travail et pharmacie
+6685 Assurances et organismes de santé
+° 6686 Assurances retraite et fonds de pensions e
+6687  Majorations et pénalités sociales
+6688 Charges sociales diverses
+669 Dégrèvements et annulations des charges sociales
+67 FRAIS FINANCIERS ET CHARGES ASSIMILEES
+671 Intérêts des emprunts
+6711  Emprunts obligataires
+6712  Emprunts auprès des établissements de crédit
+6713 Primes de remboursement des obligations
+672 Intérêts dans loyers de location-acquisition
+6721 Intérêts dans loyers de location-acquisition/crédit-bail immobilier
+6722 Intérêts dans loyers de location-acquisition/crédit-bail mobilier
+6723 Intérêts dans loyers de location-acquisition/location-vente
+6724 Intérêts dans loyers des autres locations-acquisition
+673 Escomptes accordés
+674 Autres intérêts
+6741  Avances reçues et dépôts créditeurs
+6742 Comptes courants bloqués
+6744 Intérêts sur dettes commerciales
+6745 Intérêts bancaires et sur opérations de financement (escompte.…)
+6748 Intérêts sur dettes diverses
+676 Pertes de change financières
+677 Pertes sur titres de placement
+6771 Pertes sur cessions de titres de placement
+678 Pertes et charges sur risques financiers
+6781 sur rentes viagères
+6782 sur opérations financières
+cl] —®— RE

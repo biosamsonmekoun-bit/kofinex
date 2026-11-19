@@ -1,0 +1,35 @@
+_ | Journal officiel OHADA 2023 AE 15/03/2023 v21.qxp_OHADA 16/03/2023 17:08(@age 99 | L
+PARTIE 2 : STRUCTURE, CONTENU ET FONCTIONNEMENT DES COMPTES
+
+679 Charges pour dépréciations et provisions pour risques à court terme financières
+6791 sur risques financiers
+6795 sur titres de placement
+6798 Autres charges pour dépréciations et provisions pour risques à court terme financières
+
+68 DOTATIONS AUX AMORTISSEMENTS
+
+680 Dotations aux amortissements d’usufruit temporaire
+
+681 Dotations aux amortissements d’exploitation
+6812 Dotations aux amortissements des immobilisations incorporelles
+6813 Dotations aux amortissements des immobilisations corporelles
+
+69 DOTATIONS AUX PROVISIONS ET AUX DÉPRÉCIATIONS
+
+691 Dotations aux provisions et aux dépréciations d’exploitation
+6911 Dotations aux provisions pour risques et charges
+6913 Dotations aux dépréciations des immobilisations incorporelles
+6914 Dotations aux dépréciations des immobilisations corporelles
+
+695 Dotations aux dépréciations d’immobilisations destinées à la vente provenant des
+
+dons et legs non encore reçues et d'usufruit temporaire
+6951 Dotations aux dépréciations d’usufruit temporaire
+6952 Dotations aux dépréciations d’immobilisations destinées à la vente provenant des dons et
+legs non encore reçus
+
+697 Dotations aux provisions et aux dépréciations financières
+6971 Dotations aux provisions pour risques et charges
+6972 Dotations aux dépréciations des immobilisations financières
+
+cl] —®— RE

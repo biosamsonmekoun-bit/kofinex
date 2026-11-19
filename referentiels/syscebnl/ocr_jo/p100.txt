@@ -1,0 +1,49 @@
+_ | Journal officiel OHADA 2023 AE 15/03/2023 v21.qxp_OHADA 16/03/2023 17:08(@age 100 | L
+ACTE UNIFORME RELATIF AU SYSTEME COMPTABLE DES ENTITES À BUT NON LUCRATIF
+CLASSE 7 - COMPTES DE PRODUITS DES ACTIVITES ORDINAIRES
+70 REVENUS
+71 SUBVENTIONS D'EXPLOITATION
+72 PRODUCTION IMMOBILISEE
+73 VARIATIONS DES STOCKS DE BIENS PRODUITS
+75 AUTRES PRODUITS
+77 REVENUS FINANCIERS ET PRODUITS ASSIMILES
+78 TRANSFERTS DE CHARGES
+79 REPRISES DE PROVISIONS, DE DEPRECIATIONS ET AUTRES
+70 REVENUS
+701 Cotisations des adhérents
+702 Quote-part de fonds d'administration transférés
+703 Quote-part de dotation consomptible transférée
+704 Revenus liés à la générosité
+7041 Dons
+7042 Legs
+7043  Deniers du culte
+7044  Zakat, Dîme, quête et assimilées
+7045 Célébrations
+7046  Mécénats
+7047 Parrainage
+7048 Autres revenus liés à la générosité
+705 Ventes marchandises, services et produits finis
+7051 Ventes marchandises
+7052 Services vendus
+7053 Ventes de produits finis
+7054 Ventes de produits intermédiaires
+7055 Ventes de produits résiduels
+706 Revenus des manifestations
+707 Produits accessoires
+708 Autres revenus
+7081 Ventes de dons en nature
+7082 Revenus d’usufruit
+71 SUBVENTIONS D'EXPLOITATION
+711 Subventions d'exploitation versées par l’État et les Collectivités publiques
+713 Subventions d'exploitation versées par les organismes nationaux et internationaux
+718 Autres subventions d'exploitation
+72 PRODUCTION IMMOBILISEE
+721 Production immobilisée, immobilisations incorporelles
+722 Production immobilisée, immobilisations corporelles
+724 Production auto-consommée
+726 Production immobilisée, imn 0 ilisations financières(l}
+73 VARIATIONS DES STOCKS DE BIENS PRODUITS
+735 Variations des stocks de produits finis et services en cours
+736 Variations des stocks de produits finis, produits intermédiaires et résiduels.
+0) En cas d'offre publique d'échange (OPE) ou d'achat (OPA) notamment
+© Ÿ
