@@ -150,3 +150,49 @@ def filter_scope(lines: list[Posted], scope: str) -> list[Posted]:
     if scope in ("after_inventory", "final"):
         return list(lines)
     raise ValueError(f"Type de balance inconnu : {scope}")
+
+
+def with_subtotals(rows: list[dict], parents: dict[str, str], auxiliary: bool = False) -> list[dict]:
+    """Balance hiérarchique : lignes de détail et sous-totaux, dans l'ordre des comptes.
+
+    - `parents` : numéros et intitulés des comptes du référentiel publié (classes, comptes, subdivisions) ; aucun
+      niveau n'est codé ici. Un sous-total est produit pour chaque numéro du référentiel qui est le préfixe d'au moins
+      un compte de détail de numéro différent (ou, en balance auxiliaire, pour chaque compte, qui regroupe ses tiers).
+    - Chaque ligne de détail est ajoutée une seule fois à chacun de ses parents ; les sous-totaux ne sont jamais
+      additionnés entre eux ni aux totaux généraux, qui restent ceux des lignes de détail (aucun double comptage).
+    - Les colonnes sont additionnées telles quelles : un sous-total de soldes débiteurs et créditeurs n'est pas compensé.
+    """
+    cols = ("opening_debit", "opening_credit", "debit", "credit", "closing_debit", "closing_credit")
+    detail = sorted(rows, key=lambda r: (r["account"], (r.get("third_party") or {}).get("code", "") if auxiliary else ""))
+    accounts = {r["account"] for r in detail}
+
+    def ancestors(account: str) -> list[str]:
+        anc = sorted((p for p in parents if account.startswith(p) and p != account), key=len)
+        if auxiliary:
+            anc.append(account)          # le compte regroupe ses tiers
+        return anc
+
+    # parents retenus : préfixe d'un compte de numéro différent (un référentiel identique au compte n'ajoute rien)
+    useful = {p for a in accounts for p in ancestors(a)}
+    out: list[dict] = []
+    stack: list[tuple[str, dict, int]] = []      # (préfixe, cumul, nombre de lignes)
+
+    def close_until(account: str | None) -> None:
+        while stack and (account is None or not account.startswith(stack[-1][0])):
+            prefix, acc, n = stack.pop()
+            out.append({"kind": "subtotal", "level": len(stack), "account": prefix,
+                        "label": parents.get(prefix), "rows": n, **acc})
+
+    for r in detail:
+        a = r["account"]
+        close_until(a)
+        for p in ancestors(a):
+            if p in useful and all(s[0] != p for s in stack):
+                stack.append((p, {c: ZERO for c in cols}, 0))
+        for i, (p, acc, n) in enumerate(stack):
+            for c in cols:
+                acc[c] += r[c]
+            stack[i] = (p, acc, n + 1)
+        out.append({"kind": "detail", "level": len(stack), **r})
+    close_until(None)
+    return out

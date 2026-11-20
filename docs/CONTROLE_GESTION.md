@@ -342,3 +342,32 @@ Les tests d'intégration doivent être exécutés en CI (ou sur un poste disposa
 - Détail par compte de trésorerie accessible au clavier.
 - Couleurs : jetons du thème uniquement, aucune couleur codée en dur.
 - Import du grand livre : choix « Effet de l'import » et synthèse du complément (reprises, ajouts, doublons, refus, mois concernés).
+
+## 12. Correctif : contrôle de gestion et intégration avec la comptabilité générale (20 novembre 2026)
+
+Audit du 20 novembre 2026 (phase 1) : budget sans lien avec le plan comptable, aucun plan de trésorerie prévisionnel, tiers non obligatoirement rattachés, imputation analytique des écritures ignorée. Correctif mené par phases, chacune validée avant la suivante.
+
+### 12.1 Décisions arrêtées
+1. **Auxiliaires de tiers** : un compte auxiliaire de la classe 4 est un **tiers** (code alphanumérique, ex. 4011TOY) **obligatoirement rattaché à un compte collectif** compatible du plan de l'entreprise ; le plan comptable reste numérique.
+2. **Comptes d'un budget** : le plan comptable de l'entreprise s'il est ouvert, sinon le référentiel publié de l'exercice.
+3. **Comptes de bilan dans un budget** : autorisés uniquement pour un budget d'investissement (classe 2 et comptes 16). Les classes autorisées par type de budget sont des **données**, pas des constantes du code, et sont marquées [À VALIDER].
+4. **Plan de trésorerie** : prévision par rubriques avec règles de calendrier, réalisé lu sur les comptes de trésorerie ; **aucune échéance simulée** tant que les modules commerciaux et de trésorerie n'existent pas (lot 3B, étape C).
+5. **Imputation analytique** : le réalisé par centre est lu dans les écritures natives qui portent un centre ; `cost_entries` reste pour les coûts hors comptabilité, avec une règle qui empêche de compter deux fois un même coût entre les écritures et `cost_entries`.
+
+### 12.2 Phases et migrations
+| Phase | Objet | Migration | État |
+|---|---|---|---|
+| 1 | Audit | — | fait |
+| 2 | Référentiel comptable : plan tiers, rattachement, sous-totaux de la balance | 0019 | **livrée** (branche `cg-phase2-referentiel`, fondée sur `lot12a`) |
+| 3 | Budget relié au plan comptable (décisions 2 et 3) | 0020 prévue | à faire |
+| 4 | Plan de trésorerie (décision 4 ; modèle `PLAN DE TRESORRRIE (1).xlsx`, feuilles `SUIVI` et `Feuil1`) | 0021 prévue | à faire |
+| 5 | Intégrations et tableaux de bord (décision 5) | selon le besoin | à faire |
+
+### 12.3 Phase 2 — ce qui a été fait
+- **Migration 0019** (aucune donnée modifiée, 0014 non réécrite) :
+  - contrainte `third_parties_collective_required` posée `NOT VALID` : obligatoire pour tout nouveau tiers et toute modification ; un tiers existant non rattaché est signalé (« À rattacher ») et refusé sur une ligne d'écriture tant qu'il n'est pas rattaché ;
+  - rattachement refusé vers un compte collectif en sommeil ;
+  - un compte collectif auquel des tiers sont rattachés ne perd pas son caractère collectif et ne change pas pour un type incompatible.
+- **Balance hiérarchique** (option « Sous-totaux par classe et racine », écran et export CSV) : sous-totaux par compte du **référentiel publié** (classes, comptes, subdivisions ; aucun niveau codé) ; en balance auxiliaire, chaque compte collectif regroupe ses tiers. Chaque ligne de détail est ajoutée une seule fois à chacun de ses parents ; les totaux généraux restent ceux des lignes de détail : **aucun double comptage** (4011TOY remonte dans 4011000, puis dans 4011, 401 et la classe 4).
+- **Plan tiers** : écran en quatre catégories (clients, fournisseurs, salariés, autres tiers : administration fiscale, organismes sociaux, autres), recherche par code et intitulé, mise en sommeil, tiers à rattacher ; compte collectif obligatoire à la saisie (API et écran).
+- **Non modifié** : le compte d'une ligne d'écriture doit être un collectif **du même type** que le tiers (règle de 0014), sans être forcément son compte de rattachement : un même tiers peut mouvementer, par exemple, un compte d'avances ou de retenues de garantie. [À VALIDER] si une correspondance stricte est souhaitée.

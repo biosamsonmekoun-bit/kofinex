@@ -122,8 +122,10 @@ def list_third_parties(
     active: bool | None = None,
     limit: int = Query(200, ge=1, le=2000),
     offset: int = Query(0, ge=0),
+    category: Literal["customers", "suppliers", "employees", "others"] | None = None,
+    unattached: bool | None = None,
 ):
-    return setup.list_third_parties(db, ctx.company_id, q, kind, active, limit, offset)
+    return setup.list_third_parties(db, ctx.company_id, q, kind, active, limit, offset, category, unattached)
 
 
 @router.post(A + "/third-parties", status_code=status.HTTP_201_CREATED, summary="Créer un tiers")
@@ -364,13 +366,16 @@ def balance(
     scope: Scope = "after_inventory",
     auxiliary: bool = False,
     compare: bool = False,
+    subtotals: bool = False,
 ):
-    return gl.balance(db, ctx.company_id, fiscal_year_id, f, scope=scope, auxiliary=auxiliary, compare=compare)
+    return gl.balance(db, ctx.company_id, fiscal_year_id, f, scope=scope, auxiliary=auxiliary, compare=compare,
+                      subtotals=subtotals)
 
 
 @router.get(A + "/fiscal-years/{fiscal_year_id}/balance.csv", summary="Export CSV de la balance native")
-def balance_csv(fiscal_year_id: uuid.UUID, ctx: Comp, db: Db, f: F, scope: Scope = "after_inventory", auxiliary: bool = False):
-    data = gl.balance(db, ctx.company_id, fiscal_year_id, f, scope=scope, auxiliary=auxiliary)
+def balance_csv(fiscal_year_id: uuid.UUID, ctx: Comp, db: Db, f: F, scope: Scope = "after_inventory", auxiliary: bool = False,
+                subtotals: bool = False):
+    data = gl.balance(db, ctx.company_id, fiscal_year_id, f, scope=scope, auxiliary=auxiliary, subtotals=subtotals)
     kind = "auxiliaire" if auxiliary else "generale"
     return Response(
         gl.balance_csv(data),

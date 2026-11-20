@@ -20,7 +20,7 @@ from sqlalchemy.orm import Session
 from app.core.errors import NotFound
 from app.engines.accounting import entries as eng
 from app.engines.accounting import native_ledger as nl
-from app.models import CompanyAccount, FiscalYear, Journal, JournalEntry, JournalEntryLine, Lettering, ThirdParty
+from app.models import ChartAccount, CompanyAccount, FiscalYear, Journal, JournalEntry, JournalEntryLine, Lettering, ThirdParty
 from app.services.accounting_setup import AccountingInvalid
 from app.services.journal_entries import POSTED
 
@@ -182,6 +182,7 @@ def balance(
     scope: str = "after_inventory",
     auxiliary: bool = False,
     compare: bool = False,
+    subtotals: bool = False,
 ) -> dict:
     if scope not in SCOPES:
         raise AccountingInvalid("Type de balance inconnu.")
@@ -214,6 +215,7 @@ def balance(
             )
         ),
         "comparative": None,
+        "hierarchy": nl.with_subtotals(rows, chart_parents(db, company_id), auxiliary) if subtotals else None,
     }
     if compare:
         prev = _previous_fy(db, fy)
@@ -238,6 +240,14 @@ def balance(
     return out
 
 
+def chart_parents(db: Session, company_id: uuid.UUID) -> dict[str, str]:
+    """Hiérarchie des sous-totaux : comptes du référentiel publié auquel les comptes de l'entreprise sont rattachés
+    (classes, comptes, subdivisions), avec leur intitulé. Aucun niveau n'est codé."""
+    versions = select(CompanyAccount.framework_version_id).where(CompanyAccount.company_id == company_id).distinct()
+    return {n: lbl for n, lbl in db.execute(select(ChartAccount.account_number, ChartAccount.label)
+                                            .where(ChartAccount.framework_version_id.in_(versions)))}
+
+
 def balance_csv(data: dict) -> bytes:
     buf = io.StringIO()
     w = csv.writer(buf, delimiter=";")
@@ -255,12 +265,13 @@ def balance_csv(data: dict) -> bytes:
             "Solde créditeur",
         ]
     )
-    for r in data["rows"]:
+    for r in data["hierarchy"] or data["rows"]:
+        sub = r.get("kind") == "subtotal"
         w.writerow(
             [
-                r["account"],
+                f"Total {r['account']}" if sub else r["account"],
                 r["label"] or "",
-                *([r["third_party"]["code"] if r["third_party"] else ""] if aux else []),
+                *([(r["third_party"] or {}).get("code", "") if not sub else ""] if aux else []),
                 *(str(r[k]) for k in ("opening_debit", "opening_credit", "debit", "credit", "closing_debit", "closing_credit")),
             ]
         )

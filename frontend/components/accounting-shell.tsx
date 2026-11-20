@@ -13,7 +13,7 @@ import { Alert, Badge, EmptyState, Loading, PageHeader } from "@/components/ui/f
 /** Espaces de la comptabilité native réellement disponibles (étapes A et B du lot 3B). */
 export const ACC_SPACES: [string, string][] = [
   ["", "Écritures"], ["nouvelle", "Nouvelle écriture"], ["grand-livre", "Grand livre"], ["balance", "Balance"], ["lettrage", "Lettrage"],
-  ["journaux", "Journaux"], ["plan-comptable", "Plan comptable"], ["tiers", "Tiers"], ["fec", "FEC"], ["parametres", "Paramètres"],
+  ["journaux", "Journaux"], ["plan-comptable", "Plan comptable"], ["tiers", "Plan tiers"], ["fec", "FEC"], ["parametres", "Paramètres"],
 ];
 
 export interface AccContext { cid: string; settings: AccSettings; fy: FiscalYear | null; years: FiscalYear[] }

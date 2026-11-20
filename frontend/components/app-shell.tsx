@@ -50,7 +50,7 @@ function useNav(): Item[] {
       { label: "Lettrage", href: c && `${c}/comptabilite/lettrage`, hint: needCo },
       { label: "Journaux", href: c && `${c}/comptabilite/journaux`, hint: needCo },
       { label: "Plan comptable", href: c && `${c}/comptabilite/plan-comptable`, hint: needCo },
-      { label: "Tiers", href: c && `${c}/comptabilite/tiers`, hint: needCo },
+      { label: "Plan tiers", href: c && `${c}/comptabilite/tiers`, hint: needCo },
       { label: "Paramètres comptables", href: c && `${c}/comptabilite/parametres`, hint: needCo },
       { label: "Entreprises", href: o && `${o}/companies`, hint: needOrg },
       { label: "Entreprise et exercices", href: c, hint: needCo, exact: true },

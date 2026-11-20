@@ -1,6 +1,6 @@
 # KOFINEX — État du projet
 
-*Mis à jour le 20 novembre 2026 (lot 12, étape 12A : catalogue commercial et abonnements, branche `lot12a`).*
+*Mis à jour le 20 novembre 2026 (correctif du contrôle de gestion, phase 2 : référentiel comptable, branche `cg-phase2-referentiel`).*
 
 ## Synthèse
 | Lot | État |
@@ -21,7 +21,7 @@
 | 12 SaaS et mise en production | **étape 12A livrée** (catalogue commercial, abonnements sans paiement ; voir « Lot 12A » ci-dessous) ; 12B (paiements SASPay, facturation, quotas) à faire après la vérification préalable de SASPay et l'avis du fiscaliste (§ 16) ; 12C à 12E à faire |
 
 ## Ce qui existe
-- **Base** : migrations 0001 à 0018 (dont 10 tables du lot 12A), RLS partout, 5 buckets privés ; acteur IA bloqué sur toutes les tables métier.
+- **Base** : migrations 0001 à 0019 (dont 10 tables du lot 12A ; 0019 : plan tiers, sans table), RLS partout, 5 buckets privés ; acteur IA bloqué sur toutes les tables métier.
 - **API** : `me`, `organizations`, `companies`, `fiscal_years`, `frameworks`, `imports`, `analysis`, `management`, `engagements` (méthodologies, missions, dossier), `financial_audit`, `internal_audit`, `ledger`, `internal_control`, `ai`, `reporting`, `dashboard`, `accounting` (comptabilité native), `fec` (FEC DGI Bénin), `steering` (pilotage), `billing` (catalogue, abonnements, administration des offres).
 - **Moteurs** :
   - `engines/importing` : lecture, OCR, détection, balance, contrôles ;
@@ -35,9 +35,9 @@
   - SYSCOHADA révisé : validé sur le cas pratique du manuel et sur les balances de l'utilisateur ;
   - SYSCEBNL (associations) : couverture du plan vérifiée, pas de cas chiffré.
 - **Tests** :
-  - 306 tests unitaires (`make test-unit`, 20 novembre 2026) ;
-  - tests SQL (17 séries, 660 contrôles, `make test-sql` avec les migrations appliquées par Alembic depuis le 19 novembre 2026) : RLS 39, Storage 12, référentiels et imports 20, moteur financier 16, contrôle de gestion 17, socle d'audit 46, audit financier 57, audit interne 59, grand livre 19, contrôle interne 94, IA 60, reporting 41, comptabilité native 68, seuils du pilotage 8, FEC Bénin 33, types d'états 4, facturation 67 ;
-  - tests d'intégration API : 34 réussis sur 34 (voir « Tests d'intégration » ci-dessous).
+  - 309 tests unitaires (`make test-unit`, 20 novembre 2026) ;
+  - tests SQL (18 séries, 676 contrôles, `make test-sql` avec les migrations appliquées par Alembic depuis le 19 novembre 2026) : RLS 39, Storage 12, référentiels et imports 20, moteur financier 16, contrôle de gestion 17, socle d'audit 46, audit financier 57, audit interne 59, grand livre 19, contrôle interne 94, IA 60, reporting 41, comptabilité native 68, seuils du pilotage 8, FEC Bénin 33, types d'états 4, facturation 67, plan tiers 16 ;
+  - tests d'intégration API : 35 réussis sur 35 (voir « Tests d'intégration » ci-dessous).
 
 ## Décisions en attente (utilisateur ou expert)
 1. **Référentiels** : relire les points marqués « [À VALIDER] » (`referentiels/*/RAPPORT.md`). Pour le SYSCEBNL, rattacher les comptes 702, 7054 et 7055.
@@ -389,3 +389,12 @@ Périmètre du § 14 de `docs/LOT12_SAAS_CONCEPTION.md`, décisions du § 16 app
   - `require_module`, `require_writable` et quotas branchés sur les routeurs : 12B ;
   - unités de quota : décision du 20 novembre 2026 (IA en jetons, sociétés non archivées, utilisateurs = membres) ;
   - page d'accueil (correction du 20 novembre 2026) : « Paiement en ligne via SASPay : bientôt disponible » ; la grille tarifaire est annoncée sans affirmer que des offres existent.
+
+## Correctif du contrôle de gestion — phase 2 : référentiel comptable (20 novembre 2026, branche `cg-phase2-referentiel`)
+Décisions du 20 novembre 2026 et plan des phases : `docs/CONTROLE_GESTION.md` § 12. Branche rebasée sur `main` après la fusion de 12A (la migration 0019 suit 0018).
+- **Migration 0019** : rattachement obligatoire des tiers à un compte collectif (contrainte `NOT VALID`, aucune donnée modifiée ; tiers repris bloqués sur les écritures jusqu'à leur rattachement), collectif actif, collectif protégé quand des tiers y sont rattachés.
+- **Balance hiérarchique** : sous-totaux par compte du référentiel publié, générale et auxiliaire, écran et CSV, sans double comptage.
+- **Plan tiers** : quatre catégories, recherche, tiers à rattacher, compte collectif obligatoire à la saisie.
+- **Exécuté ici** : `npm run typecheck` sans erreur ; `npm run build` réussi (18 pages) ; `make test-unit` 309 réussis (dont 3 nouveaux : balance hiérarchique) ; `make test-sql` 18 séries, 676 contrôles (dont 16 pour le plan tiers), base en révision 0019 par Alembic ; `make test-integration` 35 réussis sur 35 (dont 1 nouveau : plan tiers et balance) ; ruff sans erreur.
+- **Non vérifié** : écrans « Plan tiers » et « Balance » dans un navigateur (pas de projet Supabase pour se connecter) ; parcours couverts par le test d'intégration de l'API.
+- **Phases suivantes** (sur autorisation) : 3 (budget relié au plan comptable, 0020), 4 (plan de trésorerie, 0021), 5 (intégrations). 12B prendra le numéro libre suivant (0022 prévu).

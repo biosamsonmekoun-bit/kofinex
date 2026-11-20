@@ -27,7 +27,7 @@ export default function NativeBalancePage() {
 
 function Balance({ cid, fyId, closed }: { cid: string; fyId: string; closed: boolean }) {
   const A = `/companies/${cid}/accounting`;
-  const [f, setF] = useState({ scope: "after_inventory", auxiliary: false, compare: false, account: "", journal_id: "", date_from: "", date_to: "" });
+  const [f, setF] = useState({ scope: "after_inventory", auxiliary: false, compare: false, subtotals: false, account: "", journal_id: "", date_from: "", date_to: "" });
   const [applied, setApplied] = useState(f);
   const [err, setErr] = useState<string | null>(null);
   const qs = new URLSearchParams(Object.entries(applied).filter(([, v]) => v !== "" && v !== false).map(([k, v]) => [k, String(v)]));
@@ -47,6 +47,7 @@ function Balance({ cid, fyId, closed }: { cid: string; fyId: string; closed: boo
         <div className="flex flex-col justify-end gap-1 text-sm">
           <label className="flex items-center gap-2"><input type="checkbox" checked={f.auxiliary} onChange={(e) => setF({ ...f, auxiliary: e.target.checked, compare: e.target.checked ? false : f.compare })} /> Balance auxiliaire (tiers)</label>
           <label className="flex items-center gap-2"><input type="checkbox" checked={f.compare} disabled={f.auxiliary} onChange={(e) => setF({ ...f, compare: e.target.checked })} /> Comparatif N-1</label>
+          <label className="flex items-center gap-2"><input type="checkbox" checked={f.subtotals} onChange={(e) => setF({ ...f, subtotals: e.target.checked })} /> Sous-totaux par classe et racine</label>
         </div>
         <div className="flex items-end gap-2">
           <Button type="submit">Calculer</Button>
@@ -73,16 +74,24 @@ function Balance({ cid, fyId, closed }: { cid: string; fyId: string; closed: boo
               <THead><tr><TH>Compte</TH><TH>Intitulé</TH>{data.auxiliary && <TH>Tiers</TH>}<TH className="text-right">Ouv. débit</TH><TH className="text-right">Ouv. crédit</TH>
                 <TH className="text-right">Mvt débit</TH><TH className="text-right">Mvt crédit</TH><TH className="text-right">Solde débiteur</TH><TH className="text-right">Solde créditeur</TH></tr></THead>
               <TBody>
-                {data.rows.map((r, i) => (
+                {(data.hierarchy ?? data.rows.map((r) => ({ ...r, kind: "detail" as const, level: 0 }))).map((r, i) => r.kind === "subtotal" ? (
+                  <TR key={`s-${r.account}-${i}`} className="bg-muted/30 font-semibold">
+                    <TD style={{ paddingLeft: `${0.75 + r.level * 0.75}rem` }}>Total {r.account}</TD><TD className="text-xs">{r.label}</TD>
+                    {data.auxiliary && <TD className="text-xs text-muted-foreground">{r.rows} ligne(s)</TD>}
+                    <TD className="text-right">{amount(r.opening_debit, true)}</TD><TD className="text-right">{amount(r.opening_credit, true)}</TD>
+                    <TD className="text-right">{amount(r.debit, true)}</TD><TD className="text-right">{amount(r.credit, true)}</TD>
+                    <TD className="text-right">{amount(r.closing_debit, true)}</TD><TD className="text-right">{amount(r.closing_credit, true)}</TD>
+                  </TR>
+                ) : (
                   <TR key={`${r.account}-${r.third_party?.id ?? i}`}>
-                    <TD className="font-medium">{r.account}</TD><TD className="text-xs">{r.label}</TD>
+                    <TD className="font-medium" style={data.hierarchy ? { paddingLeft: `${0.75 + r.level * 0.75}rem` } : undefined}>{r.account}</TD><TD className="text-xs">{r.label}</TD>
                     {data.auxiliary && <TD className="text-xs">{r.third_party ? `${r.third_party.code} · ${r.third_party.name}` : ""}</TD>}
                     <TD className="text-right">{amount(r.opening_debit, true)}</TD><TD className="text-right">{amount(r.opening_credit, true)}</TD>
                     <TD className="text-right">{amount(r.debit, true)}</TD><TD className="text-right">{amount(r.credit, true)}</TD>
                     <TD className="text-right">{amount(r.closing_debit, true)}</TD><TD className="text-right">{amount(r.closing_credit, true)}</TD>
                   </TR>
                 ))}
-                {t && <TR className="bg-muted/40 font-semibold"><TD colSpan={data.auxiliary ? 3 : 2}>Totaux</TD>
+                {t && <TR className="bg-muted/40 font-semibold"><TD colSpan={data.auxiliary ? 3 : 2}>Totaux{data.hierarchy ? " (lignes de détail)" : ""}</TD>
                   <TD className="text-right">{amount(t.opening_debit)}</TD><TD className="text-right">{amount(t.opening_credit)}</TD>
                   <TD className="text-right">{amount(t.debit)}</TD><TD className="text-right">{amount(t.credit)}</TD>
                   <TD className="text-right">{amount(t.closing_debit)}</TD><TD className="text-right">{amount(t.closing_credit)}</TD></TR>}

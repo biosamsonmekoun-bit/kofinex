@@ -25,6 +25,10 @@ from app.models import (
 )
 
 THIRD_PARTY_KINDS = ("customer", "supplier", "employee", "tax_authority", "social_body", "other")
+# Plan tiers : quatre catégories d'affichage (les types de tiers restent ceux de la base, migration 0014)
+THIRD_PARTY_CATEGORIES = {"customers": ("customer",), "suppliers": ("supplier",), "employees": ("employee",),
+                          "others": ("tax_authority", "social_body", "other")}
+CATEGORY_OF_KIND = {k: c for c, kinds in THIRD_PARTY_CATEGORIES.items() for k in kinds}
 JOURNAL_TYPES = ("purchases", "sales", "bank", "cash", "general", "payroll", "fixed_assets", "inventory", "opening")
 
 
@@ -243,7 +247,8 @@ TP_FIELDS = (
 
 
 def tp_out(t: ThirdParty) -> dict:
-    return {"id": t.id, **{k: getattr(t, k) for k in TP_FIELDS}, "created_at": t.created_at}
+    return {"id": t.id, **{k: getattr(t, k) for k in TP_FIELDS}, "category": CATEGORY_OF_KIND.get(t.kind),
+            "attached": t.collective_account_number is not None, "created_at": t.created_at}
 
 
 def list_third_parties(
@@ -254,8 +259,23 @@ def list_third_parties(
     active: bool | None = None,
     limit: int = 200,
     offset: int = 0,
+    category: str | None = None,
+    unattached: bool | None = None,
 ) -> dict:
-    stmt = select(ThirdParty).where(ThirdParty.company_id == company_id)
+    base = select(ThirdParty).where(ThirdParty.company_id == company_id)
+    # effectifs du plan tiers (toutes catégories) et tiers repris encore à rattacher
+    counts = dict(db.execute(select(ThirdParty.kind, func.count()).where(ThirdParty.company_id == company_id)
+                             .group_by(ThirdParty.kind)).all())
+    to_attach = db.scalar(select(func.count()).where(ThirdParty.company_id == company_id,
+                                                     ThirdParty.collective_account_number.is_(None))) or 0
+    stmt = base
+    if category:
+        if category not in THIRD_PARTY_CATEGORIES:
+            raise AccountingInvalid("Catégorie de tiers inconnue.")
+        stmt = stmt.where(ThirdParty.kind.in_(THIRD_PARTY_CATEGORIES[category]))
+    if unattached is not None:
+        stmt = stmt.where(ThirdParty.collective_account_number.is_(None) if unattached
+                          else ThirdParty.collective_account_number.is_not(None))
     if q:
         like = f"%{q.strip()}%"
         stmt = stmt.where(or_(ThirdParty.code.ilike(like), ThirdParty.name.ilike(like), ThirdParty.tax_id.ilike(like)))
@@ -265,7 +285,9 @@ def list_third_parties(
         stmt = stmt.where(ThirdParty.is_active.is_(active))
     total = db.scalar(select(func.count()).select_from(stmt.subquery()))
     rows = db.scalars(stmt.order_by(ThirdParty.code).limit(limit).offset(offset)).all()
-    return {"total": total, "items": [tp_out(t) for t in rows]}
+    return {"total": total, "items": [tp_out(t) for t in rows],
+            "categories": {c: sum(counts.get(k, 0) for k in kinds) for c, kinds in THIRD_PARTY_CATEGORIES.items()},
+            "unattached": to_attach}
 
 
 def save_third_party(db: Session, company: Company, user_id: uuid.UUID, data: dict, tp_id: uuid.UUID | None = None) -> ThirdParty:
@@ -281,6 +303,13 @@ def save_third_party(db: Session, company: Company, user_id: uuid.UUID, data: di
     for k in TP_FIELDS:
         if k in data:
             setattr(t, k, data[k])
+    if t.collective_account_number is None:
+        raise AccountingInvalid("Rattachez le tiers à un compte collectif de l'entreprise (client, fournisseur, "
+                                "personnel ou autre tiers) : le rattachement est obligatoire.")
+    acc = db.scalar(select(CompanyAccount).where(CompanyAccount.company_id == company.id,
+                                                 CompanyAccount.account_number == t.collective_account_number))
+    if acc is None:
+        raise AccountingInvalid(f"Compte collectif {t.collective_account_number} absent du plan de l'entreprise.")
     db.flush()
     db.refresh(t)
     return t

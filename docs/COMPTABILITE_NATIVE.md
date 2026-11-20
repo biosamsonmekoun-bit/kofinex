@@ -42,7 +42,8 @@ Montants : `numeric(20,2)` en base, `Decimal` côté Python, centimes entiers (`
 - « Ouvrir les comptes du référentiel » ouvre les comptes sans sous-compte, avec le même numéro et le même intitulé. **Aucun compte n'est déclaré collectif ni lettrable d'office** : c'est à l'entreprise de le décider.
 - Un compte collectif exige un tiers sur chaque ligne ; il peut imposer un type de tiers (client, fournisseur, salarié…).
 - Un compte mouvementé ne peut être ni supprimé ni renuméroté, et son caractère collectif est figé ; il peut être désactivé.
-- Tiers (`third_parties`) : code unique, type, compte collectif de rattachement (du même type), coordonnées. Un tiers mouvementé garde son code.
+- Tiers (`third_parties`) : code unique alphanumérique (compte auxiliaire, ex. 4011TOY), type, **compte collectif de rattachement obligatoire** (du même type, actif ; migration 0019), coordonnées. Un tiers mouvementé garde son code. Un tiers repris sans rattachement est refusé sur toute écriture jusqu'à son rattachement. Écran « Plan tiers » en quatre catégories : clients, fournisseurs, salariés, autres tiers.
+- Balance générale et auxiliaire : option de sous-totaux par compte du référentiel publié (classes, comptes, subdivisions), sans double comptage (voir `CONTROLE_GESTION.md` § 12.3).
 
 ## 5. Sécurité
 - RLS sur les 10 nouvelles tables. Lecture : membres de l'entreprise et équipes de mission qui l'auditent (lecture seule). Écriture : comptables et administrateurs. Paramètres : administrateurs. Séquences et historique : écrits uniquement par la base.

@@ -533,7 +533,7 @@ Toutes les nouvelles tables auront : RLS activé ; déclencheur `0_not_ai` sur l
 - **Tests** : moteurs, SQL (RLS, publication figée, un seul abonnement vivant), intégration API.
 
 ### 12B — Paiements, facturation et quotas
-- **Migration 0019** :
+- **Migration 0022 (prévision)** : 0019 à 0021 sont prises par le correctif du contrôle de gestion (`CONTROLE_GESTION.md` § 12.2) ; le numéro est arrêté au démarrage de 12B, après la dernière migration du correctif :
   - `billing_orders`, `billing_documents`, `billing_document_lines`, `billing_document_sequences`, `tax_rules`, `payment_providers`, `payment_webhook_events`, `refunds` ;
   - ALTER `payments` et audit ;
   - `authz.entitlement_limit` et gardes de quota.

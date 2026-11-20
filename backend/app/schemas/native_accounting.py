@@ -54,7 +54,8 @@ class ThirdPartyIn(_In):
     code: str = Field(pattern=r"^[A-Za-z0-9._-]{1,30}$")
     name: str = Field(min_length=1, max_length=200)
     kind: ThirdPartyKind
-    collective_account_number: str | None = None
+    # compte collectif de rattachement obligatoire (décision 1 du 20 novembre 2026, migration 0019)
+    collective_account_number: str = Field(pattern=r"^[1-9][0-9]{1,19}$")
     tax_id: str | None = Field(None, max_length=50)
     registration_number: str | None = Field(None, max_length=50)
     address: str | None = Field(None, max_length=300)
@@ -66,6 +67,7 @@ class ThirdPartyIn(_In):
 
 
 class ThirdPartyPatch(ThirdPartyIn):
+    collective_account_number: str | None = Field(None, pattern=r"^[1-9][0-9]{1,19}$")
     code: str | None = Field(None, pattern=r"^[A-Za-z0-9._-]{1,30}$")
     name: str | None = Field(None, min_length=1, max_length=200)
     kind: ThirdPartyKind | None = None

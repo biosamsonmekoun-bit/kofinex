@@ -19,7 +19,13 @@ export interface ThirdParty {
   id: string; code: string; name: string; kind: TpKind; collective_account_number: string | null; tax_id: string | null;
   registration_number: string | null; address: string | null; city: string | null; country_code: string | null; email: string | null;
   phone: string | null; is_active: boolean;
+  /** catégorie du plan tiers et rattachement à un compte collectif (obligatoire, migration 0019) */
+  category: TpCategory; attached: boolean;
 }
+export type TpCategory = "customers" | "suppliers" | "employees" | "others";
+export const TP_CATEGORY_LABEL: Record<TpCategory, string> = {
+  customers: "Clients", suppliers: "Fournisseurs", employees: "Salariés", others: "Autres tiers",
+};
 export interface Journal {
   id: string; code: string; label: string; journal_type: JournalType; number_prefix: string; counterpart_account_number: string | null;
   allowed_users: string[] | null; is_active: boolean; entries: number;
@@ -59,6 +65,8 @@ export interface BalanceData {
   totals: Record<"opening_debit" | "opening_credit" | "debit" | "credit" | "closing_debit" | "closing_credit", Dec>;
   checks: Record<"opening_balanced" | "movements_balanced" | "closing_balanced", boolean>; balanced: boolean;
   entries_count: number; pending_count: number;
+  /** balance hiérarchique (option « sous-totaux ») : lignes de détail et sous-totaux du référentiel, sans double comptage */
+  hierarchy: null | (BalanceRow & { kind: "detail" | "subtotal"; level: number; rows?: number })[];
   comparative: null | { available: false; reason: string } | { available: true; previous_label: string; rows: { account: string; label: string | null; current: Dec; previous: Dec; change: Dec }[] };
 }
 
