@@ -157,7 +157,7 @@ Utilisateurs, sociétés, modules, missions, stockage (Mo), imports par période
   - validité et nombre maximal d'utilisations ;
   - jamais de remise sur une taxe ;
   - chaque application est tracée sur la commande et la facture.
-- **Essai** : durée portée par la version d'offre (la page publique annonce 14 jours, à confirmer). Un seul essai par organisation **et** par identité de facturation (identifiant fiscal, e-mail du propriétaire), pour limiter les essais multiples.
+- **Essai** : durée portée par la version d'offre ; **30 jours sans moyen de paiement** (§ 16). Un seul essai par organisation **et** par identité de facturation (identifiant fiscal, e-mail du propriétaire), pour limiter les essais multiples.
 - **Paiement** : à la commande (souscription, changement, option), puis à chaque renouvellement (§ 5.3).
 
 ---
@@ -203,7 +203,7 @@ Utilisateurs, sociétés, modules, missions, stockage (Mo), imports par période
 
 ### 5.3 Renouvellement
 - **Mobile money** (SASPay, PayDunya) : la documentation consultée ne décrit **aucun mandat de prélèvement récurrent** (§ 6). Le renouvellement est donc **manuel** : une commande de renouvellement est émise N jours avant l'échéance ; des relances partent par e-mail et dans l'application ; le paiement se fait en un clic depuis la commande.
-- **Carte via Stripe** : un renouvellement automatique par moyen de paiement enregistré est techniquement possible. Il dépend de l'éligibilité du compte Stripe (§ 6.3) et ne sera activé qu'après décision.
+- **Carte** : Stripe est écarté (entité au Bénin, § 16) ; les cartes passent par SASPay, sans prélèvement récurrent documenté : renouvellement manuel, comme pour le mobile money.
 - **Tâches planifiées** (Celery beat) :
   - émission des commandes de renouvellement ;
   - relances ;
@@ -303,13 +303,14 @@ Méthodes : capabilities() · create_checkout(order, attempt) · verify(payment)
   - remboursements par API, Billing (abonnements) et moyens de paiement enregistrés sont des fonctions générales de Stripe ; leur disponibilité pour le pays du futur compte est à confirmer.
 - **Mobile money UEMOA / CEMAC via Stripe** : non constaté dans la documentation consultée. Stripe est donc envisagé pour les **cartes** uniquement.
 
-### 6.3 Matrice de routage proposée (à valider après ouverture des comptes de test)
+### 6.3 Matrice de routage (mise à jour par les décisions du § 16)
 | Zone / moyen | Principal | Secours | Condition |
 |---|---|---|---|
-| UEMOA, mobile money (XOF) | PayDunya **ou** SASPay | l'autre | les deux documentent des canaux UEMOA ; choix selon contrat, frais, délais de reversement et résultats de recette |
-| CEMAC, mobile money (XAF) | Cameroun seulement : PayDunya (MTN) ; SASPay si XAF confirmé | — | **Lacune** : aucune couverture documentée pour Gabon, Congo, Tchad, RCA, Guinée équatoriale. Prévoir virement bancaire avec rapprochement manuel, ou un autre prestataire (hors périmètre de l'étude) |
-| Carte bancaire | Stripe si entité éligible ; sinon carte via PayDunya / SASPay | — | décision sur l'entité juridique de KOFINEX |
-| Virement bancaire (proposé, manuel) | administrateur | — | paiement enregistré par un administrateur avec pièce justificative, double validation, audit |
+| UEMOA, mobile money (XOF) | **SASPay** (§ 16) | PayDunya (non développé au lancement) | Guinée-Bissau sans couverture SASPay documentée : virement manuel |
+| CEMAC, mobile money (XAF) | Cameroun : SASPay si XAF confirmé, sinon PayDunya (MTN) | — | **Lacune** : aucune couverture documentée pour Gabon, Congo, Tchad, RCA, Guinée équatoriale. Prévoir virement bancaire avec rapprochement manuel, ou un autre prestataire (hors périmètre de l'étude) |
+| Carte bancaire | **SASPay** | — | Stripe écarté (entité au Bénin, § 16) |
+| Guinée (GNF), RD Congo (CDF) | SASPay si ces devises sont confirmées | virement manuel | pays présents dans la liste tierce SASPay ; devises à confirmer |
+| Comores (KMF) et pays sans couverture | virement bancaire manuel | — | paiement enregistré par un administrateur `finance` avec justificatif, double validation, audit |
 
 ### 6.4 Vérification serveur, webhooks et idempotence (règles communes)
 1. **Commande puis tentative** : chaque tentative crée une ligne `payments` (`pending`) avec une `idempotency_key` unique **avant** l'appel au prestataire. La clé est transmise au prestataire quand il la prend en charge. Un double clic retrouve la tentative en cours au lieu d'en créer une autre.
@@ -437,7 +438,7 @@ Page publique **Tarifs** : alimentée par l'API du catalogue publié, à la plac
 | `refunds` | 12B | Remboursement API ou manuel avec double validation et justificatif ; lié à l'avoir |
 | `support_access_grants` | 12C | Accès support temporaire, motivé, journalisé |
 | `integration_runs` | 12C | Historique des vérifications et synchronisations des connecteurs |
-| `platform_staff` (option) | 12C | Rôles de plateforme différenciés (`super_admin`, `billing`, `support`) ; à ne créer que si le booléen `is_platform_admin` ne suffit pas (décision § 16) |
+| `platform_staff` | 12C | Rôles de plateforme différenciés (`super_admin`, `finance`, `support`) : retenu, l'administration est confiée à une petite équipe (§ 16, décision 11) |
 
 **Tables existantes modifiées par ALTER** (nouvelle migration ; 0001 et 0002 ne sont pas réécrites) : `subscriptions` (§ 2.3), `payments` (§ 2.4), politiques RLS et d'audit (§ 2.6). **Aucune table n'est supprimée ; aucune colonne n'est retirée.**
 
@@ -500,14 +501,14 @@ Toutes les nouvelles tables auront : RLS activé ; déclencheur `0_not_ai` sur l
 
 | Dépendance | Nécessaire pour | Statut |
 |---|---|---|
-| Entité juridique vendeuse KOFINEX (pays, immatriculation, régime fiscal, compte bancaire) | factures, taxes, contrats marchands, éligibilité Stripe | **à fournir** |
+| Entité juridique vendeuse KOFINEX : **Bénin** (§ 16) ; immatriculation, régime fiscal, compte bancaire | factures, taxes, contrats marchands | identifiants **à fournir** |
 | Compte marchand SASPay (test puis production), vérification du prestataire, contrat | connecteur SASPay | à ouvrir ; XAF et webhooks à confirmer |
 | Compte marchand PayDunya (test puis production), canaux activés | connecteur PayDunya | à ouvrir |
-| Compte Stripe | cartes, remboursements API | **possible seulement si l'entité est dans un pays éligible** |
+| Compte Stripe | — | **écarté** : entité au Bénin, pays non éligible (§ 16) |
 | Fiscaliste ou juriste par pays de vente | `tax_rules`, mentions, obligations de facturation électronique, conservation des données après résiliation | à mandater |
 | Service d'envoi d'e-mails transactionnels | relances, factures, essais | à choisir |
 | Odoo (instance de test, version) ; Sage Business Cloud (enregistrement d'application, OAuth) ; Sage 100 (formats d'export réels) | connecteurs 12C | à fournir / à vérifier en 12C |
-| Hébergement VPS cPanel : versions Python et Node disponibles, support ASGI ou proxy inverse, SSH, cron, Redis, processus longs (Celery) | 12D | **à vérifier avec l'hébergeur** : un cPanel standard n'offre pas toujours de processus permanents |
+| Hébergement de l'application : VPS **KVM**, mémoire garantie, Ubuntu 24.04, root SSH (le cPanel mutualisé LWS M2 et les VPS LXC de LWS ne conviennent pas) | 12D | **à choisir** (§ 16) |
 | Supabase : plan (sauvegardes, PITR), réglage des schémas exposés | 12D, § 1 | à confirmer |
 
 ---
