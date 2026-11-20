@@ -20,7 +20,7 @@ const NAV = [
 
 const BENEFITS: [React.ElementType, string, string][] = [
   [CalendarDays, "Essai gratuit", "30 jours"],
-  [CreditCard, "Paiement sécurisé", "via SASPay"],
+  [CreditCard, "Paiement en ligne via SASPay", "bientôt disponible"],
   [CircleDollarSign, "Devise", "FCFA"],
   [Cloud, "SaaS (Cloud)", "Accessible partout"],
   [ShieldCheck, "Données sécurisées", "et sauvegardées"],
@@ -212,7 +212,7 @@ export default function LandingPage() {
           </div>
           <div id="tarifs" className="scroll-mt-6">
             <p className="font-semibold">Tarifs</p>
-            <p className="mt-2 text-muted-foreground">Offres et prix en FCFA et dans la devise de chaque pays de l'OHADA, hors taxes.</p>
+            <p className="mt-2 text-muted-foreground">Grille tarifaire en FCFA et dans la devise de chaque pays de l'OHADA, hors taxes.</p>
             <Link href="/tarifs" className="mt-2 inline-flex items-center gap-1 font-semibold text-link hover:underline">Voir la grille tarifaire <ArrowRight className="h-4 w-4" aria-hidden /></Link>
           </div>
           <div id="a-propos" className="scroll-mt-6">

@@ -200,7 +200,7 @@ CREATE TABLE public.billing_entitlements (
   product_version_id uuid NOT NULL REFERENCES public.billing_product_versions(id) ON DELETE CASCADE,
   kind               text NOT NULL CHECK (kind IN ('module','quota')),
   module_key         text REFERENCES public.billing_modules(key),
-  -- grandeurs du § 3.3 ; unités par défaut [À VALIDER] (§ 16) : IA en jetons, sociétés non archivées
+  -- grandeurs du § 3.3 ; unités retenues (décision du 20 novembre 2026) : IA en jetons, sociétés non archivées
   quota_key          text CHECK (quota_key IN ('users','companies','engagements','storage_mb','imports_per_period',
                                                'reports_per_period','ai_tokens_per_period')),
   limit_value        bigint CHECK (limit_value IS NULL OR limit_value >= 0),   -- NULL : illimité

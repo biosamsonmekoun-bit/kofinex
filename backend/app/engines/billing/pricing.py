@@ -2,8 +2,8 @@
 
 Règles (docs/LOT12_SAAS_CONCEPTION.md, § 4, § 5.2 et § 16) :
 - décimales selon la norme ISO 4217 pour les devises retenues : XOF, XAF, GNF, KMF sans décimale, CDF deux ;
-- arrondi au plus proche, la moitié vers le haut (ROUND_HALF_UP). [À VALIDER] : règle d'arrondi détaillée
-  (§ 16, décision 8) ;
+- arrondi au plus proche, la moitié vers le haut (ROUND_HALF_UP) : décision du 20 novembre 2026, arrondi à confirmer
+  par le fiscaliste ;
 - une remise ne rend jamais un montant négatif et ne porte jamais sur une taxe ;
 - montée en gamme : crédit au prorata des jours restants de la période payée, imputé sur la nouvelle offre.
 """

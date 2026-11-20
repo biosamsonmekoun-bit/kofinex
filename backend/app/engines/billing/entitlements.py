@@ -9,7 +9,7 @@ from dataclasses import dataclass, field
 
 from app.engines.billing.lifecycle import access
 
-# Grandeurs de quota (§ 3.3). Unités proposées par défaut, [À VALIDER] (§ 16) : IA en jetons ; sociétés non
+# Grandeurs de quota (§ 3.3). Unités retenues (décision du 20 novembre 2026) : IA en jetons ; sociétés non
 # archivées ; utilisateurs = membres de l'organisation.
 QUOTA_KEYS = ("users", "companies", "engagements", "storage_mb", "imports_per_period", "reports_per_period",
               "ai_tokens_per_period")

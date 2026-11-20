@@ -379,7 +379,7 @@ Périmètre du § 14 de `docs/LOT12_SAAS_CONCEPTION.md`, décisions du § 16 app
   - catalogue publié lisible sans connexion (rôle `anon`), brouillons et promotions réservés à l'administrateur de la plateforme ;
   - journal (`audit_row_change`) et `0_not_ai` sur toutes les nouvelles tables ;
   - données chargées, toutes issues du § 16 : 11 modules livrés (sans `connectors`, 12C), grâce de 7 jours, vendeur au Bénin, 17 pays de l'OHADA et leur devise. **Aucun prix, quota ni promotion n'est chargé.**
-- **Moteurs** (`engines/billing`) : `pricing` (prix, remises, prorata, arrondi au plus proche [À VALIDER], sans taxe), `lifecycle` (transitions du § 5.1, état effectif), `entitlements` (agrégation, dépendances, validation avant publication).
+- **Moteurs** (`engines/billing`) : `pricing` (prix, remises, prorata, arrondi au plus proche, la moitié vers le haut : décision du 20 novembre 2026, arrondi à confirmer par le fiscaliste ; sans taxe), `lifecycle` (transitions du § 5.1, état effectif), `entitlements` (agrégation, dépendances, validation avant publication).
 - **API** (28 opérations) : catalogue public ; compte de facturation, abonnement, droits (affichage), usages, essai, devis, résiliation et retrait ; administration des offres, versions, prix, droits, publication, retrait, promotions, paramètres.
 - **Écrans** : page publique `/tarifs` (lue dans le catalogue), espace « Abonnement » de l'organisation, console `/admin/offres` ; page d'accueil corrigée (essai de 30 jours, SASPay, lien vers la grille).
 - **Exécuté ici** : `npm run typecheck` sans erreur ; `npm run build` réussi (18 pages) ; `make test-unit` 306 réussis (dont 10 du lot 12A) ; `make test-sql` 17 séries, 660 contrôles (dont 67 pour la facturation), base en révision 0018 par Alembic ; `make test-integration` 34 réussis sur 34 (dont 2 du lot 12A) ; ruff sans erreur. Page `/tarifs` vérifiée dans Chromium (ordinateur et mobile, changement de devise et de périodicité, aucune erreur de console) avec des valeurs Supabase factices passées en ligne de commande.
@@ -387,5 +387,5 @@ Périmètre du § 14 de `docs/LOT12_SAAS_CONCEPTION.md`, décisions du § 16 app
 - **Restant pour les étapes suivantes** :
   - bascules planifiées (essai échu, résiliation, impayés) : tâches Celery beat de 12B ; d'ici là, l'état effectif est calculé à la lecture (un essai échu est traité comme expiré) ;
   - `require_module`, `require_writable` et quotas branchés sur les routeurs : 12B ;
-  - unités de quota par défaut [À VALIDER] (§ 16) : IA en jetons, sociétés non archivées, utilisateurs = membres ;
-  - la page d'accueil annonce « Paiement sécurisé via SASPay » (décision 12) alors que le paiement n'ouvre qu'avec 12B.
+  - unités de quota : décision du 20 novembre 2026 (IA en jetons, sociétés non archivées, utilisateurs = membres) ;
+  - page d'accueil (correction du 20 novembre 2026) : « Paiement en ligne via SASPay : bientôt disponible » ; la grille tarifaire est annoncée sans affirmer que des offres existent.

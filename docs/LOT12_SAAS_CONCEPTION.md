@@ -592,7 +592,7 @@ Toutes les nouvelles tables auront : RLS activé ; déclencheur `0_not_ai` sur l
 | 5 | Devises hors franc CFA | **Facturation en devise locale** pour la Guinée (GNF), les Comores (KMF) et la RD Congo (CDF) | La règle « XOF et XAF seulement » du lot 12 est étendue à ces trois devises (codes ISO). Décimales ISO 4217 : XOF 0, XAF 0, GNF 0, KMF 0, CDF 2 ; un prix est saisi pour chaque devise, aucune conversion n'est calculée. Prise en charge de GNF, KMF et CDF par SASPay : **à confirmer** avant ouverture de ces pays. |
 | 6 | Répartition des modules | **Proposition du § 3.2 retenue par défaut** (aucune préférence exprimée) | Modifiable par l'administrateur par une nouvelle version d'offre, sans code. |
 | 7 | Impayés | **7 jours de grâce**, puis lecture seule | Paramètre de plateforme (`billing_settings`), modifiable et journalisé. Délai entre suspension et résiliation : à fixer par l'administrateur (aucune résiliation automatique tant qu'il n'est pas fixé). |
-| 8 | Changement d'offre | **Montée en gamme au prorata**, effet immédiat | Calcul serveur en `Decimal`, arrondi à l'unité de la devise (règle d'arrondi détaillée [À VALIDER]). Descente en gamme en fin de période (§ 5.2). |
+| 8 | Changement d'offre | **Montée en gamme au prorata**, effet immédiat | Calcul serveur en `Decimal`, arrondi à l'unité de la devise (règle d'arrondi au plus proche, la moitié vers le haut : décision du 20 novembre 2026, arrondi à confirmer par le fiscaliste). Descente en gamme en fin de période (§ 5.2). |
 | 9 | Remboursements | **Aucun remboursement** | Seule une erreur de facturation donne un avoir, émis manuellement avec double validation. La table `refunds` reste prévue pour ces cas (exécution manuelle, SASPay n'ayant pas d'API de remboursement). |
 | 10 | Conservation après résiliation | **Avis d'un juriste d'abord** | Aucune suppression automatique des données en attendant ; export complet toujours proposé. |
 | 11 | Administration de la plateforme | **Une petite équipe** | Table `platform_staff` retenue (§ 10) : rôles `super_admin`, `finance` (paiements, avoirs, virements manuels), `support` (lecture, accès support temporaire). `is_platform_admin` reste l'équivalent de `super_admin`. |
@@ -603,7 +603,7 @@ Toutes les nouvelles tables auront : RLS activé ; déclencheur `0_not_ai` sur l
 - **Avant 12B : fiscalité béninoise** des abonnements (taxe applicable, mentions obligatoires, éventuelle facture normalisée) par un fiscaliste.
 - **Avant 12D : sécurité Supabase.** Le retrait de l'exposition PostgREST du schéma `public` est recommandé (§ 1) et sera appliqué au déploiement.
 - **Avant 12D : hébergement.** Supabase hébergé est conservé. Pour l'application, il faut un VPS **KVM** avec mémoire garantie et Ubuntu 24.04 (Python 3.12 requis). Les VPS standard LWS (LXC, mémoire incluant du VSWAP) ne conviennent pas. Le VPS Docker LWS (KVM) ou un autre hébergeur restent à confirmer.
-- Unités de quota (IA en jetons ou en requêtes ; prise en compte des sociétés archivées et des invitations en attente) : proposition par défaut en 12A, [À VALIDER].
+- Unités de quota : **décision du 20 novembre 2026** : IA en jetons, sociétés non archivées, utilisateurs = membres de l'organisation. Arrondi au plus proche, la moitié vers le haut : à confirmer par le fiscaliste.
 
 ---
 
