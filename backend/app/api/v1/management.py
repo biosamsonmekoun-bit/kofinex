@@ -15,7 +15,17 @@ from sqlalchemy.orm import Session
 from app.api.deps import CompanyContext, get_company_context, get_db
 from app.core.errors import Conflict, NotFound
 from app.core.permissions import CompanyRole, Permission
-from app.models import Budget, BudgetLineRow, Company, CostCenter, CostEntryRow, CostingModel, FiscalYear
+from app.models import (
+    Budget,
+    BudgetKind,
+    BudgetLineRow,
+    BudgetRubric,
+    Company,
+    CostCenter,
+    CostEntryRow,
+    CostingModel,
+    FiscalYear,
+)
 from app.services import management as svc
 from app.services.audit import record_event
 
@@ -183,6 +193,8 @@ def delete_entry(entry_id: uuid.UUID, request: Request, ctx: CompanyContext = De
 class BudgetCreate(BaseModel):
     name: str = Field(min_length=1, max_length=200)
     scenario: Literal["budget", "forecast"] = "budget"
+    # type de budget (migration 0020) : racines de comptes autorisées, en données (`budget_kinds`)
+    budget_kind: str = Field(default="general", pattern=r"^[a-z_]{2,30}$")
     currency: str = Field(default="XOF", pattern=r"^[A-Z]{3}$")
     notes: str | None = Field(default=None, max_length=4000)
 
@@ -193,17 +205,20 @@ class BudgetUpdate(BaseModel):
 
 
 class BudgetLineIn(BaseModel):
+    """Compte choisi dans le plan comptable de référence : son intitulé est repris automatiquement si `label` est vide."""
     account_prefix: str | None = Field(default=None, pattern=ACCOUNT_PATTERN)
     cost_center_id: uuid.UUID | None = None
-    label: str = Field(min_length=1, max_length=200)
+    rubric: str | None = Field(default=None, max_length=120)
+    label: str | None = Field(default=None, max_length=200)
     period: int = Field(ge=0, le=12)
     amount: Decimal = Field(max_digits=20, decimal_places=2)
+    forecast_mode: Literal["manual", "calculated", "imported"] = "manual"
     notes: str | None = Field(default=None, max_length=500)
 
-    @field_validator("label")
+    @field_validator("label", "rubric")
     @classmethod
-    def _strip(cls, v: str) -> str:
-        return v.strip()
+    def _strip(cls, v: str | None) -> str | None:
+        return (v.strip() or None) if v is not None else None
 
 
 class ProjectionItem(BaseModel):
@@ -221,20 +236,87 @@ class ProjectionIn(BaseModel):
 
 def _budget_out(db: Session, b: Budget, with_lines: bool = False) -> dict:
     out = {k: svc.jsonable(getattr(b, k)) for k in (
-        "id", "fiscal_year_id", "name", "version", "status", "scenario", "currency", "notes", "assumptions",
+        "id", "fiscal_year_id", "name", "version", "status", "scenario", "budget_kind", "currency", "notes", "assumptions",
         "source_budget_id", "submitted_by", "submitted_at", "approved_by", "approved_at", "created_by", "created_at")}
     lines = svc.budget_lines(db, b)
     out["total_lines"] = len(lines)
     if with_lines:
+        rub = {r.id: r.label for r in svc.rubrics(db, b)}
         out["lines"] = [{"id": ln.id, "account_prefix": ln.account_number, "cost_center_id": ln.cost_center_id,
-                         "label": ln.label, "period": ln.period, "amount": svc.jsonable(ln.amount), "notes": ln.notes}
+                         "rubric": rub.get(ln.rubric_id), "label": ln.label, "period": ln.period,
+                         "amount": svc.jsonable(ln.amount), "forecast_mode": ln.forecast_mode, "notes": ln.notes}
                         for ln in lines]
+        # lignes regroupées par rubrique : intitulé du compte, douze mois et total annuel calculés par le serveur
+        out["grouped"] = svc.jsonable(svc.grouped_lines(db, b))
     return out
+
+
+def _check_lines(db: Session, ctx: CompanyContext, b: Budget, lines: list[BudgetLineIn]) -> list[str]:
+    """Contrôles d'une saisie ou d'un import (mêmes règles que la base, messages explicites). Complète l'intitulé
+    d'une ligne sans libellé par celui du compte, sinon par la rubrique. Renvoie les anomalies."""
+    fy = db.get(FiscalYear, b.fiscal_year_id)
+    kind = svc.budget_kind(db, b.budget_kind)
+    refs = svc.reference_accounts(db, ctx.company_id, fy.id)
+    natures = svc.tracking_natures(db, fy, kind)
+    errors: list[str] = []
+    keys_periods: dict[tuple, set[int]] = {}
+    key_rubric: dict[tuple, str | None] = {}
+    for ln in lines:
+        where = f"Ligne « {ln.label or ln.account_prefix or ln.rubric or '?'} »"
+        if not ln.account_prefix and not ln.cost_center_id and not ln.rubric:
+            errors.append(f"{where} : indiquez un compte, un centre de coûts ou une rubrique.")
+            continue
+        if ln.account_prefix:
+            issue = svc.account_issue(ln.account_prefix, refs, kind)
+            if issue:
+                errors.append(f"{where} : {issue}.")
+                continue
+            try:
+                svc.engine_call(svc.prefix_nature, ln.account_prefix, natures)
+            except svc.ManagementInvalid as exc:
+                errors.append(f"{where} : {exc}")
+                continue
+        cc = db.get(CostCenter, ln.cost_center_id) if ln.cost_center_id else None
+        if ln.cost_center_id and (cc is None or cc.company_id != ctx.company_id):
+            errors.append(f"{where} : centre de coûts introuvable.")
+            continue
+        if not ln.label:
+            ln.label = (refs.get(ln.account_prefix) or {}).get("label") if ln.account_prefix else None
+            ln.label = ln.label or ln.rubric or "Ligne"
+        key = (ln.account_prefix, ln.cost_center_id, None if ln.account_prefix or ln.cost_center_id else ln.label)
+        if ln.account_prefix or ln.cost_center_id:
+            if key in key_rubric and key_rubric[key] != ln.rubric:
+                errors.append(f"{where} : le même compte (ou centre) est déjà rattaché à la rubrique « {key_rubric[key]} ».")
+                continue
+            key_rubric[key] = ln.rubric
+        periods = keys_periods.setdefault(key + (ln.rubric,), set())
+        if ln.period in periods:
+            errors.append(f"{where} : la période {ln.period} est saisie deux fois.")
+        elif (ln.period == 0 and periods) or (ln.period != 0 and 0 in periods):
+            errors.append(f"{where} : montant annuel et montants mensuels mélangés.")
+        periods.add(ln.period)
+    return errors
 
 
 def _draft(b: Budget) -> None:
     if b.status != "draft":
         raise Conflict("Seul un budget en brouillon est modifiable : créez une nouvelle version.")
+
+
+@router.get("/budget-kinds", summary="Types de budget et racines de comptes autorisées (données « à valider »)")
+def list_budget_kinds(ctx: CompanyContext = Depends(get_company_context), db: Session = Depends(get_db)):
+    return [{k: getattr(x, k) for k in ("key", "label", "allowed_prefixes", "allowed_natures", "actual_basis", "status",
+                                        "source", "display_order")}
+            for x in db.scalars(select(BudgetKind).order_by(BudgetKind.display_order))]
+
+
+@router.get("/fiscal-years/{fiscal_year_id}/budget-accounts",
+            summary="Comptes sélectionnables pour un budget : plan de l'entreprise, sinon référentiel publié")
+def budget_accounts(fiscal_year_id: uuid.UUID, kind: str = Query("general", pattern=r"^[a-z_]{2,30}$"),
+                    q: str | None = Query(None, max_length=60), limit: int = Query(200, ge=1, le=2000),
+                    ctx: CompanyContext = Depends(get_company_context), db: Session = Depends(get_db)):
+    fy = _fy(db, ctx, fiscal_year_id)
+    return svc.selectable_accounts(db, ctx.company_id, fy, svc.budget_kind(db, kind), q, limit)
 
 
 @router.get("/fiscal-years/{fiscal_year_id}/budgets", summary="Budgets et prévisions de l'exercice")
@@ -250,12 +332,13 @@ def create_budget(fiscal_year_id: uuid.UUID, payload: BudgetCreate, request: Req
                   ctx: CompanyContext = Depends(get_company_context), db: Session = Depends(get_db)):
     ctx.require(Permission.BUDGET_WRITE)
     fy = _fy(db, ctx, fiscal_year_id)
+    kind = svc.budget_kind(db, payload.budget_kind)
     b = Budget(id=uuid.uuid4(), organization_id=ctx.organization_id, company_id=ctx.company_id, fiscal_year_id=fy.id,
-               name=payload.name.strip(), scenario=payload.scenario, currency=payload.currency, notes=payload.notes,
-               assumptions={}, created_by=ctx.user.id)
+               name=payload.name.strip(), scenario=payload.scenario, budget_kind=kind.key, currency=payload.currency,
+               notes=payload.notes, assumptions={}, created_by=ctx.user.id)
     db.add(b)
     db.flush()
-    _audit(db, ctx, request, "budget.create", "budgets", b.id, {"name": b.name, "scenario": b.scenario})
+    _audit(db, ctx, request, "budget.create", "budgets", b.id, {"name": b.name, "scenario": b.scenario, "budget_kind": kind.key})
     return _budget_out(db, b)
 
 
@@ -284,30 +367,28 @@ def replace_lines(budget_id: uuid.UUID, lines: list[BudgetLineIn], request: Requ
     _draft(b)
     if len(lines) > 5000:
         raise svc.ManagementInvalid("5 000 lignes au maximum par budget.")
-    fy = db.get(FiscalYear, b.fiscal_year_id)
-    natures = svc.chart_natures(db, fy)
-    keys_periods: dict[tuple, set[int]] = {}
-    for ln in lines:
-        if not ln.account_prefix and not ln.cost_center_id:
-            raise svc.ManagementInvalid(f"Ligne « {ln.label} » : indiquez une racine de compte ou un centre de coûts.")
-        if ln.account_prefix:
-            svc.engine_call(svc.prefix_nature, ln.account_prefix, natures)
-        if ln.cost_center_id:
-            _owned(db, ctx, CostCenter, ln.cost_center_id, "Centre")
-        key = (ln.account_prefix, ln.cost_center_id)
-        periods = keys_periods.setdefault(key, set())
-        if ln.period in periods:
-            raise svc.ManagementInvalid(f"Ligne « {ln.label} » : la période {ln.period} est saisie deux fois.")
-        if (ln.period == 0 and periods) or (ln.period != 0 and 0 in periods):
-            raise svc.ManagementInvalid(f"Ligne « {ln.label} » : montant annuel et montants mensuels mélangés.")
-        periods.add(ln.period)
+    errors = _check_lines(db, ctx, b, lines)
+    if errors:
+        raise svc.ManagementInvalid(errors[0] if len(errors) == 1 else f"{len(errors)} anomalies : " + " ; ".join(errors[:5]),
+                                    details={"errors": errors})
     for old in svc.budget_lines(db, b):
         db.delete(old)
+    for old in svc.rubrics(db, b):
+        db.delete(old)
+    db.flush()
+    rubric_ids: dict[str, uuid.UUID] = {}
+    for ln in lines:                          # rubriques dans l'ordre de première apparition
+        if ln.rubric and ln.rubric not in rubric_ids:
+            r = BudgetRubric(id=uuid.uuid4(), organization_id=ctx.organization_id, company_id=ctx.company_id,
+                             budget_id=b.id, label=ln.rubric, display_order=len(rubric_ids))
+            db.add(r)
+            rubric_ids[ln.rubric] = r.id
     db.flush()
     for ln in lines:
         db.add(BudgetLineRow(id=uuid.uuid4(), organization_id=ctx.organization_id, company_id=ctx.company_id,
                              budget_id=b.id, account_number=ln.account_prefix, cost_center_id=ln.cost_center_id,
-                             label=ln.label, period=ln.period, amount=ln.amount, notes=ln.notes))
+                             rubric_id=rubric_ids.get(ln.rubric) if ln.rubric else None, label=ln.label,
+                             period=ln.period, amount=ln.amount, forecast_mode=ln.forecast_mode, notes=ln.notes))
     db.flush()
     _audit(db, ctx, request, "budget.lines_replaced", "budgets", b.id, {"lines": len(lines)})
     return _budget_out(db, b, with_lines=True)
@@ -321,6 +402,14 @@ def project(budget_id: uuid.UUID, payload: ProjectionIn, request: Request,
     _draft(b)
     src = _fy(db, ctx, payload.source_fiscal_year_id)
     fy = db.get(FiscalYear, b.fiscal_year_id)
+    kind = svc.budget_kind(db, b.budget_kind)
+    if kind.actual_basis == "movements":
+        raise svc.ManagementInvalid("Prévision par hypothèses : réservée aux budgets de charges et de produits "
+                                    "(elle part du réalisé de la balance).")
+    refs = svc.reference_accounts(db, ctx.company_id, fy.id)
+    bad = [f"{i.prefix} : {issue}" for i in payload.items if (issue := svc.account_issue(i.prefix, refs, kind))]
+    if bad:
+        raise svc.ManagementInvalid("Prévision : " + " ; ".join(bad), details={"errors": bad})
     new = svc.projected_lines(db, src, [(i.prefix, i.label.strip(), i.rate_pct) for i in payload.items],
                               payload.spread, fy)
     existing = svc.budget_lines(db, b)
@@ -335,7 +424,7 @@ def project(budget_id: uuid.UUID, payload: ProjectionIn, request: Request,
     for n in new:
         db.add(BudgetLineRow(id=uuid.uuid4(), organization_id=ctx.organization_id, company_id=ctx.company_id,
                              budget_id=b.id, account_number=n.account_prefix, cost_center_id=None, label=n.label,
-                             period=n.period, amount=n.amount,
+                             period=n.period, amount=n.amount, forecast_mode="calculated",
                              notes=f"Réalisé {src.label} × (1 + taux)"))
     b.assumptions = {**(b.assumptions or {}), "projection": {
         "source_fiscal_year": src.label, "source_import_job_id": str(src.active_import_job_id), "spread": payload.spread,
@@ -356,14 +445,23 @@ def new_version(budget_id: uuid.UUID, request: Request, ctx: CompanyContext = De
                                                              Budget.name == src.name))
     b = Budget(id=uuid.uuid4(), organization_id=ctx.organization_id, company_id=ctx.company_id,
                fiscal_year_id=src.fiscal_year_id, name=src.name, version=last + 1, scenario=src.scenario,
+               budget_kind=src.budget_kind,
                currency=src.currency, notes=src.notes, assumptions=src.assumptions or {}, source_budget_id=src.id,
                created_by=ctx.user.id)
     db.add(b)
     db.flush()
+    rubric_map: dict[uuid.UUID, uuid.UUID] = {}
+    for r in svc.rubrics(db, src):
+        nr = BudgetRubric(id=uuid.uuid4(), organization_id=ctx.organization_id, company_id=ctx.company_id,
+                          budget_id=b.id, label=r.label, display_order=r.display_order)
+        db.add(nr)
+        rubric_map[r.id] = nr.id
+    db.flush()
     for ln in svc.budget_lines(db, src):
         db.add(BudgetLineRow(id=uuid.uuid4(), organization_id=ctx.organization_id, company_id=ctx.company_id,
                              budget_id=b.id, account_number=ln.account_number, cost_center_id=ln.cost_center_id,
-                             label=ln.label, period=ln.period, amount=ln.amount, notes=ln.notes))
+                             rubric_id=rubric_map.get(ln.rubric_id) if ln.rubric_id else None, label=ln.label,
+                             period=ln.period, amount=ln.amount, forecast_mode=ln.forecast_mode, notes=ln.notes))
     db.flush()
     _audit(db, ctx, request, "budget.new_version", "budgets", b.id, {"source": str(src.id), "version": b.version})
     return _budget_out(db, b)
@@ -460,9 +558,11 @@ async def import_budget_lines(budget_id: uuid.UUID, request: Request, file: Uplo
                 continue
         try:
             lines.append(BudgetLineIn(account_prefix=r["account_prefix"], cost_center_id=cc, label=r["label"],
-                                      period=r["period"], amount=r["amount"]))
+                                      period=r["period"], amount=r["amount"], forecast_mode="imported"))
         except ValueError as exc:
             errors.append(f"« {r['label']} » : {exc}")
+    if not errors:      # mêmes contrôles que la saisie, y compris en simulation (plan de référence, type de budget)
+        errors.extend(_check_lines(db, ctx, b, lines))
     summary = {"file": file.filename, "sheet": ex.sheets[0].name, "lines": len(lines), "errors": errors,
                "total": str(sum((ln.amount for ln in lines), Decimal(0)))}
     if errors or dry_run:

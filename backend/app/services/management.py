@@ -23,7 +23,9 @@ from app.engines.management.forecast import cagr, linear_trend
 from app.engines.management.standards import standard_variances
 from app.models import (
     Budget,
+    BudgetKind,
     BudgetLineRow,
+    BudgetRubric,
     ChartAccount,
     Company,
     CostCenter,
@@ -119,7 +121,10 @@ def tracking(db: Session, budget: Budget, fy: FiscalYear, source: str | None = N
     """Suivi budgétaire. `source` (facultatif) : réalisé tiré de la couche de pilotage (écritures natives, grand livre
     importé — `services/steering.py`) ; par défaut, comportement du lot 5 (balance importée et grand livre importé)."""
     lines = budget_lines(db, budget)
-    balance, ledger_monthly, src, src_notes = balance_rows(db, fy), None, "trial_balance", []
+    kind = budget_kind(db, budget.budget_kind)
+    movements = kind.actual_basis == "movements"     # budget d'investissement : mouvements de l'exercice
+    balance = balance_movement_rows(db, fy) if movements else balance_rows(db, fy)
+    ledger_monthly, src, src_notes = None, "trial_balance", []
     if fy.active_ledger_import_job_id:
         ledger_monthly = ledger_svc.monthly_net(db, fy)
     if source is not None:
@@ -135,12 +140,17 @@ def tracking(db: Session, budget: Budget, fy: FiscalYear, source: str | None = N
     t: Tracking = engine_call(
         track, [BudgetLine(ln.account_number, str(ln.cost_center_id) if ln.cost_center_id else None, ln.label,
                            ln.period, ln.amount) for ln in lines],
-        chart_natures=chart_natures(db, fy), balance=balance, cost_entries=entries,
+        chart_natures=tracking_natures(db, fy, kind), balance=balance, cost_entries=entries,
         center_parent={str(c.id): str(c.parent_id) if c.parent_id else None for c in centers},
         fy_start=fy.start_date, center_names={str(c.id): f"{c.code} — {c.name}" for c in centers},
         ledger_monthly=ledger_monthly)
+    if movements:
+        for r in t.rows:
+            r.favorable = None
+            r.notes.append("Budget d'investissement : réalisé = mouvements de l'exercice, hors à-nouveaux ; "
+                           "aucune appréciation favorable ou défavorable n'est calculée. [À VALIDER]")
     return {
-        "source": src, "source_notes": src_notes,
+        "source": src, "source_notes": src_notes, "budget_kind": kind.key,
         "budget_id": budget.id, "fiscal_year": fy.label, "balance_import_job_id": fy.active_import_job_id,
         "ledger_import_job_id": fy.active_ledger_import_job_id,
         "rows": [{**jsonable(r), "account_prefix": r.key[0], "cost_center_id": r.key[1]} for r in t.rows],
@@ -325,4 +335,115 @@ def dashboard(db: Session, fy: FiscalYear) -> dict:
     if m:
         out["standard_cost"] = {**_model_head(m, fy), "totals": m.results.get("totals"),
                                 "actual_output": m.results.get("actual_output")}
+    return out
+
+
+# ------------------------------------------------------------------ budget relié au plan comptable (migration 0020)
+# Natures du référentiel → sens de lecture du moteur budgétaire. Comptes de gestion : charge (débit − crédit) ou
+# produit (crédit − débit). Comptes de bilan d'un budget d'investissement : actif lu comme une charge (acquisitions,
+# débit − crédit), passif et capitaux comme un produit (emprunts reçus, crédit − débit). [À VALIDER]
+INVESTMENT_SIGN = {"asset": "charge", "liability": "produit", "equity": "produit"}
+
+
+def budget_kind(db: Session, key: str) -> BudgetKind:
+    k = db.get(BudgetKind, key)
+    if k is None:
+        raise ManagementInvalid(f"Type de budget inconnu : {key}")
+    return k
+
+
+def reference_accounts(db: Session, company_id: uuid.UUID, fy_id: uuid.UUID) -> dict[str, dict]:
+    """Plan comptable de référence d'un budget (fonction SQL `budget_reference_accounts`) : plan de l'entreprise et
+    racines du référentiel qui le regroupent, sinon référentiel publié de l'exercice."""
+    rows = db.execute(text("SELECT * FROM public.budget_reference_accounts(:c, :f)"), {"c": company_id, "f": fy_id}).mappings()
+    return {r["account_number"]: dict(r) for r in rows}
+
+
+def _in_kind(number: str, kind: BudgetKind) -> bool:
+    return any(number.startswith(p) for p in kind.allowed_prefixes)
+
+
+def account_issue(number: str, refs: dict[str, dict], kind: BudgetKind) -> str | None:
+    """Même contrôle que la base (déclencheur `guard_budget_line_account`), avec un message explicite."""
+    acc = refs.get(number)
+    if acc is None:
+        return f"compte {number} absent du plan comptable de référence (plan de l'entreprise, sinon référentiel publié)"
+    if not acc["is_active"]:
+        return f"compte {number} en sommeil"
+    if not _in_kind(number, kind):
+        return f"compte {number} hors des racines autorisées pour « {kind.label} » ({', '.join(kind.allowed_prefixes)})"
+    if acc["nature"] not in kind.allowed_natures:
+        return f"compte {number} de nature « {acc['nature'] or 'inconnue'} » non admis dans « {kind.label} »"
+    return None
+
+
+def selectable_accounts(db: Session, company_id: uuid.UUID, fy: FiscalYear, kind: BudgetKind,
+                        q: str | None = None, limit: int = 200) -> dict:
+    """Comptes proposés à la saisie d'une ligne : numéro, intitulé, classe, compte parent (racine la plus longue du plan
+    de référence), source. Seuls les comptes admis par le type de budget sont proposés."""
+    refs = reference_accounts(db, company_id, fy.id)
+    numbers = sorted(refs)
+    out = []
+    needle = (q or "").strip().lower()
+    for n in numbers:
+        a = refs[n]
+        if account_issue(n, refs, kind) is not None:
+            continue
+        if needle and not (n.startswith(needle) or needle in (a["label"] or "").lower()):
+            continue
+        parent = next((p for p in sorted((x for x in numbers if n.startswith(x) and x != n), key=len, reverse=True)), None)
+        out.append({"account_number": n, "label": a["label"], "account_class": a["account_class"], "nature": a["nature"],
+                    "source": a["source"], "parent": parent, "parent_label": refs[parent]["label"] if parent else None})
+    source = "company" if any(a["source"] == "company" for a in refs.values()) else "framework"
+    return {"source": source, "kind": kind.key, "total": len(out), "items": out[:limit]}
+
+
+def tracking_natures(db: Session, fy: FiscalYear, kind: BudgetKind) -> dict[str, str | None]:
+    """Natures lues par le moteur : celles du lot 5 pour un budget de résultat ; pour un budget d'investissement, le
+    sens de lecture des comptes de bilan (`INVESTMENT_SIGN`)."""
+    if kind.actual_basis != "movements":
+        return chart_natures(db, fy)
+    vid = framework_version_id(db, fy)
+    if vid is None:
+        raise ManagementInvalid("Aucune version publiée du référentiel pour cet exercice.")
+    return {a: INVESTMENT_SIGN.get(n) for a, n in db.execute(select(ChartAccount.account_number, ChartAccount.nature)
+                                                             .where(ChartAccount.framework_version_id == vid)).all()}
+
+
+def balance_movement_rows(db: Session, fy: FiscalYear) -> list[BalanceRow] | None:
+    """Mouvements de l'exercice de la balance importée (hors soldes d'ouverture) : réalisé d'un budget d'investissement."""
+    if fy.active_import_job_id is None:
+        return None
+    return [BalanceRow(r.account_number, r.movement_debit or Decimal(0), r.movement_credit or Decimal(0))
+            for r in db.scalars(select(TrialBalanceEntry).where(TrialBalanceEntry.import_job_id == fy.active_import_job_id))]
+
+
+def rubrics(db: Session, budget: Budget) -> list[BudgetRubric]:
+    return list(db.scalars(select(BudgetRubric).where(BudgetRubric.budget_id == budget.id)
+                           .order_by(BudgetRubric.display_order, BudgetRubric.label)))
+
+
+def grouped_lines(db: Session, budget: Budget) -> list[dict]:
+    """Lignes regroupées par rubrique puis par (compte, centre) : douze mois et total annuel calculés ici, en Decimal."""
+    fy = db.get(FiscalYear, budget.fiscal_year_id)
+    refs = reference_accounts(db, budget.company_id, fy.id)
+    rub = {r.id: r for r in rubrics(db, budget)}
+    groups: dict[tuple, dict] = {}
+    for ln in budget_lines(db, budget):
+        key = (ln.rubric_id, ln.account_number, ln.cost_center_id, ln.label)
+        g = groups.setdefault(key, {
+            "rubric_id": ln.rubric_id, "rubric": rub[ln.rubric_id].label if ln.rubric_id in rub else None,
+            "rubric_order": rub[ln.rubric_id].display_order if ln.rubric_id in rub else 10**6,
+            "account_number": ln.account_number, "account_label": (refs.get(ln.account_number) or {}).get("label"),
+            "account_class": (refs.get(ln.account_number) or {}).get("account_class"),
+            "cost_center_id": ln.cost_center_id, "label": ln.label, "forecast_mode": ln.forecast_mode,
+            "annual": None, "months": [None] * 12, "total": Decimal(0)})
+        if ln.period == 0:
+            g["annual"] = ln.amount
+        else:
+            g["months"][ln.period - 1] = ln.amount
+        g["total"] += ln.amount
+    out = sorted(groups.values(), key=lambda g: (g["rubric_order"], g["rubric"] or "", g["account_number"] or "", g["label"]))
+    for g in out:
+        g.pop("rubric_order")
     return out

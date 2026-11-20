@@ -7,7 +7,8 @@ import { Archive, Check, ChevronLeft, CopyPlus, Plus, Send, Trash2, Undo2 } from
 import { api, errorMessage } from "@/lib/api";
 import { useApiResource } from "@/lib/use-api";
 import {
-  BUDGET_STATUS_LABELS, type Budget, type BudgetLine, type Company, type CostCenter, type FiscalYear, type Tracking,
+  BUDGET_STATUS_LABELS, FORECAST_MODE_LABELS, type Budget, type BudgetAccount, type BudgetKind, type BudgetLine, type Company, type CostCenter,
+  type FiscalYear, type ForecastMode, type Tracking,
 } from "@/lib/types";
 import { cn, formatAmount, formatDate, formatPct } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -34,14 +35,22 @@ function monthLabels(fy: FiscalYear | null): string[] {
 }
 
 // ------------------------------------------------------------------ éditeur de lignes
-interface Row { account_prefix: string; cost_center_id: string; label: string; monthly: boolean; annual: string; months: string[] }
+// Compte choisi dans le plan comptable de référence (plan de l'entreprise, sinon référentiel publié) : son intitulé,
+// sa classe et son parent sont repris du serveur. Les totaux affichés sont ceux du serveur (aucun calcul de montant ici).
+interface Row {
+  rubric: string; account_prefix: string; cost_center_id: string; label: string; forecast_mode: ForecastMode;
+  monthly: boolean; annual: string; months: string[];
+}
+const blankRow = (rubric = ""): Row => ({ rubric, account_prefix: "", cost_center_id: "", label: "", forecast_mode: "manual",
+                                          monthly: false, annual: "", months: Array(12).fill("") });
 
 function toRows(lines: BudgetLine[]): Row[] {
   const map = new Map<string, Row>();
   for (const l of lines) {
-    const key = `${l.account_prefix ?? ""}|${l.cost_center_id ?? ""}`;
-    const r = map.get(key) ?? { account_prefix: l.account_prefix ?? "", cost_center_id: l.cost_center_id ?? "", label: l.label,
-                                monthly: false, annual: "", months: Array(12).fill("") };
+    const free = !l.account_prefix && !l.cost_center_id ? l.label ?? "" : "";
+    const key = `${l.rubric ?? ""}|${l.account_prefix ?? ""}|${l.cost_center_id ?? ""}|${free}`;
+    const r = map.get(key) ?? { ...blankRow(l.rubric ?? ""), account_prefix: l.account_prefix ?? "", cost_center_id: l.cost_center_id ?? "",
+                                label: l.label ?? "", forecast_mode: l.forecast_mode ?? "manual" };
     if (l.period === 0) r.annual = l.amount;
     else { r.monthly = true; r.months[l.period - 1] = l.amount; }
     map.set(key, r);
@@ -53,10 +62,11 @@ function toLines(rows: Row[]): { lines: BudgetLine[]; error: string | null } {
   const lines: BudgetLine[] = [];
   for (const [i, r] of rows.entries()) {
     const where = `Ligne ${i + 1}${r.label ? ` (« ${r.label} »)` : ""}`;
-    if (!r.label.trim()) return { lines, error: `${where} : libellé manquant.` };
-    if (!r.account_prefix && !r.cost_center_id) return { lines, error: `${where} : indiquez une racine de compte ou un centre.` };
-    if (r.account_prefix && !/^\d{1,20}$/.test(r.account_prefix)) return { lines, error: `${where} : racine de compte invalide.` };
-    const base = { account_prefix: r.account_prefix || null, cost_center_id: r.cost_center_id || null, label: r.label.trim() };
+    if (!r.account_prefix && !r.cost_center_id && !r.rubric.trim()) return { lines, error: `${where} : indiquez un compte, un centre ou une rubrique.` };
+    if (!r.account_prefix && !r.cost_center_id && !r.label.trim()) return { lines, error: `${where} : une ligne sans compte ni centre doit avoir un libellé.` };
+    if (r.account_prefix && !/^\d{1,20}$/.test(r.account_prefix)) return { lines, error: `${where} : choisissez un compte dans la liste.` };
+    const base = { account_prefix: r.account_prefix || null, cost_center_id: r.cost_center_id || null, label: r.label.trim() || null,
+                   rubric: r.rubric.trim() || null, forecast_mode: r.forecast_mode };
     if (r.monthly) {
       for (let m = 0; m < 12; m++) {
         if (!r.months[m]) continue;
@@ -80,7 +90,27 @@ function LinesEditor({ companyId, budget, centers, months, onSaved }: {
   const [error, setError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
-  const set = (i: number, patch: Partial<Row>) => { setSaved(false); setRows((rs) => rs.map((r, j) => (j === i ? { ...r, ...patch } : r))); };
+  const [dirty, setDirty] = useState(false);
+  const [collapsed, setCollapsed] = useState<Record<string, boolean>>({});
+  const { data: accounts } = useApiResource<{ source: string; items: BudgetAccount[] }>(
+    `/companies/${companyId}/fiscal-years/${budget.fiscal_year_id}/budget-accounts?kind=${budget.budget_kind}&limit=2000`);
+  const byNumber = useMemo(() => new Map((accounts?.items ?? []).map((a) => [a.account_number, a])), [accounts]);
+  const set = (i: number, patch: Partial<Row>) => { setSaved(false); setDirty(true); setRows((rs) => rs.map((r, j) => (j === i ? { ...r, ...patch } : r))); };
+  // totaux du serveur pour la dernière version enregistrée
+  const serverTotal = (r: Row) => budget.grouped?.find((g) => (g.rubric ?? "") === r.rubric && (g.account_number ?? "") === r.account_prefix
+    && (g.cost_center_id ?? "") === r.cost_center_id && (r.account_prefix || r.cost_center_id || g.label === r.label))?.total;
+  const groups = useMemo(() => {
+    const order: string[] = [];
+    const idx = new Map<string, number[]>();
+    rows.forEach((r, i) => { const k = r.rubric.trim(); if (!idx.has(k)) { idx.set(k, []); order.push(k); } idx.get(k)!.push(i); });
+    return order.map((k) => ({ rubric: k, indexes: idx.get(k)! }));
+  }, [rows]);
+
+  function pickAccount(i: number, text: string) {
+    const num = text.split(/\s/)[0].replace(/\D/g, "");
+    const acc = byNumber.get(num);
+    set(i, { account_prefix: num, ...(acc && !rows[i].label ? { label: acc.label } : {}) });
+  }
 
   async function save() {
     const { lines, error: e } = toLines(rows);
@@ -90,6 +120,7 @@ function LinesEditor({ companyId, budget, centers, months, onSaved }: {
     try {
       onSaved(await api.put<Budget>(`/companies/${companyId}/budgets/${budget.id}/lines`, lines));
       setSaved(true);
+      setDirty(false);
     } catch (err) {
       setError(errorMessage(err));
     } finally {
@@ -102,63 +133,102 @@ function LinesEditor({ companyId, budget, centers, months, onSaved }: {
       {error && <Alert>{error}</Alert>}
       {saved && <Alert kind="success">Lignes enregistrées.</Alert>}
       <p className="text-sm text-muted-foreground">
-        Une ligne budgète une racine de comptes de charges ou de produits (réalisé tiré de la balance) et/ou un centre de coûts
-        (réalisé tiré des saisies analytiques). Montant annuel, ou mensuel par mois de l&apos;exercice.
+        Choisissez le compte dans le {accounts?.source === "company" ? "plan comptable de l'entreprise" : "référentiel publié de l'exercice"} :
+        son intitulé est repris automatiquement. Une rubrique regroupe plusieurs comptes, ou une ligne de gestion sans compte.
+        Une ligne peut aussi porter un centre de coûts. Montant annuel, ou mensuel par mois de l&apos;exercice.
       </p>
-      <div className="w-full overflow-x-auto rounded-lg border bg-card shadow-card">
-        <table className="w-full text-sm tabular-nums">
-          <thead className="border-b bg-muted/70 text-left text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-            <tr>
-              <th className="px-2 py-2">Libellé</th><th className="px-2 py-2">Racine</th><th className="px-2 py-2">Centre</th>
-              <th className="px-2 py-2">Saisie</th><th className="px-2 py-2 text-right">Montant(s)</th><th className="px-2 py-2" />
-            </tr>
-          </thead>
-          <tbody className="divide-y">
-            {rows.map((r, i) => (
-              <tr key={i} className="align-top">
-                <td className="px-2 py-2"><Input aria-label="Libellé" value={r.label} onChange={(e) => set(i, { label: e.target.value })} className="min-w-44" /></td>
-                <td className="px-2 py-2"><Input aria-label="Racine de compte" value={r.account_prefix} inputMode="numeric"
-                                                 onChange={(e) => set(i, { account_prefix: e.target.value.trim() })} className="w-24" /></td>
-                <td className="px-2 py-2">
-                  <Select aria-label="Centre de coûts" value={r.cost_center_id} onChange={(e) => set(i, { cost_center_id: e.target.value })} className="min-w-36">
-                    <option value="">—</option>
-                    {centers.map((c) => <option key={c.id} value={c.id}>{c.code} — {c.name}</option>)}
-                  </Select>
-                </td>
-                <td className="px-2 py-2">
-                  <Select aria-label="Mode de saisie" value={r.monthly ? "m" : "a"} onChange={(e) => set(i, { monthly: e.target.value === "m" })} className="w-28">
-                    <option value="a">Annuel</option><option value="m">Mensuel</option>
-                  </Select>
-                </td>
-                <td className="px-2 py-2">
-                  {r.monthly ? (
-                    <div className="grid grid-cols-3 gap-1 sm:grid-cols-6">
-                      {months.map((m, k) => (
-                        <label key={k} className="text-[11px] text-muted-foreground">{m}
-                          <Input value={r.months[k]} inputMode="decimal" className="h-8 text-right"
-                                 onChange={(e) => set(i, { months: r.months.map((v, j) => (j === k ? e.target.value : v)) })} />
-                        </label>
-                      ))}
-                    </div>
-                  ) : (
-                    <Input aria-label="Montant annuel" value={r.annual} inputMode="decimal" className="ml-auto w-40 text-right"
-                           onChange={(e) => set(i, { annual: e.target.value })} />
-                  )}
-                </td>
-                <td className="px-2 py-2 text-right">
-                  <Button variant="ghost" size="icon" aria-label="Supprimer la ligne" onClick={() => setRows((rs) => rs.filter((_, j) => j !== i))}>
-                    <Trash2 className="h-4 w-4" />
-                  </Button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <datalist id="budget-accounts">
+        {(accounts?.items ?? []).map((a) => <option key={a.account_number} value={`${a.account_number} ${a.label}`} />)}
+      </datalist>
+      {groups.map((g) => (
+        <div key={g.rubric || "_"} className="overflow-x-auto rounded-lg border bg-card shadow-card">
+          <button type="button" className="flex w-full items-center justify-between gap-2 border-b bg-muted/50 px-3 py-2 text-left text-sm font-semibold"
+                  aria-expanded={!collapsed[g.rubric]} onClick={() => setCollapsed((c) => ({ ...c, [g.rubric]: !c[g.rubric] }))}>
+            <span>{g.rubric || "Sans rubrique"} <span className="font-normal text-muted-foreground">({g.indexes.length} ligne{g.indexes.length > 1 ? "s" : ""})</span></span>
+            <span className="text-xs font-normal text-muted-foreground">{collapsed[g.rubric] ? "Afficher" : "Réduire"}</span>
+          </button>
+          {!collapsed[g.rubric] && (
+            <table className="w-full text-sm tabular-nums">
+              <thead className="border-b bg-muted/30 text-left text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                <tr>
+                  <th className="px-2 py-2">Rubrique</th><th className="px-2 py-2">Compte</th><th className="px-2 py-2">Libellé</th>
+                  <th className="px-2 py-2">Centre</th><th className="px-2 py-2">Prévision</th><th className="px-2 py-2">Saisie</th>
+                  <th className="px-2 py-2 text-right">Montant(s)</th><th className="px-2 py-2 text-right">Total annuel</th><th className="px-2 py-2" />
+                </tr>
+              </thead>
+              <tbody className="divide-y">
+                {g.indexes.map((i) => {
+                  const r = rows[i];
+                  const acc = r.account_prefix ? byNumber.get(r.account_prefix) : undefined;
+                  const total = dirty ? undefined : serverTotal(r);
+                  return (
+                    <tr key={i} className="align-top">
+                      <td className="px-2 py-2"><Input aria-label="Rubrique budgétaire" value={r.rubric} onChange={(e) => set(i, { rubric: e.target.value })} className="min-w-32" /></td>
+                      <td className="px-2 py-2">
+                        <Input aria-label="Compte" list="budget-accounts" value={r.account_prefix} placeholder="Numéro ou intitulé"
+                               onChange={(e) => pickAccount(i, e.target.value)} className="w-36" />
+                        {r.account_prefix && (acc
+                          ? <p className="mt-1 max-w-48 text-[11px] text-muted-foreground">{acc.label} · classe {acc.account_class}{acc.parent ? ` · ${acc.parent}` : ""}</p>
+                          : <p className="mt-1 text-[11px] text-destructive-strong">Compte hors du plan de référence ou du type de budget</p>)}
+                      </td>
+                      <td className="px-2 py-2"><Input aria-label="Libellé" value={r.label} placeholder={acc?.label ?? "Libellé"} onChange={(e) => set(i, { label: e.target.value })} className="min-w-40" /></td>
+                      <td className="px-2 py-2">
+                        <Select aria-label="Centre de coûts" value={r.cost_center_id} onChange={(e) => set(i, { cost_center_id: e.target.value })} className="min-w-32">
+                          <option value="">—</option>
+                          {centers.map((c) => <option key={c.id} value={c.id}>{c.code} — {c.name}</option>)}
+                        </Select>
+                      </td>
+                      <td className="px-2 py-2">
+                        <Select aria-label="Mode de prévision" value={r.forecast_mode} onChange={(e) => set(i, { forecast_mode: e.target.value as ForecastMode })} className="w-28">
+                          {(Object.keys(FORECAST_MODE_LABELS) as ForecastMode[]).map((m) => <option key={m} value={m}>{FORECAST_MODE_LABELS[m]}</option>)}
+                        </Select>
+                      </td>
+                      <td className="px-2 py-2">
+                        <Select aria-label="Mode de saisie" value={r.monthly ? "m" : "a"} onChange={(e) => set(i, { monthly: e.target.value === "m" })} className="w-28">
+                          <option value="a">Annuel</option><option value="m">Mensuel</option>
+                        </Select>
+                      </td>
+                      <td className="px-2 py-2">
+                        {r.monthly ? (
+                          <div className="grid grid-cols-3 gap-1 sm:grid-cols-6">
+                            {months.map((m, k) => (
+                              <label key={k} className="text-[11px] text-muted-foreground">{m}
+                                <Input value={r.months[k]} inputMode="decimal" className="h-8 text-right"
+                                       onChange={(e) => set(i, { months: r.months.map((v, j) => (j === k ? e.target.value : v)) })} />
+                              </label>
+                            ))}
+                          </div>
+                        ) : (
+                          <Input aria-label="Montant annuel" value={r.annual} inputMode="decimal" className="ml-auto w-36 text-right"
+                                 onChange={(e) => set(i, { annual: e.target.value })} />
+                        )}
+                      </td>
+                      <td className="px-2 py-2 text-right" title={total ? "Calculé par le serveur" : "Enregistrez pour obtenir le total"}>
+                        {total ? formatAmount(total) : <span className="text-muted-foreground">—</span>}
+                      </td>
+                      <td className="px-2 py-2 text-right">
+                        <Button variant="ghost" size="icon" aria-label="Supprimer la ligne" onClick={() => { setDirty(true); setRows((rs) => rs.filter((_, j) => j !== i)); }}>
+                          <Trash2 className="h-4 w-4" />
+                        </Button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          )}
+        </div>
+      ))}
+      {dirty && <p className="text-xs text-muted-foreground">Modifications non enregistrées : les totaux sont recalculés par le serveur à l&apos;enregistrement.</p>}
       <div className="flex flex-wrap justify-between gap-2">
-        <Button variant="outline" size="sm" onClick={() => setRows((rs) => [...rs, { account_prefix: "", cost_center_id: "", label: "", monthly: false, annual: "", months: Array(12).fill("") }])}>
-          <Plus className="h-4 w-4" /> Ajouter une ligne
-        </Button>
+        <div className="flex gap-2">
+          <Button variant="outline" size="sm" onClick={() => { setDirty(true); setRows((rs) => [...rs, blankRow(rs[rs.length - 1]?.rubric ?? "")]); }}>
+            <Plus className="h-4 w-4" /> Ajouter une ligne
+          </Button>
+          <Button variant="outline" size="sm" onClick={() => { setDirty(true); setRows((rs) => [...rs, blankRow("Nouvelle rubrique")]); }}>
+            <Plus className="h-4 w-4" /> Nouvelle rubrique
+          </Button>
+        </div>
         <Button size="sm" onClick={save} loading={saving}>Enregistrer les lignes</Button>
       </div>
     </div>
@@ -319,6 +389,7 @@ export default function BudgetPage() {
   const base = `/companies/${companyId}`;
   const { data: company } = useApiResource<Company>(base);
   const { data: budget, error, loading, setData } = useApiResource<Budget>(`${base}/budgets/${budgetId}`);
+  const { data: kinds } = useApiResource<BudgetKind[]>(`${base}/budget-kinds`);
   const { data: years } = useApiResource<FiscalYear[]>(`${base}/fiscal-years`);
   const { data: centers } = useApiResource<CostCenter[]>(`${base}/cost-centers`);
   const [tab, setTab] = useState<"tracking" | "lines" | "projection">("tracking");
@@ -378,7 +449,7 @@ export default function BudgetPage() {
         description={
           <span className="flex flex-wrap items-center gap-2">
             <Badge tone={budget.status === "approved" ? "green" : budget.status === "submitted" ? "blue" : "neutral"}>{BUDGET_STATUS_LABELS[budget.status]}</Badge>
-            <span>{budget.scenario === "forecast" ? "Prévision" : "Budget"} · exercice {fy?.label ?? "…"} · {budget.currency}</span>
+            <span>{budget.scenario === "forecast" ? "Prévision" : "Budget"} · {kinds?.find((k) => k.key === budget.budget_kind)?.label ?? budget.budget_kind} · exercice {fy?.label ?? "…"} · {budget.currency}</span>
             {budget.approved_at && <span>· approuvé le {formatDate(budget.approved_at)}</span>}
           </span>
         }

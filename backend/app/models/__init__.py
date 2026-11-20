@@ -75,7 +75,16 @@ from app.models.internal_control import (
     IcHistory,
     IcMember,
 )
-from app.models.management import Budget, BudgetLineRow, CostCenter, CostEntryRow, CostingModel, ManagementAlertSettings
+from app.models.management import (
+    Budget,
+    BudgetKind,
+    BudgetLineRow,
+    BudgetRubric,
+    CostCenter,
+    CostEntryRow,
+    CostingModel,
+    ManagementAlertSettings,
+)
 from app.models.fec import FecExport, FecExportLine
 from app.models.native_accounting import (
     AccountingSettings,
@@ -113,6 +122,8 @@ from app.models.tenancy import (
 )
 
 __all__ = [
+    "BudgetKind",
+    "BudgetRubric",
     "BillingAccount",
     "BillingEntitlement",
     "BillingModule",

@@ -1,6 +1,6 @@
 # KOFINEX — État du projet
 
-*Mis à jour le 20 novembre 2026 (correctif du contrôle de gestion, phase 2 : référentiel comptable, branche `cg-phase2-referentiel`).*
+*Mis à jour le 20 novembre 2026 (correctif du contrôle de gestion, phase 3 : budget relié au plan comptable, branche `cg-phase3-budget`).*
 
 ## Synthèse
 | Lot | État |
@@ -21,7 +21,7 @@
 | 12 SaaS et mise en production | **étape 12A livrée** (catalogue commercial, abonnements sans paiement ; voir « Lot 12A » ci-dessous) ; 12B (paiements SASPay, facturation, quotas) à faire après la vérification préalable de SASPay et l'avis du fiscaliste (§ 16) ; 12C à 12E à faire |
 
 ## Ce qui existe
-- **Base** : migrations 0001 à 0019 (dont 10 tables du lot 12A ; 0019 : plan tiers, sans table), RLS partout, 5 buckets privés ; acteur IA bloqué sur toutes les tables métier.
+- **Base** : migrations 0001 à 0020 (dont 10 tables du lot 12A ; 0019 : plan tiers, sans table ; 0020 : `budget_kinds`, `budget_rubrics`), RLS partout, 5 buckets privés ; acteur IA bloqué sur toutes les tables métier.
 - **API** : `me`, `organizations`, `companies`, `fiscal_years`, `frameworks`, `imports`, `analysis`, `management`, `engagements` (méthodologies, missions, dossier), `financial_audit`, `internal_audit`, `ledger`, `internal_control`, `ai`, `reporting`, `dashboard`, `accounting` (comptabilité native), `fec` (FEC DGI Bénin), `steering` (pilotage), `billing` (catalogue, abonnements, administration des offres).
 - **Moteurs** :
   - `engines/importing` : lecture, OCR, détection, balance, contrôles ;
@@ -35,9 +35,9 @@
   - SYSCOHADA révisé : validé sur le cas pratique du manuel et sur les balances de l'utilisateur ;
   - SYSCEBNL (associations) : couverture du plan vérifiée, pas de cas chiffré.
 - **Tests** :
-  - 309 tests unitaires (`make test-unit`, 20 novembre 2026) ;
-  - tests SQL (18 séries, 676 contrôles, `make test-sql` avec les migrations appliquées par Alembic depuis le 19 novembre 2026) : RLS 39, Storage 12, référentiels et imports 20, moteur financier 16, contrôle de gestion 17, socle d'audit 46, audit financier 57, audit interne 59, grand livre 19, contrôle interne 94, IA 60, reporting 41, comptabilité native 68, seuils du pilotage 8, FEC Bénin 33, types d'états 4, facturation 67, plan tiers 16 ;
-  - tests d'intégration API : 35 réussis sur 35 (voir « Tests d'intégration » ci-dessous).
+  - 312 tests unitaires (`make test-unit`, 20 novembre 2026) ;
+  - tests SQL (19 séries, 700 contrôles, `make test-sql` avec les migrations appliquées par Alembic depuis le 19 novembre 2026) : RLS 39, Storage 12, référentiels et imports 20, moteur financier 16, contrôle de gestion 17, socle d'audit 46, audit financier 57, audit interne 59, grand livre 19, contrôle interne 94, IA 60, reporting 41, comptabilité native 68, seuils du pilotage 8, FEC Bénin 33, types d'états 4, facturation 67, plan tiers 16, budget relié au plan 24 ;
+  - tests d'intégration API : 36 réussis sur 36 (voir « Tests d'intégration » ci-dessous).
 
 ## Décisions en attente (utilisateur ou expert)
 1. **Référentiels** : relire les points marqués « [À VALIDER] » (`referentiels/*/RAPPORT.md`). Pour le SYSCEBNL, rattacher les comptes 702, 7054 et 7055.
@@ -398,3 +398,12 @@ Décisions du 20 novembre 2026 et plan des phases : `docs/CONTROLE_GESTION.md` �
 - **Exécuté ici** : `npm run typecheck` sans erreur ; `npm run build` réussi (18 pages) ; `make test-unit` 309 réussis (dont 3 nouveaux : balance hiérarchique) ; `make test-sql` 18 séries, 676 contrôles (dont 16 pour le plan tiers), base en révision 0019 par Alembic ; `make test-integration` 35 réussis sur 35 (dont 1 nouveau : plan tiers et balance) ; ruff sans erreur.
 - **Non vérifié** : écrans « Plan tiers » et « Balance » dans un navigateur (pas de projet Supabase pour se connecter) ; parcours couverts par le test d'intégration de l'API.
 - **Phases suivantes** (sur autorisation) : 3 (budget relié au plan comptable, 0020), 4 (plan de trésorerie, 0021), 5 (intégrations). 12B prendra le numéro libre suivant (0022 prévu).
+
+## Correctif du contrôle de gestion — phase 3 : budget relié au plan comptable (20 novembre 2026, branche `cg-phase3-budget`, non fusionnée)
+Détail : `docs/CONTROLE_GESTION.md` § 12.4.
+- **Migration 0020** : types de budget en données (`budget_kinds`, « à valider » ; investissement : classe 2 et 16), type d'un budget, rubriques (`budget_rubrics`), mode de prévision, contrôle des comptes en base (plan de l'entreprise, sinon référentiel publié ; comptes en sommeil ; racines et natures du type). Aucune donnée modifiée ; 0001 et 0006 non réécrites.
+- **API et écrans** : sélecteur de compte (numéro, intitulé, classe, parent), intitulé repris, rubriques repliables, mode de prévision, douze mois et total annuel calculés par le serveur, type de budget à la création ; import contrôlé dès la simulation ; nouvelle version (type, rubriques, modes copiés).
+- **Budget d'investissement** : réalisé sur les mouvements de l'exercice, sans appréciation [À VALIDER] ; hors tableau de bord budgétaire.
+- **Test existant complété** : `test_management_control.sql` reçoit une version publiée du référentiel avec les comptes 601 et 62, désormais exigés en base pour budgéter (ses contrôles sont inchangés et refusent pour la bonne raison).
+- **Exécuté ici** : `npm run typecheck` sans erreur ; `npm run build` réussi (18 pages) ; `make test-unit` 312 réussis (dont 3 nouveaux) ; `make test-sql` 19 séries, 700 contrôles (dont 24 pour le budget relié au plan), base en révision 0020 par Alembic ; `make test-integration` 36 réussis sur 36 (dont 1 nouveau) ; ruff sans erreur.
+- **Non vérifié** : éditeur de budget dans un navigateur ; réalisé d'un budget d'investissement par l'API (le référentiel fictif des tests d'intégration n'a pas de compte 2 ni 16 : calcul vérifié par les tests unitaires).

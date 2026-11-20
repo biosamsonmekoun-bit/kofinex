@@ -82,9 +82,11 @@ def track(lines: Iterable[BudgetLine], *, chart_natures: dict[str, str | None], 
     """``ledger_monthly`` : mouvements nets (débit − crédit) par compte et par mois du grand livre validé, hors
     à-nouveaux. S'il est fourni, il donne le réalisé mensuel des lignes par racine de comptes ; le réalisé annuel
     reste celui de la balance, et tout écart entre les deux est signalé."""
-    groups: dict[tuple[str | None, str | None], list[BudgetLine]] = {}
+    # clé : (racine, centre) ; une ligne de rubrique sans compte ni centre (migration 0020) est distinguée par son libellé
+    groups: dict[tuple[str | None, str | None, str | None], list[BudgetLine]] = {}
     for ln in lines:
-        groups.setdefault((ln.account_prefix, ln.cost_center_id), []).append(ln)
+        free = ln.label if not ln.account_prefix and not ln.cost_center_id else None
+        groups.setdefault((ln.account_prefix, ln.cost_center_id, free), []).append(ln)
 
     warnings: list[str] = []
     if balance is None:
@@ -96,7 +98,16 @@ def track(lines: Iterable[BudgetLine], *, chart_natures: dict[str, str | None], 
     overlap = bool(overlapping_prefixes(acct_only))
 
     rows: list[TrackingRow] = []
-    for (prefix, center), group in groups.items():
+    for (prefix, center, free), group in groups.items():
+        if free is not None:
+            # rubrique de gestion sans compte ni centre : budget suivi, aucun réalisé comptable, hors totaux par nature
+            per_free: dict[int, Decimal] = {}
+            for ln in group:
+                per_free[ln.period] = per_free.get(ln.period, ZERO) + ln.amount
+            row = TrackingRow((None, None), free, "rubrique", sum(per_free.values(), ZERO), per_free, None, None, "none")
+            row.notes.append("Rubrique sans compte associé : pas de réalisé comptable.")
+            rows.append(row)
+            continue
         nature = prefix_nature(prefix, chart_natures) if prefix else "charge"
         by_period: dict[int, Decimal] = {}
         for ln in group:

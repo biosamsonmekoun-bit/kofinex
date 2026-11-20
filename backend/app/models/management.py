@@ -6,7 +6,7 @@ import uuid
 from datetime import date, datetime
 from decimal import Decimal
 
-from sqlalchemy import Boolean, Date, DateTime, ForeignKey, Integer, Numeric, SmallInteger, String, Text, text
+from sqlalchemy import ARRAY, Boolean, Date, DateTime, ForeignKey, Integer, Numeric, SmallInteger, String, Text, text
 from sqlalchemy.dialects.postgresql import JSONB, UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -64,6 +64,7 @@ class Budget(Base):
     version: Mapped[int] = mapped_column(Integer, server_default="1")
     status: Mapped[str] = mapped_column(Text, server_default="draft")
     scenario: Mapped[str] = mapped_column(Text, server_default="budget")
+    budget_kind: Mapped[str] = mapped_column(Text, server_default="general")      # migration 0020
     currency: Mapped[str] = mapped_column(String(3), server_default="XOF")
     notes: Mapped[str | None] = mapped_column(Text)
     assumptions: Mapped[dict] = mapped_column(JSONB, server_default=text("'{}'::jsonb"))
@@ -90,6 +91,34 @@ class BudgetLineRow(Base):
     period: Mapped[int] = mapped_column(SmallInteger)
     amount: Mapped[Decimal] = mapped_column(Amount)
     notes: Mapped[str | None] = mapped_column(Text)
+    rubric_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True))            # migration 0020
+    forecast_mode: Mapped[str] = mapped_column(Text, server_default="manual")
+
+
+class BudgetKind(Base):
+    """Type de budget et racines de comptes autorisées (données de plateforme, migration 0020)."""
+    __tablename__ = "budget_kinds"
+
+    key: Mapped[str] = mapped_column(Text, primary_key=True)
+    label: Mapped[str] = mapped_column(Text)
+    allowed_prefixes: Mapped[list[str]] = mapped_column(ARRAY(Text))
+    allowed_natures: Mapped[list[str]] = mapped_column(ARRAY(Text))
+    actual_basis: Mapped[str] = mapped_column(Text)
+    status: Mapped[str] = mapped_column(Text)
+    source: Mapped[str] = mapped_column(Text)
+    display_order: Mapped[int] = mapped_column(Integer)
+
+
+class BudgetRubric(Base):
+    __tablename__ = "budget_rubrics"
+    __mapper_args__ = {"eager_defaults": False}
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)
+    organization_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True))
+    company_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True))
+    budget_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True))
+    label: Mapped[str] = mapped_column(Text)
+    display_order: Mapped[int] = mapped_column(Integer, server_default="0")
 
 
 class CostingModel(Base):

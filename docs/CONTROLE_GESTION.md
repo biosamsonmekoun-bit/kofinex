@@ -358,8 +358,8 @@ Audit du 20 novembre 2026 (phase 1) : budget sans lien avec le plan comptable, a
 | Phase | Objet | Migration | État |
 |---|---|---|---|
 | 1 | Audit | — | fait |
-| 2 | Référentiel comptable : plan tiers, rattachement, sous-totaux de la balance | 0019 | **livrée** (branche `cg-phase2-referentiel`, fondée sur `lot12a`) |
-| 3 | Budget relié au plan comptable (décisions 2 et 3) | 0020 prévue | à faire |
+| 2 | Référentiel comptable : plan tiers, rattachement, sous-totaux de la balance | 0019 | **livrée et fusionnée** |
+| 3 | Budget relié au plan comptable (décisions 2 et 3) | 0020 | **livrée** (branche `cg-phase3-budget`, non fusionnée) |
 | 4 | Plan de trésorerie (décision 4 ; modèle `PLAN DE TRESORRRIE (1).xlsx`, feuilles `SUIVI` et `Feuil1`) | 0021 prévue | à faire |
 | 5 | Intégrations et tableaux de bord (décision 5) | selon le besoin | à faire |
 
@@ -371,3 +371,14 @@ Audit du 20 novembre 2026 (phase 1) : budget sans lien avec le plan comptable, a
 - **Balance hiérarchique** (option « Sous-totaux par classe et racine », écran et export CSV) : sous-totaux par compte du **référentiel publié** (classes, comptes, subdivisions ; aucun niveau codé) ; en balance auxiliaire, chaque compte collectif regroupe ses tiers. Chaque ligne de détail est ajoutée une seule fois à chacun de ses parents ; les totaux généraux restent ceux des lignes de détail : **aucun double comptage** (4011TOY remonte dans 4011000, puis dans 4011, 401 et la classe 4).
 - **Plan tiers** : écran en quatre catégories (clients, fournisseurs, salariés, autres tiers : administration fiscale, organismes sociaux, autres), recherche par code et intitulé, mise en sommeil, tiers à rattacher ; compte collectif obligatoire à la saisie (API et écran).
 - **Règle conservée** (décision du 20 novembre 2026) : le compte d'une ligne d'écriture doit être un collectif **du même type** que le tiers (règle de 0014), sans être forcément son compte de rattachement : un même tiers peut mouvementer un compte d'avances ou de retenues de garantie. Voir `COMPTABILITE_NATIVE.md` § 4.
+
+### 12.4 Phase 3 — budget relié au plan comptable
+- **Plan de référence d'un budget** (`budget_reference_accounts`, décision 2) : si l'entreprise a ouvert son plan comptable, ses comptes et les comptes du référentiel qui les regroupent (racines, ex. 60, 601, pour garder les budgets par racine du lot 5) ; sinon, le référentiel publié de l'exercice. Le plan comptable n'est jamais modifié depuis le budget.
+- **Saisie** : le compte est choisi par son numéro ou son intitulé ; intitulé, classe et compte parent sont repris du plan de référence (`GET …/fiscal-years/{id}/budget-accounts`). Le libellé de la ligne reprend l'intitulé du compte s'il n'est pas saisi.
+- **Types de budget** (`budget_kinds`, décision 3) : racines et natures autorisées en **données**, toutes marquées « à valider » ; seule la règle « investissement : classe 2 et comptes 16 » est une décision. Les budgets existants sont des budgets de résultat (comportement du lot 5). Le type est figé dès la première ligne ou hors brouillon.
+- **Contrôles en base et dans l'API** (mêmes messages) : compte absent du plan de référence, compte en sommeil, compte hors des racines ou des natures du type ; un même compte (ou centre) dans une seule rubrique. L'import contrôle les comptes dès la simulation.
+- **Rubriques** (`budget_rubrics`) : regroupent plusieurs comptes ou une ligne de gestion sans compte ; affichées repliables. Une rubrique sans compte n'a pas de réalisé comptable et reste hors des totaux par nature.
+- **Mode de prévision** par ligne : manuel, calculé (prévision par hypothèses), importé (import Excel ou CSV).
+- **Douze mois et total annuel** calculés par le serveur (`grouped`), affichés après enregistrement.
+- **Budget d'investissement** : réalisé = **mouvements de l'exercice** des comptes (hors à-nouveaux ; colonnes de mouvements de la balance importée, ou écritures natives et grand livre importé). Sens de lecture : actif comme une charge (acquisitions), passif comme un produit (emprunts reçus). Aucune appréciation favorable ou défavorable n'est calculée. [À VALIDER] Il ne figure pas au tableau de bord budgétaire (conçu pour les charges et produits) ; la prévision par hypothèses lui est refusée.
+- **Non fait dans cette phase** : axes analytiques (aucun axe n'existe ; seuls les centres de coûts sont proposés — phase 5) ; consolidation multi-entreprises ; vérification visuelle de l'éditeur dans un navigateur.

@@ -304,19 +304,35 @@ export type BudgetStatus = "draft" | "submitted" | "approved" | "archived";
 export const BUDGET_STATUS_LABELS: Record<BudgetStatus, string> = {
   draft: "Brouillon", submitted: "Soumis", approved: "Approuvé", archived: "Archivé",
 };
+export type ForecastMode = "manual" | "calculated" | "imported";
+export const FORECAST_MODE_LABELS: Record<ForecastMode, string> = { manual: "Manuel", calculated: "Calculé", imported: "Importé" };
 export interface BudgetLine {
-  id?: string; account_prefix: string | null; cost_center_id: string | null; label: string; period: number;
-  amount: string; notes?: string | null;
+  id?: string; account_prefix: string | null; cost_center_id: string | null; label: string | null; period: number;
+  amount: string; notes?: string | null; rubric?: string | null; forecast_mode?: ForecastMode;
+}
+/** Ligne regroupée renvoyée par le serveur : intitulé du compte, douze mois et total annuel calculés côté serveur. */
+export interface BudgetGroupedLine {
+  rubric_id: string | null; rubric: string | null; account_number: string | null; account_label: string | null;
+  account_class: number | null; cost_center_id: string | null; label: string; forecast_mode: ForecastMode;
+  annual: string | null; months: (string | null)[]; total: string;
+}
+export interface BudgetKind {
+  key: string; label: string; allowed_prefixes: string[]; allowed_natures: string[]; actual_basis: "balance" | "movements";
+  status: "to_validate" | "validated"; source: string; display_order: number;
+}
+export interface BudgetAccount {
+  account_number: string; label: string; account_class: number; nature: string; source: string;
+  parent: string | null; parent_label: string | null;
 }
 export interface Budget {
   id: string; fiscal_year_id: string; name: string; version: number; status: BudgetStatus;
-  scenario: "budget" | "forecast"; currency: string; notes: string | null; assumptions: Record<string, unknown>;
+  scenario: "budget" | "forecast"; budget_kind: string; currency: string; notes: string | null; assumptions: Record<string, unknown>;
   source_budget_id: string | null; submitted_by: string | null; submitted_at: string | null;
   approved_by: string | null; approved_at: string | null; created_by: string; created_at: string;
-  total_lines: number; lines?: BudgetLine[];
+  total_lines: number; lines?: BudgetLine[]; grouped?: BudgetGroupedLine[];
 }
 export interface TrackingRow {
-  account_prefix: string | null; cost_center_id: string | null; label: string; nature: "charge" | "produit";
+  account_prefix: string | null; cost_center_id: string | null; label: string; nature: "charge" | "produit" | "rubrique";
   budget: string; budget_by_period: Record<string, string>; actual: string | null;
   actual_by_period: Record<string, string> | null; actual_source: string; variance: string | null;
   realization_pct: string | null; favorable: boolean | null; notes: string[];

@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { Plus } from "lucide-react";
 import { api, errorMessage } from "@/lib/api";
 import { useApiResource } from "@/lib/use-api";
-import { BUDGET_STATUS_LABELS, type Budget, type FiscalYear } from "@/lib/types";
+import { BUDGET_STATUS_LABELS, type Budget, type FiscalYear, type BudgetKind } from "@/lib/types";
 import { formatDate } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Dialog } from "@/components/ui/dialog";
@@ -24,6 +24,9 @@ export function BudgetsTab({ companyId, fy, canWrite }: {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const [scenario, setScenario] = useState<"budget" | "forecast">("budget");
+  const [kind, setKind] = useState("general");
+  const { data: kinds } = useApiResource<BudgetKind[]>(`/companies/${companyId}/budget-kinds`);
+  const selectedKind = kinds?.find((k) => k.key === kind);
   const [saving, setSaving] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
 
@@ -32,7 +35,7 @@ export function BudgetsTab({ companyId, fy, canWrite }: {
     setSaving(true);
     setFormError(null);
     try {
-      const b = await api.post<Budget>(`/companies/${companyId}/fiscal-years/${fy.id}/budgets`, { name, scenario });
+      const b = await api.post<Budget>(`/companies/${companyId}/fiscal-years/${fy.id}/budgets`, { name, scenario, budget_kind: kind });
       router.push(`/companies/${companyId}/gestion/budgets/${b.id}`);
     } catch (err) {
       setFormError(errorMessage(err));
@@ -86,6 +89,12 @@ export function BudgetsTab({ companyId, fy, canWrite }: {
             <Select id="b-scenario" value={scenario} onChange={(e) => setScenario(e.target.value as "budget" | "forecast")}>
               <option value="budget">Budget</option>
               <option value="forecast">Prévision</option>
+            </Select>
+          </Field>
+          <Field label="Type de budget" htmlFor="b-kind"
+                 hint={selectedKind ? `Comptes admis : racines ${selectedKind.allowed_prefixes.join(", ")}${selectedKind.status === "to_validate" ? " (répartition à valider)" : ""}. Le type est figé dès la première ligne.` : undefined}>
+            <Select id="b-kind" value={kind} onChange={(e) => setKind(e.target.value)}>
+              {(kinds ?? []).map((k) => <option key={k.key} value={k.key}>{k.label}</option>)}
             </Select>
           </Field>
           <div className="flex justify-end gap-2">

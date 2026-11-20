@@ -24,6 +24,16 @@ INSERT INTO auth.users (id, email) VALUES
   ('d0000000-0000-0000-0000-00000000000d', 'dan@a.test'), ('b0000000-0000-0000-0000-00000000000b', 'bob@b.test');
 INSERT INTO public.accounting_frameworks (id, code, name)
 VALUES ('f0000000-0000-0000-0000-0000000000f6', 'TEST_FW6', 'Référentiel de test');
+-- version publiée et plan de comptes FICTIFS : depuis la migration 0020, un compte budgété doit figurer dans le plan de
+-- référence du budget (plan de l'entreprise, sinon référentiel publié de l'exercice)
+SET LOCAL session_replication_role = replica;
+INSERT INTO public.framework_versions (id, framework_id, version_label, effective_from, source_reference, status, published_at)
+VALUES ('f0000000-0000-0000-0000-0000000006f1', 'f0000000-0000-0000-0000-0000000000f6', 'TEST', '2020-01-01',
+        'Référentiel FICTIF', 'published', now());
+INSERT INTO public.chart_of_accounts (framework_version_id, account_number, label, account_class, nature) VALUES
+  ('f0000000-0000-0000-0000-0000000006f1', '601', 'Achats (test)', 6, 'expense'),
+  ('f0000000-0000-0000-0000-0000000006f1', '62', 'Services extérieurs (test)', 6, 'expense');
+SET LOCAL session_replication_role = origin;
 
 SET LOCAL ROLE authenticated;
 SELECT pg_temp.act_as('a0000000-0000-0000-0000-00000000000a');

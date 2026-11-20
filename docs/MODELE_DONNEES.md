@@ -174,6 +174,14 @@ Pas de copie des écritures : le FEC lit `journal_entries` / `journal_entry_line
 
 `subscriptions` (0001) est complétée par ALTER, jamais remplacée ; le client n'y écrit pas (fonctions `billing_start_trial`, `billing_schedule_cancel`, `billing_reactivate`). Pas de table d'historique (journal d'audit) ni de compteur d'usage (mesure sur les tables existantes, `billing_org_usage`). Voir `LOT12_SAAS_CONCEPTION.md`.
 
+## 8 sexies. Budget relié au plan comptable (migration 0020)
+| Table | Rôle |
+|---|---|
+| `budget_kinds` | Types de budget (résultat, ventes, achats, charges, investissements) et racines / natures de comptes autorisées : **données** de plateforme, « à valider » ; base du réalisé (soldes ou mouvements) |
+| `budget_rubrics` | Rubriques d'un budget : regroupent des lignes de plusieurs comptes ou une ligne sans compte ; figées avec le budget |
+
+`budgets.budget_kind`, `budget_lines.rubric_id` et `budget_lines.forecast_mode` (manuel, calculé, importé) sont ajoutés par ALTER. Le plan de référence n'est pas copié : il est lu par `budget_reference_accounts` (plan de l'entreprise, sinon référentiel publié). Voir `CONTROLE_GESTION.md` § 12.4.
+
 ## 9. Anti-doublons : décisions
 - **Un seul registre** de processus et de risques par entité, partagé par l'audit interne, le contrôle interne et l'audit financier.
 - **Une seule table** de constats et de plans d'action pour les trois disciplines (colonne `kind` : `audit_finding`, `ic_deficiency`, `management_letter_point`).

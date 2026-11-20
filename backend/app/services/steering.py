@@ -29,6 +29,7 @@ from app.engines.importing import ledger as lg
 from app.engines.management import steering as st
 from app.models import (
     Budget,
+    BudgetKind,
     ChartAccount,
     Company,
     CompanyAccount,
@@ -731,13 +732,20 @@ def elapsed_months(fy: FiscalYear, as_of: date | None = None) -> tuple[int, int]
 
 
 def reference_budget(db: Session, fy: FiscalYear, budget_id: uuid.UUID | None) -> Budget | None:
+    # tableau de bord budgétaire : budgets lus en charges et produits ; un budget d'investissement (réalisé sur les
+    # mouvements des comptes de bilan, migration 0020) se suit dans la gestion budgétaire
+    pl_kinds = select(BudgetKind.key).where(BudgetKind.actual_basis == "balance")
     if budget_id:
         b = db.get(Budget, budget_id)
         if b is None or b.fiscal_year_id != fy.id:
             raise NotFound("Budget introuvable")
+        if b.budget_kind not in set(db.scalars(pl_kinds)):
+            raise AccountingInvalid("Le tableau de bord budgétaire porte sur les budgets de charges et de produits : "
+                                    "un budget d'investissement se suit dans la gestion budgétaire.")
         return b
     cands = list(
-        db.scalars(select(Budget).where(Budget.fiscal_year_id == fy.id, Budget.status != "archived", Budget.scenario == "budget"))
+        db.scalars(select(Budget).where(Budget.fiscal_year_id == fy.id, Budget.status != "archived", Budget.scenario == "budget",
+                                        Budget.budget_kind.in_(pl_kinds)))
     )
     order = {"approved": 3, "submitted": 2, "draft": 1}
     return sorted(cands, key=lambda b: (order.get(b.status, 0), b.version), reverse=True)[0] if cands else None
