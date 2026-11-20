@@ -89,6 +89,16 @@ from app.models.native_accounting import (
     Lettering,
     ThirdParty,
 )
+from app.models.billing import (
+    BillingAccount,
+    BillingEntitlement,
+    BillingModule,
+    BillingPrice,
+    BillingProduct,
+    BillingProductVersion,
+    BillingPromotion,
+    BillingSettings,
+)
 from app.models.reporting import GeneratedReport, ReportTemplate
 from app.models.tenancy import (
     AccountingFramework,
@@ -103,6 +113,14 @@ from app.models.tenancy import (
 )
 
 __all__ = [
+    "BillingAccount",
+    "BillingEntitlement",
+    "BillingModule",
+    "BillingPrice",
+    "BillingProduct",
+    "BillingProductVersion",
+    "BillingPromotion",
+    "BillingSettings",
     "FecExport",
     "FecExportLine",
     "GeneratedReport",

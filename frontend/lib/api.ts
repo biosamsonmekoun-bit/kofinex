@@ -75,6 +75,16 @@ async function parse<T>(res: Response): Promise<T> {
 
 export const api = {
   get: <T>(path: string) => request<T>("GET", path),
+  /** Lecture publique, sans jeton (catalogue des offres publiées). */
+  publicGet: async <T>(path: string): Promise<T> => {
+    let res: Response;
+    try {
+      res = await fetch(`${API_URL}${path}`, { cache: "no-store" });
+    } catch {
+      throw new ApiError(0, "network_error", "Serveur injoignable. Vérifiez votre connexion.");
+    }
+    return parse<T>(res);
+  },
   /** Envoi de fichier (multipart/form-data). */
   upload: async <T>(path: string, form: FormData) => parse<T>(await send("POST", path, form)),
   /** Téléchargement authentifié d'un fichier généré par l'API. */

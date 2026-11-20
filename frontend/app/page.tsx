@@ -19,8 +19,8 @@ const NAV = [
 ];
 
 const BENEFITS: [React.ElementType, string, string][] = [
-  [CalendarDays, "Essai gratuit", "14 jours"],
-  [CreditCard, "Paiement sécurisé", "via FedaPay"],
+  [CalendarDays, "Essai gratuit", "30 jours"],
+  [CreditCard, "Paiement sécurisé", "via SASPay"],
   [CircleDollarSign, "Devise", "FCFA"],
   [Cloud, "SaaS (Cloud)", "Accessible partout"],
   [ShieldCheck, "Données sécurisées", "et sauvegardées"],
@@ -94,7 +94,7 @@ export default function LandingPage() {
                 {AUDIENCES.map(([, t]) => <a key={t} href="#pour-qui" className="block rounded px-3 py-2 text-sm hover:bg-muted">{t}</a>)}
               </div>
             </details>
-            <a href="#tarifs" className="py-1 hover:text-accent">Tarifs</a>
+            <Link href="/tarifs" className="py-1 hover:text-accent">Tarifs</Link>
             <a href="#a-propos" className="py-1 hover:text-accent">À propos</a>
           </nav>
           <div className="ml-auto flex items-center gap-3 lg:ml-2">
@@ -118,7 +118,7 @@ export default function LandingPage() {
               <li className="inline-flex items-center gap-1.5 rounded-md border border-violet/80 bg-violet/20 px-3 py-1.5"><CheckCircle2 className="h-4 w-4 text-violet" aria-hidden /> Intelligence artificielle</li>
             </ul>
             <div className="mt-9 flex flex-wrap gap-4">
-              <GoldButton href="/signup"><Play className="h-4 w-4" aria-hidden /> Démarrer gratuitement (14 jours)</GoldButton>
+              <GoldButton href="/signup"><Play className="h-4 w-4" aria-hidden /> Démarrer gratuitement (30 jours)</GoldButton>
               <Link href="/demonstration" className="inline-flex items-center gap-2 rounded-md border border-sidebar-foreground/80 px-5 py-3 text-[15px] font-semibold hover:bg-sidebar-hover">
                 <Play className="h-4 w-4" aria-hidden /> Voir la démonstration
               </Link>
@@ -197,7 +197,7 @@ export default function LandingPage() {
           <GrowthArt />
           <div className="relative flex-1">
             <p className="text-[26px] font-extrabold">Essayez KOFINEX dès aujourd&apos;hui !</p>
-            <p className="text-[15px] text-sidebar-foreground/90">14 jours gratuits. Sans engagement.</p>
+            <p className="text-[15px] text-sidebar-foreground/90">30 jours gratuits, sans moyen de paiement. Sans engagement.</p>
           </div>
           <GoldButton href="/signup" className="relative">Démarrer mon essai gratuit <ArrowRight className="h-4 w-4" aria-hidden /></GoldButton>
         </div>
@@ -212,7 +212,8 @@ export default function LandingPage() {
           </div>
           <div id="tarifs" className="scroll-mt-6">
             <p className="font-semibold">Tarifs</p>
-            <p className="mt-2 text-muted-foreground">La grille tarifaire (en FCFA) sera publiée prochainement. Créez votre compte pour être informé de son ouverture.</p>
+            <p className="mt-2 text-muted-foreground">Offres et prix en FCFA et dans la devise de chaque pays de l'OHADA, hors taxes.</p>
+            <Link href="/tarifs" className="mt-2 inline-flex items-center gap-1 font-semibold text-link hover:underline">Voir la grille tarifaire <ArrowRight className="h-4 w-4" aria-hidden /></Link>
           </div>
           <div id="a-propos" className="scroll-mt-6">
             <p className="font-semibold">À propos</p>

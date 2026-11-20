@@ -57,6 +57,7 @@ test-sql: ## Tests RLS et Storage sur une base de test neuve
 	psql "$(PG_TEST)" -q -v ON_ERROR_STOP=1 -f backend/tests/sql/test_management_steering.sql
 	psql "$(PG_TEST)" -q -v ON_ERROR_STOP=1 -f backend/tests/sql/test_fec_benin.sql
 	psql "$(PG_TEST)" -q -v ON_ERROR_STOP=1 -f backend/tests/sql/test_statement_types.sql
+	psql "$(PG_TEST)" -q -v ON_ERROR_STOP=1 -f backend/tests/sql/test_billing.sql
 
 test-integration: ## Tests API de bout en bout (après test-sql)
 	cd backend && TEST_DATABASE_URL=postgresql+psycopg://$(subst postgresql://,,$(PG_TEST)) \

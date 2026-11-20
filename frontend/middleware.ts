@@ -1,7 +1,7 @@
 import { createServerClient, type SetAllCookies } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
-const PUBLIC_PATHS = ["/login", "/signup", "/forgot-password", "/auth/callback", "/demonstration"];
+const PUBLIC_PATHS = ["/login", "/signup", "/forgot-password", "/auth/callback", "/demonstration", "/tarifs"];
 /** Page d'accueil publique (exacte : « / » ne doit pas rendre publiques toutes les routes). */
 const PUBLIC_EXACT = ["/"];
 

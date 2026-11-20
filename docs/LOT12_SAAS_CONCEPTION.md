@@ -1,8 +1,6 @@
 # KOFINEX — Lot 12 : architecture commerciale et fonctionnelle SaaS (conception)
 
-> **Statut : conception soumise à approbation (18 novembre 2026).** Numéros de migration décalés le 19 novembre 2026 : 0016 est prise par le FEC DGI Bénin (`FEC_BENIN.md`). **Décisions commerciales du § 16 arrêtées le 20 novembre 2026** ; elles priment sur les propositions des paragraphes précédents. Aucun code, aucune migration et aucune
-> fonctionnalité existante n'ont été modifiés. Le développement (étapes 12A à 12E) ne commencera qu'après
-> validation de ce document et des décisions listées au § 16.
+> **Statut : conception (18 novembre 2026) ; décisions commerciales du § 16 arrêtées le 20 novembre 2026**, elles priment sur les propositions des paragraphes précédents. Numéros de migration décalés le 19 novembre 2026 (0016 : FEC DGI Bénin ; 0017 : types d'états). **Étape 12A livrée le 20 novembre 2026** (migration 0018, § 14). Les étapes 12B à 12E ne commencent que sur demande explicite, après les vérifications préalables du § 16.
 
 Conventions :
 - **Constaté** : vérifié dans le code, les migrations SQL ou une documentation officielle (sources au § 17).
@@ -516,6 +514,12 @@ Toutes les nouvelles tables auront : RLS activé ; déclencheur `0_not_ai` sur l
 ## 14. Plan détaillé des étapes
 
 ### 12A — Catalogue commercial et abonnements
+> **Livrée le 20 novembre 2026** (migration 0018 ; détail et tests dans `PROJECT_STATUS.md`). Précisions de réalisation :
+> - les opérations du client sur son abonnement passent par des fonctions SQL `SECURITY DEFINER` : le rôle `authenticated` reste sans droit d'écriture sur `subscriptions` (§ 2.3) ;
+> - le catalogue public est lu par une session `anon` soumise à RLS, et non par la session de service ;
+> - la correspondance pays → devise (§ 4) est une donnée de `billing_settings`, sans table supplémentaire ;
+> - un code promotionnel se vérifie un par un (`billing_promotion_lookup`) ; la liste reste réservée à l'administrateur ;
+> - en attendant les tâches planifiées de 12B, l'état effectif (essai échu, résiliation échue) est calculé à la lecture.
 - **Migration 0018** :
   - `billing_accounts`, `billing_products`, `billing_product_versions`, `billing_prices`, `billing_modules`, `billing_entitlements`, `billing_promotions`, `billing_promotion_redemptions`, `subscription_items`, `billing_settings` ;
   - ALTER `subscriptions` ;

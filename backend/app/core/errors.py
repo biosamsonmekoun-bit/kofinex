@@ -77,6 +77,9 @@ def register_error_handlers(app: FastAPI) -> None:
             diag = getattr(getattr(exc.orig, "diag", None), "message_primary", None)
             if sqlstate == "23514" and diag and not diag.startswith("new row"):
                 message = diag
+            # unicité imposée par une fonction métier (ex. un seul essai) : son message ; doublon d'index : générique
+            if sqlstate == "23505" and diag and not diag.startswith("duplicate key"):
+                message = diag
             if sqlstate == "42501" and diag:
                 # refus de la RLS : message générique ; refus d'un trigger métier : son message explicite
                 message = ("Vous n'avez pas les droits nécessaires pour cette action."

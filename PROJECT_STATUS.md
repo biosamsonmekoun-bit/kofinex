@@ -1,6 +1,6 @@
 # KOFINEX — État du projet
 
-*Mis à jour le 19 novembre 2026 (analyse des tests d'intégration, branche `fix/tests-integration`).*
+*Mis à jour le 20 novembre 2026 (lot 12, étape 12A : catalogue commercial et abonnements, branche `lot12a`).*
 
 ## Synthèse
 | Lot | État |
@@ -18,11 +18,11 @@
 | 10 Intelligence artificielle | **livré** (voir `docs/IA.md`) ; désactivé tant que le fournisseur, la clé et le modèle ne sont pas configurés et que l'organisation n'a pas activé les usages |
 | 11 Reporting et génération documentaire | **livré** (voir `docs/REPORTING.md`) ; sans logo, graphiques ni formules Excel ; lettre de recommandations et rapport de gestion non faits |
 | Interface (maquette de référence) | **livrée** (voir `docs/INTERFACE.md`) : page d'accueil publique, démonstration fictive, tableau de bord sur données réelles, nouvelle navigation ; non vérifiée dans un navigateur |
-| 12 SaaS et mise en production | non commencé |
+| 12 SaaS et mise en production | **étape 12A livrée** (catalogue commercial, abonnements sans paiement ; voir « Lot 12A » ci-dessous) ; 12B (paiements SASPay, facturation, quotas) à faire après la vérification préalable de SASPay et l'avis du fiscaliste (§ 16) ; 12C à 12E à faire |
 
 ## Ce qui existe
-- **Base** : 100 tables (migrations 0001 à 0017), RLS partout, 5 buckets privés ; acteur IA bloqué sur toutes les tables métier.
-- **API** : `me`, `organizations`, `companies`, `fiscal_years`, `frameworks`, `imports`, `analysis`, `management`, `engagements` (méthodologies, missions, dossier), `financial_audit`, `internal_audit`, `ledger`, `internal_control`, `ai`, `reporting`, `dashboard`, `accounting` (comptabilité native), `fec` (FEC DGI Bénin), `steering` (pilotage).
+- **Base** : migrations 0001 à 0018 (dont 10 tables du lot 12A), RLS partout, 5 buckets privés ; acteur IA bloqué sur toutes les tables métier.
+- **API** : `me`, `organizations`, `companies`, `fiscal_years`, `frameworks`, `imports`, `analysis`, `management`, `engagements` (méthodologies, missions, dossier), `financial_audit`, `internal_audit`, `ledger`, `internal_control`, `ai`, `reporting`, `dashboard`, `accounting` (comptabilité native), `fec` (FEC DGI Bénin), `steering` (pilotage), `billing` (catalogue, abonnements, administration des offres).
 - **Moteurs** :
   - `engines/importing` : lecture, OCR, détection, balance, contrôles ;
   - `engines/accounting` : profils, chargeur de référentiels, construction des états ;
@@ -35,9 +35,9 @@
   - SYSCOHADA révisé : validé sur le cas pratique du manuel et sur les balances de l'utilisateur ;
   - SYSCEBNL (associations) : couverture du plan vérifiée, pas de cas chiffré.
 - **Tests** :
-  - 296 tests unitaires (`make test-unit`, 19 novembre 2026) ;
-  - tests SQL (16 séries, 593 contrôles, `make test-sql` avec les migrations appliquées par Alembic depuis le 19 novembre 2026) : RLS 39, Storage 12, référentiels et imports 20, moteur financier 16, contrôle de gestion 17, socle d'audit 46, audit financier 57, audit interne 59, grand livre 19, contrôle interne 94, IA 60, reporting 41, comptabilité native 68, seuils du pilotage 8, FEC Bénin 33, types d'états 4 ;
-  - tests d'intégration API : 32 réussis sur 32 (voir « Tests d'intégration » ci-dessous).
+  - 306 tests unitaires (`make test-unit`, 20 novembre 2026) ;
+  - tests SQL (17 séries, 660 contrôles, `make test-sql` avec les migrations appliquées par Alembic depuis le 19 novembre 2026) : RLS 39, Storage 12, référentiels et imports 20, moteur financier 16, contrôle de gestion 17, socle d'audit 46, audit financier 57, audit interne 59, grand livre 19, contrôle interne 94, IA 60, reporting 41, comptabilité native 68, seuils du pilotage 8, FEC Bénin 33, types d'états 4, facturation 67 ;
+  - tests d'intégration API : 34 réussis sur 34 (voir « Tests d'intégration » ci-dessous).
 
 ## Décisions en attente (utilisateur ou expert)
 1. **Référentiels** : relire les points marqués « [À VALIDER] » (`referentiels/*/RAPPORT.md`). Pour le SYSCEBNL, rattacher les comptes 702, 7054 et 7055.
@@ -368,3 +368,24 @@
   - affichage des tableaux de bord du pilotage dans un navigateur, avec les montants désormais transmis en texte (« 1000 » et non « 1000.00 » pour un montant rond) ;
   - lien de téléchargement signé des rapports générés : les tests utilisent le stockage local, qui le refuse (503) ; à vérifier avec le stockage Supabase.
 
+## Lot 12A — catalogue commercial et abonnements (20 novembre 2026, branche `lot12a`) — ce qui a été fait
+Périmètre du § 14 de `docs/LOT12_SAAS_CONCEPTION.md`, décisions du § 16 appliquées. **Aucun paiement** (étape 12B) : un abonnement ne peut être, à ce stade, qu'en essai.
+- **Migration 0018** (`sql/0018_billing_catalog.sql`) :
+  - 10 tables : `billing_settings`, `billing_modules`, `billing_products`, `billing_product_versions`, `billing_prices`, `billing_entitlements`, `billing_promotions`, `billing_promotion_redemptions`, `billing_accounts`, `subscription_items` ;
+  - `subscriptions` complétée par ALTER (statuts `incomplete` et `suspended`, version d'offre, périodicité, devise, fin d'essai, résiliation, empreintes anti-abus), après une garde « table vide » ; aucune colonne retirée, 0001 et 0002 non modifiées ;
+  - version publiée figée en base (prix, droits, essai), une seule version publiée par offre, montants conformes aux décimales de la devise (XOF, XAF, GNF, KMF : 0 ; CDF : 2) ;
+  - un seul abonnement vivant, un seul essai par organisation, par identifiant fiscal et par e-mail du propriétaire ;
+  - aucune écriture cliente sur les abonnements : l'essai, la demande de résiliation et son retrait passent par des fonctions `SECURITY DEFINER` qui imposent les règles (propriétaire seul, offre publiée, prix dans la devise du pays) ;
+  - catalogue publié lisible sans connexion (rôle `anon`), brouillons et promotions réservés à l'administrateur de la plateforme ;
+  - journal (`audit_row_change`) et `0_not_ai` sur toutes les nouvelles tables ;
+  - données chargées, toutes issues du § 16 : 11 modules livrés (sans `connectors`, 12C), grâce de 7 jours, vendeur au Bénin, 17 pays de l'OHADA et leur devise. **Aucun prix, quota ni promotion n'est chargé.**
+- **Moteurs** (`engines/billing`) : `pricing` (prix, remises, prorata, arrondi au plus proche [À VALIDER], sans taxe), `lifecycle` (transitions du § 5.1, état effectif), `entitlements` (agrégation, dépendances, validation avant publication).
+- **API** (28 opérations) : catalogue public ; compte de facturation, abonnement, droits (affichage), usages, essai, devis, résiliation et retrait ; administration des offres, versions, prix, droits, publication, retrait, promotions, paramètres.
+- **Écrans** : page publique `/tarifs` (lue dans le catalogue), espace « Abonnement » de l'organisation, console `/admin/offres` ; page d'accueil corrigée (essai de 30 jours, SASPay, lien vers la grille).
+- **Exécuté ici** : `npm run typecheck` sans erreur ; `npm run build` réussi (18 pages) ; `make test-unit` 306 réussis (dont 10 du lot 12A) ; `make test-sql` 17 séries, 660 contrôles (dont 67 pour la facturation), base en révision 0018 par Alembic ; `make test-integration` 34 réussis sur 34 (dont 2 du lot 12A) ; ruff sans erreur. Page `/tarifs` vérifiée dans Chromium (ordinateur et mobile, changement de devise et de périodicité, aucune erreur de console) avec des valeurs Supabase factices passées en ligne de commande.
+- **Non vérifié** : espaces connectés (« Abonnement », console) dans un navigateur, faute de projet Supabase ; parcours couverts par les tests d'intégration de l'API.
+- **Restant pour les étapes suivantes** :
+  - bascules planifiées (essai échu, résiliation, impayés) : tâches Celery beat de 12B ; d'ici là, l'état effectif est calculé à la lecture (un essai échu est traité comme expiré) ;
+  - `require_module`, `require_writable` et quotas branchés sur les routeurs : 12B ;
+  - unités de quota par défaut [À VALIDER] (§ 16) : IA en jetons, sociétés non archivées, utilisateurs = membres ;
+  - la page d'accueil annonce « Paiement sécurisé via SASPay » (décision 12) alors que le paiement n'ouvre qu'avec 12B.

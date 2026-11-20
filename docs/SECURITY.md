@@ -21,6 +21,10 @@ Elle contourne RLS. Usages autorisés (à lister ici à chaque ajout) :
 
 Usages prévus : webhooks de paiement, workers système (après vérification d'appartenance du job).
 
+**Session `anon_session`** (lot 12A) : visiteur non connecté, rôle `anon`, **soumise à RLS**. Seul usage : le catalogue public (`GET /billing/catalog`), qui ne voit que les versions publiées. Elle est préférée à la session de service, qui contournerait RLS.
+
+**Fonctions `SECURITY DEFINER` du lot 12A** (migration 0018) : elles contrôlent elles-mêmes l'appelant. L'essai, la demande de résiliation et son retrait sont réservés au propriétaire ; l'état de l'abonnement et la présence de données sont lisibles par les membres, les usages et la vérification d'un code promotionnel par le propriétaire et les administrateurs. Le rôle `authenticated` n'a aucun droit d'écriture sur `subscriptions` ni `subscription_items`.
+
 ## 3. Fichiers
 
 Déjà en place (migration 0003) : buckets **privés** `financial-documents` (50 Mo, xlsx/xls/csv/pdf),

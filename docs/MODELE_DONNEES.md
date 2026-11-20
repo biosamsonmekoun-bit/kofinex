@@ -159,6 +159,21 @@ Aucune table d'indicateurs ni copie des écritures : le pilotage lit `journal_en
 
 Pas de copie des écritures : le FEC lit `journal_entries` / `journal_entry_lines` par `native_ledger.posted`. Fichiers dans le bucket privé `fec`. Voir `FEC_BENIN.md`.
 
+## 8 quinquies. Catalogue commercial et abonnements (lot 12A, migration 0018)
+| Table | Rôle |
+|---|---|
+| `billing_settings` | Paramètres de la plateforme, une ligne : grâce, délais, relances, vendeur, pays ouverts et devise de chacun |
+| `billing_modules` | Modules commercialisables (modules livrés seulement) et leurs dépendances |
+| `billing_products` | Offres de base (`plan`) et options (`addon`) |
+| `billing_product_versions` | Versions figées à la publication (essai, libellé) ; une seule publiée par offre |
+| `billing_prices` | Prix par version, périodicité et devise (XOF, XAF, GNF, KMF, CDF) |
+| `billing_entitlements` | Modules et limites de quota par version (`NULL` : illimité) |
+| `billing_promotions`, `billing_promotion_redemptions` | Codes promotionnels (conditions figées) et leurs utilisations (écrites en 12B) |
+| `billing_accounts` | Identité de facturation, 1:1 avec l'organisation ; le pays fixe la devise |
+| `subscription_items` | Lignes d'un abonnement : offre de base et options |
+
+`subscriptions` (0001) est complétée par ALTER, jamais remplacée ; le client n'y écrit pas (fonctions `billing_start_trial`, `billing_schedule_cancel`, `billing_reactivate`). Pas de table d'historique (journal d'audit) ni de compteur d'usage (mesure sur les tables existantes, `billing_org_usage`). Voir `LOT12_SAAS_CONCEPTION.md`.
+
 ## 9. Anti-doublons : décisions
 - **Un seul registre** de processus et de risques par entité, partagé par l'audit interne, le contrôle interne et l'audit financier.
 - **Une seule table** de constats et de plans d'action pour les trois disciplines (colonne `kind` : `audit_finding`, `ic_deficiency`, `management_letter_point`).

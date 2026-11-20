@@ -31,6 +31,7 @@ const UNAVAILABLE = "Module non disponible dans cette version";
 
 function useNav(): Item[] {
   const { org, company, fy } = useWorkspace();
+  const { data: me } = useApiResource<Profile>("/me");
   const isManager = org?.my_role === "owner" || org?.my_role === "admin";
   const o = org ? `/organizations/${org.id}` : null;
   const c = company ? `/companies/${company.id}` : null;
@@ -93,6 +94,8 @@ function useNav(): Item[] {
     { key: "settings", label: "Paramètres", icon: Settings, subs: [
       { label: "Organisation", href: o && `${o}/settings`, hint: needOrg },
       { label: "Membres", href: o && `${o}/members`, hint: needOrg },
+      { label: "Abonnement", href: o && `${o}/abonnement`, hint: needOrg },
+      ...(me?.is_platform_admin ? [{ label: "Offres et tarifs (plateforme)", href: "/admin/offres" }] : []),
       ...(isManager ? [{ label: "Journal d'audit", href: o && `${o}/audit`, hint: needOrg }] : []),
       { label: "Organisations", href: "/organizations" },
       { label: "Mon profil", href: "/profile" },

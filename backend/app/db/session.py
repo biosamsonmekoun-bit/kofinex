@@ -89,3 +89,21 @@ def service_session() -> Iterator[Session]:
         raise
     finally:
         session.close()
+
+
+@contextmanager
+def anon_session() -> Iterator[Session]:
+    """Session d'un visiteur non connecté : rôle `anon`, soumis à RLS (lecture du catalogue publié seulement).
+    Préférée à la session de service, qui contourne RLS."""
+    session = SessionFactory()
+    try:
+        session.begin()
+        session.execute(text("SET LOCAL ROLE anon"))
+        session.execute(text("SELECT set_config('request.jwt.claims', '{\"role\": \"anon\"}', true)"))
+        yield session
+        session.commit()
+    except Exception:
+        session.rollback()
+        raise
+    finally:
+        session.close()

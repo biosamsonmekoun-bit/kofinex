@@ -3,6 +3,7 @@ from fastapi import APIRouter
 from app.api.v1 import (
     ai,
     accounting,
+    billing,
     fec,
     steering,
     analysis,
@@ -42,3 +43,4 @@ api_router.include_router(dashboard.router)
 api_router.include_router(accounting.router)
 api_router.include_router(fec.router)
 api_router.include_router(steering.router)
+api_router.include_router(billing.router)
