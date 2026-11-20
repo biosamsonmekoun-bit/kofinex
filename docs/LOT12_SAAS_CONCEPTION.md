@@ -533,13 +533,13 @@ Toutes les nouvelles tables auront : RLS activé ; déclencheur `0_not_ai` sur l
   - `billing_orders`, `billing_documents`, `billing_document_lines`, `billing_document_sequences`, `tax_rules`, `payment_providers`, `payment_webhook_events`, `refunds` ;
   - ALTER `payments` et audit ;
   - `authz.entitlement_limit` et gardes de quota.
-- **Interface** `PaymentConnector` et connecteurs SASPay, PayDunya, Stripe, **développés et recettés en sandbox l'un après l'autre**, après confirmation des points « à confirmer » du § 6.2.
+- **Interface** `PaymentConnector` et connecteur **SASPay** (§ 16), développé et recetté en sandbox après la vérification préalable et la confirmation des points « à confirmer » du § 6.2 ; enregistrement manuel des virements (administrateur `finance`, double validation). PayDunya reste un connecteur de secours, non développé au lancement ; Stripe est écarté.
 - **Flux** : commande → paiement → vérification → facture et reçu → abonnement ; webhooks ; rapprochement ; relances et bascules (Celery beat) ; remboursements et avoirs.
 - **Contrôles** : `require_module`, `require_writable` et `quota` branchés sur les routeurs existants. Les moteurs livrés ne sont pas modifiés : seules les dépendances de route sont ajoutées.
 
 ### 12C — Administration centrale et connecteurs
 - Console complète (organisations, abonnements, paiements, prestataires, supervision métier, journaux, support).
-- `support_access_grants`, `integration_runs`, éventuellement `platform_staff`.
+- `support_access_grants`, `integration_runs`, `platform_staff` (rôles `super_admin`, `finance`, `support` : § 16).
 - Connecteurs comptables :
   - Odoo (JSON-RPC, lecture des écritures et de la balance) ;
   - Sage 100 (import des fichiers d'export, en réutilisant `engines/importing`) ;
@@ -551,7 +551,7 @@ Toutes les nouvelles tables auront : RLS activé ; déclencheur `0_not_ai` sur l
 - Sondes de santé, journaux structurés, alertes (webhooks en échec, paiements en attente, tâches en retard, erreurs 5xx).
 - Durcissement : en-têtes, CSP, limitation de débit, retrait de l'exposition PostgREST, rotation des secrets, revue des usages de la session de service.
 - Sauvegardes : PITR ou export quotidien de la base, export du stockage, copie hors site. **Restauration testée** et consignée dans `docs/RUNBOOK.md`.
-- Préparation du déploiement sur le VPS cPanel selon les capacités vérifiées.
+- Préparation du déploiement sur un VPS KVM (mémoire garantie, Ubuntu 24.04, root SSH), Supabase hébergé conservé (§ 16).
 
 ### 12E — Tests, recette et préparation de production
 - Recette de bout en bout en sandbox pour chaque prestataire et chaque zone, et campagne de tests d'erreurs (§ 15).
