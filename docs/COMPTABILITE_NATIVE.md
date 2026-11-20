@@ -43,6 +43,7 @@ Montants : `numeric(20,2)` en base, `Decimal` côté Python, centimes entiers (`
 - Un compte collectif exige un tiers sur chaque ligne ; il peut imposer un type de tiers (client, fournisseur, salarié…).
 - Un compte mouvementé ne peut être ni supprimé ni renuméroté, et son caractère collectif est figé ; il peut être désactivé.
 - Tiers (`third_parties`) : code unique alphanumérique (compte auxiliaire, ex. 4011TOY), type, **compte collectif de rattachement obligatoire** (du même type, actif ; migration 0019), coordonnées. Un tiers mouvementé garde son code. Un tiers repris sans rattachement est refusé sur toute écriture jusqu'à son rattachement. Écran « Plan tiers » en quatre catégories : clients, fournisseurs, salariés, autres tiers.
+- **Compte d'une ligne portant un tiers** (décision du 20 novembre 2026) : le compte doit être un compte collectif **du même type** que le tiers, sans être forcément son compte de rattachement. En SYSCOHADA, un même fournisseur passe sur plusieurs comptes de la classe 40 (avances au fournisseur, retenues de garantie…) : imposer le seul compte de rattachement bloquerait des écritures normales. Le compte de rattachement sert au plan tiers et au regroupement de la balance auxiliaire.
 - Balance générale et auxiliaire : option de sous-totaux par compte du référentiel publié (classes, comptes, subdivisions), sans double comptage (voir `CONTROLE_GESTION.md` § 12.3).
 
 ## 5. Sécurité
