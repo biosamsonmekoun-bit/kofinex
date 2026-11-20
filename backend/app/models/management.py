@@ -160,3 +160,60 @@ class ManagementAlertSettings(Base):
     concentration_pct: Mapped[Decimal] = mapped_column(Numeric(6, 2), server_default="30")
     updated_by: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True))
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=text("now()"))
+
+
+class TreasuryPlan(Base):
+    """Plan de trésorerie d'un exercice (migration 0021)."""
+    __tablename__ = "treasury_plans"
+    __mapper_args__ = {"eager_defaults": False}
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)
+    organization_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True))
+    company_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True))
+    fiscal_year_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True))
+    name: Mapped[str] = mapped_column(Text)
+    currency: Mapped[str] = mapped_column(String(3))
+    opening_balance: Mapped[Decimal] = mapped_column(Amount)
+    opening_source: Mapped[str] = mapped_column(Text)
+    status: Mapped[str] = mapped_column(Text, server_default="draft")
+    notes: Mapped[str | None] = mapped_column(Text)
+    approved_by: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True))
+    approved_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    created_by: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), **_now)
+
+
+class TreasuryRubric(Base):
+    __tablename__ = "treasury_rubrics"
+    __mapper_args__ = {"eager_defaults": False}
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)
+    organization_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True))
+    company_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True))
+    plan_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True))
+    parent_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True))
+    section: Mapped[str] = mapped_column(Text)
+    code: Mapped[str | None] = mapped_column(Text)
+    label: Mapped[str] = mapped_column(Text)
+    display_order: Mapped[int] = mapped_column(Integer, server_default="0")
+    account_prefixes: Mapped[list[str]] = mapped_column(ARRAY(Text), server_default="{}")
+    method: Mapped[str] = mapped_column(Text, server_default="manual")
+    base_rubric_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True))
+    rate: Mapped[Decimal | None] = mapped_column(Numeric(9, 4))
+    budget_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True))
+    delay_months: Mapped[int] = mapped_column(Integer, server_default="0")
+    cost_center_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True))
+
+
+class TreasuryAmount(Base):
+    __tablename__ = "treasury_amounts"
+    __mapper_args__ = {"eager_defaults": False}
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)
+    organization_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True))
+    company_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True))
+    plan_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True))
+    rubric_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True))
+    scenario: Mapped[str] = mapped_column(Text)
+    period: Mapped[int] = mapped_column(SmallInteger)
+    amount: Mapped[Decimal] = mapped_column(Amount)

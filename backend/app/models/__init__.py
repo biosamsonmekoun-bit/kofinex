@@ -84,6 +84,9 @@ from app.models.management import (
     CostEntryRow,
     CostingModel,
     ManagementAlertSettings,
+    TreasuryAmount,
+    TreasuryPlan,
+    TreasuryRubric,
 )
 from app.models.fec import FecExport, FecExportLine
 from app.models.native_accounting import (
@@ -122,6 +125,9 @@ from app.models.tenancy import (
 )
 
 __all__ = [
+    "TreasuryAmount",
+    "TreasuryPlan",
+    "TreasuryRubric",
     "BudgetKind",
     "BudgetRubric",
     "BillingAccount",

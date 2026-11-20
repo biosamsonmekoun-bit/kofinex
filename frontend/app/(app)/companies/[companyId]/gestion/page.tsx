@@ -18,13 +18,14 @@ import { ProjectionsTab } from "./projections-tab";
 import { FinancialTab } from "./financial-tab";
 import { BudgetDashboardTab } from "./budget-dashboard-tab";
 import { AnalysisTab, PayrollTab, TreasuryTab } from "./treasury-payroll-tabs";
+import { TreasuryPlanTab } from "./treasury-plan-tab";
 
 /** Quatre espaces (évolution du contrôle de gestion) ; les onglets du lot 5 sont conservés et rangés dans ces espaces. */
-type Tab = "financial" | "treasury" | "payroll" | "budget-dashboard" | "budgets" | "centers" | "analysis" | "models" | "projections" | "dashboard";
+type Tab = "financial" | "treasury" | "payroll" | "budget-dashboard" | "budgets" | "centers" | "treasury-plan" | "analysis" | "models" | "projections" | "dashboard";
 const SPACES: [string, [Tab, string][]][] = [
   ["Tableau de bord financier", [["financial", "Performance financière"], ["treasury", "Trésorerie"], ["payroll", "Masse salariale"]]],
   ["Tableau de bord budgétaire", [["budget-dashboard", "Budget et réalisé"]]],
-  ["Gestion budgétaire", [["budgets", "Budgets et prévisions"], ["centers", "Centres et saisies"]]],
+  ["Gestion budgétaire", [["budgets", "Budgets et prévisions"], ["centers", "Centres et saisies"], ["treasury-plan", "Plan de trésorerie"]]],
   ["Analyse et aide à la décision", [["analysis", "Points d'attention"], ["models", "Coûts, marges et seuils"], ["projections", "Projections"],
     ["dashboard", "Synthèse des modèles"]]],
 ];
@@ -119,6 +120,7 @@ export default function ManagementPage() {
           {tab === "centers" && <CentersTab companyId={company.id} fy={fy} canWrite={canWrite} />}
           {tab === "models" && <ModelsTab companyId={company.id} fy={fy} canWrite={canWrite} canApprove={canApprove} />}
           {tab === "projections" && <ProjectionsTab companyId={company.id} />}
+          {tab === "treasury-plan" && <TreasuryPlanTab cid={company.id} fy={fy} canWrite={canWrite} canApprove={canApprove} />}
         </>
       )}
     </>

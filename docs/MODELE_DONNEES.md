@@ -182,6 +182,15 @@ Pas de copie des écritures : le FEC lit `journal_entries` / `journal_entry_line
 
 `budgets.budget_kind`, `budget_lines.rubric_id` et `budget_lines.forecast_mode` (manuel, calculé, importé) sont ajoutés par ALTER. Le plan de référence n'est pas copié : il est lu par `budget_reference_accounts` (plan de l'entreprise, sinon référentiel publié). Voir `CONTROLE_GESTION.md` § 12.4.
 
+## 8 septies. Plan de trésorerie (migration 0021)
+| Table | Rôle |
+|---|---|
+| `treasury_plans` | Plan de trésorerie d'un exercice : nom, devise, solde initial (saisi ou proposé d'après la comptabilité), statut (brouillon, approuvé, archivé) |
+| `treasury_rubrics` | Rubriques A (encaissements) et B (décaissements), sous-rubriques sur un niveau, comptes associés (racines) pour le réalisé, modalité de prévision (manuelle, % d'une rubrique, budget décalé) |
+| `treasury_amounts` | Montants mensuels (1 à 12, positifs) par rubrique de saisie et scénario (initial, actualisé) |
+
+Justification : aucune table existante ne porte une prévision de trésorerie (les budgets portent des charges et produits, pas des flux d'encaissement). Soldes, totaux, réalisé et écarts ne sont pas stockés. Voir `CONTROLE_GESTION.md` § 12.5.
+
 ## 9. Anti-doublons : décisions
 - **Un seul registre** de processus et de risques par entité, partagé par l'audit interne, le contrôle interne et l'audit financier.
 - **Une seule table** de constats et de plans d'action pour les trois disciplines (colonne `kind` : `audit_finding`, `ic_deficiency`, `management_letter_point`).

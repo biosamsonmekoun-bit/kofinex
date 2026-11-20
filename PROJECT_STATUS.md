@@ -1,6 +1,6 @@
 # KOFINEX — État du projet
 
-*Mis à jour le 20 novembre 2026 (correctif du contrôle de gestion, phase 3 : budget relié au plan comptable, branche `cg-phase3-budget`).*
+*Mis à jour le 20 novembre 2026 (correctif du contrôle de gestion, phase 4 : plan de trésorerie, branche `cg-phase4-tresorerie`, non fusionnée).*
 
 ## Synthèse
 | Lot | État |
@@ -399,7 +399,7 @@ Décisions du 20 novembre 2026 et plan des phases : `docs/CONTROLE_GESTION.md` �
 - **Non vérifié** : écrans « Plan tiers » et « Balance » dans un navigateur (pas de projet Supabase pour se connecter) ; parcours couverts par le test d'intégration de l'API.
 - **Phases suivantes** (sur autorisation) : 3 (budget relié au plan comptable, 0020), 4 (plan de trésorerie, 0021), 5 (intégrations). 12B prendra le numéro libre suivant (0022 prévu).
 
-## Correctif du contrôle de gestion — phase 3 : budget relié au plan comptable (20 novembre 2026, branche `cg-phase3-budget`, non fusionnée)
+## Correctif du contrôle de gestion — phase 3 : budget relié au plan comptable (20 novembre 2026, fusionnée)
 Détail : `docs/CONTROLE_GESTION.md` § 12.4.
 - **Migration 0020** : types de budget en données (`budget_kinds`, « à valider » ; investissement : classe 2 et 16), type d'un budget, rubriques (`budget_rubrics`), mode de prévision, contrôle des comptes en base (plan de l'entreprise, sinon référentiel publié ; comptes en sommeil ; racines et natures du type). Aucune donnée modifiée ; 0001 et 0006 non réécrites.
 - **API et écrans** : sélecteur de compte (numéro, intitulé, classe, parent), intitulé repris, rubriques repliables, mode de prévision, douze mois et total annuel calculés par le serveur, type de budget à la création ; import contrôlé dès la simulation ; nouvelle version (type, rubriques, modes copiés).
@@ -407,3 +407,9 @@ Détail : `docs/CONTROLE_GESTION.md` § 12.4.
 - **Test existant complété** : `test_management_control.sql` reçoit une version publiée du référentiel avec les comptes 601 et 62, désormais exigés en base pour budgéter (ses contrôles sont inchangés et refusent pour la bonne raison).
 - **Exécuté ici** : `npm run typecheck` sans erreur ; `npm run build` réussi (18 pages) ; `make test-unit` 312 réussis (dont 3 nouveaux) ; `make test-sql` 19 séries, 700 contrôles (dont 24 pour le budget relié au plan), base en révision 0020 par Alembic ; `make test-integration` 36 réussis sur 36 (dont 1 nouveau) ; ruff sans erreur.
 - **Non vérifié** : éditeur de budget dans un navigateur ; réalisé d'un budget d'investissement par l'API (le référentiel fictif des tests d'intégration n'a pas de compte 2 ni 16 : calcul vérifié par les tests unitaires).
+
+## Correctif du contrôle de gestion — phase 4 : plan de trésorerie (20 novembre 2026, branche `cg-phase4-tresorerie`, non fusionnée)
+- Migration 0021 (`treasury_plans`, `treasury_rubrics`, `treasury_amounts`) : RLS, journal, `0_not_ai`, gel après approbation par déclencheur ; test SQL `test_treasury_plan.sql`.
+- Moteur `engines/management/treasury_plan.py` (Decimal) et tests unitaires ; service et API `treasury-plans` (création, rubriques, montants, calcul, approbation, archivage, vue, prévision glissante, exports Excel et PDF) ; test d'intégration `test_treasury_plan_api.py`.
+- Écran : onglet « Plan de trésorerie » (Gestion budgétaire), non vérifié dans un navigateur.
+- Règles et points à valider : `docs/CONTROLE_GESTION.md` § 12.5.

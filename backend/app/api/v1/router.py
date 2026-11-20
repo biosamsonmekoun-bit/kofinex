@@ -21,6 +21,7 @@ from app.api.v1 import (
     me,
     organizations,
     reporting,
+    treasury_plan,
 )
 
 api_router = APIRouter()
@@ -44,3 +45,4 @@ api_router.include_router(accounting.router)
 api_router.include_router(fec.router)
 api_router.include_router(steering.router)
 api_router.include_router(billing.router)
+api_router.include_router(treasury_plan.router)

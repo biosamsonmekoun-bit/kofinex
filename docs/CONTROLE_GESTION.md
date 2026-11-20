@@ -359,8 +359,8 @@ Audit du 20 novembre 2026 (phase 1) : budget sans lien avec le plan comptable, a
 |---|---|---|---|
 | 1 | Audit | — | fait |
 | 2 | Référentiel comptable : plan tiers, rattachement, sous-totaux de la balance | 0019 | **livrée et fusionnée** |
-| 3 | Budget relié au plan comptable (décisions 2 et 3) | 0020 | **livrée** (branche `cg-phase3-budget`, non fusionnée) |
-| 4 | Plan de trésorerie (décision 4 ; modèle `PLAN DE TRESORRRIE (1).xlsx`, feuilles `SUIVI` et `Feuil1`) | 0021 prévue | à faire |
+| 3 | Budget relié au plan comptable (décisions 2 et 3) | 0020 | **livrée et fusionnée** |
+| 4 | Plan de trésorerie (décision 4 ; modèle `PLAN DE TRESORRRIE (1).xlsx`, feuilles `SUIVI` et `Feuil1`) | 0021 | **livrée** (branche `cg-phase4-tresorerie`, non fusionnée) |
 | 5 | Intégrations et tableaux de bord (décision 5) | selon le besoin | à faire |
 
 ### 12.3 Phase 2 — ce qui a été fait
@@ -384,3 +384,16 @@ Audit du 20 novembre 2026 (phase 1) : budget sans lien avec le plan comptable, a
 - **Racines regroupantes** (décision du 20 novembre 2026) : quand le plan de l'entreprise est ouvert, les comptes du référentiel qui regroupent ses comptes (60, 601…) restent budgétables, pour conserver les budgets par racine du lot 5.
 - **Test du lot 5 complété** (décision du 20 novembre 2026) : `test_management_control.sql` reçoit un référentiel publié (comptes 601 et 62), désormais exigé en base pour budgéter ; ses contrôles sont inchangés.
 - **Non fait dans cette phase** : axes analytiques (aucun axe n'existe ; seuls les centres de coûts sont proposés — phase 5) ; consolidation multi-entreprises ; vérification visuelle de l'éditeur dans un navigateur.
+
+### 12.5 Phase 4 — plan de trésorerie prévisionnel
+- **Migration 0021** : `treasury_plans` (un ou plusieurs plans par exercice, solde initial saisi ou proposé d'après la comptabilité), `treasury_rubrics` (sections A encaissements / B décaissements, rubriques et sous-rubriques sur un niveau, colonne « Comptes » du classeur, comptes associés, modalité de prévision), `treasury_amounts` (douze mois, prévision initiale et prévision actualisée). RLS (lecture : membres ; saisie : comptable, contrôleur), journal, déclencheur `0_not_ai`.
+- **Cycle** : brouillon → approuvé → archivé. À l'approbation, la prévision initiale est **figée** et copiée en prévision actualisée, seule modifiable ensuite ; un plan archivé est entièrement figé. Gel imposé par déclencheur.
+- **Calculs** (moteur `engines/management/treasury_plan.py`, Decimal, testé) : flux net = total A − total B ; solde de fin = solde de début + flux net ; solde de début d'un mois = solde de fin du précédent ; totaux annuels = somme des douze mois ; total d'une rubrique = somme de ses sous-rubriques ; totaux A et B calculés sur les seules lignes de saisie (**aucun double comptage**) ; contrôle solde de fin d'exercice = solde initial + flux de l'exercice. Mois à solde négatif et besoin de financement (plus bas solde négatif) signalés. Rien n'est stocké : tout est recalculé à chaque lecture.
+- **Modalités de prévision** : saisie manuelle ; pourcentage d'une autre rubrique (taux **saisi**, ex. charges sociales) ; budget décalé (lignes d'un budget de l'exercice dont le compte commence par un compte associé, décalées du délai **saisi**, de 0 à 12 mois ; le montant reporté au-delà de l'exercice est indiqué). Aucun taux, aucun délai ni aucune échéance n'est codé.
+- **Réalisé** : mouvements réels de trésorerie de la source du pilotage (écritures natives validées, grand livre importé), hors à-nouveaux et hors transferts internes, affectés aux rubriques par le **compte de contrepartie** (racine la plus longue) ; contrepartie sans rubrique : ligne « non affecté ». Une charge n'est pas un décaissement tant qu'elle n'est pas réglée. Contrôle : encaissements − décaissements = variation des comptes de trésorerie. Réalisé affiché jusqu'au mois de la date d'arrêté.
+- **Écarts** : écart = réalisé − prévision ; taux de réalisation = réalisé / prévision × 100 (non calculé si la prévision est nulle).
+- **Prévision glissante** (douze mois) : solde de départ = solde initial + réalisé des mois clos ; puis prévision du plan, puis plan approuvé de l'exercice suivant ; au-delà, aucune valeur.
+- **Exports** Excel et PDF par le moteur de rendu du lot 11 (empreinte des données, journalisés).
+- **Classeur de référence** (`SUIVI`, `Feuil1`) : structure reprise (Comptes, Intitulés, douze mois, Total ; A, B, solde de début, différence, solde de fin). Anomalies relevées, non reproduites : total A de mars à 0 au lieu de la formule (`SUIVI!E13`) ; totaux annuels repris des totaux de lignes ; répartitions `/12` non arrondies au franc ; taux codés dans les formules (charges sociales 19,4 % ou 20 %, impôts 13 % de la masse salariale, achats = acompte / 1,15) ; colonne Comptes souvent vide, 605 pour les salaires dans `Feuil1`.
+- **À valider** : rubriques proposées au départ (`TEMPLATE` du service, sans compte associé) ; affectation du réalisé par compte de contrepartie ; TVA et délais de paiement non simulés (seul le délai saisi d'un budget décalé) ; source « balance importée » : réalisé non affectable par contrepartie (contrôle non vérifié).
+- **Non fait** : vérification visuelle de l'écran dans un navigateur ; plusieurs devises ; liaison avec les tiers (échéances) et les centres de coûts (colonne présente, non exploitée).
