@@ -1,6 +1,6 @@
 # KOFINEX — Lot 12 : architecture commerciale et fonctionnelle SaaS (conception)
 
-> **Statut : conception soumise à approbation (18 novembre 2026).** Numéros de migration décalés le 19 novembre 2026 : 0016 est prise par le FEC DGI Bénin (`FEC_BENIN.md`). Aucun code, aucune migration et aucune
+> **Statut : conception soumise à approbation (18 novembre 2026).** Numéros de migration décalés le 19 novembre 2026 : 0016 est prise par le FEC DGI Bénin (`FEC_BENIN.md`). **Décisions commerciales du § 16 arrêtées le 20 novembre 2026** ; elles priment sur les propositions des paragraphes précédents. Aucun code, aucune migration et aucune
 > fonctionnalité existante n'ont été modifiés. Le développement (étapes 12A à 12E) ne commencera qu'après
 > validation de ce document et des décisions listées au § 16.
 
@@ -61,7 +61,7 @@ Colonnes actuelles : `plan_code` (texte libre), `status` ∈ {`trialing`, `activ
 |---|---|---|
 | `plan_code` sans lien avec un catalogue | Prix et droits non traçables | `product_version_id` (FK vers la version d'offre souscrite, figée) ; `plan_code` conservé, renseigné pour lecture |
 | Pas d'état `suspended` ni d'état « en attente du premier paiement » | Impossible de distinguer l'impayé, la suspension et une souscription non payée | Statuts ajoutés : `incomplete`, `suspended`. L'index « vivant » est recréé pour inclure `incomplete` et `suspended` |
-| Pas de périodicité, devise, fin d'essai, fin de période de grâce, motif de résiliation | Renouvellement et relances impossibles | `billing_interval` (`month` / `year`), `currency` (`XOF` / `XAF`), `trial_end`, `grace_until`, `suspended_at`, `canceled_at`, `cancel_reason`, `renewal_mode` (`manual` / `automatic`) |
+| Pas de périodicité, devise, fin d'essai, fin de période de grâce, motif de résiliation | Renouvellement et relances impossibles | `billing_interval` (`month` / `year`), `currency` (`XOF`, `XAF`, `GNF`, `KMF`, `CDF` : § 16), `trial_end`, `grace_until`, `suspended_at`, `canceled_at`, `cancel_reason`, `renewal_mode` (`manual` / `automatic`) |
 | `seats`, `max_companies` codés en colonnes | Les quotas ne couvrent ni missions, stockage, imports, rapports ou IA | Conservés (aucune suppression) mais **dérivés** des droits (§ 8). La source unique devient la version d'offre et les options |
 | `provider_*` : un abonnement lié à **un** prestataire | Incompatible avec plusieurs passerelles et avec le mobile money (sans prélèvement récurrent documenté, § 6) | Le moteur d'abonnement est **interne à KOFINEX**. Les passerelles n'encaissent que des paiements de commandes. Les colonnes restent, nullables, et ne sont plus utilisées comme source d'état |
 
@@ -81,7 +81,7 @@ Les tables sont vides aujourd'hui (aucun code ne les alimente). La migration 001
 - **Corrections proposées** :
   - colonnes `order_id`, `invoice_id`, `idempotency_key` (unique), `checkout_url`, `expires_at`, `net_amount`, `fee_amount`, `refunded_amount`, `failure_code`, `failure_message`, `verified_at`, `verified_by` (`api_verify` / `webhook_then_verify` / `reconciliation`), `method` (`mobile_money` / `card` / `other`), `network`, `country_code` ;
   - statuts étendus ;
-  - contrainte : montant entier si la devise est XOF ou XAF ;
+  - contrainte : nombre de décimales conforme à la devise (§ 16 : 0 pour XOF, XAF, GNF, KMF ; 2 pour CDF) ;
   - déclencheur d'audit ;
   - politique de lecture pour l'administrateur de plateforme.
 - `raw_event` est conservé ; les notifications passent dans `payment_webhook_events`.
@@ -146,8 +146,8 @@ Utilisateurs, sociétés, modules, missions, stockage (Mo), imports par période
 ## 4. Modèle commercial cible
 
 - **Produits versionnés** : une offre (ESSENTIEL…) ou une option a des **versions**. Une version publiée est **figée** (prix, modules, quotas, durée d'essai). Changer un prix crée une nouvelle version. Les abonnés restent sur leur version jusqu'à migration explicite, journalisée. C'est le même principe que les référentiels versionnés du projet.
-- **Prix** : par version, périodicité (`month` / `year`) et devise (`XOF`, `XAF`), en `numeric` sans décimale. L'affichage commercial écrit « FCFA » ; le stockage garde le code ISO. Aucune conversion XOF ↔ XAF n'est calculée : chaque devise a son prix saisi.
-- **Zone de facturation** : déduite du pays de facturation (`billing_accounts.country_code`) : UEMOA → XOF, CEMAC → XAF. La correspondance pays → devise est une donnée publiée, pas un calcul. Hors zone : la décision est à prendre (refus, ou facturation dans une des deux devises).
+- **Prix** : par version, périodicité (`month` / `year`) et devise (`XOF`, `XAF`, `GNF`, `KMF`, `CDF` : § 16), en `numeric` au nombre de décimales de la devise. L'affichage commercial écrit « FCFA » ; le stockage garde le code ISO. Aucune conversion XOF ↔ XAF n'est calculée : chaque devise a son prix saisi.
+- **Zone de facturation** : déduite du pays de facturation (`billing_accounts.country_code`) : UEMOA → XOF, CEMAC → XAF. La correspondance pays → devise est une donnée publiée, pas un calcul. Guinée → GNF, Comores → KMF, RD Congo → CDF (§ 16). Hors OHADA : non commercialisé au lancement.
 - **Options** : modules supplémentaires et packs de quotas, en quantité, avec la même périodicité que l'abonnement.
 - **Promotions** :
   - code promotionnel ou remise attribuée par l'administrateur ;
@@ -344,7 +344,7 @@ Méthodes : capabilities() · create_checkout(order, attempt) · verify(payment)
 | **Avoir** | Annulation totale ou partielle d'une facture (remboursement, geste commercial, erreur) | série propre, référence à la facture d'origine | jamais |
 
 - Les documents sont générés en PDF par le moteur de rendu du lot 11 (`engines/reporting`), stockés dans un bucket privé, avec empreinte SHA-256. L'historique est consultable par l'owner et téléchargeable par URL signée courte.
-- Les montants sont en `Decimal` côté Python et `numeric` en base. XOF et XAF sont entiers. La règle d'arrondi de la taxe (par ligne ou sur le total) est à valider.
+- Les montants sont en `Decimal` côté Python et `numeric` en base. XOF, XAF, GNF et KMF sont entiers, CDF a deux décimales (§ 16). La règle d'arrondi de la taxe (par ligne ou sur le total) est à valider.
 - **Règles fiscales par pays** (`tax_rules`) :
   - pays, nature de taxe, taux, base, dates d'effet, **source** (texte, article), statut `draft` / `published` ;
   - **aucun taux n'est pré-chargé** : comme les référentiels comptables, une règle n'est utilisable qu'une fois publiée après validation par un fiscaliste ;
@@ -422,7 +422,7 @@ Page publique **Tarifs** : alimentée par l'API du catalogue publié, à la plac
 | `billing_accounts` | 12A | Identité de facturation 1:1 avec l'organisation, RLS owner, audit dédié ; évite d'élargir les colonnes modifiables de `organizations` |
 | `billing_products` | 12A | Catalogue des offres et options (`kind` = `plan` / `addon`) ; `plan_code` texte n'est pas un catalogue |
 | `billing_product_versions` | 12A | Versions figées (essai, état `draft` / `published` / `retired`), comme les référentiels |
-| `billing_prices` | 12A | Prix par version × périodicité × devise (XOF / XAF) |
+| `billing_prices` | 12A | Prix par version × périodicité × devise (XOF, XAF, GNF, KMF, CDF) |
 | `billing_entitlements` | 12A | Modules inclus et limites de quotas par version (une ligne par clé) ; source unique des droits |
 | `billing_modules` | 12A | Clés de modules commercialisables et dépendances (§ 3.1) |
 | `billing_promotions`, `billing_promotion_redemptions` | 12A | Codes, portée, validité, plafond d'utilisation ; utilisations tracées |
@@ -484,7 +484,7 @@ Toutes les nouvelles tables auront : RLS activé ; déclencheur `0_not_ai` sur l
    - liste d'adresses IP si le prestataire en publie une ;
    - PayDunya (hash statique) : confirmation systématique par API.
 3. **Idempotence** de bout en bout : clé de tentative unique, application unique sous verrou, tâches planifiées idempotentes.
-4. **Montants** : `Decimal` / `numeric` ; montants entiers en XOF / XAF (contrainte en base) ; aucun montant calculé ou accepté depuis le navigateur.
+4. **Montants** : `Decimal` / `numeric` ; décimales conformes à chaque devise (contrainte en base) ; aucun montant calculé ou accepté depuis le navigateur.
 5. **Droits et quotas** contrôlés côté backend, doublés en base pour les ressources comptées ; retrait de l'exposition PostgREST du schéma `public` (§ 1).
 6. **Séparation** : écriture commerciale interdite au rôle `authenticated` ; lecture des paiements réservée à l'owner ; administrateur de plateforme par politique explicite ; session de service limitée aux usages listés dans `SECURITY.md` §2 (webhooks, tâches planifiées).
 7. **Secrets** dans l'environnement uniquement, jamais journalisés ni renvoyés ; clés test et live séparées et vérifiées au démarrage (refus d'une clé de test en production) ; rotation documentée.
@@ -563,7 +563,7 @@ Toutes les nouvelles tables auront : RLS activé ; déclencheur `0_not_ai` sur l
 
 | Domaine | Tests | Critère de validation |
 |---|---|---|
-| Moteurs (`engines/billing`) | prix par devise et périodicité, remises, prorata montée / descente, arrondis entiers XOF / XAF, transitions autorisées et interdites, agrégation des droits | 100 % des cas de référence calculés à la main ; aucun `float` |
+| Moteurs (`engines/billing`) | prix par devise et périodicité, remises, prorata montée / descente, arrondis selon les décimales de chaque devise (XOF, XAF, GNF, KMF : 0 ; CDF : 2), transitions autorisées et interdites, agrégation des droits | 100 % des cas de référence calculés à la main ; aucun `float` |
 | SQL | RLS (owner, admin, membre, autre organisation, administrateur de plateforme) ; écriture commerciale refusée au client ; version publiée figée ; un seul abonnement vivant ; montants entiers ; numérotation sans trou sous concurrence ; gardes de quota ; audit ; `0_not_ai` | toutes les suites réussies |
 | Webhooks | signature invalide, horodatage hors tolérance, rejeu du même événement, événements désordonnés, paiement réussi mais montant différent, devise différente, paiement sans commande | aucune activation indue ; chaque cas journalisé |
 | Paiement | retour navigateur « succès » sans paiement réel ; double clic ; expiration ; échec ; webhook perdu (rattrapé par la revérification et le rapprochement) ; prestataire indisponible | l'abonnement ne change que sur paiement vérifié, une seule fois |
@@ -576,19 +576,29 @@ Toutes les nouvelles tables auront : RLS activé ; déclencheur `0_not_ai` sur l
 
 ---
 
-## 16. Décisions attendues avant le développement
+## 16. Décisions commerciales (arrêtées le 20 novembre 2026)
 
-1. **Entité vendeuse** KOFINEX : pays, identifiants, régime fiscal. Elle détermine les factures, les taxes et l'éligibilité Stripe.
-2. **Pays de lancement** et traitement des clients hors zone XOF / XAF.
-3. **Passerelle principale par zone** : PayDunya ou SASPay en UEMOA ; solution pour la CEMAC hors Cameroun (virement manuel ? autre prestataire ?).
-4. **Répartition des modules** par formule (§ 3.2) et **unités de quota** (IA en jetons ou en requêtes ; prise en compte des sociétés archivées et des invitations en attente).
-5. **Essai** : durée (14 jours affichés) ; moyen de paiement exigé ou non.
-6. **Politique de prorata**, d'arrondi et de remboursement.
-7. **Durées** de grâce, de suspension, de conservation après résiliation (avec avis juridique).
-8. **Rôles de plateforme** : le booléen `is_platform_admin` suffit-il, ou faut-il `platform_staff` ?
-9. **Retrait de l'exposition PostgREST** du schéma `public` sur le projet Supabase.
-10. **Hébergement** : capacités réelles du VPS cPanel (processus permanents, Redis, Celery) ; Supabase hébergé conservé ?
-11. Remplacement de la mention « FedaPay » sur la page publique.
+| N° | Sujet | Décision | Conséquence pour la conception |
+|---|---|---|---|
+| 1 | Entité vendeuse | **Entreprise immatriculée au Bénin** | Factures émises depuis le Bénin ; règles fiscales béninoises à saisir et faire valider par un fiscaliste (`tax_rules`, aucune valeur pré-chargée). **Stripe écarté** : le Bénin ne figure pas parmi les pays où Stripe ouvre un compte (§ 6.2). Cartes bancaires via SASPay. |
+| 2 | Pays de lancement | **Les 17 États membres de l'OHADA** | Bénin, Burkina Faso, Côte d'Ivoire, Guinée-Bissau, Mali, Niger, Sénégal, Togo (XOF) ; Cameroun, Centrafrique, Congo, Gabon, Guinée équatoriale, Tchad (XAF) ; Guinée (GNF) ; Comores (KMF) ; RD Congo (CDF). Hors OHADA : non commercialisé au lancement. |
+| 3 | Passerelle principale | **SASPay** | Connecteur SASPay développé en premier (12B) ; PayDunya conservé comme option de secours, non développé au lancement. Pays sans couverture SASPay documentée (liste tierce à confirmer par `GET /countries/`) : Guinée-Bissau, Centrafrique, Congo, Gabon, Guinée équatoriale, Tchad, Comores → paiement par **virement bancaire enregistré manuellement** (double validation, justificatif). |
+| 4 | Essai | **30 jours, sans moyen de paiement** | Un essai par organisation et par identité de facturation (§ 12, règle 11). La page d'accueil (« 14 jours ») est corrigée en 12A. |
+| 5 | Devises hors franc CFA | **Facturation en devise locale** pour la Guinée (GNF), les Comores (KMF) et la RD Congo (CDF) | La règle « XOF et XAF seulement » du lot 12 est étendue à ces trois devises (codes ISO). Décimales ISO 4217 : XOF 0, XAF 0, GNF 0, KMF 0, CDF 2 ; un prix est saisi pour chaque devise, aucune conversion n'est calculée. Prise en charge de GNF, KMF et CDF par SASPay : **à confirmer** avant ouverture de ces pays. |
+| 6 | Répartition des modules | **Proposition du § 3.2 retenue par défaut** (aucune préférence exprimée) | Modifiable par l'administrateur par une nouvelle version d'offre, sans code. |
+| 7 | Impayés | **7 jours de grâce**, puis lecture seule | Paramètre de plateforme (`billing_settings`), modifiable et journalisé. Délai entre suspension et résiliation : à fixer par l'administrateur (aucune résiliation automatique tant qu'il n'est pas fixé). |
+| 8 | Changement d'offre | **Montée en gamme au prorata**, effet immédiat | Calcul serveur en `Decimal`, arrondi à l'unité de la devise (règle d'arrondi détaillée [À VALIDER]). Descente en gamme en fin de période (§ 5.2). |
+| 9 | Remboursements | **Aucun remboursement** | Seule une erreur de facturation donne un avoir, émis manuellement avec double validation. La table `refunds` reste prévue pour ces cas (exécution manuelle, SASPay n'ayant pas d'API de remboursement). |
+| 10 | Conservation après résiliation | **Avis d'un juriste d'abord** | Aucune suppression automatique des données en attendant ; export complet toujours proposé. |
+| 11 | Administration de la plateforme | **Une petite équipe** | Table `platform_staff` retenue (§ 10) : rôles `super_admin`, `finance` (paiements, avoirs, virements manuels), `support` (lecture, accès support temporaire). `is_platform_admin` reste l'équivalent de `super_admin`. |
+| 12 | Page d'accueil | **Remplacer « FedaPay » par SASPay** | Correction en 12A, avec la grille tarifaire lue dans le catalogue publié. |
+
+**Restant à trancher ou à vérifier avant les étapes concernées :**
+- **Avant 12B : vérification préalable de SASPay** (entité juridique, agrément ou partenaire régulé, contrat, délais de reversement). Ouvrir un compte sandbox, puis confirmer contre la documentation officielle les devises XAF, GNF, KMF et CDF, la liste des pays (`GET /countries/`) et la signature des webhooks.
+- **Avant 12B : fiscalité béninoise** des abonnements (taxe applicable, mentions obligatoires, éventuelle facture normalisée) par un fiscaliste.
+- **Avant 12D : sécurité Supabase.** Le retrait de l'exposition PostgREST du schéma `public` est recommandé (§ 1) et sera appliqué au déploiement.
+- **Avant 12D : hébergement.** Supabase hébergé est conservé. Pour l'application, il faut un VPS **KVM** avec mémoire garantie et Ubuntu 24.04 (Python 3.12 requis). Les VPS standard LWS (LXC, mémoire incluant du VSWAP) ne conviennent pas. Le VPS Docker LWS (KVM) ou un autre hébergeur restent à confirmer.
+- Unités de quota (IA en jetons ou en requêtes ; prise en compte des sociétés archivées et des invitations en attente) : proposition par défaut en 12A, [À VALIDER].
 
 ---
 

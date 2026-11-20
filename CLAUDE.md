@@ -31,7 +31,7 @@
 - Livraisons : chaque archive livrée porte un nom distinct (ex. `KOFINEX_<lot>_<objet>.zip`), sans `node_modules`.
 
 ## Points en attente de décision (ne pas trancher sans validation)
-- **Lot 12 (SaaS)** : conception rédigée dans `docs/LOT12_SAAS_CONCEPTION.md`, **en attente d'approbation** ; aucun développement avant validation (décisions listées au § 16).
+- **Lot 12 (SaaS)** : conception dans `docs/LOT12_SAAS_CONCEPTION.md` ; **décisions commerciales arrêtées le 20 novembre 2026 (§ 16)**. Ne commencer une étape (12A à 12E) que sur demande explicite ; respecter les vérifications préalables listées au § 16 (SASPay et fiscalité avant 12B, hébergement avant 12D).
 - **FEC DGI Bénin** : livré (`docs/FEC_BENIN.md`), mais aucun fichier n'est déclaré « conforme » tant que les points du § 6 restent ouverts (`SPEC_CONFIRMED = False` dans `engines/accounting/fec_bj.py`).
 - **Comptabilité native** : décisions du § 7 de `docs/COMPTABILITE_NATIVE.md` ; étapes C, D et E du lot 3B non commencées.
 - **Contrôle de gestion** : points à valider du § 11.14 et du § 11.15 de `docs/CONTROLE_GESTION.md` (produits en net ou en brut, seuils par défaut, codes tiers du grand livre).
